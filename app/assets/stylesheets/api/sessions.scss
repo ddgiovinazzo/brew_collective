@@ -1,3 +1,127 @@
 // Place all the styles related to the api::sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.session-bg{
+    position: fixed;
+    background-image: image-url('photo-1436076863939-06870fe779c2.jpg');
+    background-size: 100%, 100%;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.sign-in-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid gray 1px;
+    justify-content: center;
+    background-color: rgba($color: white, $alpha: .9);
+    border-radius: 3px;
+}
+.sign-in-form > form{
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+}
+.sign-in-form > form > button{
+    text-decoration: none;
+    border: none;
+    background-color: orangered;
+    color: white;
+    padding: 8px 120px;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
+    margin: 20px 0 20px 0;
+    
+}
+.sign-in-form > form > button:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+.sign-in-form > form > button:active{
+    background-color: orange;
+        box-shadow: 0 2px lightgray;
+        transform: translateY(1px)   
+}
+
+.demo-btn{
+    text-decoration: none;
+    border: none;
+    background-color: orangered;
+    color: white;
+    padding: 4px 80px;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
+    margin: 0 0 20px 0;
+    
+}
+.demo-btn:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+.demo-btn:active{
+    background-color: orange;
+        box-shadow: 0 2px lightgray;
+        transform: translateY(1px)   
+}
+
+.input-container > input {
+    margin: 4px;
+    padding: 8px 80px 8px 36px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+ }
+
+ .input-container{
+    position: relative;
+ }
+
+ .icon{
+     position: absolute;
+     z-index: 10;
+     left: 5px;
+     top: 12px;
+     margin: 0px 5px;
+   
+}
+
+ .icon > img{
+    padding-right: 5px;
+
+    border-right: 1px solid lightgray;
+
+    height: 15px;
+    width: 15px;
+}
+
+.sign-up-p{
+    border-top: 1px solid lightgray;
+    padding-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: gray;
+    
+
+}
+.sign-up-p > a:hover{
+    text-decoration: none;
+    color: orangered;
+}
+.sign-up-p > a{
+    text-decoration: none;
+    color: orange;
+}

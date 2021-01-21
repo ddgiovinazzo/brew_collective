@@ -1,0 +1,63 @@
+.sign-up-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:640px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid gray 1px;
+    justify-content: center;
+    background-color: rgba($color: white, $alpha: .9)
+}
+.sign-up-form > form{
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+}
+.sign-up-form > form > button{
+    text-decoration: none;
+    border: none;
+    background-color: orangered;
+    color: white;
+    padding: 8px 116px ;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
+    margin: 30px 0 20px;
+    
+}
+
+.sign-up-form > form > button:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+
+.sign-up-form > form > button:active{
+    background-color: orange;
+        box-shadow: 0 2px lightgray;
+        transform: translateY(1px)   
+}
+
+.select{
+    margin: 4px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    color: black;
+    text-align-last:center;
+}
+
+.input-rows{
+    display: flex;
+    
+}
+
+.input-col-1, .input-col-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
