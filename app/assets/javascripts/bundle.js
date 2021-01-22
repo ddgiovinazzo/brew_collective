@@ -92,14 +92,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "LOGOUT_CURRENT_USER": () => /* binding */ LOGOUT_CURRENT_USER,
 /* harmony export */   "RECEIVE_SESSION_ERRORS": () => /* binding */ RECEIVE_SESSION_ERRORS,
 /* harmony export */   "CLEAR_SESSION_ERRORS": () => /* binding */ CLEAR_SESSION_ERRORS,
+/* harmony export */   "ADD_SESSION_ERROR": () => /* binding */ ADD_SESSION_ERROR,
 /* harmony export */   "receiveCurrentUser": () => /* binding */ receiveCurrentUser,
 /* harmony export */   "logoutCurrentUser": () => /* binding */ logoutCurrentUser,
 /* harmony export */   "receiveErrors": () => /* binding */ receiveErrors,
 /* harmony export */   "clearSessionErrors": () => /* binding */ clearSessionErrors,
+/* harmony export */   "addSessionError": () => /* binding */ addSessionError,
 /* harmony export */   "signup": () => /* binding */ signup,
 /* harmony export */   "login": () => /* binding */ login,
 /* harmony export */   "logout": () => /* binding */ logout,
-/* harmony export */   "clearErrors": () => /* binding */ clearErrors
+/* harmony export */   "clearErrors": () => /* binding */ clearErrors,
+/* harmony export */   "addError": () => /* binding */ addError
 /* harmony export */ });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 
@@ -107,6 +110,7 @@ var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 var CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
+var ADD_SESSION_ERROR = 'ADD_SESSION_ERROR';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -118,15 +122,22 @@ var logoutCurrentUser = function logoutCurrentUser() {
     type: LOGOUT_CURRENT_USER
   };
 };
-var receiveErrors = function receiveErrors(errors) {
+var receiveErrors = function receiveErrors(errors, error) {
   return {
     type: RECEIVE_SESSION_ERRORS,
-    errors: errors
+    errors: errors,
+    error: error
   };
 };
 var clearSessionErrors = function clearSessionErrors() {
   return {
     type: CLEAR_SESSION_ERRORS
+  };
+};
+var addSessionError = function addSessionError(error) {
+  return {
+    type: ADD_SESSION_ERROR,
+    error: error
   };
 };
 var signup = function signup(user) {
@@ -157,6 +168,11 @@ var logout = function logout() {
 var clearErrors = function clearErrors() {
   return function (dispatch) {
     return dispatch(clearSessionErrors());
+  };
+};
+var addError = function addError(error) {
+  return function (dispatch) {
+    return dispatch(addSessionError(error));
   };
 };
 
@@ -195,10 +211,6 @@ var App = function App() {
     exact: true,
     path: "/signup",
     component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_4__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
-    exact: true,
-    path: "/",
-    component: _splash__WEBPACK_IMPORTED_MODULE_2__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
     exact: true,
     path: "/",
@@ -423,13 +435,15 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "error"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "errors-container-sign-in"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "errors"
       }, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: "error-".concat(i)
         }, error);
-      }));
+      })));
     }
   }, {
     key: "redirect",
@@ -442,23 +456,29 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "background-img"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         onClick: function onClick() {
           _this3.props.history.push('/');
         },
-        className: "session-bg"
+        className: "darken-background"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         onClick: this.redirect.bind(this),
-        className: "sign-in-form"
+        className: !this.props.errors.length ? 'sign-in-form' : 'sign-in-form sign-in-form-errors'
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit
-      }, this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        id: "kegger-logo-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        id: "kegger-logo",
         src: window.kegger,
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "fas fa-user icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input",
         type: "text",
         placeholder: "Username",
         onChange: this.handleInput('username')
@@ -467,22 +487,25 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "fas fa-lock icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input",
         type: "password",
         placeholder: "Password",
         onChange: this.handleInput('password')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Sign In")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "form-submit"
+      }, "Sign In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        className: "form-submit demo-btn",
         onClick: function onClick() {
           return _this3.props.login({
             username: 'demo',
             password: 'password'
           });
-        },
-        className: "demo-btn"
-      }, "Demo Sign In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        }
+      }, "Demo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "sign-up-p"
       }, "New around here? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: "/signup"
-      }, "Sign up!"))));
+      }, "Sign up!")))));
     }
   }]);
 
@@ -582,15 +605,19 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, SignUp);
 
     _this = _super.call(this, props);
+    _this.year = null;
+    _this.month = null;
+    _this.day = null;
     _this.state = {
-      username: '',
-      email: '',
-      password: '',
-      gender: '',
-      location: '',
-      country: '',
-      first_name: '',
-      last_name: ''
+      username: null,
+      email: null,
+      password: null,
+      gender: null,
+      location: null,
+      country: null,
+      first_name: null,
+      last_name: null,
+      birthday: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -608,7 +635,12 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var signup = this.props.signup;
       e.preventDefault();
-      signup(this.state);
+
+      if (this.confirmPassword()) {
+        signup(this.state);
+      } else {
+        this.props.addError(['Passwords do not match.']);
+      }
     }
   }, {
     key: "handleInput",
@@ -620,6 +652,24 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleBirthday",
+    value: function handleBirthday(type) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3[type] = e.target.value;
+        return _this3.setState({
+          birthday: "".concat(_this3.year, "-").concat(_this3.month, "-").concat(_this3.day)
+        });
+      };
+    }
+  }, {
+    key: "confirmPassword",
+    value: function confirmPassword() {
+      var confirmPassword = document.getElementById('confirmPassword');
+      return confirmPassword.value === this.state.password;
+    }
+  }, {
     key: "redirect",
     value: function redirect(e) {
       e.stopPropagation();
@@ -627,41 +677,76 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "error"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "errors-container-sign-up"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "errors"
       }, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: "error-".concat(i)
         }, error);
-      }));
+      })));
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
+
+      var years = [];
+
+      for (var i = 2021; i >= 1900; i--) {
+        years.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+          key: "year".concat(i),
+          value: i
+        }, "".concat(i)));
+      }
+
+      var months = [];
+
+      for (var _i = 1; _i <= 12; _i++) {
+        months.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+          key: "months".concat(_i),
+          value: _i
+        }, _i < 10 ? "0".concat(_i) : "".concat(_i)));
+      }
+
+      var days = [];
+
+      for (var _i2 = 1; _i2 <= 31; _i2++) {
+        days.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+          key: "days".concat(_i2),
+          value: _i2
+        }, _i2 < 10 ? "0".concat(_i2) : "".concat(_i2)));
+      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        onClick: function onClick() {
-          _this3.props.history.push('/');
-        },
-        className: "session-bg"
+        className: "background-img"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        onClick: this.redirect.bind(this),
-        className: "sign-up-form"
+        onClick: function onClick() {
+          _this4.props.history.push('/');
+        },
+        className: "darken-background"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onClick: this.redirect.bind(this)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: !this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors',
         onSubmit: this.handleSubmit
-      }, this.props.errors.length > 0 ? this.renderErrors() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        id: "kegger-logo-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        id: "kegger-logo",
         src: window.kegger,
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-rows"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "All fields below are required unless specified.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-col-1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "fas fa-user icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input",
         type: "text",
         placeholder: "Username",
         onChange: this.handleInput('username')
@@ -670,18 +755,75 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "fas fa-envelope icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input",
         type: "text",
         placeholder: "Email",
         onChange: this.handleInput('email')
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "Avoid using common words and include a mix of letters and numbers.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-col-1"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        className: "fas fa-lock icon"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input",
+        type: "password",
+        placeholder: "Password",
+        onChange: this.handleInput('password')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "fas fa-lock icon"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        id: "confirmPassword",
+        className: "form-input",
         type: "password",
-        placeholder: "Password",
-        onChange: this.handleInput('password')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        placeholder: "Repeat Password"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-col-2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-col-1 input-col-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-container-secondary"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input-secondary",
+        type: "text",
+        placeholder: "First Name",
+        onChange: this.handleInput('first_name')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-container-secondary"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input-secondary",
+        type: "text",
+        placeholder: "Last Name",
+        onChange: this.handleInput('last_name')
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-col-1 input-col-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-container-secondary"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "form-input-secondary",
+        type: "text",
+        placeholder: "Location (Optional)",
+        onChange: this.handleInput('location')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-container-secondary"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        onChange: this.handleInput('gender'),
+        className: "select"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        className: "first-option"
+      }, "Gender (Optional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "Male"
+      }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "Female"
+      }, "Female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: ""
+      }, "Prefer not to Say")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-col-1 input-col-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "input-container-secondary"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
         onChange: this.handleInput('country'),
         className: "select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
@@ -700,44 +842,33 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         value: "Russia"
       }, "Russia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "South Korea"
-      }, "South Korea")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "input-col-2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "South Korea"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-        className: "fas fa-beer icon"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
-        placeholder: "First Name",
-        onChange: this.handleInput('first_name')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "input-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-        className: "fas fa-beer icon"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
-        placeholder: "Last Name",
-        onChange: this.handleInput('last_name')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "input-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-        className: "fas fa-beer icon"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
-        placeholder: "Location(Optional)",
-        onChange: this.handleInput('location')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-        onChange: this.handleInput('gender'),
-        className: "select"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "input-p"
+      }, "Birthday:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "form-birthday-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        onChange: this.handleBirthday('month'),
+        className: "form-birthday",
+        type: "select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        className: "first-option"
-      }, "Gender(Optional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Male"
-      }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Female"
-      }, "Female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: ""
-      }, "Prefer not to Say"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Create Account"))));
+        value: null
+      }, "MM"), months), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        onChange: this.handleBirthday('day'),
+        className: "form-birthday",
+        type: "select"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: null
+      }, "DD"), days), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        onChange: this.handleBirthday('year'),
+        className: "form-birthday",
+        type: "select"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: null
+      }, "YYYY"), years))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "form-submit"
+      }, "Create Account")))));
     }
   }]);
 
@@ -780,6 +911,9 @@ var mDTP = function mDTP(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.clearErrors)());
+    },
+    addError: function addError(error) {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.addError)(error));
     }
   };
 };
@@ -841,8 +975,10 @@ var Splash = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-        className: "splash-background"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null));
+        className: "background-img"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+        className: "darken-background"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null)));
     }
   }]);
 
@@ -988,7 +1124,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  var newState = [].concat(state);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
@@ -996,6 +1132,9 @@ __webpack_require__.r(__webpack_exports__);
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_SESSION_ERRORS:
       return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.ADD_SESSION_ERROR:
+      return action.error;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
       return [];

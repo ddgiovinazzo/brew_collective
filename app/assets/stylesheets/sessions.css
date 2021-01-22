@@ -1,0 +1,136 @@
+
+
+.sign-in-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.sign-in-form-errors{
+ 
+    width: 400px;
+    height: fit-content;
+
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.sign-in-form > form{
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+}
+
+
+
+#kegger-logo{
+    margin-bottom: 20px;
+}
+
+
+.form-submit{
+    text-decoration: none;
+    border: none;
+    background-color: orangered;
+    color: white;
+    padding: 8px 123px;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    margin: 20px 0 0px 0;
+}
+
+.demo-btn{
+    padding: 13px 129px;
+}
+
+.form-submit:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+
+.form-submit:active{
+    background-color: orange;
+        box-shadow: 0 2px lightgray;
+        transform: translateY(1px)   
+}
+
+
+.fas {
+    background-color: white;
+    color: white;
+    min-width: 40px;
+    text-align: center;
+    border-right: 1px solid lightgray;
+    color: lightgray;
+  }
+
+
+
+
+ .input-container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 268px;
+    height: 33px;
+
+ }
+
+ .form-input{
+    margin-left: 4px;
+    border: 1px solid lightgray;
+    border: none
+}
+
+
+.sign-up-p{
+    border-top: 1px solid lightgray;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: gray;
+}
+
+.sign-up-p > a:hover{
+    text-decoration: none;
+    color: orangered;
+}
+
+.sign-up-p > a{
+    text-decoration: none;
+    color: orange;
+}
+
+.errors{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.errors > li{
+    
+   padding: 3px;
+   font-family: sans-serif;
+}
+
+.errors-container-sign-in{
+    background-color: #e07575;
+    width: 336px ;
+    border-radius: 5px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px ;
+}

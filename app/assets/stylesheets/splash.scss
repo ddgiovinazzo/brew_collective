@@ -1,8 +1,19 @@
-.splash-background{
+.background-img{
     position: fixed;
     background-image: image-url('photo-1436076863939-06870fe779c2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     background-size: 100%, 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.darken-background{
+    position: fixed;
     background-color: rgba($color: #000000, $alpha: 0.7);
+
     top: 0;
     left: 0;
     right: 0;
@@ -49,19 +60,4 @@ img{
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
-}
-
-.error{
-    background-color: rgb(236, 91, 91);
-    border-radius: 3px;
-    color: white;
-    padding: 20px 40px;
-    font-size: 20px;
-}
-.error > li{
-   padding: 3px;
-}
-
-.fas{
-    color: lightgray;
 }
