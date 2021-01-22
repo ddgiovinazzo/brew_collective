@@ -694,7 +694,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
 
       var years = [];
 
-      for (var i = 2021; i >= 1900; i--) {
+      for (var i = 1999; i >= 1900; i--) {
         years.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
           key: "year".concat(i),
           value: i

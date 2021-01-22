@@ -88,7 +88,7 @@ class SignUp extends React.Component {
 
     render() {
         const years = []
-        for (let i = 2021; i >= 1900 ; i--) {
+        for (let i = 1999; i >= 1900 ; i--) {
             years.push(
                 <option key={`year${i}`}value={i}>{`${i}`}</option>
             )        
