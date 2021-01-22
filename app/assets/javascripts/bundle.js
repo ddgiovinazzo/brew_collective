@@ -657,8 +657,9 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
 
       return function (e) {
         _this3[type] = e.target.value;
+        var date = "".concat(_this3.year, "-").concat(_this3.month, "-").concat(_this3.day);
         return _this3.setState({
-          birthday: "".concat(_this3.year, "-").concat(_this3.month, "-").concat(_this3.day)
+          birthday: date
         });
       };
     }

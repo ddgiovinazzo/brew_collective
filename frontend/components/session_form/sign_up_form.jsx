@@ -53,9 +53,9 @@ class SignUp extends React.Component {
     handleBirthday(type) {
         return (e) => {
             this[type] = e.target.value
-
+            const date = `${this.year}-${this.month}-${this.day}`;
            return this.setState({
-                birthday: `${this.year}-${this.month}-${this.day}`
+                birthday: date
            })
         }
     }
