@@ -15,10 +15,9 @@ export const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER,
 });
 
-export const receiveErrors = (errors, error) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
-  errors,
-  error
+  errors
 });
 
 export const clearSessionErrors = () => ({

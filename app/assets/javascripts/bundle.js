@@ -122,11 +122,10 @@ var logoutCurrentUser = function logoutCurrentUser() {
     type: LOGOUT_CURRENT_USER
   };
 };
-var receiveErrors = function receiveErrors(errors, error) {
+var receiveErrors = function receiveErrors(errors) {
   return {
     type: RECEIVE_SESSION_ERRORS,
-    errors: errors,
-    error: error
+    errors: errors
   };
 };
 var clearSessionErrors = function clearSessionErrors() {
