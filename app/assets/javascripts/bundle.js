@@ -605,19 +605,19 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, SignUp);
 
     _this = _super.call(this, props);
-    _this.year = null;
-    _this.month = null;
-    _this.day = null;
+    _this.year = '';
+    _this.month = '';
+    _this.day = '';
     _this.state = {
-      username: null,
-      email: null,
-      password: null,
-      gender: null,
-      location: null,
-      country: null,
-      first_name: null,
-      last_name: null,
-      birthday: null
+      username: '',
+      email: '',
+      password: '',
+      gender: '',
+      location: '',
+      country: '',
+      first_name: '',
+      last_name: '',
+      birthday: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;

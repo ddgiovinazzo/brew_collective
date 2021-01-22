@@ -4,19 +4,19 @@ class SignUp extends React.Component {
 
     constructor(props) {
         super(props)
-        this.year = null
-        this.month= null
-        this.day = null
+        this.year = ''
+        this.month= ''
+        this.day = ''
         this.state = {
-            username: null,
-            email: null,
-            password: null,
-            gender: null,
-            location: null,
-            country: null,
-            first_name: null,
-            last_name: null,
-            birthday: null
+            username: '',
+            email: '',
+            password: '',
+            gender: '',
+            location: '',
+            country: '',
+            first_name: '',
+            last_name: '',
+            birthday: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -33,8 +33,7 @@ class SignUp extends React.Component {
         const { signup } = this.props
         e.preventDefault()
 
-            if(this.confirmPassword()){
-               
+            if(this.confirmPassword()){     
                 signup(this.state)
             }else{
                 this.props.addError(['Passwords do not match.']) 
