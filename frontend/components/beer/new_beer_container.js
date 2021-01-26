@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
-import {clearErrors, addError } from '../../actions/session_actions';
 import {createBeer} from '../../actions/beer_actions';
 import {fetchBreweries, createBrewery} from '../../actions/brewery_actions';
 import NewBeer from './new_beer';
+import { clearBeerErrors } from "../../actions/beer_actions";
+import { clearBreweryErrors } from "../../actions/brewery_actions";
 
 const mSTP = ({entities:{breweries, users},session, errors}) => {
   return {
-    errors: errors.beers,
+    errors: errors.breweries.concat(errors.beers),
     breweries: Object.values(breweries),
     currentUser: users[session.id]
   };
@@ -16,8 +17,8 @@ const mDTP = dispatch => {
   return {
     createBeer: (beer) => dispatch(createBeer(beer)),
     fetchBreweries: () => dispatch(fetchBreweries()),
-    clearErrors: () => dispatch(clearErrors()),
-    addError: (error) => dispatch(addError(error)),
+    clearBeerErrors: () => dispatch(clearBeerErrors()),
+    clearBreweryErrors: () => dispatch(clearBreweryErrors()),
     createBrewery: (brewery) => dispatch(createBrewery(brewery))
   };
 };

@@ -180,13 +180,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_ALL_BREWERIES": () => /* binding */ RECEIVE_ALL_BREWERIES,
 /* harmony export */   "RECEIVE_BREWERY": () => /* binding */ RECEIVE_BREWERY,
+/* harmony export */   "RECEIVE_BREWERY_ERRORS": () => /* binding */ RECEIVE_BREWERY_ERRORS,
+/* harmony export */   "CLEAR_BREWERY_ERRORS": () => /* binding */ CLEAR_BREWERY_ERRORS,
+/* harmony export */   "ADD_BREWERY_ERROR": () => /* binding */ ADD_BREWERY_ERROR,
 /* harmony export */   "fetchBreweries": () => /* binding */ fetchBreweries,
-/* harmony export */   "createBrewery": () => /* binding */ createBrewery
+/* harmony export */   "createBrewery": () => /* binding */ createBrewery,
+/* harmony export */   "receiveBreweryErrors": () => /* binding */ receiveBreweryErrors,
+/* harmony export */   "clearBreweryErrors": () => /* binding */ clearBreweryErrors,
+/* harmony export */   "addBreweryError": () => /* binding */ addBreweryError
 /* harmony export */ });
 /* harmony import */ var _util_brewery_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/brewery_util */ "./frontend/util/brewery_util.js");
 
 var RECEIVE_ALL_BREWERIES = 'RECEIVE_ALL_BREWERIES';
 var RECEIVE_BREWERY = 'RECEIVE_BREWERY';
+var RECEIVE_BREWERY_ERRORS = 'RECEIVE_BREWERY_ERRORS';
+var CLEAR_BREWERY_ERRORS = 'CLEAR_BREWERY_ERRORS';
+var ADD_BREWERY_ERROR = 'ADD_BREWERY_ERROR';
 
 var receiveAllBreweries = function receiveAllBreweries(breweries) {
   return {
@@ -213,7 +222,26 @@ var createBrewery = function createBrewery(brewery) {
   return function (dispatch) {
     return _util_brewery_util__WEBPACK_IMPORTED_MODULE_0__.createBrewery(brewery).then(function (brewery) {
       return dispatch(receiveBrewery(brewery));
+    }, function (err) {
+      return dispatch(receiveBreweryErrors(err.responseJSON));
     });
+  };
+};
+var receiveBreweryErrors = function receiveBreweryErrors(errors) {
+  return {
+    type: RECEIVE_BREWERY_ERRORS,
+    errors: errors
+  };
+};
+var clearBreweryErrors = function clearBreweryErrors() {
+  return {
+    type: CLEAR_BREWERY_ERRORS
+  };
+};
+var addBreweryError = function addBreweryError(error) {
+  return {
+    type: ADD_BREWERY_ERROR,
+    error: error
   };
 };
 
@@ -477,6 +505,12 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
+
+      if (this.props.errors.length > 0) {
+        this.props.clearBreweryErrors();
+        this.props.clearBeerErrors();
+      }
+
       var _this$props = this.props,
           createBeer = _this$props.createBeer,
           createBrewery = _this$props.createBrewery;
@@ -616,10 +650,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/beer_actions */ "./frontend/actions/beer_actions.js");
-/* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
-/* harmony import */ var _new_beer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./new_beer */ "./frontend/components/beer/new_beer.jsx");
+/* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/beer_actions */ "./frontend/actions/beer_actions.js");
+/* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
+/* harmony import */ var _new_beer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./new_beer */ "./frontend/components/beer/new_beer.jsx");
+
 
 
 
@@ -633,7 +667,7 @@ var mSTP = function mSTP(_ref) {
       session = _ref.session,
       errors = _ref.errors;
   return {
-    errors: errors.beers,
+    errors: errors.breweries.concat(errors.beers),
     breweries: Object.values(breweries),
     currentUser: users[session.id]
   };
@@ -642,24 +676,24 @@ var mSTP = function mSTP(_ref) {
 var mDTP = function mDTP(dispatch) {
   return {
     createBeer: function createBeer(beer) {
-      return dispatch((0,_actions_beer_actions__WEBPACK_IMPORTED_MODULE_2__.createBeer)(beer));
+      return dispatch((0,_actions_beer_actions__WEBPACK_IMPORTED_MODULE_1__.createBeer)(beer));
     },
     fetchBreweries: function fetchBreweries() {
-      return dispatch((0,_actions_brewery_actions__WEBPACK_IMPORTED_MODULE_3__.fetchBreweries)());
+      return dispatch((0,_actions_brewery_actions__WEBPACK_IMPORTED_MODULE_2__.fetchBreweries)());
     },
-    clearErrors: function clearErrors() {
-      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.clearErrors)());
+    clearBeerErrors: function clearBeerErrors() {
+      return dispatch((0,_actions_beer_actions__WEBPACK_IMPORTED_MODULE_1__.clearBeerErrors)());
     },
-    addError: function addError(error) {
-      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.addError)(error));
+    clearBreweryErrors: function clearBreweryErrors() {
+      return dispatch((0,_actions_brewery_actions__WEBPACK_IMPORTED_MODULE_2__.clearBreweryErrors)());
     },
     createBrewery: function createBrewery(brewery) {
-      return dispatch((0,_actions_brewery_actions__WEBPACK_IMPORTED_MODULE_3__.createBrewery)(brewery));
+      return dispatch((0,_actions_brewery_actions__WEBPACK_IMPORTED_MODULE_2__.createBrewery)(brewery));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_new_beer__WEBPACK_IMPORTED_MODULE_4__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_new_beer__WEBPACK_IMPORTED_MODULE_3__.default));
 
 /***/ }),
 
@@ -1568,7 +1602,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       }, "South Korea"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-up"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "input-p"
+        id: "input-p"
       }, "Birthday:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "form-birthday-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
@@ -1917,6 +1951,40 @@ var beersReducer = function beersReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/breweries_errors_reducer.js":
+/*!*******************************************************!*\
+  !*** ./frontend/reducers/breweries_errors_reducer.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_BREWERY_ERRORS:
+      return action.errors;
+
+    case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_BREWERY_ERRORS:
+      return [];
+
+    case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.ADD_BREWERY_ERROR:
+      return action.error;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/reducers/breweries_reducer.js":
 /*!************************************************!*\
   !*** ./frontend/reducers/breweries_reducer.js ***!
@@ -1992,15 +2060,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./beer_errors_reducer */ "./frontend/reducers/beer_errors_reducer.js");
+/* harmony import */ var _breweries_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./breweries_errors_reducer */ "./frontend/reducers/breweries_errors_reducer.js");
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  beers: _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default
+  beers: _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
+  breweries: _breweries_errors_reducer__WEBPACK_IMPORTED_MODULE_2__.default
 }));
 
 /***/ }),

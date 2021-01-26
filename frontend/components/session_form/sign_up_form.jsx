@@ -200,7 +200,7 @@ class SignUp extends React.Component {
 
                                         <div className="input-container-sign-up">
 
-                                            <p className="input-p">Birthday:</p>
+                                            <p id="input-p">Birthday:</p>
                                             <div className='form-birthday-container'>
                                                 <select onChange={this.handleBirthday('month')} className='form-birthday' type="select" >
                                                     <option value={null}>MM</option>

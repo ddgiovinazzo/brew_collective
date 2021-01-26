@@ -23,7 +23,9 @@ class NewBeer extends React.Component {
     }
 
     componentDidMount() {
+
         this.props.fetchBreweries()
+        
     }
 
     handleText(e) {
@@ -52,6 +54,10 @@ class NewBeer extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
+        if (this.props.errors.length > 0) {
+            this.props.clearBreweryErrors()
+            this.props.clearBeerErrors()
+        }
         const { createBeer, createBrewery } = this.props
         const { beer } = this.state
         const { breweries } = this.props
@@ -100,6 +106,7 @@ class NewBeer extends React.Component {
     }
 
     render() {
+
         const beers = [
             'Belgian',
             'Brown Ale',

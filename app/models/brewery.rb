@@ -1,4 +1,4 @@
 class Brewery < ApplicationRecord
-    validates :name, length: {minimum: 1}
+    validates :name, presence: true
 
 end

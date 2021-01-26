@@ -30,4 +30,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        email: "E-mail address"
+      brewery:
+        name: "Brewery name"
+      beer:
+        name: "Beer name"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "is required"
+        brewery:
+          attributes:
+            name:
+              blank: "is required"
+        beer:
+          attributes:
+            name:
+              blank: "is required"
