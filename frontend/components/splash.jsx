@@ -5,10 +5,9 @@ import React from "react";
 class Splash extends React.Component{
     render(){
         return(
-            <div className = 'background-img'>
-                <div className = 'darken-background'>
+            <div >  
+                <img className = 'background-img' src={window.bg} alt="" />
                 <CredsContainer/>     
-                </div>
             </div>
         )
     }

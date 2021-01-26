@@ -59,38 +59,37 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div className='background-img'>
-
-
-
-                <div onClick={() => {
+            <div >
+            <img onClick={() => {
                     this.props.history.push('/')
-                }} className='darken-background'>
+                }} className='background-img' className = 'background-img' src={window.bg} alt="" />
+
+
+
                     <div onClick={this.redirect.bind(this)} className={!this.props.errors.length ? 'sign-in-form' : 'sign-in-form sign-in-form-errors'}>
                         <form onSubmit={this.handleSubmit}>
 
                             <span id='kegger-logo-container'><img id="kegger-logo" src={window.kegger} alt="" /></span>
 
                             {this.props.errors.length > 0 ? this.renderErrors() : null}
-                            <div className="input-container">
-                                <i className="fas fa-user icon"></i>
+                            <div className="input-container-sign-in">
+                                <i className="fas fa-user icon sign-up-icons"></i>
                                 <input className='form-input' type="text" placeholder='Username' onChange={this.handleInput('username')} />
                             </div>
 
-                            <div className="input-container">
-                                <i className="fas fa-lock icon"></i>
+                            <div className="input-container-sign-in">
+                                <i className="fas fa-lock icon sign-up-icons"></i>
                                 <input className='form-input' type="password" placeholder='Password' onChange={this.handleInput('password')} />
                             </div>
 
 
                             <button className='form-submit'>Sign In</button>
-                            <span className='form-submit demo-btn' onClick={() => this.props.login({ username: 'demo', password: 'password' })} >Demo</span>
+                            <span className='form-submit demo-btn ' onClick={() => this.props.login({ username: 'demo', password: 'password' })} >Demo</span>
 
                         </form>
                         <p className="sign-up-p">New around here? <Link to='/signup'>Sign up!</Link></p>
                     </div>
 
-                </div>
 
 
 

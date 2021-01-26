@@ -19,10 +19,24 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	/* font-size: 100%;
-	font: inherit; */
+	font-size: 100%;
+	font: inherit;
 	vertical-align: baseline;
-	
+}
+
+h1{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h2{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+h3{
+	font-size: 14px;
+	text-decoration: underline;
 }
 
 button{
@@ -36,17 +50,19 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+/* ol, ul {
 	list-style: none;
-}
+} */
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;

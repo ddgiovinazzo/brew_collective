@@ -14,4 +14,11 @@
  *= require_self
  *= require font-awesome
  */
- @import "font-awesome"
+ @import "font-awesome";
+
+ #main-background{
+     height: 100vh;
+     width: 100vw;
+    
+     background-color: rgb(250, 237, 220);
+ }

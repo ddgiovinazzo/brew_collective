@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import {logout} from './actions/session_actions'
+import {createBrewery, fetchBreweries} from './actions/brewery_actions'
+import {fetchAllBeers} from './actions/beer_actions'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,8 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.logout = logout;
-
+  window.createBrewery = createBrewery;
+  window.fetchBreweries = fetchBreweries;
+  window.fetchAllBeers = fetchAllBeers;
+  
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

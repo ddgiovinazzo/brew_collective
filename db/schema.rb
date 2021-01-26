@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_231521) do
+ActiveRecord::Schema.define(version: 2021_01_25_063804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,28 @@ ActiveRecord::Schema.define(version: 2021_01_22_231521) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "beers", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "brewery_id", null: false
+    t.string "serving_style", null: false
+    t.integer "abv", null: false
+    t.integer "ibu", null: false
+    t.text "flavor_profile", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brewery_id"], name: "index_beers_on_brewery_id"
+    t.index ["name"], name: "index_beers_on_name", unique: true
+  end
+
+  create_table "breweries", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "brewery_type"
+    t.string "brewery_country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_breweries_on_name", unique: true
   end
 
   create_table "check_ins", force: :cascade do |t|

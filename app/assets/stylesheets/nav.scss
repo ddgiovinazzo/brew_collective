@@ -1,0 +1,103 @@
+.header-container{
+    position: fixed;
+    height: 52px;
+    width: 100%;
+    z-index: 9;
+}
+
+.header-content-container{
+    position: relative;
+    height: 52px;
+    width: 100%;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-links{
+    margin-left: 14px;
+    width:430px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-links > a{
+   text-decoration: none;
+   color: white;
+   font-family: sans-serif;
+   font-size: 18px;
+   padding: 0px 20px;
+}
+
+
+#kegger-logo-nav{
+    transform: scale(.7);
+   filter: invert(100%);
+}
+
+.dropdown-container { 
+    position: relative;
+    display: inline-block;
+    margin-left: 105px;
+    top: 10px
+}
+
+.fa-user-circle{
+    color: white;
+    margin-bottom: 15px; 
+}
+  
+.dropdown {
+    margin-top:-8px;
+    display: none;
+    position: absolute;
+    background-color: #272525;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+  .nav-links {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #484646;
+    cursor: pointer;
+  }
+
+.dropdown-container:hover .dropdown {
+    display: block;
+}
+
+#search-bar{
+    border: none;
+}
+
+#search-bar-container{
+    margin-left: 12px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.fa-search{
+    background-color: white;
+}
+
+#show-img{
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    object-position: 20% 10%; /* try 20px 10px */ 
+}
+
+#show-img-container{
+    position: absolute;
+    top: 52px;
+    width: 970px;
+    height: 210px;
+    margin-left: 210px;
+}

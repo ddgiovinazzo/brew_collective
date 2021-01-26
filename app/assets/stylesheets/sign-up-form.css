@@ -2,9 +2,15 @@
         outline: none;
     }
 
+    #sign-up-form-container{
+        position: relative;
+        width:100%;
+        height: 900px;
+    }
+
 .sign-up-form{
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     width:600px;
@@ -14,18 +20,17 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    color: rgb(99, 98, 98)
+    color: rgb(99, 98, 98);
+    z-index: 10;
 }
-.sign-up-form-errors{
-   
 
+.sign-up-form-errors{
+    top: 45%;
     width:600px;
     height: fit-content;
     padding-top: 10px;
     padding-bottom: 20px;
 }
-
-
 
 .sign-up-form > form > button{
     text-decoration: none;
@@ -50,8 +55,6 @@
     box-shadow: 0 2px lightgray;
     transform: translateY(1px)   
 }
-
-
 
 .input-rows{
     display: flex;
@@ -125,8 +128,17 @@
     border: none;
     color: gray;
 }
-
 .form-birthday-container{
     margin-left: auto;
 }
 
+.input-container-sign-up{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 268px;
+    height: 33px;
+ }

@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
+    z-index: 10;
 }
 
 .sign-in-form-errors{
@@ -33,6 +34,7 @@
 
 #kegger-logo{
     margin-bottom: 20px;
+    filter: invert(25%);
 }
 
 
@@ -64,7 +66,7 @@
 }
 
 
-.fas {
+.sign-up-icons {
     background-color: white;
     color: white;
     min-width: 40px;
@@ -76,16 +78,15 @@
 
 
 
- .input-container{
+ .input-container-sign-in{
     align-items: center;
     display: flex;
     width: 100%;
     margin-bottom: 10px;
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 268px;
+    width: 295px;
     height: 33px;
-
  }
 
  .form-input{
