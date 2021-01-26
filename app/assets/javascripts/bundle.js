@@ -90,13 +90,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_ALL_BEERS": () => /* binding */ RECEIVE_ALL_BEERS,
 /* harmony export */   "RECEIVE_BEER": () => /* binding */ RECEIVE_BEER,
+/* harmony export */   "RECEIVE_BEER_ERRORS": () => /* binding */ RECEIVE_BEER_ERRORS,
+/* harmony export */   "CLEAR_BEER_ERRORS": () => /* binding */ CLEAR_BEER_ERRORS,
+/* harmony export */   "ADD_BEER_ERROR": () => /* binding */ ADD_BEER_ERROR,
+/* harmony export */   "receiveBeerErrors": () => /* binding */ receiveBeerErrors,
+/* harmony export */   "clearBeerErrors": () => /* binding */ clearBeerErrors,
+/* harmony export */   "addBeerError": () => /* binding */ addBeerError,
 /* harmony export */   "fetchAllBeers": () => /* binding */ fetchAllBeers,
-/* harmony export */   "createBeer": () => /* binding */ createBeer
+/* harmony export */   "createBeer": () => /* binding */ createBeer,
+/* harmony export */   "clearErrors": () => /* binding */ clearErrors,
+/* harmony export */   "addError": () => /* binding */ addError
 /* harmony export */ });
 /* harmony import */ var _util_beer_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/beer_util */ "./frontend/util/beer_util.js");
 
 var RECEIVE_ALL_BEERS = 'RECEIVE_ALL_BEERS';
 var RECEIVE_BEER = 'RECEIVE_BEER';
+var RECEIVE_BEER_ERRORS = 'RECEIVE_BEER_ERRORS';
+var CLEAR_BEER_ERRORS = 'CLEAR_BEER_ERRORS';
+var ADD_BEER_ERROR = 'ADD_BEER_ERROR';
 
 var receiveAllBeers = function receiveAllBeers(beers) {
   return {
@@ -112,6 +123,23 @@ var receiveBeer = function receiveBeer(beer) {
   };
 };
 
+var receiveBeerErrors = function receiveBeerErrors(errors) {
+  return {
+    type: RECEIVE_BEER_ERRORS,
+    errors: errors
+  };
+};
+var clearBeerErrors = function clearBeerErrors() {
+  return {
+    type: CLEAR_BEER_ERRORS
+  };
+};
+var addBeerError = function addBeerError(error) {
+  return {
+    type: ADD_BEER_ERROR,
+    error: error
+  };
+};
 var fetchAllBeers = function fetchAllBeers() {
   return function (dispatch) {
     return _util_beer_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllBeers().then(function (beers) {
@@ -123,7 +151,19 @@ var createBeer = function createBeer(beer) {
   return function (dispatch) {
     return _util_beer_util__WEBPACK_IMPORTED_MODULE_0__.createBeer(beer).then(function (beer) {
       return dispatch(receiveBeer(beer));
+    }, function (err) {
+      return dispatch(receiveBeerErrors(err.responseJSON));
     });
+  };
+};
+var clearErrors = function clearErrors() {
+  return function (dispatch) {
+    return dispatch(clearBeerErrors());
+  };
+};
+var addError = function addError(error) {
+  return function (dispatch) {
+    return dispatch(addBeerError(error));
   };
 };
 
@@ -421,6 +461,19 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "errors-container-create-beer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "errors"
+      }, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      })));
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -481,13 +534,13 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
         id: "create-beer-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
-        id: "create-beer-form",
+        id: !this.props.errors.length ? 'create-beer-form' : 'create-beer-errors-form',
         action: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         id: "create-beer-content"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Add a New Beer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Can't find the beer you're looking for?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Use this form to add it to our list!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Guidelines"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         id: "create-beer-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Brewery cannot be included in beer name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "If the year is part of the label artwork, only add the vintage year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Make sure your beer name is properly is properly cased"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "No beers that are a blend of two or more other beers will be accepted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Give your homebrew an original name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Homebrew clones are not allowed."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "We will not accept unsupported drinks(wine, water, etc)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Not following these guidelines may result in revocation of beer creation privliges"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Brewery cannot be included in beer name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "If the year is part of the label artwork, only add the vintage year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Make sure your beer name is properly is properly cased"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "No beers that are a blend of two or more other beers will be accepted"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Give your homebrew an original name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Homebrew clones are not allowed."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "We will not accept unsupported drinks(wine, water, etc)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Not following these guidelines may result in revocation of beer creation privliges")), this.props.errors.length > 0 ? this.renderErrors() : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "form-label",
         htmlFor: ""
       }, "Beer", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -580,7 +633,7 @@ var mSTP = function mSTP(_ref) {
       session = _ref.session,
       errors = _ref.errors;
   return {
-    errors: errors.beer,
+    errors: errors.beers,
     breweries: Object.values(breweries),
     currentUser: users[session.id]
   };
@@ -1793,6 +1846,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/beer_errors_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/beer_errors_reducer.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/beer_actions */ "./frontend/actions/beer_actions.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_beer_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_BEER_ERRORS:
+      return action.errors;
+
+    case _actions_beer_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_BEER_ERRORS:
+      return [];
+
+    case _actions_beer_actions__WEBPACK_IMPORTED_MODULE_0__.ADD_BEER_ERROR:
+      return action.error;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/reducers/beers_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/beers_reducer.js ***!
@@ -1905,12 +1992,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./beer_errors_reducer */ "./frontend/reducers/beer_errors_reducer.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
+  beers: _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 }));
 
 /***/ }),
@@ -1959,7 +2049,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  var newState = [].concat(state);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:

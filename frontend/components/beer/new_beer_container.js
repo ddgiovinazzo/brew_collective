@@ -6,7 +6,7 @@ import NewBeer from './new_beer';
 
 const mSTP = ({entities:{breweries, users},session, errors}) => {
   return {
-    errors: errors.beer,
+    errors: errors.beers,
     breweries: Object.values(breweries),
     currentUser: users[session.id]
   };

@@ -35,6 +35,21 @@ class NewBeer extends React.Component {
         })
     }
 
+    renderErrors() {
+        return (
+            <div className='errors-container-create-beer'>
+
+                <ul className='errors'>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    }
+
     handleSubmit(e) {
         e.preventDefault()
         const { createBeer, createBrewery } = this.props
@@ -103,7 +118,7 @@ class NewBeer extends React.Component {
             <div id='create-beer-container'>
 
 
-                    <form onSubmit={this.handleSubmit} id='create-beer-form' action="">
+                    <form onSubmit={this.handleSubmit} id={!this.props.errors.length ? 'create-beer-form' : 'create-beer-errors-form'} action="">
                         <div id='create-beer-content'>
                             <h1>Add a New Beer</h1>
                             <br />
@@ -122,8 +137,8 @@ class NewBeer extends React.Component {
                                 <li>We will not accept unsupported drinks(wine, water, etc)</li>
                                 <li>Not following these guidelines may result in revocation of beer creation privliges</li>
                             </ul>
+                        {this.props.errors.length > 0 ? this.renderErrors() : null}
                         </div>
-
                         <label className='form-label' htmlFor="">Beer
 
                     <div className='create-beer-input-lg'>

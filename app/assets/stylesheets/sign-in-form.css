@@ -1,5 +1,3 @@
-
-
 .sign-in-form{
     position: absolute;
     top: 50%;
@@ -29,7 +27,6 @@
    display: flex;
    flex-direction: column;
 }
-
 
 
 #kegger-logo{
@@ -135,3 +132,4 @@
     font-weight: bold;
     margin-bottom: 30px ;
 }
+

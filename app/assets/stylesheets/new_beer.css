@@ -8,7 +8,7 @@ input{
 }
 
 #create-beer-container{
-    height: 800px;
+    height: 1000px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -136,3 +136,26 @@ input{
     font-size: 14px;
 }
 
+.errors-container-create-beer{
+    
+    background-color: #e07575;
+    width: 336px ;
+    border-radius: 5px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px ;
+}
+.errors-container-create-beer > ul{
+    list-style: none;
+}
+
+
+#create-beer-errors-form{
+    position: absolute;
+    background-color: white;
+    top: 10%;
+    height: fit-content;
+    padding: 20px;
+
+}
