@@ -1,0 +1,45 @@
+#show-img{
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: 20% 10%;
+}
+
+#show-img-container{
+    width: 1024px;
+    height: 208px;
+}
+
+#photobox{
+    background-color: white;
+    width: 650px;
+    height: 200px;
+    margin-right: 15px;
+}
+
+#content{
+    background-color: white;
+    width: 650px;
+    height: 200px;
+    margin-right: 15px;
+}
+
+#wishlist-container{
+    width: 300px;
+    height: 150px;
+    background-color: white;
+}
+
+#top-beers{
+    width: 300px;
+    height: 150px;
+    background-color: white;
+    margin-top: 20px;
+}
+
+#top-venues{
+    width: 300px;
+    height: 150px;
+    background-color: white;
+    margin-top: 20px;
+}

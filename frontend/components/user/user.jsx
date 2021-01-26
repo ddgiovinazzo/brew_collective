@@ -5,7 +5,7 @@ import NavBarContainer from '../navbar/navbar_container'
 
 class User extends React.Component {
 
-    currentUserCheck(){
+    currentUserCheck() {
         return parseInt(this.props.match.params.userId) === this.props.currentUser.id
     }
 
@@ -16,22 +16,39 @@ class User extends React.Component {
                 <header>
                 </header>
                 <div className='home-grid'>
-                <Cover/>
+                    
 
+                    <Cover />
                     <div id='main'>
-                        <div id='content'>
-                            
+                        <div id='content-container'>
+                            <div id='photobox'>
+
+                            </div>
+                            <div id='content'>
+
+                            </div>
+                        </div>
+                        <div id='sidebar'>
+                            <div id='wishlist-container'>
+                                
+                            </div>
+                            <div id='top-beers'>
+
+                            </div>
+                            <div id='top-venues'>
+
+                            </div>
+                            <div id='likes'>
+
+                            </div>
                         </div>
                     </div>
 
-                    <div id='sidebar'>
-
-                    </div>
 
                 </div>
-                    <footer id='footer-container'>
+                <footer id='footer-container'>
 
-                    </footer>
+                </footer>
 
             </div>
         )

@@ -4,6 +4,9 @@ import NavBar from './navbar'
 
 
 
+const mSTP = (state) => {
+  return {currentUserId: state.session.id};
+};
 const mDTP = dispatch => {
   return {
     logout: (user) => dispatch(logout(user)),
@@ -11,4 +14,4 @@ const mDTP = dispatch => {
   };
 };
 
-export default connect(null, mDTP)(NavBar)
+export default connect(mSTP, mDTP)(NavBar)

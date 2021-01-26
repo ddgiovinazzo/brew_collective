@@ -1,4 +1,5 @@
 .header-container{
+    top: 0;
     position: fixed;
     height: 52px;
     width: 100%;
@@ -87,17 +88,3 @@
     background-color: white;
 }
 
-#show-img{
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-    object-position: 20% 10%; /* try 20px 10px */ 
-}
-
-#show-img-container{
-    position: absolute;
-    top: 52px;
-    width: 970px;
-    height: 210px;
-    margin-left: 210px;
-}

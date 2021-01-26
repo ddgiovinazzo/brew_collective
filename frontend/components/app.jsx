@@ -17,10 +17,6 @@ const App = () => (
   <div id='main-background'>
 
     <NavBarContainer />
-
-
-
-
       <AuthRoute exact path="/login" component={SignIn}/>
       <AuthRoute exact path="/signup" component={SignUp}/>
       <ProtectedRoute exact path="/home" component={Home}/>

@@ -22,8 +22,7 @@ class NavBar extends React.Component {
                     <div className="dropdown-container">
                         <i className="far fa-2x fa-user-circle dropbtn"></i>
                         <div className="dropdown">
-                            <a className='nav-links' href="#">Link 1</a>
-                            <a className='nav-links' href="#">Link 2</a>
+                            <Link className='nav-links' to={`/user/${this.props.currentUserId}`}>My Profile</Link>
                             <p onClick={() => this.props.logout()} className='nav-links' >Logout</p>
                         </div>
                     </div>
