@@ -477,6 +477,11 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchBreweries();
+
+      if (this.props.errors.length > 0) {
+        this.props.clearBreweryErrors();
+        this.props.clearBeerErrors();
+      }
     }
   }, {
     key: "handleText",

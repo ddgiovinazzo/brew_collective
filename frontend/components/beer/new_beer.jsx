@@ -25,6 +25,10 @@ class NewBeer extends React.Component {
     componentDidMount() {
 
         this.props.fetchBreweries()
+        if (this.props.errors.length > 0) {
+            this.props.clearBreweryErrors()
+            this.props.clearBeerErrors()
+        }
         
     }
 
