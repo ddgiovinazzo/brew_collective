@@ -2,8 +2,6 @@ import React from "react";
 
 class NewBeer extends React.Component {
 
-
-
     constructor(props) {
         super(props)
         this.state = {
