@@ -5,12 +5,13 @@ import Splash from "./splash";
 import Home from './home/home'
 import UserContainer from './user/user'
 import NewBeerContainer from './beer/new_beer_container'
+import BeerIndexContainer from './beer/beer_index_container'
+import BeerContainer from './beer/beer_container'
 
 
 import  SignIn  from '../components/session_form/sign_in_form_container'
 import  SignUp  from '../components/session_form/sign_up_form_container'
-import NavBarContainer from './navbar/navbar_container'
-                    
+import NavBarContainer from './navbar/navbar_container'              
 
 
 const App = () => (
@@ -21,7 +22,9 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignUp}/>
       <ProtectedRoute exact path="/home" component={Home}/>
       <ProtectedRoute exact path="/user/:userId" component={UserContainer}/>
-      <ProtectedRoute exact path="/beer/new" component={NewBeerContainer}/>
+      <ProtectedRoute exact path="/beer/:beerId" component={BeerContainer}/>
+      <ProtectedRoute exact path="/newbeer" component={NewBeerContainer}/>
+      <ProtectedRoute exact path="/beers" component={BeerIndexContainer}/>
       <AuthRoute exact path="/" component={Splash} />
   </div>
 );

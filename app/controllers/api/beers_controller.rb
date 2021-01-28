@@ -12,6 +12,10 @@ class Api::BeersController < ApplicationController
             render json: @beer.errors.full_messages, status: 422
         end    
     end
+
+    def show
+        @beer = Beer.find(params[:id])
+    end
     
     private
     def beer_params

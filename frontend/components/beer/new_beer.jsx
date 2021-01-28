@@ -24,7 +24,7 @@ class NewBeer extends React.Component {
 
     componentDidMount() {
 
-        this.props.fetchBreweries()
+        this.props.fetchAllBreweries()
         if (this.props.errors.length > 0) {
             this.props.clearBreweryErrors()
             this.props.clearBeerErrors()
@@ -81,16 +81,16 @@ class NewBeer extends React.Component {
 
         if (breweryExists) {
 
-            return createBeer(newBeer)
+            createBeer(newBeer)
         } else {
 
-            return createBrewery({ name: beer.brewery_id }).then(payload => {
+            createBrewery({ name: beer.brewery_id }).then(payload => {
                 newBeer.brewery_id = payload.brewery.id
 
                 createBeer(newBeer)
             })
         }
-
+        this.props.history.push('/beers')
     }
 
 

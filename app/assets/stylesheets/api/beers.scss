@@ -1,3 +1,67 @@
-// Place all the styles related to the api::beers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#beer-content-container{
+    width: 700px;
+    height: 400px;
+}
+
+
+#beer-content{
+    background-color: white;
+
+}
+
+#beer-content-top{
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid lightgray;
+    padding: 20px;
+
+}
+
+#beer-content-top-social{
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: gray;
+}
+
+#beer-content-top-social-inner-top{
+    border-right: 1px solid lightgray;
+
+}
+#beer-content-top-social-inner-top-left{
+    border-bottom: 1px solid lightgray;
+    padding: 0 5px 3px;
+
+}
+#beer-content-top-social-inner-bottom-left{
+    border-bottom: 1px solid lightgray;
+    padding: 0 5px 3px;
+}
+
+#beer-content-top-social-inner-bottom-right{
+    padding: 3px 5px 0 ;
+}
+
+#beer-content-top-social-inner-top-right{
+    padding: 3px 5px 0 ;
+}
+
+#beer-content-mid-details{
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+}
+
+#abv-container{
+    border-right: 1px solid lightgray;
+}
+#ibu-container{
+    border-right: 1px solid lightgray;
+}
+
+#description-container{
+    padding: 10px
+}

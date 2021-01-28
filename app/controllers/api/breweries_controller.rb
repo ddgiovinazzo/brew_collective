@@ -1,5 +1,5 @@
 class Api::BreweriesController < ApplicationController
-
+    
     def index
         @breweries = Brewery.all
     end
@@ -12,7 +12,11 @@ class Api::BreweriesController < ApplicationController
             render json: @brewery.errors.full_messages, status: 422
         end    
     end
-    
+
+    def show
+        @brewery = Brewery.find(params[:id])
+    end
+
     private
     def brewery_params
         params.require(:brewery).permit(:name, :brewery_type, :brewery_country)

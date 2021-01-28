@@ -36,6 +36,11 @@ export const fetchAllBeers = () => dispatch =>(
     .then(beers => dispatch(receiveAllBeers(beers)))
 )
 
+export const fetchBeer = beerId => dispatch =>(
+    BeerAPIUtil.fetchBeer(beerId)
+    .then(beer => dispatch(receiveBeer(beer)))
+)
+
 export const createBeer = beer => dispatch =>(
     BeerAPIUtil.createBeer(beer)
     .then(beer => dispatch(receiveBeer(beer)), err => (

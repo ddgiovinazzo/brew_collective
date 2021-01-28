@@ -6,8 +6,14 @@ export const createBrewery = brewery => (
     })
 );
 
-export const fetchBreweries = () => (
+export const fetchAllBreweries = () => (
     $.ajax({
         url: '/api/breweries',
+    })
+)
+
+export const fetchBrewery = (breweryId) => (
+    $.ajax({
+        url: `/api/breweries/${breweryId}`
     })
 )

@@ -1,9 +1,17 @@
 import React from "react";
 import {Link} from 'react-router-dom'
 
-class Home extends React.Component {
+class BeerIndex extends React.Component {
+
+    componentDidMount(){
+        this.props.fetchAllBeers()
+    }
 
     render() {
+
+        const beers = this.props.beers.map((beer, i)=>(
+            <Link key={i} to={`/beer/${beer.id}`}>{beer.name}</Link>
+        ))
         return (
             <div>
             <header>
@@ -13,11 +21,12 @@ class Home extends React.Component {
                     <div id='content-container'>
                  
                         <div id='recent-activity'>
-                            <h4>Recent Friend Activity</h4>
-                            <p>You don't seem to have any recent activity!</p>
-                        <Link to='/newbeer'>Add a Beer</Link>
-                        <br/>
-                        <Link to='/beers'>Beer Index</Link>
+                            <h4>Beer Index</h4>
+                            <div id='beer-index-list-container'>
+                                <ul>
+                                    {beers}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div id='sidebar'>
@@ -35,4 +44,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home
+export default BeerIndex

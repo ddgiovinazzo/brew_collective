@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+<!-- <div className="dropdown-container">
+                        <p className="dropbtn">Find a beer, brewery, or bar...</p>
+                        <div className="dropdown">
+                        {this.beerSelect()}
+                        </div>
+                    </div> -->

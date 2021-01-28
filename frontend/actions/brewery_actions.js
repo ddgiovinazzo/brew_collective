@@ -17,9 +17,14 @@ const receiveBrewery = (brewery)=>({
     brewery
 })
 
-export const fetchBreweries = brewery => dispatch =>(
-    BreweryAPIUtil.fetchBreweries(brewery)
+export const fetchAllBreweries = () => dispatch =>(
+    BreweryAPIUtil.fetchAllBreweries()
     .then(breweries => dispatch(receiveAllBreweries(breweries)))
+)
+
+export const fetchBrewery = breweryId => dispatch =>(
+    BreweryAPIUtil.fetchBrewery(breweryId)
+    .then(brewery => dispatch(receiveBrewery(brewery)))
 )
 
 export const createBrewery = brewery => dispatch =>(

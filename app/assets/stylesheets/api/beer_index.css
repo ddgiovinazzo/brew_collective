@@ -1,0 +1,8 @@
+#beer-index-list-container > ul{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+#beer-index-list-container > ul > a{
+    padding: 5px 0;
+}

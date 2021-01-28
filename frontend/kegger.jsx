@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import {createBrewery, fetchBreweries} from './actions/brewery_actions'
+import {createBrewery, fetchAllBreweries} from './actions/brewery_actions'
 import {fetchAllBeers} from './actions/beer_actions'
 
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.createBrewery = createBrewery;
-  window.fetchBreweries = fetchBreweries;
+  window.fetchAllBreweries = fetchAllBreweries;
   window.fetchAllBeers = fetchAllBeers;
   
   const root = document.getElementById('root');

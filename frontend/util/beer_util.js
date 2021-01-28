@@ -12,3 +12,9 @@ export const fetchAllBeers = () => (
       url: '/api/beers',
     })
 );
+
+export const fetchBeer = (beerId) => (
+    $.ajax({
+      url: `/api/beers/${beerId}`,
+    })
+);
