@@ -919,6 +919,8 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
 
       if (this.props.errors.length > 0) {
@@ -947,26 +949,27 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
 
       if (breweryExists) {
         createBeer(newBeer);
+        this.props.history.push('/beers');
       } else {
         createBrewery({
           name: beer.brewery_id
         }).then(function (payload) {
           newBeer.brewery_id = payload.brewery.id;
           createBeer(newBeer);
+
+          _this2.props.history.push('/beers');
         });
       }
-
-      this.props.history.push('/beers');
     }
   }, {
     key: "handleInput",
     value: function handleInput(type) {
-      var _this2 = this;
+      var _this3 = this;
 
       var newBeer = Object.assign({}, this.state.beer);
       return function (e) {
         newBeer[type] = e.currentTarget.value;
-        return _this2.setState({
+        return _this3.setState({
           beer: newBeer
         });
       };

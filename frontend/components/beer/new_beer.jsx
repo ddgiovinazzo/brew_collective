@@ -82,15 +82,17 @@ class NewBeer extends React.Component {
         if (breweryExists) {
 
             createBeer(newBeer)
+            this.props.history.push('/beers')
+
         } else {
 
             createBrewery({ name: beer.brewery_id }).then(payload => {
                 newBeer.brewery_id = payload.brewery.id
 
                 createBeer(newBeer)
+                this.props.history.push('/beers')
             })
         }
-        this.props.history.push('/beers')
     }
 
 
