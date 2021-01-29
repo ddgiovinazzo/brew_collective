@@ -2352,11 +2352,6 @@ document.addEventListener('DOMContentLoaded', function () {
     store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)();
   }
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.createBrewery = _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_4__.createBrewery;
-  window.fetchAllBreweries = _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_4__.fetchAllBreweries;
-  window.fetchAllBeers = _actions_beer_actions__WEBPACK_IMPORTED_MODULE_5__.fetchAllBeers;
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store
