@@ -1,5 +1,5 @@
 class Api::CheckinsController < ApplicationController
-        
+
     def index
         @checkins = Checkin.all
     end
@@ -18,7 +18,8 @@ class Api::CheckinsController < ApplicationController
     end
 
     private
-    def brewery_params
+    def checkin_params
         params.require(:checkin).permit(:beer_id, :brewery_id, :review)
     end
+
 end

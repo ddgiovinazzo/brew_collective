@@ -33,8 +33,11 @@ input{
     border: 1px solid var(--main-border-color);
     border-radius: 3px;
 }
+.create-beer-input-lg > select{
+    border: none;
+}
 
-.create-beer-input-lg:focus-within{
+.create-beer-input-lg > input:focus-within{
     border: black 2px solid;
 }
 
@@ -159,5 +162,12 @@ input{
     top: 10%;
     height: fit-content;
     padding: 20px;
+}
 
+#brewery-creation-cancel{
+    color: black;
+    padding: 5px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
 }

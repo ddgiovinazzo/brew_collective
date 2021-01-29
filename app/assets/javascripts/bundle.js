@@ -504,7 +504,6 @@ var Beer = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger
       var beer = this.props.currentBeer;
       var brewery = this.props.currentBrewery;
 
@@ -620,7 +619,6 @@ var mSTP = function mSTP(_ref, ownProps) {
       beers = _ref$entities.beers,
       session = _ref.session,
       errors = _ref.errors;
-  // debugger
   return {
     errors: errors.breweries.concat(errors.beers),
     breweries: Object.values(breweries),
@@ -868,6 +866,7 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      breweryFlag: false,
       textLimit: 750,
       beer: {
         name: null,
@@ -876,7 +875,8 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
         abv: null,
         ibu: null,
         flavor_profile: null
-      }
+      },
+      brewery: {}
     };
     _this.handleText = _this.handleText.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -938,8 +938,6 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
       var that = this;
 
       for (var i = 0; i < breweries.length; i++) {
-        console.log(breweries[i].name);
-
         if (breweries[i].name === beer.brewery_id) {
           breweryExists = true;
           newBeer.brewery_id = breweries[i].id;
@@ -975,8 +973,25 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleBrewery",
+    value: function handleBrewery(e) {
+      if (e.currentTarget.value === 'add-brewery') {
+        this.setState({
+          breweryFlag: !this.state.breweryFlag
+        });
+      } else {
+        var newBeer = Object.assign({}, this.state.beer);
+        newBeer['brewery_id'] = e.currentTarget.value;
+        return this.setState({
+          beer: newBeer
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var beers = ['Belgian', 'Brown Ale', 'Cider', 'Gluten Free', 'Ipa', 'Lager', 'Mead', 'Pale Ale', 'Red Ale', 'Sour', 'Stout'];
       var beerOptions = beers.map(function (beer, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
@@ -984,6 +999,40 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
           value: beer
         }, beer);
       });
+      var breweries = this.props.breweries.map(function (brewery) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+          value: brewery.id
+        }, brewery.name);
+      });
+      var breweryCreate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "form-label",
+        htmlFor: ""
+      }, "Brewery", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "create-beer-input-lg"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        onChange: this.handleInput('brewery_id'),
+        type: ""
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        id: "brewery-creation-cancel",
+        onClick: function onClick() {
+          return _this4.setState({
+            breweryFlag: !_this4.state.breweryFlag
+          });
+        }
+      }, "Cancel Brewery Creation"));
+      var brewerySelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "form-label",
+        htmlFor: ""
+      }, "Brewery", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "create-beer-input-lg"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        onChange: this.handleBrewery.bind(this),
+        className: "create-beer-input-lg"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: null
+      }, "Brewery Name"), breweries, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "add-brewery"
+      }, "Click Here to Add a Brewery."))));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         id: "create-beer-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -1002,15 +1051,7 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         onChange: this.handleInput('name'),
         type: ""
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "Brewery", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-input-lg"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.handleInput('brewery_id'),
-        type: ""
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }))), this.state.breweryFlag ? breweryCreate : brewerySelect, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "create-beer-custom-input-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "form-label",

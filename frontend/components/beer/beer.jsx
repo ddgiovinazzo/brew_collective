@@ -16,9 +16,11 @@ class Beer extends React.Component {
     }
 
     render() {
-        // debugger
+
         const beer = this.props.currentBeer
+
         const brewery = this.props.currentBrewery
+
         if(typeof beer === 'undefined' || typeof brewery === 'undefined'){
             return null
         }
@@ -36,7 +38,8 @@ class Beer extends React.Component {
                                 <div id='beer-content'>
                                     <div id='beer-content-top'>
                                         <div id='beer-content-top-img'>
-
+                                            {/* <img src={this.props.currentBeer ? this.props.currentBeer.photo_url : ''} alt=""/> */}
+                                                                            
                                         </div>
                                         <div id='beer-content-top-title'>
                                             <h1>{this.props.currentBeer ? this.props.currentBeer.name : ''}</h1>
