@@ -17,11 +17,11 @@ React is used on the frontend for visual and logic handeling of the js, as well 
     * [Upcoming Features](#upcoming-features)
     
 ## Technologies
-Ruby on Rails
-React
-Redux
-PostgresSQL
-Amazon AWS
+* Ruby on Rails
+* React
+* Redux
+* PostgresSQL
+* Amazon AWS
 
 ## Features
 
