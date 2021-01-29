@@ -29,7 +29,7 @@ React is used on the frontend for visual and logic handeling of the js, as well 
 User can create and manage their own personal account. A demo user is also provided for ease of access.
 
 ### Beer Creation and Viewing
-This allows a user to add new beers and see an index of beers created by all users.
+This allows a user to add new beers and see an index of beers created by all users. If the brewery is chosen from the select dropdown, then the matching id is assigned to the beer's brewery_id. If the add beer option is selected on the dropdown, an input is rendered and state is updated via onchange. Then when the form is submitted, the new brewery is created first. The id of the newly created brewery is then assigned to create the new beer.
 
 ```javascript
    handleSubmit(e) {
