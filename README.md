@@ -25,11 +25,11 @@ React is used on the frontend for visual and logic handeling of the js, as well 
 
 ## Features
 
-## User Auth
+### User Auth
 User can create and manage their own personal account. A demo user is also provided for ease of access.
 
-## Beer Creation and Viewing
+### Beer Creation and Viewing
 This allows a user to add new beers and see an index of beers created by all users.
 
-## Brewery Creation 
+### Brewery Creation 
 This allows a user to add new breweries.
