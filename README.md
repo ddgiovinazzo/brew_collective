@@ -31,5 +31,42 @@ User can create and manage their own personal account. A demo user is also provi
 ### Beer Creation and Viewing
 This allows a user to add new beers and see an index of beers created by all users.
 
+```javascript
+   handleSubmit(e) {
+        e.preventDefault()
+        if (this.props.errors.length > 0) {
+            this.props.clearBreweryErrors()
+            this.props.clearBeerErrors()
+        }
+        const { createBeer, createBrewery, breweries } = this.props
+        const { beer } = this.state
+
+        const newBeer = Object.assign({}, beer)
+        let breweryExists = false
+        for (let i = 0; i < breweries.length; i++) {
+
+            if (breweries[i].name === beer.brewery_id) {
+                breweryExists = true
+                newBeer.brewery_id = breweries[i].id
+                break
+            }
+        }
+
+        if (breweryExists) {
+            createBeer(newBeer)
+            this.props.history.push('/beers')
+
+        } else {
+
+            createBrewery({ name: beer.brewery_id }).then(payload => {
+                newBeer.brewery_id = payload.brewery.id
+
+                createBeer(newBeer)
+                this.props.history.push('/beers')
+            })
+        }
+    }
+```
+
 ### Brewery Creation 
 This allows a user to add new breweries.
