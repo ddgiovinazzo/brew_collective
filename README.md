@@ -1,4 +1,4 @@
-![alt tag](https://github.com/ddgiovinazzo/js_final_project/blob/master/src/images/wireframe.png)
+![alt tag](https://github.com/ddgiovinazzo/kegger/blob/main/app/assets/images/kegger.png)
 
 Kegger is a social media application that provides users a an experience of connecting to people and events through their love and enjoyment of beer.
 
