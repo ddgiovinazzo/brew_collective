@@ -445,9 +445,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "main-background"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_10__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/login",
     component: _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_8__.default
@@ -455,6 +453,15 @@ var App = function App() {
     exact: true,
     path: "/signup",
     component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_9__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
+    exact: true,
+    path: "/",
+    component: _splash__WEBPACK_IMPORTED_MODULE_2__.default
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    id: "main-background"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    path: "/",
+    component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_10__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/home",
@@ -475,11 +482,7 @@ var App = function App() {
     exact: true,
     path: "/beers",
     component: _beer_beer_index_container__WEBPACK_IMPORTED_MODULE_6__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
-    exact: true,
-    path: "/",
-    component: _splash__WEBPACK_IMPORTED_MODULE_2__.default
-  }));
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -1996,16 +1999,19 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         }, _i2 < 10 ? "0".concat(_i2) : "".concat(_i2)));
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (_React$createElement = {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onClick: function onClick() {
+          _this4.props.history.push('/');
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (_React$createElement = {
         onClick: function onClick() {
           _this4.props.history.push('/');
         },
         className: "background-img"
-      }, _defineProperty(_React$createElement, "className", "background-img"), _defineProperty(_React$createElement, "src", window.bg), _defineProperty(_React$createElement, "alt", ""), _React$createElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        onClick: this.redirect.bind(this)
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, _defineProperty(_React$createElement, "className", "background-img"), _defineProperty(_React$createElement, "src", window.bg), _defineProperty(_React$createElement, "alt", ""), _React$createElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         id: "sign-up-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        onClick: this.redirect.bind(this),
         className: !this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors',
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
@@ -2255,7 +2261,17 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         className: "background-img",
         src: window.bg,
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+        className: "splash-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+        id: "brew_collective-logo-container-splash"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
+        className: "brew-collective-logo-splash",
+        src: window.brew_collective,
+        alt: ""
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+        className: "splash-text"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Discover and share your", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "favorite beer."))));
     }
   }]);
 

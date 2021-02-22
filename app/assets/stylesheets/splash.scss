@@ -1,17 +1,30 @@
 .background-img{
  
     object-fit: cover;
-    z-index: 9;
     position: fixed;
- 
     width: 100vw;
     height: 100vh;
     filter: brightness(20%);
 }
 
+.splash-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    filter: invert(0);
+}
+
+.brew-collective-logo-splash{
+    border-right: 5px solid white;
+    padding-right: 25%;
+
+}
+
 .creds{
-    z-index: 10;
     margin: 10px 10px 0 0;
+    top: 0;
     right: 0;
     position: absolute;
 }
@@ -51,4 +64,15 @@ img{
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
+}
+
+.splash-text{
+    color: white;
+    margin-left: 100px;
+    
+}
+.splash-text > h1{
+    font-size: 32px;
+    text-align: center;
+    
 }

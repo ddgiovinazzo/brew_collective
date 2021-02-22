@@ -107,17 +107,20 @@ class SignUp extends React.Component {
             )
         }
 
+
         return (
 
-            <div >
+            <div onClick={() => {
+                this.props.history.push('/')
+            }}>
                 <img onClick={() => {
                     this.props.history.push('/')
                 }} className='background-img' className='background-img' src={window.bg} alt="" />
 
-                    <div onClick={this.redirect.bind(this)} >
+                    <div  >
                         <div id='sign-up-form-container'>
 
-                            <form className={!this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors'} onSubmit={this.handleSubmit}>
+                            <form onClick={this.redirect.bind(this)}className={!this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors'} onSubmit={this.handleSubmit}>
                                 <span id='brew_collective-logo-container'><img id="brew_collective-logo" src={window.brew_collective} alt="" /></span>
                                 {this.props.errors.length > 0 ? this.renderErrors() : null}
 
