@@ -1,32 +1,72 @@
-# README
+![alt tag](https://github.com/ddgiovinazzo/kegger/blob/main/app/assets/images/kegger.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Kegger is a social media application that provides users a an experience of connecting to people and events through their love and enjoyment of beer.
 
-Things you may want to cover:
+https://kegger-aa.herokuapp.com/
 
-* Ruby version
+Postgress database is used to store data. 
+Ruby on Rails is used for it's backend models and controllers to send ana receive data. 
+React is used on the frontend for visual and logic handeling of the js, as well as html and css rendering.
 
-* System dependencies
+## Table of Contents
 
-* Configuration
+  * [Technologies](#technologies)
+  * [Features](#features)
+    * [User Auth](#user-auth)
+    * [Beer Creation](#beer-creation-and-viewing)
+    * [Upcoming Features](#upcoming-features)
+    
+## Technologies
+* Ruby on Rails
+* React
+* Redux
+* PostgresSQL
+* Amazon AWS
 
-* Database creation
+## Features
 
-* Database initialization
+### User Auth
+User can create and manage their own personal account. A demo user is also provided for ease of access.
 
-* How to run the test suite
+### Beer Creation and Viewing
+This allows a user to add new beers and see an index of beers created by all users. If the brewery is chosen from the select dropdown, then the matching id is assigned to the beer's brewery_id. If the add beer option is selected on the dropdown, an input is rendered and state is updated via onchange. Then when the form is submitted, the new brewery is created first. The id of the newly created brewery is then assigned to create the new beer.
 
-* Services (job queues, cache servers, search engines, etc.)
+```javascript
+   handleSubmit(e) {
+        e.preventDefault()
+        if (this.props.errors.length > 0) {
+            this.props.clearBreweryErrors()
+            this.props.clearBeerErrors()
+        }
+        const { createBeer, createBrewery, breweries } = this.props
+        const { beer } = this.state
 
-* Deployment instructions
+        const newBeer = Object.assign({}, beer)
+        let breweryExists = false
+        for (let i = 0; i < breweries.length; i++) {
 
-* ...
+            if (breweries[i].name === beer.brewery_id) {
+                breweryExists = true
+                newBeer.brewery_id = breweries[i].id
+                break
+            }
+        }
 
+        if (breweryExists) {
+            createBeer(newBeer)
+            this.props.history.push('/beers')
 
-<!-- <div className="dropdown-container">
-                        <p className="dropbtn">Find a beer, brewery, or bar...</p>
-                        <div className="dropdown">
-                        {this.beerSelect()}
-                        </div>
-                    </div> -->
+        } else {
+
+            createBrewery({ name: beer.brewery_id }).then(payload => {
+                newBeer.brewery_id = payload.brewery.id
+
+                createBeer(newBeer)
+                this.props.history.push('/beers')
+            })
+        }
+    }
+```
+
+### Brewery Creation 
+This allows a user to add new breweries.
