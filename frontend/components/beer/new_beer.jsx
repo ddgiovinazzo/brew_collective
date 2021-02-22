@@ -61,12 +61,11 @@ class NewBeer extends React.Component {
             this.props.clearBreweryErrors()
             this.props.clearBeerErrors()
         }
-        const { createBeer, createBrewery } = this.props
+        const { createBeer, createBrewery, breweries } = this.props
         const { beer } = this.state
-        const { breweries } = this.props
+
         const newBeer = Object.assign({}, beer)
         let breweryExists = false
-        let that = this
         for (let i = 0; i < breweries.length; i++) {
 
             if (breweries[i].name === beer.brewery_id) {

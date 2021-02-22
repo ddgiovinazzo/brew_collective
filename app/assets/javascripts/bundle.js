@@ -930,12 +930,11 @@ var NewBeer = /*#__PURE__*/function (_React$Component) {
 
       var _this$props = this.props,
           createBeer = _this$props.createBeer,
-          createBrewery = _this$props.createBrewery;
+          createBrewery = _this$props.createBrewery,
+          breweries = _this$props.breweries;
       var beer = this.state.beer;
-      var breweries = this.props.breweries;
       var newBeer = Object.assign({}, beer);
       var breweryExists = false;
-      var that = this;
 
       for (var i = 0; i < breweries.length; i++) {
         if (breweries[i].name === beer.brewery_id) {
