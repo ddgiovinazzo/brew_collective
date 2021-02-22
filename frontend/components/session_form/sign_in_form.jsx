@@ -69,7 +69,7 @@ class SignIn extends React.Component {
                     <div onClick={this.redirect.bind(this)} className={!this.props.errors.length ? 'sign-in-form' : 'sign-in-form sign-in-form-errors'}>
                         <form onSubmit={this.handleSubmit}>
 
-                            <span id='kegger-logo-container'><img id="kegger-logo" src={window.kegger} alt="" /></span>
+                            <span id='brew_collective-logo-container'><img id="brew_collective-logo" src={window.brew_collective} alt="" /></span>
 
                             {this.props.errors.length > 0 ? this.renderErrors() : null}
                             <div className="input-container-sign-in">

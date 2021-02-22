@@ -361,6 +361,54 @@ var addError = function addError(error) {
 
 /***/ }),
 
+/***/ "./frontend/brew_collective.jsx":
+/*!**************************************!*\
+  !*** ./frontend/brew_collective.jsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
+/* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
+/* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/beer_actions */ "./frontend/actions/beer_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var store;
+
+  if (window.currentUser) {
+    var preloadedState = {
+      session: {
+        id: window.currentUser.id
+      },
+      entities: {
+        users: _defineProperty({}, window.currentUser.id, window.currentUser)
+      }
+    };
+    store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)();
+  }
+
+  var root = document.getElementById('root');
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
+    store: store
+  }), root);
+});
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -1449,10 +1497,10 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "header-content-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/home",
-        className: "kegger-nav-container"
+        className: "brew_collective-nav-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        id: "kegger-logo-nav",
-        src: window.kegger,
+        id: "brew_collective-logo-nav",
+        src: window.brew_collective,
         alt: ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "header-links"
@@ -1695,10 +1743,10 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        id: "kegger-logo-container"
+        id: "brew_collective-logo-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        id: "kegger-logo",
-        src: window.kegger,
+        id: "brew_collective-logo",
+        src: window.brew_collective,
         alt: ""
       })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-in"
@@ -1961,10 +2009,10 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         className: !this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors',
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        id: "kegger-logo-container"
+        id: "brew_collective-logo-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        id: "kegger-logo",
-        src: window.kegger,
+        id: "brew_collective-logo",
+        src: window.brew_collective,
         alt: ""
       })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-rows"
@@ -2308,54 +2356,6 @@ var User = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (User);
-
-/***/ }),
-
-/***/ "./frontend/kegger.jsx":
-/*!*****************************!*\
-  !*** ./frontend/kegger.jsx ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
-/* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/beer_actions */ "./frontend/actions/beer_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var store;
-
-  if (window.currentUser) {
-    var preloadedState = {
-      session: {
-        id: window.currentUser.id
-      },
-      entities: {
-        users: _defineProperty({}, window.currentUser.id, window.currentUser)
-      }
-    };
-    store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)(preloadedState);
-    delete window.currentUser;
-  } else {
-    store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)();
-  }
-
-  var root = document.getElementById('root');
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
-    store: store
-  }), root);
-});
 
 /***/ }),
 
@@ -39514,7 +39514,7 @@ function valueEqual(a, b) {
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
-/******/ 	__webpack_require__("./frontend/kegger.jsx");
+/******/ 	__webpack_require__("./frontend/brew_collective.jsx");
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;

@@ -1,8 +1,8 @@
-![alt tag](https://github.com/ddgiovinazzo/kegger/blob/main/app/assets/images/kegger.png)
+![alt tag](https://github.com/ddgiovinazzo/brew_collective/blob/main/app/assets/images/brew_collective.png)
 
-Kegger is a social media application that provides users a an experience of connecting to people and events through their love and enjoyment of beer.
+brew_collective is a social media application that provides users a an experience of connecting to people and events through their love and enjoyment of beer.
 
-https://kegger-aa.herokuapp.com/
+https://brew_collective-aa.herokuapp.com/
 
 Postgress database is used to store data. 
 Ruby on Rails is used for it's backend models and controllers to send ana receive data. 

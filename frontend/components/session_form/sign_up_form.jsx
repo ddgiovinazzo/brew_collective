@@ -118,7 +118,7 @@ class SignUp extends React.Component {
                         <div id='sign-up-form-container'>
 
                             <form className={!this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors'} onSubmit={this.handleSubmit}>
-                                <span id='kegger-logo-container'><img id="kegger-logo" src={window.kegger} alt="" /></span>
+                                <span id='brew_collective-logo-container'><img id="brew_collective-logo" src={window.brew_collective} alt="" /></span>
                                 {this.props.errors.length > 0 ? this.renderErrors() : null}
 
 

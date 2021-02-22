@@ -1,5 +1,5 @@
 {
-  "name": "kegger",
+  "name": "brew_collective",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.12.10",

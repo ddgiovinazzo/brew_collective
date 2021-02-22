@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: './frontend/kegger.jsx',
+  entry: './frontend/brew_collective.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: "bundle.js"
