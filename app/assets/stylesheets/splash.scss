@@ -21,8 +21,6 @@
 }
 
 .brew-collective-logo-splash{
-    border-right: 5px solid white;
-    padding-right: 25%;
 
 }
 
@@ -72,11 +70,30 @@ img{
 
 .splash-text{
     color: white;
-    margin-left: 100px;
     
 }
 .splash-text > h1{
+    width: 100%;
     font-size: 32px;
     text-align: center;
     
+}
+
+.splash-links{
+    position: absolute;
+    bottom: 3%;
+}
+
+#brew_collective-logo-container-splash{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+
+}
+
+.logo-container{
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }

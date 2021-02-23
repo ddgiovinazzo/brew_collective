@@ -3,17 +3,13 @@
     }
 
     #sign-up-form-container{
-        height: 93vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
 .sign-up-form{
-    /* position: absolute;
-    top: 40%;
-    left: 50%; */
-    /* transform: translate(-50%, -50%); */
     width:600px;
     height: fit-content;
     display: flex;
@@ -22,15 +18,14 @@
     justify-content: center;
     background-color: white;
     color: rgb(99, 98, 98);
-    padding: 50px 30px;
+    padding: 30px;
+    z-index: 4;
 }
 
 .sign-up-form-errors{
-    top: 45%;
     width:600px;
     height: fit-content;
-    padding-top: 10px;
-    padding-bottom: 20px;
+
 }
 
 .sign-up-form > form > button{

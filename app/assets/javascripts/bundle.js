@@ -1388,7 +1388,22 @@ __webpack_require__.r(__webpack_exports__);
 var Footer = function Footer() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "footer-container"
-  });
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://github.com/ddgiovinazzo/",
+    target: "_blank"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    "class": "fab fa-github fa-2x"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://www.linkedin.com/in/domenicodanielgiovinazzo/",
+    target: "_blank"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    "class": "fab fa-linkedin-in fa-2x"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://angel.co/u/domenicodanielgiovinazzo",
+    target: "_blank"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    "class": "fab fa-angellist fa-2x"
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
@@ -1785,7 +1800,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         id: "brew_collective-logo-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         id: "brew_collective-logo",
-        src: window.brew_collective,
+        src: window.brew_collective_text,
         alt: ""
       })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-in"
@@ -2049,7 +2064,13 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         onClick: this.redirect.bind(this),
         className: !this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors',
         onSubmit: this.handleSubmit
-      }, this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        id: "brew_collective-logo-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        id: "brew_collective-logo",
+        src: window.brew_collective_text,
+        alt: ""
+      })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-rows"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "All fields below are required unless specified."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-col-1"
@@ -2260,15 +2281,19 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         alt: ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
         className: "splash-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+        className: "logo-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
         id: "brew_collective-logo-container-splash"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
         className: "brew-collective-logo-splash",
         src: window.brew_collective,
         alt: ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+        id: "brew_collective-logo-container-splash"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
         className: "splash-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Discover and share your", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "favorite beer."))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Discover and share your", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "favorite beer."))))));
     }
   }]);
 

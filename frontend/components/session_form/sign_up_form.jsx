@@ -123,7 +123,7 @@ class SignUp extends React.Component {
                         <div id='sign-up-form-container'>
 
                             <form onClick={this.redirect.bind(this)}className={!this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors'} onSubmit={this.handleSubmit}>
-                                {/* <span id='brew_collective-logo-container'><img id="brew_collective-logo" src={window.brew_collective} alt="" /></span> */}
+                                <span id='brew_collective-logo-container'><img id="brew_collective-logo" src={window.brew_collective_text} alt="" /></span>
                                 {this.props.errors.length > 0 ? this.renderErrors() : null}
 
 
