@@ -1,0 +1,8 @@
+.footer-container{
+    position: absolute;
+    bottom: 0;
+    height: 7vh;
+    width: 100vw;
+    background-color: rgba(22, 22, 22, .7);
+    z-index: 3;
+}

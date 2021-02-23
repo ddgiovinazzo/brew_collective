@@ -59,10 +59,10 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div >
-            <img onClick={() => {
-                    this.props.history.push('/')
-                }} className='background-img' className = 'background-img' src={window.bg} alt="" />
+            <div className="outer-div" onClick={() => {
+                this.props.history.push('/')
+            }}>
+            <img  className='background-img' className = 'background-img' src={window.bg} alt="" />
 
 
 

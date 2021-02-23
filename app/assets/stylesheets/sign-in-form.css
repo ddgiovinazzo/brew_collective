@@ -1,3 +1,7 @@
+.outer-div{
+    height: 93vh;
+}
+
 .sign-in-form{
     position: absolute;
     top: 50%;
@@ -30,18 +34,18 @@
 
 #brew_collective-logo{
     margin-bottom: 20px;
-    filter: invert(25%);
+    filter: invert(35%);
 }
 
 
 .form-submit{
     text-decoration: none;
     border: none;
-    background-color: orangered;
+    background-color: rgb(123, 194, 238);
     color: white;
     padding: 8px 123px;
     border-radius: 4px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Alatsi', sans-serif;
     font-size: 18px;
     margin: 20px 0 0px 0;
 }
@@ -51,12 +55,12 @@
 }
 
 .form-submit:hover{
-    background-color: orange;
+    background-color: rgb(255, 133, 88);
     cursor: pointer;
 }
 
 .form-submit:active{
-    background-color: orange;
+    background-color: rgb(255, 133, 88);
         box-shadow: 0 2px lightgray;
         transform: translateY(1px)   
 }
@@ -96,7 +100,7 @@
     border-top: 1px solid lightgray;
     margin-top: 40px;
     padding-top: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Alatsi', sans-serif;
     font-size: 20px;
     color: gray;
 }
@@ -119,7 +123,6 @@
 .errors > li{
     
    padding: 3px;
-   font-family: sans-serif;
 }
 
 .errors-container-sign-in{

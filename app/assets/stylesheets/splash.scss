@@ -1,18 +1,22 @@
 .background-img{
- 
+    z-index: -1;
     object-fit: cover;
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: 100vh ;
     filter: brightness(20%);
+}
+
+.splash-main{
+    min-height: 100vh;
 }
 
 .splash-container{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
     filter: invert(0);
 }
 
@@ -38,7 +42,7 @@
     border-radius: 5px;
     padding: 10px 15px;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Alatsi', sans-serif;
     letter-spacing: 1px;
     transition: 0.3s;
     -khtml-user-select: none;

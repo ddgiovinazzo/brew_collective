@@ -422,15 +422,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash */ "./frontend/components/splash.jsx");
 /* harmony import */ var _home_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home */ "./frontend/components/home/home.jsx");
 /* harmony import */ var _user_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user/user */ "./frontend/components/user/user.jsx");
 /* harmony import */ var _beer_new_beer_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./beer/new_beer_container */ "./frontend/components/beer/new_beer_container.js");
 /* harmony import */ var _beer_beer_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./beer/beer_index_container */ "./frontend/components/beer/beer_index_container.js");
 /* harmony import */ var _beer_beer_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./beer/beer_container */ "./frontend/components/beer/beer_container.js");
-/* harmony import */ var _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/session_form/sign_in_form_container */ "./frontend/components/session_form/sign_in_form_container.js");
-/* harmony import */ var _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/session_form/sign_up_form_container */ "./frontend/components/session_form/sign_up_form_container.js");
-/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
+/* harmony import */ var _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/session_form/sign_in_form_container */ "./frontend/components/session_form/sign_in_form_container.js");
+/* harmony import */ var _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/session_form/sign_up_form_container */ "./frontend/components/session_form/sign_up_form_container.js");
+/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
+
 
 
 
@@ -445,14 +448,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "app-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "splash-main"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/login",
-    component: _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_8__.default
+    component: _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_9__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/signup",
-    component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_9__.default
+    component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_10__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/",
@@ -461,7 +468,7 @@ var App = function App() {
     id: "main-background"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     path: "/",
-    component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_10__.default
+    component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_11__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/home",
@@ -482,7 +489,10 @@ var App = function App() {
     exact: true,
     path: "/beers",
     component: _beer_beer_index_container__WEBPACK_IMPORTED_MODULE_6__.default
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    path: "/",
+    component: _footer_footer__WEBPACK_IMPORTED_MODULE_8__.default
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -1361,6 +1371,30 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/footer/footer.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/footer/footer.jsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Footer = function Footer() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "footer-container"
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
+
+/***/ }),
+
 /***/ "./frontend/components/home/home.jsx":
 /*!*******************************************!*\
   !*** ./frontend/components/home/home.jsx ***!
@@ -1735,10 +1769,12 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
       var _this3 = this,
           _React$createElement;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (_React$createElement = {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "outer-div",
         onClick: function onClick() {
           _this3.props.history.push('/');
-        },
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (_React$createElement = {
         className: "background-img"
       }, _defineProperty(_React$createElement, "className", "background-img"), _defineProperty(_React$createElement, "src", window.bg), _defineProperty(_React$createElement, "alt", ""), _React$createElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         onClick: this.redirect.bind(this),
@@ -2004,9 +2040,6 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
           _this4.props.history.push('/');
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (_React$createElement = {
-        onClick: function onClick() {
-          _this4.props.history.push('/');
-        },
         className: "background-img"
       }, _defineProperty(_React$createElement, "className", "background-img"), _defineProperty(_React$createElement, "src", window.bg), _defineProperty(_React$createElement, "alt", ""), _React$createElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         id: "sign-up-form-container"
@@ -2014,13 +2047,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         onClick: this.redirect.bind(this),
         className: !this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors',
         onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        id: "brew_collective-logo-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        id: "brew_collective-logo",
-        src: window.brew_collective,
-        alt: ""
-      })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-rows"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "All fields below are required unless specified.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-col-1"
@@ -2084,28 +2111,6 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         className: "input-col-1 input-col-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        className: "form-input-secondary",
-        type: "text",
-        placeholder: "Location (Optional)",
-        onChange: this.handleInput('location')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "input-container-secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-        onChange: this.handleInput('gender'),
-        className: "select"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        className: "first-option"
-      }, "Gender (Optional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Male"
-      }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Female"
-      }, "Female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: ""
-      }, "Prefer not to Say")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "input-col-1 input-col-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "input-container-secondary"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
         onChange: this.handleInput('country'),
         className: "select"
@@ -2113,19 +2118,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         className: "first-option"
       }, "Select Your Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "USA"
-      }, "USA"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "UK"
-      }, "UK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Italy"
-      }, "Italy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Trinidad and Tobago"
-      }, "Trinidad and Tobago"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Mexico"
-      }, "Mexico"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "Russia"
-      }, "Russia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "South Korea"
-      }, "South Korea"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "USA"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-up"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         id: "input-p"

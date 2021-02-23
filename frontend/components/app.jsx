@@ -7,6 +7,8 @@ import UserContainer from './user/user'
 import NewBeerContainer from './beer/new_beer_container'
 import BeerIndexContainer from './beer/beer_index_container'
 import BeerContainer from './beer/beer_container'
+import Footer from './footer/footer'
+
 
 
 import SignIn from '../components/session_form/sign_in_form_container'
@@ -16,9 +18,10 @@ import NavBarContainer from './navbar/navbar_container'
 
 const App = () => {
   return (
-
-    <div>
-      <div>
+    
+    <div className="app-container">
+      
+      <div className="splash-main">
         <AuthRoute exact path="/login" component={SignIn} />
         <AuthRoute exact path="/signup" component={SignUp} />
         <AuthRoute exact path="/" component={Splash} />
@@ -32,6 +35,7 @@ const App = () => {
         <ProtectedRoute exact path="/beers" component={BeerIndexContainer} />
       </div>
 
+      <Route path="/"component={Footer}/>
     </div>
   )
 };
