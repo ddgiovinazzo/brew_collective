@@ -1,11 +1,28 @@
 class User < ApplicationRecord
-    validates :username, :password_digest, :email, :first_name, :last_name, :country, :birthday, presence: true
-    validates :username, :email, uniqueness: true
-    validates :password, length: {minimum: 5}, allow_nil: true
-    validates :email, length: {minimum: 2}
+    validates :username,
+        uniqueness: { case_sensitive: false },
+        length: {minimum: 2}
 
+    validates :email,
+        presence: true,
+        format: {
+            with: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i, 
+            multiline: true, 
+            message: "must contain a valid email address."
+        },
+        uniqueness: { case_sensitive: false }
+        
+    validates :password,
+    length: {minimum: 5}, 
+    allow_nil: true,
+    confirmation: { case_sensitive: true, message: "does not match the Password field." }
+
+    validates :password_digest, :country, :birthday, presence: true
+
+    validate :valid_age, if: proc { |u| u.birthday.present? }
+    
     attr_reader :password
-
+    
     after_initialize :ensure_session_token
 
     def self.find_by_credentials(username,password)
@@ -35,6 +52,13 @@ class User < ApplicationRecord
     private
     def ensure_session_token
         self.session_token ||= self.class.generate_session_token
+    end
+
+    protected
+    def valid_age
+        return if self.birthday < 21.years.ago.to_date
+        errors.clear
+        errors.add(:age, "You must be at least 21 years old to create an account")
     end
 
 end

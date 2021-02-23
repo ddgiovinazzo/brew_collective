@@ -33,7 +33,12 @@ en:
   activerecord:
     attributes:
       user:
-        email: "E-mail address"
+        username: "The Username Field"
+        email: "The Email Address Field"
+        birthday: "The Birthday Field"
+        password: "The Password Field"
+        password_confirmation: "The Password Confirmation Field"
+        age: "We're Sorry."
       brewery:
         name: "Brewery name"
       beer:
@@ -42,8 +47,16 @@ en:
       models:
         user:
           attributes:
+            username:
+              blank: "is required"
+              too_short: "must be at least %{count} characters in length"
             email:
               blank: "is required"
+              length: "is required"
+            birthday:
+              blank: "is required"
+            password:
+              too_short: "must be at least %{count} characters in length"
         brewery:
           attributes:
             name:

@@ -11,9 +11,10 @@ class SignUp extends React.Component {
             username: '',
             email: '',
             password: '',
+            password_confirmation: '',
             gender: '',
             location: '',
-            country: '',
+            country: 'United States of America',
             first_name: '',
             last_name: '',
             birthday: ''
@@ -33,11 +34,12 @@ class SignUp extends React.Component {
         const { signup } = this.props
         e.preventDefault()
 
-        if (this.confirmPassword()) {
-            signup(this.state)
-        } else {
-            this.props.addError(['Passwords do not match.'])
-        }
+        signup(this.state)
+        // if (this.confirmPassword()) {
+        //     signup(this.state)
+        // } else {
+        //     this.props.addError(["The Password Confirmation field does not match the Password field."])
+        // }
     }
 
 
@@ -87,7 +89,9 @@ class SignUp extends React.Component {
 
     render() {
         const years = []
-        for (let i = 1999; i >= 1900; i--) {
+        let date = new Date()
+        date = new Date(date.getTime() + date.getTimezoneOffset() * 60000)
+        for (let i = date.getFullYear()-18; i >= date.getFullYear() - 120; i--) {
             years.push(
                 <option key={`year${i}`} value={i}>{`${i}`}</option>
             )
@@ -124,7 +128,7 @@ class SignUp extends React.Component {
 
 
                                 <div className='input-rows'>
-                                    <p><strong>All fields below are required unless specified.</strong></p>
+                                    <h4>All fields below are required unless specified.</h4>
 
                                     <div className='input-col-1'>
                                         <div className="input-container-sign-up">
@@ -137,7 +141,7 @@ class SignUp extends React.Component {
                                             <input className='form-input' type="text" placeholder='Email' onChange={this.handleInput('email')} />
                                         </div>
                                     </div>
-                                    <p><strong>Avoid using common words and include a mix of letters and numbers.</strong></p>
+                                    <h4>Avoid using common words and include a mix of letters and numbers.</h4>
 
                                     <div className='input-col-1'>
 
@@ -149,7 +153,7 @@ class SignUp extends React.Component {
 
                                         <div className="input-container-sign-up">
                                             <i className="fas sign-up-icons fa-lock icon"></i>
-                                            <input id='confirmPassword' className='form-input' type="password" placeholder='Repeat Password' />
+                                            <input id='confirmPassword' className='form-input' type="password" placeholder='Repeat Password' onChange={this.handleInput('password_confirmation')} />
                                         </div>
                                     </div>
 
@@ -187,9 +191,9 @@ class SignUp extends React.Component {
 
                                         <div className="input-container-secondary">
 
-                                            <select onChange={this.handleInput('country')} className="select" >
-                                                <option className='first-option'>Select Your Country</option>
-                                                <option value="USA" >USA</option>
+                                            <select  className="select" >
+                                                <option disabled className='first-option'>Select Your Country</option>
+                                                <option selected value="United States of America" >United States of America</option>
                                             </select>
                                         </div>
 

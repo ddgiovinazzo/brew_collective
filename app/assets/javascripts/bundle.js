@@ -1926,9 +1926,10 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       username: '',
       email: '',
       password: '',
+      password_confirmation: '',
       gender: '',
       location: '',
-      country: '',
+      country: 'United States of America',
       first_name: '',
       last_name: '',
       birthday: ''
@@ -1949,12 +1950,11 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var signup = this.props.signup;
       e.preventDefault();
-
-      if (this.confirmPassword()) {
-        signup(this.state);
-      } else {
-        this.props.addError(['Passwords do not match.']);
-      }
+      signup(this.state); // if (this.confirmPassword()) {
+      //     signup(this.state)
+      // } else {
+      //     this.props.addError(["The Password Confirmation field does not match the Password field."])
+      // }
     }
   }, {
     key: "handleInput",
@@ -2009,8 +2009,10 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
           _React$createElement;
 
       var years = [];
+      var date = new Date();
+      date = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
 
-      for (var i = 1999; i >= 1900; i--) {
+      for (var i = date.getFullYear() - 18; i >= date.getFullYear() - 120; i--) {
         years.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
           key: "year".concat(i),
           value: i
@@ -2049,7 +2051,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit
       }, this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-rows"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "All fields below are required unless specified.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "All fields below are required unless specified."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-col-1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-up"
@@ -2069,7 +2071,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         type: "text",
         placeholder: "Email",
         onChange: this.handleInput('email')
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "Avoid using common words and include a mix of letters and numbers.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Avoid using common words and include a mix of letters and numbers."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-col-1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-up"
@@ -2088,7 +2090,8 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         id: "confirmPassword",
         className: "form-input",
         type: "password",
-        placeholder: "Repeat Password"
+        placeholder: "Repeat Password",
+        onChange: this.handleInput('password_confirmation')
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-col-2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2112,13 +2115,14 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-secondary"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-        onChange: this.handleInput('country'),
         className: "select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        disabled: true,
         className: "first-option"
       }, "Select Your Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "USA"
-      }, "USA"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        selected: true,
+        value: "United States of America"
+      }, "United States of America"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-up"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         id: "input-p"

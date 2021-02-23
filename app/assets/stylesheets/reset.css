@@ -39,6 +39,10 @@ h3{
 	font-size: 14px;
 	text-decoration: underline;
 }
+h4{
+	font-size: 14px;
+	font-weight: bold;
+}
 
 button{
 	outline:none;
