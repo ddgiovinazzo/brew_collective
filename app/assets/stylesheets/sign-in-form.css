@@ -1,12 +1,12 @@
 .outer-div{
-    height: 93vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sign-in-form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
     width: 400px;
     height: fit-content;
     display: flex;
@@ -40,7 +40,7 @@
 .form-submit{
     text-decoration: none;
     border: none;
-    background-color: rgb(123, 194, 238);
+    background-color: #586BA4;
     color: white;
     padding: 8px 123px;
     border-radius: 4px;
@@ -54,12 +54,12 @@
 }
 
 .form-submit:hover{
-    background-color: rgb(255, 133, 88);
+    background-color: #FF8558;
     cursor: pointer;
 }
 
 .form-submit:active{
-    background-color: rgb(255, 133, 88);
+    background-color: #FF8558;
         box-shadow: 0 2px lightgray;
         transform: translateY(1px)   
 }
@@ -103,15 +103,19 @@
     font-size: 20px;
     color: gray;
 }
+.sign-up-p span{
+font-family: 'Alatsi', sans-serif;
+font-size: 20px;
+}
 
 .sign-up-p > a:hover{
     text-decoration: none;
-    color: orangered;
+    color:  #FF8558;;
 }
 
 .sign-up-p > a{
     text-decoration: none;
-    color: orange;
+    color: #586BA4;
 }
 
 .errors{
@@ -126,11 +130,12 @@
 }
 
 .errors-container-sign-in{
-    background-color: #e07575;
+    background-color: #931F1D;
     width: 336px ;
     border-radius: 5px;
     padding: 16px;
     color: white;
     font-weight: bold;
     margin-bottom: 30px;
+    letter-spacing: 1px;
 }

@@ -21,11 +21,9 @@ const App = () => {
 
     <div className="app-container">
 
-      <div className="splash-main">
         <AuthRoute exact path="/login" component={SignIn} />
         <AuthRoute exact path="/signup" component={SignUp} />
         <AuthRoute exact path="/" component={Splash} />
-      </div>
       <div id='main-background'>
         <ProtectedRoute path="/" component={NavBarContainer} />
         <ProtectedRoute exact path="/home" component={Home} />

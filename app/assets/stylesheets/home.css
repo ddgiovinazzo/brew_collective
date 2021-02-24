@@ -17,13 +17,13 @@
 }
 #content-container{
     width: 650px;
-    height: 900px;
+    height: max-content;
     margin-right: 15px;
 }
 
 #sidebar{
     width: 300px;
-    height: 900px;
+    height: max-content;
     margin-left: 15px;
 
 }

@@ -18,6 +18,11 @@
 
  .app-container{
      position: relative;
+     height: max-content;
+     width: 100vw;
  }
 
+ #main-background{
+     background-color: rgba($color: #FF8558, $alpha: .2);
+ }
 

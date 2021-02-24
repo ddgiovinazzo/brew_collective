@@ -1,0 +1,1 @@
+https://coolors.co/040303-931f1d-ff8558-eafdf8-586ba4 color scheme

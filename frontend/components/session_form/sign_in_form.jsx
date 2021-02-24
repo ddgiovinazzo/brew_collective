@@ -87,7 +87,7 @@ class SignIn extends React.Component {
                             <span className='form-submit demo-btn ' onClick={() => this.props.login({ username: 'demo', password: 'password' })} >Demo</span>
 
                         </form>
-                        <p className="sign-up-p">New around here? <Link to='/signup'>Sign up!</Link></p>
+                        <p className="sign-up-p">New around here? <Link to='/signup'><span>Sign up!</span></Link></p>
                     </div>
 
 

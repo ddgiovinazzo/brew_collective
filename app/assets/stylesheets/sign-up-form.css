@@ -31,7 +31,7 @@
 .sign-up-form > form > button{
     text-decoration: none;
     border: none;
-    background-color: rgb(255, 133, 88);
+    background-color: #FF8558;
     color: white;
     padding: 8px 116px ;
     border-radius: 4px;
@@ -42,12 +42,12 @@
 }
 
 .sign-up-form > form > button:hover{
-    background-color: rgb(123, 194, 238);
+    background-color: #586BA4;
     cursor: pointer;
 }
 
 .sign-up-form > form > button:active{
-    background-color: rgb(123, 194, 238);
+    background-color: #586BA4;
     box-shadow: 0 2px lightgray;
     transform: translateY(1px)   
 }
@@ -98,13 +98,15 @@
 }
 
 .errors-container-sign-up{
-    background-color:#e07575;
+    background-color:#931F1D;
     width: 536px ;
     border-radius: 2px;
     padding: 16px 35px ;
     color: white;
     font-weight: bold;
     margin-bottom: 10px ;
+    letter-spacing: 1px;
+
 }
 
 .input-p{

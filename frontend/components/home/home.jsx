@@ -26,9 +26,6 @@ class Home extends React.Component {
 
 
             </div>
-            <footer id='footer-container'>
-
-            </footer>
 
         </div>
         )

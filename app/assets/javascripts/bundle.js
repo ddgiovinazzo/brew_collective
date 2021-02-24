@@ -450,8 +450,6 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "app-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "splash-main"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/login",
@@ -464,7 +462,7 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _splash__WEBPACK_IMPORTED_MODULE_2__.default
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "main-background"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     path: "/",
@@ -1390,16 +1388,19 @@ var Footer = function Footer() {
     className: "footer-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     href: "https://github.com/ddgiovinazzo/",
+    title: "GitHub",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     "class": "fab fa-github fa-2x"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     href: "https://www.linkedin.com/in/domenicodanielgiovinazzo/",
+    title: "LinkedIn",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     "class": "fab fa-linkedin-in fa-2x"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     href: "https://angel.co/u/domenicodanielgiovinazzo",
+    title: "AngelList",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     "class": "fab fa-angellist fa-2x"
@@ -1476,9 +1477,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
         to: "/beers"
       }, "Beer Index"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         id: "sidebar"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
-        id: "footer-container"
-      }));
+      }))));
     }
   }]);
 
@@ -1834,7 +1833,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         className: "sign-up-p"
       }, "New around here? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: "/signup"
-      }, "Sign up!"))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Sign up!")))));
     }
   }]);
 
