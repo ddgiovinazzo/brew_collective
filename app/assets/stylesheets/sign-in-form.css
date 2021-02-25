@@ -7,7 +7,7 @@
 
 .sign-in-form{
 
-    width: 400px;
+    width: 350px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -34,6 +34,7 @@
 
 #brew_collective-logo{
     filter: invert(35%);
+    margin-bottom: 10px;
 }
 
 
@@ -42,7 +43,8 @@
     border: none;
     background-color: #586BA4;
     color: white;
-    padding: 8px 123px;
+    width: 270px;
+    height: 35px;
     border-radius: 4px;
     font-family: 'Alatsi', sans-serif;
     font-size: 18px;
@@ -50,7 +52,9 @@
 }
 
 .demo-btn{
-    padding: 13px 129px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-submit:hover{
@@ -84,7 +88,7 @@
     margin-bottom: 10px;
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 295px;
+    width: 268px;
     height: 33px;
  }
 

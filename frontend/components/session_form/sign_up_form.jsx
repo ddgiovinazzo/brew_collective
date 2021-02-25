@@ -193,7 +193,7 @@ class SignUp extends React.Component {
 
                                             <select  className="select" >
                                                 <option disabled className='first-option'>Select Your Country</option>
-                                                <option selected value="United States of America" >United States of America</option>
+                                                <option selected value="United States" >United States</option>
                                             </select>
                                         </div>
 

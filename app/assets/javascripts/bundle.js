@@ -1551,7 +1551,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "brew_collective-nav-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         id: "brew_collective-logo-nav",
-        src: window.brew_collective,
+        src: window.homeLogo,
         alt: ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "header-links"
@@ -2141,8 +2141,8 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         className: "first-option"
       }, "Select Your Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         selected: true,
-        value: "United States of America"
-      }, "United States of America"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        value: "United States"
+      }, "United States"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-up"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         id: "input-p"
