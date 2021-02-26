@@ -59,12 +59,8 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div className="outer-div" onClick={() => {
-                this.props.history.push('/')
-            }}>
-            <img  className='background-img' className = 'background-img' src={window.bg} alt="" />
-
-
+            <div onClick={() => { this.props.history.push('/') }} className='splash-container' >
+                    {/* <img onClick={() => { this.props.history.push('/') }} className='background-img' className='background-img' src={window.bg} alt="" /> */}
 
                     <div onClick={this.redirect.bind(this)} className={!this.props.errors.length ? 'sign-in-form' : 'sign-in-form sign-in-form-errors'}>
                         <form onSubmit={this.handleSubmit}>
@@ -90,14 +86,10 @@ class SignIn extends React.Component {
                         <p className="sign-up-p">New around here? <Link to='/signup'><span>Sign up!</span></Link></p>
                     </div>
 
-
-
-
-
-
-            </div>
+                </div>
 
         )
+
     }
 
 }

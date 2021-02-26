@@ -1,12 +1,6 @@
-.outer-div{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .sign-in-form{
-
     width: 350px;
     height: fit-content;
     display: flex;
@@ -18,7 +12,7 @@
 }
 
 .sign-in-form-errors{
- 
+
     width: 400px;
     height: fit-content;
 
@@ -33,7 +27,6 @@
 }
 
 #brew_collective-logo{
-    filter: invert(35%);
     margin-bottom: 10px;
 }
 
@@ -75,7 +68,7 @@
     min-width: 40px;
     text-align: center;
     border-right: 1px solid lightgray;
-    color: lightgray;
+    color: #88958D;
   }
 
 
@@ -105,7 +98,7 @@
     padding-top: 20px;
     font-family: 'Alatsi', sans-serif;
     font-size: 20px;
-    color: gray;
+    color: #88958D;
 }
 .sign-up-p span{
 font-family: 'Alatsi', sans-serif;
@@ -131,6 +124,8 @@ font-size: 20px;
 .errors > li{
     
    padding: 3px;
+   font-size: 12px;
+
 }
 
 .errors-container-sign-in{

@@ -1,26 +1,24 @@
 .background-img{
-    z-index: -1;
     object-fit: cover;
-    position: fixed;
     width: 100vw;
-    height: 100vh ;
-    filter: brightness(20%);
+    max-width: 100%;
+    height: 90vh ;
 }
 
-.splash-main{
-    min-height: 100vh;
+.splash-outer-div{
+    min-height: 90vh;
 }
+
+
 
 .splash-container{
+    background: url(cheers.jpg);
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
-    filter: invert(0);
-}
-
-.brew-collective-logo-splash{
+    min-height: 90vh;
 
 }
 
@@ -84,11 +82,17 @@ img{
     bottom: 3%;
 }
 
-#brew_collective-logo-container-splash{
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-
+#brew_collective-logo-container-splash-1{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+#brew_collective-logo-container-splash-2{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
 }
 
 .logo-container{

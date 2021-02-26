@@ -462,9 +462,7 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _splash__WEBPACK_IMPORTED_MODULE_2__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "main-background"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     path: "/",
     component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_11__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
@@ -487,7 +485,7 @@ var App = function App() {
     exact: true,
     path: "/beers",
     component: _beer_beer_index_container__WEBPACK_IMPORTED_MODULE_6__.default
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "/",
     component: _footer_footer__WEBPACK_IMPORTED_MODULE_8__.default
   }));
@@ -1547,23 +1545,14 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "header-content-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/home",
-        className: "brew_collective-nav-container"
+        to: "/home"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         id: "brew_collective-logo-nav",
         src: window.homeLogo,
         alt: ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "header-links"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/home"
-      }, "The Pub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/home"
-      }, "Top Rated"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/home"
-      }, "Supporter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/home"
-      }, "Help")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "nav-content-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "dropdown-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "far fa-2x fa-user-circle dropbtn"
@@ -1581,11 +1570,11 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         id: "search-bar-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         id: "search-bar",
-        placeholder: "Find a beer, brewery, or bar...",
+        placeholder: "Find a beer...",
         type: "text"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-        className: "fas fa-search fa-med"
-      }))));
+        className: "fas fa-search fa-med search-icon"
+      })))));
     }
   }]);
 
@@ -1780,17 +1769,14 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this,
-          _React$createElement;
+      var _this3 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "outer-div",
         onClick: function onClick() {
           _this3.props.history.push('/');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (_React$createElement = {
-        className: "background-img"
-      }, _defineProperty(_React$createElement, "className", "background-img"), _defineProperty(_React$createElement, "src", window.bg), _defineProperty(_React$createElement, "alt", ""), _React$createElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        },
+        className: "splash-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         onClick: this.redirect.bind(this),
         className: !this.props.errors.length ? 'sign-in-form' : 'sign-in-form sign-in-form-errors'
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -2019,8 +2005,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this,
-          _React$createElement;
+      var _this4 = this;
 
       var years = [];
       var date = new Date();
@@ -2054,11 +2039,8 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         onClick: function onClick() {
           _this4.props.history.push('/');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", (_React$createElement = {
-        className: "background-img"
-      }, _defineProperty(_React$createElement, "className", "background-img"), _defineProperty(_React$createElement, "src", window.bg), _defineProperty(_React$createElement, "alt", ""), _React$createElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "sign-up-form-container"
+        },
+        className: "splash-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onClick: this.redirect.bind(this),
         className: !this.props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors',
@@ -2168,7 +2150,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
         value: null
       }, "YYYY"), years))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "form-submit"
-      }, "Create Account")))));
+      }, "Create Account")));
     }
   }]);
 
@@ -2274,25 +2256,19 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   _createClass(Splash, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
-        className: "background-img",
-        src: window.bg,
-        alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
         className: "splash-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-        className: "logo-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-        id: "brew_collective-logo-container-splash"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_creds_creds_container__WEBPACK_IMPORTED_MODULE_0__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+        id: "brew_collective-logo-container-splash-1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
         className: "brew-collective-logo-splash",
         src: window.brew_collective,
         alt: ""
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-        id: "brew_collective-logo-container-splash"
+        id: "brew_collective-logo-container-splash-2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
         className: "splash-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Discover and share your", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "favorite beer."))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, "Discover and share your", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "favorite beer."))));
     }
   }]);
 

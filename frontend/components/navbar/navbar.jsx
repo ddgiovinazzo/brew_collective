@@ -9,27 +9,22 @@ class NavBar extends React.Component {
                 <div className='header-content-container'>
 
 
-                    <Link to='/home' className='brew_collective-nav-container'><img id="brew_collective-logo-nav" src={window.homeLogo} alt="" /></Link>
+                        <Link to='/home' ><img id="brew_collective-logo-nav" src={window.homeLogo} alt="" /></Link>
 
-                    <div className='header-links'>
-                        <Link to='/home' >The Pub</Link>
-                        <Link to='/home' >Top Rated</Link>
-                        <Link to='/home' >Supporter</Link>
-                        <Link to='/home' >Help</Link>
+                <div className="nav-content-right">
 
-
-                    </div>
-                    <div className="dropdown-container">
-                        <i className="far fa-2x fa-user-circle dropbtn"></i>
-                        <div className="dropdown">
-                            <Link className='nav-links' to={`/user/${this.props.currentUserId}`}>My Profile</Link>
-                            <p onClick={() => this.props.logout()} className='nav-links' >Logout</p>
+                        <div className="dropdown-container">
+                            <i className="far fa-2x fa-user-circle dropbtn"></i>
+                            <div className="dropdown">
+                                <Link className='nav-links' to={`/user/${this.props.currentUserId}`}>My Profile</Link>
+                                <p onClick={() => this.props.logout()} className='nav-links' >Logout</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div id='search-bar-container' >
-                        <input id="search-bar" placeholder="Find a beer, brewery, or bar..." type="text" />
-                        <i className="fas fa-search fa-med"></i>
+                        <div id='search-bar-container' >
+                            <input id="search-bar" placeholder="Find a beer..." type="text" />
+                            <i className="fas fa-search fa-med search-icon"></i>
+                        </div>
                     </div>
                 </div>
 

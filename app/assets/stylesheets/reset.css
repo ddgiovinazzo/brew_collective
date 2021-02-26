@@ -80,3 +80,7 @@ a{
 a:hover{
 	color: #FF8558;
 }
+
+input:focus, textarea:focus, select:focus{
+	outline: none;
+}

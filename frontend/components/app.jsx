@@ -24,14 +24,12 @@ const App = () => {
         <AuthRoute exact path="/login" component={SignIn} />
         <AuthRoute exact path="/signup" component={SignUp} />
         <AuthRoute exact path="/" component={Splash} />
-      <div id='main-background'>
         <ProtectedRoute path="/" component={NavBarContainer} />
         <ProtectedRoute exact path="/home" component={Home} />
         <ProtectedRoute exact path="/user/:userId" component={UserContainer} />
         <ProtectedRoute exact path="/beer/:beerId" component={BeerContainer} />
         <ProtectedRoute exact path="/newbeer" component={NewBeerContainer} />
         <ProtectedRoute exact path="/beers"  component={BeerIndexContainer} />
-      </div>
         <Route path="/"  component={Footer} />
 
     </div>

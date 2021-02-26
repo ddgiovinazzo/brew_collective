@@ -1,13 +1,12 @@
 .footer-container{
-    position: absolute;
-    bottom: 0;
-    height: 60px;
     width: 100vw;
-    background-color: rgba(4, 3, 3, 0.7);
-    z-index: 3;
+    max-width: 100%;
+    background-color: #0D1F2D;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-basis: auto;
+    padding: 20px 0;
 }
 .footer-container > a{
     color: white;
