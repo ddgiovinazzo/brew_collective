@@ -5,20 +5,16 @@
     height: 90vh ;
 }
 
-.splash-outer-div{
-    min-height: 90vh;
-}
 
 
 
 .splash-container{
-    background: url(cheers.jpg);
-    background-size: cover;
+
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    min-height: 90vh;
+    flex: 1;
 
 }
 

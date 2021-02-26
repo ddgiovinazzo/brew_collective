@@ -13,9 +13,7 @@ class BeerIndex extends React.Component {
             <Link key={i} to={`/beer/${beer.id}`}>{beer.name}</Link>
         ))
         return (
-            <div>
-            <header>
-            </header>
+            <div className="main-outer">
             <div className='home-grid'>
                 <div id='main'>
                     <div id='content-container'>
@@ -35,9 +33,6 @@ class BeerIndex extends React.Component {
 
 
             </div>
-            <footer id='footer-container'>
-
-            </footer>
 
         </div>
         )

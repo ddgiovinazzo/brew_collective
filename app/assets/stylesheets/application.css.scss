@@ -17,23 +17,25 @@
  @import "font-awesome";
 
  .app-container{
+    background: url(cheers.jpg);
+    background-position: center;
+    background-size: cover;
      min-height: 100vh;
      width: 100vw;
      max-width: 100%;
      display: flex;
      align-items: center;
      flex-direction: column;
-     background-color: #0D1F2D;
      overflow: hidden;
 
  }
 
- #main-background{
-     background-color: rgba($color: #FF8558, $alpha: .2);
-
+ .main-outer{
+    background: url(texture.png);
+    background-position: contain;
+    background-color: rgba($color: #F8FCDA, $alpha: .96);
+    width: 100vw;
+    flex: 1;
  }
 
- #root{
-
- }
 

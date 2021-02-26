@@ -9,7 +9,7 @@ class NavBar extends React.Component {
                 <div className='header-content-container'>
 
 
-                        <Link to='/home' ><img id="brew_collective-logo-nav" src={window.homeLogo} alt="" /></Link>
+                        <Link to='/home' ><img  src={window.homeLogo} alt="" /></Link>
 
                 <div className="nav-content-right">
 

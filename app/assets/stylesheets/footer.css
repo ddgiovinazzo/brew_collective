@@ -1,12 +1,14 @@
 .footer-container{
     width: 100vw;
     max-width: 100%;
-    background-color: #0D1F2D;
+    background: url(paper-texture.png);
+    background-position: contain;
+    background-color: rgba(13, 31, 45, .7);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-basis: auto;
-    padding: 20px 0;
+    min-height: 60px;
 }
 .footer-container > a{
     color: white;
