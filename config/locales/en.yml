@@ -43,6 +43,7 @@ en:
         name: "Brewery name"
       beer:
         name: "Beer name"
+        brewery_id: "Brewery name"
     errors:
       models:
         user:
@@ -64,4 +65,14 @@ en:
         beer:
           attributes:
             name:
+              blank: "is required"
+            brewery_id:
+              blank: "is required"
+            serving_style:
+              blank: "is required"
+            abv:
+              blank: "is required"
+            ibu:
+              blank: "is required"
+            flavor_profile:
               blank: "is required"

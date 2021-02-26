@@ -35,11 +35,7 @@ class SignUp extends React.Component {
         e.preventDefault()
 
         signup(this.state)
-        // if (this.confirmPassword()) {
-        //     signup(this.state)
-        // } else {
-        //     this.props.addError(["The Password Confirmation field does not match the Password field."])
-        // }
+
     }
 
 
@@ -62,10 +58,6 @@ class SignUp extends React.Component {
         }
     }
 
-    confirmPassword() {
-        const confirmPassword = document.getElementById('confirmPassword')
-        return confirmPassword.value === this.state.password
-    }
 
     redirect(e) {
         e.stopPropagation()
@@ -128,7 +120,7 @@ class SignUp extends React.Component {
 
                             <div className='input-col-1'>
                                 <div className="input-container-sign-up">
-                                    <i className="fas sign-up-icons fa-user icon"></i>
+                                    <i className="fas sign-up-icons fa-user "></i>
                                     <input className='form-input' type="text" placeholder='Username' onChange={this.handleInput('username')} />
                                 </div>
 

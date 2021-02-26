@@ -10,18 +10,17 @@
 }
 
 .header-content-container{
-    position: relative;
     width: 1048px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .nav-content-right{
-    position: absolute;
     display: flex;
     align-items: center;
-    justify-content: center;
-    right: 0;
+    justify-content: space-between;
+    width: 300px;
 }
 
 .header-links > a{
@@ -40,7 +39,7 @@
 .dropdown-container { 
     position: relative;
     display: inline-block;
-    margin-left: 105px;
+
     top: 7px
 }
 

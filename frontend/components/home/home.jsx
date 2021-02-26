@@ -1,9 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom'
 
-class Home extends React.Component {
-
-    render() {
+const Home = ({currentUser})=> {
         return (
             <div className="main-outer">
 
@@ -20,6 +18,35 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <div id='sidebar'>
+                        <div className="personal-stats">
+                            <div>
+                            <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
+                            <p><i className="fas fa-user home-icon"></i> {currentUser.username}</p>
+
+                            </div>
+                            <div className='home-grid-container'>
+                                <div className='home-grid-row'>
+                                    <div>
+                                        <p>0</p>
+                                        <p>Total</p>
+                                    </div>
+                                    <div>
+                                    <p>0</p>
+                                        <p>Unique</p>
+                                    </div>
+                                </div>
+                                <div className='home-grid-row'>
+                                    <div>
+                                    <p>0</p>
+                                        <p>Badges</p>
+                                    </div>
+                                    <div>
+                                    <p>0</p>
+                                        <p>Friends</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -28,7 +55,7 @@ class Home extends React.Component {
 
         </div>
         )
-    }
+    
 }
 
 export default Home

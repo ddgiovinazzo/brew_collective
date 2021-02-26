@@ -2,7 +2,7 @@ import React from "react";
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Route } from 'react-router-dom';
 import Splash from "./splash";
-import Home from './home/home'
+import HomeContainer from './home/home_container'
 import UserContainer from './user/user'
 import NewBeerContainer from './beer/new_beer_container'
 import BeerIndexContainer from './beer/beer_index_container'
@@ -25,7 +25,7 @@ const App = () => {
         <AuthRoute exact path="/signup" component={SignUp} />
         <AuthRoute exact path="/" component={Splash} />
         <ProtectedRoute path="/" component={NavBarContainer} />
-        <ProtectedRoute exact path="/home" component={Home} />
+        <ProtectedRoute exact path="/home" component={HomeContainer} />
         <ProtectedRoute exact path="/user/:userId" component={UserContainer} />
         <ProtectedRoute exact path="/beer/:beerId" component={BeerContainer} />
         <ProtectedRoute exact path="/newbeer" component={NewBeerContainer} />

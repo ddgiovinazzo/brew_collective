@@ -15,7 +15,7 @@ class NewBeer extends React.Component {
                 flavor_profile: null,
             },
             brewery: {
-
+                name: null
             }
         }
 
@@ -62,32 +62,47 @@ class NewBeer extends React.Component {
             this.props.clearBeerErrors()
         }
         const { createBeer, createBrewery, breweries } = this.props
-        const { beer } = this.state
+        const { beer, breweryFlag } = this.state
 
         const newBeer = Object.assign({}, beer)
-        let breweryExists = false
-        for (let i = 0; i < breweries.length; i++) {
 
-            if (breweries[i].name === beer.brewery_id) {
-                breweryExists = true
-                newBeer.brewery_id = breweries[i].id
-                break
-            }
+        if(breweryFlag && Object.values(newBeer).every(attr=>attr)){
+            createBrewery({ name: beer.brewery_id })
+                .then(
+                    payload =>{
+                        newBeer.brewery_id = payload.brewery.id
+        
+                        createBeer(newBeer)
+                        .then(()=>this.props.history.push('/beers'))
+                    }
+                )     
+        }else{
+            createBeer(newBeer).then(()=>this.props.history.push('/beers'))
         }
 
-        if (breweryExists) {
-            createBeer(newBeer)
-            this.props.history.push('/beers')
+        // let breweryExists = false
+        // for (let i = 0; i < breweries.length; i++) {
 
-        } else {
+        //     if (breweries[i].name === beer.brewery_id) {
+        //         breweryExists = true
+        //         newBeer.brewery_id = breweries[i].id
+        //         break
+        //     }
+        // }
 
-            createBrewery({ name: beer.brewery_id }).then(payload => {
-                newBeer.brewery_id = payload.brewery.id
+        // if (breweryExists) {
+        //     createBeer(newBeer)
+        //     this.props.history.push('/beers')
 
-                createBeer(newBeer)
-                this.props.history.push('/beers')
-            })
-        }
+        // } else {
+
+        //     createBrewery({ name: beer.brewery_id }).then(payload => {
+        //         newBeer.brewery_id = payload.brewery.id
+
+        //         createBeer(newBeer)
+        //         this.props.history.push('/beers')
+        //     })
+        // }
     }
 
     handleInput(type) {
@@ -106,19 +121,19 @@ class NewBeer extends React.Component {
 
     handleBrewery(e){
         if(e.currentTarget.value === 'add-brewery'){
-            this.setState({
-                breweryFlag: !this.state.breweryFlag
+            return this.setState({
+                breweryFlag: true
             })
         }else{
             const newBeer = Object.assign({}, this.state.beer)
             newBeer['brewery_id'] = e.currentTarget.value
-
+            
             return this.setState({
                 beer: newBeer
             })
         }
     }
-
+    
     render() {
         const beers = [
             'Belgian',
@@ -144,7 +159,7 @@ class NewBeer extends React.Component {
             <div className='create-beer-input-lg'>
                         <input onChange={this.handleInput('brewery_id')} type="" />
                     </div>
-                        <p id='brewery-creation-cancel'onClick={()=>this.setState({breweryFlag: !this.state.breweryFlag})}>Cancel Brewery Creation</p>
+                        <p id='brewery-creation-cancel'onClick={()=>this.setState({breweryFlag: false})}>Cancel New Brewery</p>
                 </label>
         )
         const brewerySelect = (
@@ -162,15 +177,17 @@ class NewBeer extends React.Component {
         )
 
         return (
-            <div id='create-beer-container'>
-                    <form onSubmit={this.handleSubmit} id={!this.props.errors.length ? 'create-beer-form' : 'create-beer-errors-form'} action="">
+            <div className='main-outer'>
+                            <div className='home-grid'>
+
+                    <form onSubmit={this.handleSubmit} className={!this.props.errors.length ? 'create-beer-form' : 'create-beer-form create-beer-errors-form'} action="">
                         <div id='create-beer-content'>
                             <h1>Add New Beer</h1>
                             <br />
                             <h2>Didn't find what you were looking for?</h2>
                             <h2>Use this form to add a new beer.</h2>
                             <br />
-                            <h3>Beer Creation Guidelines</h3>
+                            <h2>Beer Creation Guidelines</h2>
                             <br />
                             <ul id='create-beer-list'>
                                 <li>Don't include the brewery in the beer name.</li>
@@ -198,16 +215,17 @@ class NewBeer extends React.Component {
 
                             <label className='form-label' htmlFor="">ABV
                             <div className='create-beer-input-sm'>
-                                    <input onChange={this.handleInput('abv')} type="" />
+                                    <input onChange={this.handleInput('abv')} />
                                 </div>
                             </label>
-
+                            
                             <label className='form-label' htmlFor="">IBU
                         <div className='create-beer-input-sm'>
-                                    <input onChange={this.handleInput('ibu')} type="" />
+                                    <input onChange={this.handleInput('ibu')} />
 
                                 </div>
                             </label>
+
 
                             <label className='form-label' htmlFor="">STYLE
 
@@ -229,6 +247,7 @@ class NewBeer extends React.Component {
                         </label>
                         <button className='form-submit create-beer-submit'>Add Beer</button>
                     </form>
+                    </div>
                 </div>
         )
     }
