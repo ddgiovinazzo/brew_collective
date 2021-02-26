@@ -138,7 +138,8 @@ class NewBeer extends React.Component {
         const breweries = this.props.breweries.map(brewery => <option value={brewery.id}>{brewery.name}</option> )
 
         const breweryCreate = (
-            <label className='form-label' htmlFor="">Brewery
+            <label className='form-label' htmlFor="">BREWERY NAME
+                       
 
             <div className='create-beer-input-lg'>
                         <input onChange={this.handleInput('brewery_id')} type="" />
@@ -147,7 +148,7 @@ class NewBeer extends React.Component {
                 </label>
         )
         const brewerySelect = (
-            <label className='form-label' htmlFor="">Brewery
+            <label className='form-label' htmlFor="">BREWERY NAME
                        
             
             <div className='create-beer-input-lg'>
@@ -164,26 +165,27 @@ class NewBeer extends React.Component {
             <div id='create-beer-container'>
                     <form onSubmit={this.handleSubmit} id={!this.props.errors.length ? 'create-beer-form' : 'create-beer-errors-form'} action="">
                         <div id='create-beer-content'>
-                            <h1>Add a New Beer</h1>
+                            <h1>Add New Beer</h1>
                             <br />
-                            <h2>Can't find the beer you're looking for?</h2>
-                            <h2>Use this form to add it to our list!</h2>
+                            <h2>Didn't find what you were looking for?</h2>
+                            <h2>Use this form to add a new beer.</h2>
                             <br />
-                            <h3>Guidelines</h3>
+                            <h3>Beer Creation Guidelines</h3>
                             <br />
                             <ul id='create-beer-list'>
-                                <li>Brewery cannot be included in beer name</li>
-                                <li>If the year is part of the label artwork, only add the vintage year</li>
-                                <li>Make sure your beer name is properly is properly cased</li>
-                                <li>No beers that are a blend of two or more other beers will be accepted</li>
-                                <li>Give your homebrew an original name</li>
-                                <li>Homebrew clones are not allowed.</li>
-                                <li>We will not accept unsupported drinks(wine, water, etc)</li>
-                                <li>Not following these guidelines may result in revocation of beer creation privliges</li>
+                                <li>Don't include the brewery in the beer name.</li>
+                                <li>Only add the vintage year if the year is part of the label artwork. "Bottled On" and "Best Before" dates are not valid for this.</li>
+                                <li>Please make your beer name proper case.</li>
+                                <li>Do not create a beer that are blends of 2 or more beers. This goes for any beers that are blended at a Bar/Brewery after kegging.</li>
+                                <li>Give your homebrew an original name, don't use another name for beer that is commerical to avoid confusion.</li>
+                                <li>For homebrews, please create your own brewery name, do not use another Homebrewery that has already been created that isn't your brewery.</li>
+                                <li>Homebrew clones are not allowed. Always give your beer a unique name - do not use the name of the kit or the recipe.</li>
+                                <li>Please do not add non-supported drinks (Wine, Water, etc)</li>
+                                <li>Please note that by not following these guidelines may results in revoking of your Beer Creation privileges.</li>
                             </ul>
                         {this.props.errors.length > 0 ? this.renderErrors() : null}
                         </div>
-                        <label className='form-label' htmlFor="">Beer
+                        <label className='form-label' htmlFor="">BEER NAME
 
                     <div className='create-beer-input-lg'>
                                 <input onChange={this.handleInput('name')} type="" />
@@ -207,7 +209,7 @@ class NewBeer extends React.Component {
                                 </div>
                             </label>
 
-                            <label className='form-label' htmlFor="">Style
+                            <label className='form-label' htmlFor="">STYLE
 
                         <div className='create-beer-select'>
                                     <select onChange={this.handleInput('serving_style')}>
@@ -218,7 +220,7 @@ class NewBeer extends React.Component {
                             </label>
 
                         </div>
-                        <label className='form-label' htmlFor="">Description
+                        <label className='form-label' htmlFor="">DESCRIPTION
                     <div className='create-beer-description'>
 
                                 <span id='counter'>{this.state.textLimit.toString()}</span>

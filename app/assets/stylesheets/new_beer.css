@@ -7,24 +7,26 @@ input{
 }
 
 #create-beer-container{
-    height: 1000px;
-    width: 100%;
+    flex:1;
     display: flex;
     justify-content: center;
-    position: relative;
+    align-items: center;
+    padding: 30px;
 }
 
 #create-beer-form{
-    position: absolute;
-    top: 10%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 500px;
     height: max-content;
     background-color: white;
-    padding: 20px
+    padding: 20px;
+    color: #0D1F2D;
 }
+
+
 
 .create-beer-input-lg{
     width: 436px;
@@ -37,7 +39,7 @@ input{
 }
 
 .create-beer-input-lg > input:focus-within{
-    border: black 2px solid;
+    border: #0D1F2D 1px solid;
 }
 
 .create-beer-input-lg > input{
@@ -64,7 +66,7 @@ input{
 }
 
 .create-beer-input-sm:focus-within{
-    border: black 2px solid;
+    border: #0D1F2D 1px solid;
 }
 
 .create-beer-input-sm > input{
@@ -95,7 +97,7 @@ input{
 }
 
 .create-beer-description:focus-within{
-    border: black 2px solid;
+    border: #0D1F2D 1px solid;
 }
 
 .create-beer-description > textarea{
@@ -115,9 +117,9 @@ input{
 }
 
 .form-label{
-    margin: 5px 5px ;
     font-size: 11px;
-    color: var(--main-border-color);
+    margin: 5px 5px ;
+    color: #757575;
 }
 
 .create-beer-submit{
@@ -164,7 +166,6 @@ input{
 }
 
 #brewery-creation-cancel{
-    color: black;
     padding: 5px;
     text-decoration: underline;
     cursor: pointer;
