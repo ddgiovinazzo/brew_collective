@@ -30,7 +30,7 @@ class Beer extends React.Component {
                         <div id='beer-content-container'>
                                 <div id='beer-content-top'>
                                     <div id='beer-content-top-img'>
-                                        <img src={`beers/${currentBeer.imageUrl}`} alt=""/>
+                                        <img src={`${currentBeer.imageUrl}`} alt=""/>
 
                                     </div>
                                     <div id='beer-content-top-title'>
