@@ -1,30 +1,23 @@
 
 #beer-content-container{
-    width: 700px;
-    height: 400px;
-}
-
-
-#beer-content{
     background-color: white;
-
+    width: 700px;
+    height: fit-content;
 }
+
 
 #beer-content-top{
     display: flex;
-    position: relative;
     border-bottom: 1px solid lightgray;
     padding: 20px;
 
 }
-
-#beer-content-top-social{
-    display: flex;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    color: gray;
+#beer-content-top h1:first-child{
+font-size: 32px;
+font-weight: 400;
 }
+
+
 
 #beer-content-top-social-inner-top{
     border-right: 1px solid lightgray;

@@ -24,11 +24,10 @@ class NewBeer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchAllBreweries()
         if (this.props.errors.length > 0) {
             this.props.clearBreweryErrors()
             this.props.clearBeerErrors()
-        } 
+        }
     }
 
     handleText(e) {
@@ -135,6 +134,7 @@ class NewBeer extends React.Component {
     }
     
     render() {
+
         const beers = [
             'Belgian',
             'Brown Ale',
