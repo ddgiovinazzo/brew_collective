@@ -1,79 +1,100 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 
-class Beer extends React.Component {
+const Beer = ({ match, currentBeer, fetchBeer }) => {
 
-    componentDidMount() {
-        this.props.fetchBeer(this.props.match.params.beerId)
+    const [shortenSentence, setShortenSentence] = useState(true)
+    const [update, setUpdate] = useState(false)
+
+    useEffect(() => { fetchBeer(match.params.beerId) }, [update])
+
+    if (typeof currentBeer === 'undefined') {
+        return (
+            <div className='main-outer'>
+                <div className='home-grid'>
+                </div>
+            </div>
+        )
     }
 
-    render() {
-        // debugger
-        const { currentBeer } = this.props
+    const shortenedSentence = (
+        <div>
+            <p>{currentBeer.flavorProfile.slice(0, 83)}</p>
+            <p className="psuedo-link" onClick={() => setShortenSentence(false)}> Show More</p>
+        </div>
+    )
+    const regularSentence = (
+        <div>
+            <p>{currentBeer.flavorProfile}</p>
+            <p className="psuedo-link" onClick={() => setShortenSentence(true)}> Show Less</p>
+        </div>
+    )
+
+    return (
+        <div className='main-outer'>
+
+            <div className='home-grid'>
+
+                <div id='beer-content-container'>
+                    <div id='beer-content-top'>
+                        <div id='beer-content-top-img'>
+                            <img src={`${currentBeer.imageUrl}`} alt="" />
+
+                        </div>
+                        <div id='beer-content-top-title'>
+                            <h1>{currentBeer.name}</h1>
+                            <p>{currentBeer.brewery.name}</p>
+                            <p>{currentBeer.servingStyle}</p>
+
+                        </div>
+                        <div id='beer-content-top-social'>
+                        </div>
 
 
-        if (typeof currentBeer === 'undefined') {
-            return (
-                <div className='main-outer'>
-                    <div className='home-grid'>
                     </div>
-                </div>
-            )
-        }
-
-        return (
-
-            <div className='main-outer'>
-
-                <div className='home-grid'>
-
-                        <div id='beer-content-container'>
-                                <div id='beer-content-top'>
-                                    <div id='beer-content-top-img'>
-                                        <img src={`${currentBeer.imageUrl}`} alt=""/>
-
-                                    </div>
-                                    <div id='beer-content-top-title'>
-                                        <h1>{currentBeer.name}</h1>
-                                        <h1>{currentBeer.brewery.name}</h1>
-                                        <h1>{currentBeer.servingStyle}</h1>
-
-                                    </div>
-                                    <div id='beer-content-top-social'>
-                                    </div>
-
-
-                                </div>
-                                <div id='beer-content-middle'>
-                                    <div id='beer-content-mid-details'>
-                                        <div id='abv-container'>
-                                            <p>{currentBeer.abv}ABV</p>
-                                        </div>
-
-                                        <div id='ibu-container'>
-                                            <p>{currentBeer.ibu}IBU</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <div id='beer-content-middle'>
-                                    <div id='beer-content-mid-details'>
-                                        <p>{currentBeer.flavorProfile}</p>
-                                    </div>
-
-                                </div>
+                    <div id='beer-content-middle'>
+                        <div id='beer-content-mid-details'>
+                            <div id='abv-container'>
+                                <p>{currentBeer.abv}ABV</p>
                             </div>
+
+                            <div id='ibu-container'>
+                                <p>{currentBeer.ibu}IBU</p>
+                            </div>
+
                         </div>
 
                     </div>
+                    <div className='beer-content-bottom'>
+                        <div className='beer-content-bottom-details-container'>
+
+                            <div className='beer-content-bottom-details'>
+                                {
+                                    currentBeer.flavorProfile.length >= 83 && shortenSentence ?
+                                        shortenedSentence : regularSentence
+                                }
+                            </div>
+                        </div>
+
+                        <div className="beer-content-bottom-buttons-container">
+                            <a className="btn btn-primary tooltip beer-content-bottom-buttons">&#10003;
+                                <div className="bottom">
+                                    <p>Check-in this Beer <i></i></p>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
 
 
 
 
-        )
-    }
+    )
 }
 
 export default Beer

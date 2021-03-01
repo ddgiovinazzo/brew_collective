@@ -14,3 +14,54 @@
     color: white;
     margin: 0 30px
 }
+.footer-container > a:hover{
+    color: #88958D;
+}
+
+.tooltip .top {
+    min-width:fit-content; 
+    bottom:60px;
+    left:50%;
+    transform:translate(-50%, 0);
+    padding:10px 20px;
+    color:white;
+    background-color:#0D1F2D;
+    font-weight:normal;
+    font-size:13px;
+    position:absolute;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    width: max-content;
+    visibility: hidden;
+    opacity: 0;
+    transition:  0.8s ;
+    z-index:99999999;
+}
+
+.tooltip {
+    position:relative;
+}
+
+.tooltip:hover .top {
+    visibility:visible; opacity:1;
+}
+
+.tooltip .top i {
+    position:absolute;
+    top:100%;
+    left:50%;
+    margin-left:-12px;
+    width:24px;
+    height:12px;
+    overflow:hidden;
+}
+
+.tooltip .top i::after {
+    content:'';
+    position:absolute;
+    width:12px;
+    height:12px;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(45deg);
+    background-color:#0D1F2D;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}

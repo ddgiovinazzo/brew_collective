@@ -28,6 +28,7 @@ class NewBeer extends React.Component {
             this.props.clearBreweryErrors()
             this.props.clearBeerErrors()
         }
+        this.props.fetchAllBreweries()
     }
 
     handleText(e) {
@@ -72,11 +73,12 @@ class NewBeer extends React.Component {
                         newBeer.brewery_id = payload.brewery.id
         
                         createBeer(newBeer)
-                        .then(()=>this.props.history.push('/beers'))
+                        .then((payload)=>this.props.history.push(`/beer/${payload.beer.id}`))
                     }
                 )     
         }else{
-            createBeer(newBeer).then(()=>this.props.history.push('/beers'))
+            createBeer(newBeer)
+            .then((payload)=>this.props.history.push(`/beer/${payload.beer.id}`))
         }
 
         // let breweryExists = false
@@ -150,7 +152,7 @@ class NewBeer extends React.Component {
         ]
         const beerOptions = beers.map((beer, i) => <option key={i} value={beer}>{beer}</option>)
 
-        const breweries = this.props.breweries.map(brewery => <option value={brewery.id}>{brewery.name}</option> )
+        const breweries = this.props.breweries.map(brewery => <option key={brewery.id} value={brewery.id}>{brewery.name}</option> )
 
         const breweryCreate = (
             <label className='form-label' htmlFor="">BREWERY NAME
