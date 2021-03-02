@@ -243,7 +243,7 @@ class NewBeer extends React.Component {
                         <label className='form-label' htmlFor="">DESCRIPTION
                     <div className='create-beer-description'>
 
-                                <span id='counter'>{this.state.textLimit.toString()}</span>
+                                <span className='counter'>{this.state.textLimit.toString()}</span>
                                 <textarea onChange={this.handleText} maxLength="750" />
                             </div>
                         </label>

@@ -103,13 +103,15 @@
     margin: 5px
 }
 
-#counter{
+.counter{
     bottom:0;
     right: 0;
     position: absolute;
-    color: #757575;
+    color: #0D1F2D;
     font-size: 12px;
-    padding: 5px;
+    padding: 3px;
+    background-color: #EAFDF8;
+    margin: 1px;
 }
 
 .form-label{

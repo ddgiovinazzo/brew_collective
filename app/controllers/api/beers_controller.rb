@@ -19,6 +19,7 @@ class Api::BeersController < ApplicationController
     
     private
     def beer_params
+        
         params.require(:beer).permit(:name, :brewery_id, :serving_style, :abv, :ibu, :flavor_profile, :image_url)
     end
 end

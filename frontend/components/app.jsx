@@ -4,9 +4,9 @@ import { Route } from 'react-router-dom';
 import Splash from "./splash";
 import HomeContainer from './home/home_container'
 import UserContainer from './user/user'
-import NewBeerContainer from './beer/new_beer_container'
-import BeerIndexContainer from './beer/beer_index_container'
-import BeerContainer from './beer/beer_container'
+import NewBeerContainer from './beer/beer_create/new_beer_container'
+import BeerIndexContainer from './beer/beer_index/beer_index_container'
+import BeerContainer from './beer/beer_show/beer_container'
 import Footer from './footer/footer'
 
 

@@ -1,7 +1,7 @@
 .footer-container{
     width: 100vw;
     max-width: 100%;
-    background: url(paper-texture.png);
+    background-image: url(/assets/paper-texture.png);
     background-position: contain;
     background-color: rgba(13, 31, 45, .7);
     display: flex;

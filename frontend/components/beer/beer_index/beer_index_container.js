@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import {createBeer} from '../../actions/beer_actions';
-import {createBrewery} from '../../actions/brewery_actions';
+import {createBeer} from '../../../actions/beer_actions';
+import {createBrewery} from '../../../actions/brewery_actions';
 import BeerIndex from './beer_index';
-import {fetchAllBeers, clearBeerErrors} from "../../actions/beer_actions";
-import { clearBreweryErrors } from "../../actions/brewery_actions";
+import {fetchAllBeers, clearBeerErrors} from "../../../actions/beer_actions";
+import { clearBreweryErrors } from "../../../actions/brewery_actions";
 
 const mSTP = ({entities:{beers, users},session, errors}) => {
   return {

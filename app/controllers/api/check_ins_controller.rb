@@ -2,7 +2,6 @@ class Api::CheckInsController < ApplicationController
     def create
         @check_in = CheckIn.new(check_in_params)
         if @check_in.save
-            @check_in.beer.check_ins.reload
             render :show
         else
             render json: @check_in.errors.full_messages, status: 422

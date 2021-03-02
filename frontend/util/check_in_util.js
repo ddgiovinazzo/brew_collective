@@ -1,7 +1,7 @@
-export const createCheckIn = checkIn => (
-    $.ajax({
+export const createCheckIn = check_in => {
+    return $.ajax({
       method: 'POST',
       url: '/api/check_ins',
-      data: {checkIn}
+      data: {check_in}
     })
-);
+  };
