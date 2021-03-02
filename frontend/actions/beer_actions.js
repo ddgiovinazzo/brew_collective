@@ -12,7 +12,7 @@ const receiveAllBeers = (beers)=>({
     beers
 })
 
-const receiveBeer = (beer)=>({
+export const receiveBeer = (beer)=>({
     type: RECEIVE_BEER,
     beer
 })

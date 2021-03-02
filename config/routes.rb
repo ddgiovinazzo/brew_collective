@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resources :beers, only: [:index, :create, :show]
     resources :breweries, only: [:index, :create, :show]
-    resources :checkins, only: [:index, :create, :show, :destroy]
+    resources :check_ins, only: [:create, :show]
     resource :session, only: [:create, :destroy, :show]
 
   end

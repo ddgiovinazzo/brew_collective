@@ -1,4 +1,4 @@
 class CheckIn < ApplicationRecord
-
-    has_many_attached :images
+    belongs_to :beer
+    belongs_to :user
 end

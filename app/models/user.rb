@@ -20,7 +20,9 @@ class User < ApplicationRecord
     validates :password_digest, :country, :birthday, presence: true
 
     validate :valid_age, if: proc { |u| u.birthday.present? }
-    
+
+    has_many :check_ins
+
     attr_reader :password
     
     after_initialize :ensure_session_token

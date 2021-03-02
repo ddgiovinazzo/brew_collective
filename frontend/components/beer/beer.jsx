@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom'
+import CheckInForm  from '../check-in/check-in-form'
 
 const Beer = ({ match, currentBeer, fetchBeer }) => {
 
     const [shortenSentence, setShortenSentence] = useState(true)
     const [update, setUpdate] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
 
     useEffect(() => { fetchBeer(match.params.beerId) }, [update])
 
@@ -29,11 +30,12 @@ const Beer = ({ match, currentBeer, fetchBeer }) => {
             <p className="psuedo-link" onClick={() => setShortenSentence(true)}> Show Less</p>
         </div>
     )
-
     return (
         <div className='main-outer'>
 
             <div className='home-grid'>
+
+                {openModal ? <CheckInForm setOpenModal={setOpenModal}/> : null}
 
                 <div id='beer-content-container'>
                     <div id='beer-content-top'>
@@ -77,12 +79,18 @@ const Beer = ({ match, currentBeer, fetchBeer }) => {
                         </div>
 
                         <div className="beer-content-bottom-buttons-container">
-                            <a className="btn btn-primary tooltip beer-content-bottom-buttons">&#10003;
+                            <div 
+                                onClick={()=> setOpenModal(true)} 
+                                className="btn btn-primary tooltip beer-content-bottom-buttons"
+                            >   
+                            
+                                &#10003;
+
                                 <div className="bottom">
                                     <p>Check-in this Beer <i></i></p>
                                     
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

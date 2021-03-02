@@ -1,0 +1,2 @@
+module Api::CheckInsHelper
+end

@@ -131,7 +131,6 @@ color: #0D1F2D;
     visibility: hidden;
     opacity: 0;
     transition:  0.8s ;
-    z-index:99999999;
 }
 
 .tooltip {

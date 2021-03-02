@@ -3,5 +3,6 @@ class Beer < ApplicationRecord
     validates :name, uniqueness: true
 
     has_one_attached :image
-
+    has_many :check_ins
+    belongs_to :brewery
 end

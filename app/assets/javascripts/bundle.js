@@ -93,6 +93,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_BEER_ERRORS": () => /* binding */ RECEIVE_BEER_ERRORS,
 /* harmony export */   "CLEAR_BEER_ERRORS": () => /* binding */ CLEAR_BEER_ERRORS,
 /* harmony export */   "ADD_BEER_ERROR": () => /* binding */ ADD_BEER_ERROR,
+/* harmony export */   "receiveBeer": () => /* binding */ receiveBeer,
 /* harmony export */   "receiveBeerErrors": () => /* binding */ receiveBeerErrors,
 /* harmony export */   "clearBeerErrors": () => /* binding */ clearBeerErrors,
 /* harmony export */   "addBeerError": () => /* binding */ addBeerError,
@@ -123,7 +124,6 @@ var receiveBeer = function receiveBeer(beer) {
     beer: beer
   };
 };
-
 var receiveBeerErrors = function receiveBeerErrors(errors) {
   return {
     type: RECEIVE_BEER_ERRORS,
@@ -507,6 +507,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _check_in_check_in_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../check-in/check-in-form */ "./frontend/components/check-in/check-in-form.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -537,6 +538,11 @@ var Beer = function Beer(_ref) {
       update = _useState4[0],
       setUpdate = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      openModal = _useState6[0],
+      setOpenModal = _useState6[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchBeer(match.params.beerId);
   }, [update]);
@@ -565,7 +571,9 @@ var Beer = function Beer(_ref) {
     className: "main-outer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, openModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+    setOpenModal: setOpenModal
+  }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "beer-content-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "beer-content-top"
@@ -594,7 +602,10 @@ var Beer = function Beer(_ref) {
     className: "beer-content-bottom-details"
   }, currentBeer.flavorProfile.length >= 83 && shortenSentence ? shortenedSentence : regularSentence)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-content-bottom-buttons-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    onClick: function onClick() {
+      return setOpenModal(true);
+    },
     className: "btn btn-primary tooltip beer-content-bottom-buttons"
   }, "\u2713", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bottom"
@@ -1153,6 +1164,39 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_new_beer__WEBPACK_IMPORTED_MODULE_3__.default));
+
+/***/ }),
+
+/***/ "./frontend/components/check-in/check-in-form.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/check-in/check-in-form.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var CheckInForm = function CheckInForm(_ref) {
+  var setOpenModal = _ref.setOpenModal;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "modal-outer",
+    onClick: function onClick() {
+      return setOpenModal(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    className: "modal-form",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "hello")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckInForm);
 
 /***/ }),
 
