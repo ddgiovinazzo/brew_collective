@@ -1,0 +1,59 @@
+
+.beer-show-container{
+    background-color: white;
+    width: 700px;
+    height: fit-content;
+    color: #88958D;
+
+    margin-bottom: 20px;
+}
+
+.tooltip .bottom {
+    min-width:fit-content; 
+    top:60px;
+    left:50%;
+    transform:translate(-50%, 0);
+    padding:10px 20px;
+    color:white;
+    background-color:#0D1F2D;
+    font-weight:normal;
+    font-size:13px;
+    position:absolute;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    width: max-content;
+    visibility: hidden;
+    opacity: 0;
+    transition:  0.8s ;
+}
+
+.tooltip {
+    position:relative;
+}
+
+.tooltip:hover .bottom {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.8s ;
+
+}
+
+.tooltip .bottom i {
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    margin-left:-12px;
+    width:24px;
+    height:12px;
+    overflow:hidden;
+}
+
+.tooltip .bottom i::after {
+    content:'';
+    position:absolute;
+    width:12px;
+    height:12px;
+    left:50%;
+    transform:translate(-50%,50%) rotate(45deg);
+    background-color:#0D1F2D;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}

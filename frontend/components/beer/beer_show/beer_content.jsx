@@ -19,7 +19,7 @@ const BeerContent = ({currentBeer, setOpenModal}) => {
     )
 
     return (
-        <div id='beer-content-container'>
+        <div className='beer-show-container'>
             <div id='beer-content-top'>
                 <div id='beer-content-top-img'>
                     <img src={`${currentBeer.imageUrl}`} alt="" />

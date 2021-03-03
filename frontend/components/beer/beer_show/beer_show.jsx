@@ -39,7 +39,7 @@ const Beer = ({ match, currentBeer, fetchBeer, currentUser }) => {
                 }
 
                 {<BeerContent currentBeer={currentBeer} setOpenModal={setOpenModal}/>}
-                {<BeerActivity/>}
+                {<BeerActivity currentBeer={currentBeer} />}
             </div>
 
         </div>
