@@ -2424,12 +2424,12 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-secondary"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        defaultValue: "United States",
         className: "select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         disabled: true,
         className: "first-option"
       }, "Select Your Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        selected: true,
         value: "United States"
       }, "United States"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-up"

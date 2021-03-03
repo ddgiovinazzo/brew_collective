@@ -179,9 +179,9 @@ class SignUp extends React.Component {
 
                                 <div className="input-container-secondary">
 
-                                    <select className="select" >
+                                    <select defaultValue="United States" className="select" >
                                         <option disabled className='first-option'>Select Your Country</option>
-                                        <option selected value="United States" >United States</option>
+                                        <option value="United States" >United States</option>
                                     </select>
                                 </div>
 
