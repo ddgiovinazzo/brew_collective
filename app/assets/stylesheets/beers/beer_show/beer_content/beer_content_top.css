@@ -1,10 +1,16 @@
-#beer-content-top{
+.bct-container{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+.bct-row{
+    display: flex;
+    width: 90%;
     border-bottom: 1px solid lightgray;
     padding: 20px;
-
+    justify-content: space-between;
 }
+
 #beer-content-top-title h1:first-child{
 font-size: 32px;
 font-weight: 400;

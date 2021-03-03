@@ -24,19 +24,7 @@ const BeerContent = ({ beer, setOpenModal }) => {
 
             <BeerContentTop beer={beer}/>
 
-            <div id='beer-content-middle'>
-                <div id='beer-content-mid-details'>
-                    <div id='abv-container'>
-                        <p>{beer.abv}ABV</p>
-                    </div>
 
-                    <div id='ibu-container'>
-                        <p>{beer.ibu}IBU</p>
-                    </div>
-
-                </div>
-
-            </div>
             <div className='beer-content-bottom'>
                 <div className='beer-content-bottom-details-container'>
 
