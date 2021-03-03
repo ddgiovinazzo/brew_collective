@@ -2,7 +2,8 @@ class Api::CheckInsController < ApplicationController
     def create
         @check_in = CheckIn.new(check_in_params)
         if @check_in.save
-            render :show
+            @beer = Beer.find(@check_in.beer_id)
+            render "/api/beers/show"
         else
             render json: @check_in.errors.full_messages, status: 422
         end    

@@ -1,0 +1,31 @@
+#beer-content-top{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+    padding: 20px;
+
+}
+#beer-content-top-title h1:first-child{
+font-size: 32px;
+font-weight: 400;
+margin-bottom: 5px;
+color: #0D1F2D;
+}
+#beer-content-top-title p:nth-child(2){
+    color: #586BA4;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+#beer-content-top-title p:nth-child(3){
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.beer-content-left-container{
+    display: flex;
+}
+
+.beer-content-top-title{
+    padding: 5px 15px;
+}
+

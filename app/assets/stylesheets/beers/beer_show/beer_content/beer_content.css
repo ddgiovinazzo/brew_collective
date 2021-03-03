@@ -1,54 +1,3 @@
-#beer-content-top{
-    display: flex;
-    border-bottom: 1px solid lightgray;
-    padding: 20px;
-
-}
-#beer-content-top h1:first-child{
-font-size: 32px;
-font-weight: 400;
-margin-bottom: 5px;
-color: #0D1F2D;
-}
-#beer-content-top p:nth-child(2){
-    color: #586BA4;
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-#beer-content-top p:nth-child(3){
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-#beer-content-top-title{
-    padding: 5px 15px;
-}
-
-
-
-#beer-content-top-social-inner-top{
-    border-right: 1px solid lightgray;
-
-}
-#beer-content-top-social-inner-top-left{
-    border-bottom: 1px solid lightgray;
-    padding: 0 5px 3px;
-
-}
-#beer-content-top-social-inner-bottom-left{
-    border-bottom: 1px solid lightgray;
-    padding: 0 5px 3px;
-}
-
-#beer-content-top-social-inner-bottom-right{
-    padding: 3px 5px 0 ;
-}
-
-#beer-content-top-social-inner-top-right{
-    padding: 3px 5px 0 ;
-}
-
-
 .beer-content-bottom{
     display: flex;
     justify-content: space-between;
@@ -104,3 +53,4 @@ color: #0D1F2D;
     display: flex;
 
 }
+

@@ -6,7 +6,7 @@ const mSTP = ({entities:{breweries, users, beers},session, errors}, ownProps) =>
   return {
     errors: errors.breweries.concat(errors.beers),
     currentUser: users[session.id],
-    currentBeer: beers[ownProps.match.params.beerId],
+    beer: beers[ownProps.match.params.beerId],
   };
 };
 

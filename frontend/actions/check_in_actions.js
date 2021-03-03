@@ -8,4 +8,5 @@ export const RECEIVE_CHECK_IN = 'RECEIVE_CHECK_IN'
 
 export const createCheckIn = checkIn => dispatch =>(
     CheckInAPIUtil.createCheckIn(checkIn)
+    .then(beer => dispatch(receiveBeer(beer)))
 )

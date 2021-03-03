@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn, update, setUpdate }) => {
+const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn}) => {
     const [counter, setCounter] = useState(255)
 
     const [checkIn, setCheckIn] = useState({
@@ -21,7 +21,6 @@ const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn, update, se
         e.preventDefault()
         createCheckIn(checkIn)
         setOpenModal(false)
-        setUpdate(!update)
     }
 
     return (

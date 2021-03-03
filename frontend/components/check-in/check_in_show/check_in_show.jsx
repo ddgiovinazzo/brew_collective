@@ -4,7 +4,9 @@ const CheckInShow = ({checkIn, fetchUser, user})=>{
     
     const [update, setUpdate] = useState(false)
     
-    useEffect(() => {fetchUser(checkIn.user_id)}, [update])
+    useEffect(() => {
+        if(!user)fetchUser(checkIn.user_id)
+    }, [update])
     
     if(!checkIn || !user) return null
     
