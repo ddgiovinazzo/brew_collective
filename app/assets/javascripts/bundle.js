@@ -1485,7 +1485,16 @@ var CheckInForm = function CheckInForm(_ref) {
     placeholder: "What did you think?"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "counter"
-  }, counter)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, counter)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "slidecontainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "range",
+    min: "0",
+    max: "5",
+    defaultValue: "0",
+    className: "slider",
+    id: "myRange"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleSubmit,
     className: "form-submit"
   }, "Confirm"))));

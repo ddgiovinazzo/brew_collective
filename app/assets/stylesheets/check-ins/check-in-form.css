@@ -13,7 +13,7 @@
 
 .modal-form-container{
     width: 500px;
-    height: 225px;
+    height: fit-content;
     background-color: white;
 }
 
@@ -37,10 +37,11 @@ cursor: pointer;
     color: #88958D
 }
 .modal-form{
-    padding: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .review-container{
@@ -62,3 +63,45 @@ cursor: pointer;
     border-radius: 3px;
     
 }
+.slidecontainer {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%; 
+    height: 10px;
+    border-radius: 20px;
+    background: #d3d3d3; 
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+
+  .slider:hover {
+    opacity: 1;
+  }
+  
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #03312E; 
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px; 
+    background: #03312E; 
+    cursor: pointer;
+  }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn}) => {
+const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn }) => {
     const [counter, setCounter] = useState(255)
 
     const [checkIn, setCheckIn] = useState({
@@ -9,15 +9,15 @@ const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn}) => {
         review: ""
     })
 
-    const handleText = (e)=>{
+    const handleText = (e) => {
         const handleCheckIn = Object.assign({}, checkIn)
         handleCheckIn["review"] = e.currentTarget.value
 
-        setCounter(255-e.currentTarget.value.length)
+        setCounter(255 - e.currentTarget.value.length)
         setCheckIn(handleCheckIn)
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault()
         createCheckIn(checkIn)
         setOpenModal(false)
@@ -36,8 +36,11 @@ const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn}) => {
                         <textarea onChange={handleText} placeholder="What did you think?"></textarea>
                         <p className="counter">{counter}</p>
                     </div>
+                    <div className="slidecontainer">
+                        <input type="range" min="0" max="5" defaultValue="0" className="slider" id="myRange" />
+                    </div>
 
-                        <button onClick={handleSubmit} className='form-submit'>Confirm</button>
+                    <button onClick={handleSubmit} className='form-submit'>Confirm</button>
 
                 </form>
             </div>

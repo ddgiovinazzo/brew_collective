@@ -11,14 +11,8 @@
     padding: 30px;
 }
 
-.sign-in-form-errors{
 
-    width: 400px;
-    height: fit-content;
 
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
 
 .sign-in-form > form{
    align-items: center;
@@ -41,7 +35,7 @@
     border-radius: 4px;
     font-family: 'Alatsi', sans-serif;
     font-size: 18px;
-    margin: 20px 0 0px 0;
+    margin: 10px
 }
 
 .demo-btn{
@@ -78,7 +72,7 @@
     align-items: center;
     display: flex;
     width: 100%;
-    margin-bottom: 10px;
+    margin: 10px;
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 268px;
@@ -94,7 +88,6 @@
 
 .sign-up-p{
     border-top: 1px solid lightgray;
-    margin-top: 40px;
     padding-top: 20px;
     font-family: 'Alatsi', sans-serif;
     font-size: 20px;
@@ -129,11 +122,11 @@ font-size: 20px;
 
 .errors-container-sign-in{
     background-color: #931F1D;
-    width: 336px ;
+    width: 250px ;
     border-radius: 5px;
-    padding: 16px;
+    padding: 10px;
     color: white;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     letter-spacing: 1px;
 }
