@@ -3,14 +3,16 @@
     justify-content: space-between;
     position: relative;
     border-bottom: 1px solid lightgray;
-    padding: 15px;
+    padding: 20px 40px;
 
 }
+
 .beer-content-bottom-details p{
     font-size: 18px;
     line-height: 1.25em;
     width: fit-content;
     display: inline;
+    white-space: pre-wrap;
 }
 
 .beer-content-bottom-details-container{

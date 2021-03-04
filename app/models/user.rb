@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
     validate :valid_age, if: proc { |u| u.birthday.present? }
 
-    has_many :check_ins
+    has_many :check_ins, dependent: :destroy
 
     attr_reader :password
     

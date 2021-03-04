@@ -1188,7 +1188,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var BeerContentTop = function BeerContentTop(_ref) {
   var beer = _ref.beer,
-      currentUser = _ref.currentUser;
+      currentUserId = _ref.currentUserId;
   var uniques = {};
   var uniquesCount = 0;
   beer.checkIns.forEach(function (checkIn) {
@@ -1197,8 +1197,8 @@ var BeerContentTop = function BeerContentTop(_ref) {
       uniquesCount += 1;
     }
   });
-  var you = currentUser.checkIns.filter(function (checkIn) {
-    return checkIn.beer_id === beer.id;
+  var you = beer.checkIns.filter(function (checkIn) {
+    return checkIn.user_id === currentUserId;
   });
   var monthly = beer.checkIns.filter(function (checkIn) {
     var currentDate = new Date();
@@ -1212,12 +1212,12 @@ var BeerContentTop = function BeerContentTop(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-content-left-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "beer-content-top-img"
+    className: "bct-img"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "".concat(beer.imageUrl),
     alt: ""
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "beer-content-top-title"
+    className: "bct-title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, beer.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.brewery.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.servingStyle))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-content-right-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1229,17 +1229,20 @@ var BeerContentTop = function BeerContentTop(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Monthly"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, monthly.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, you.length)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "abv-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.abv, "%ABV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "ibu-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.ibu, "IBU"))));
+    className: "bct-mid-inner-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.abv, "% ABV")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-mid-inner-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.ibu, " IBU")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-mid-inner-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Review Rating")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-mid-inner-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total Reviews"))));
 };
 
 var mSTP = function mSTP(_ref2) {
-  var users = _ref2.entities.users,
-      session = _ref2.session;
+  var session = _ref2.session;
   return {
-    currentUser: users[session.id]
+    currentUserId: session.id
   };
 };
 

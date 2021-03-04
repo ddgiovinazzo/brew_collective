@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 
 
-const BeerContentTop = ({ beer, currentUser }) => {
+const BeerContentTop = ({ beer, currentUserId }) => {
     const uniques = {}
     let uniquesCount = 0
     beer.checkIns.forEach(checkIn => {
@@ -12,7 +12,7 @@ const BeerContentTop = ({ beer, currentUser }) => {
         }
     })
 
-    const you = currentUser.checkIns.filter(checkIn => checkIn.beer_id === beer.id)
+    const you = beer.checkIns.filter(checkIn => checkIn.user_id === currentUserId)
 
     const monthly = beer.checkIns.filter(checkIn => {
         const currentDate = new Date()
@@ -27,11 +27,11 @@ const BeerContentTop = ({ beer, currentUser }) => {
         <div className='bct-container'>
             <div className='bct-row'>
                 <div className="beer-content-left-container">
-                    <div id='beer-content-top-img'>
+                    <div className='bct-img'>
                         <img src={`${beer.imageUrl}`} alt="" />
 
                     </div>
-                    <div id='beer-content-top-title'>
+                    <div className='bct-title'>
                         <h1>{beer.name}</h1>
                         <p>{beer.brewery.name}</p>
                         <p>{beer.servingStyle}</p>
@@ -67,12 +67,20 @@ const BeerContentTop = ({ beer, currentUser }) => {
 
             </div>
             <div className='bct-row'>
-                <div id='abv-container'>
-                    <p>{beer.abv}%ABV</p>
+                <div className='bct-mid-inner-div'>
+                    <p>{beer.abv}% ABV</p>
                 </div>
 
-                <div id='ibu-container'>
-                    <p>{beer.ibu}IBU</p>
+                <div className='bct-mid-inner-div'>
+                    <p>{beer.ibu} IBU</p>
+                </div>
+
+                <div className='bct-mid-inner-div'>
+                    <p>Review Rating</p>
+                </div>
+
+                <div className='bct-mid-inner-div'>
+                    <p>Total Reviews</p>
                 </div>
 
             </div>
@@ -82,6 +90,6 @@ const BeerContentTop = ({ beer, currentUser }) => {
     )
 }
 
-const mSTP = ({ entities: { users }, session }) => ({ currentUser: users[session.id] })
+const mSTP = ({ session }) => ({ currentUserId: session.id })
 
 export default connect(mSTP, null)(BeerContentTop)

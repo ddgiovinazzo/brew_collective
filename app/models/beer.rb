@@ -3,6 +3,6 @@ class Beer < ApplicationRecord
     validates :name, uniqueness: true
 
     has_one_attached :image
-    has_many :check_ins
+    has_many :check_ins, dependent: :destroy
     belongs_to :brewery
 end

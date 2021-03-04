@@ -18,7 +18,6 @@ const BeerContent = ({ beer, setOpenModal }) => {
             <p className="psuedo-link" onClick={() => setShortenSentence(true)}> Show Less</p>
         </div>
     )
-
     return (
         <div className='beer-show-container'>
 
