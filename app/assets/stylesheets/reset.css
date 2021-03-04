@@ -74,12 +74,7 @@ table {
 	border-spacing: 0;
 }
 
-a{
-	color: #586BA4;
-}
-a:hover{
-	color: #FF8558;
-}
+
 
 input:focus, textarea:focus, select:focus{
 	outline: none;

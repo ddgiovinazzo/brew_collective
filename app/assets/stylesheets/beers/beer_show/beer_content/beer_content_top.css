@@ -50,9 +50,24 @@ color: #0D1F2D;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 }
+.bct-mid-inner-div > p{
+    font-size: 16px;
+}
 
 .bct-mid-inner-div:nth-child(1),
-.bct-mid-inner-div:nth-child(2), 
+.bct-mid-inner-div:nth-child(2){
+    border-right: 1px solid lightgray;
+}
 .bct-mid-inner-div:nth-child(3){
     border-right: 1px solid lightgray;
+    display: flex;
+    width: fit-content;
+    padding: 0 10px
+
+}
+.bct-mid-inner-div:nth-child(3) > *{
+    padding: 0 2px
+}
+.rating{
+    height: 16px;
 }

@@ -1073,14 +1073,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var BeerActivity = function BeerActivity(_ref) {
   var beer = _ref.beer;
   var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There doesn't seem to be any recent activity!");
   var checkins = beer.checkIns.map(function (checkIn) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_1__.default, {
       key: checkIn.id,
-      checkIn: checkIn
+      checkIn: checkIn,
+      beer: beer
     });
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1234,7 +1234,11 @@ var BeerContentTop = function BeerContentTop(_ref) {
     className: "bct-mid-inner-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.ibu, " IBU")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-mid-inner-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Review Rating")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Rating:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    className: "rating",
+    src: window.fourStars,
+    alt: ""
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-mid-inner-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total Reviews"))));
 };
@@ -1510,6 +1514,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/time_util */ "./frontend/util/time_util.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1524,10 +1530,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var CheckInShow = function CheckInShow(_ref) {
   var checkIn = _ref.checkIn,
       fetchUser = _ref.fetchUser,
-      user = _ref.user;
+      user = _ref.user,
+      beer = _ref.beer;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -1538,7 +1547,13 @@ var CheckInShow = function CheckInShow(_ref) {
     if (!user) fetchUser(checkIn.user_id);
   }, [update]);
   if (!checkIn || !user) return null;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIn.review, " - ", user.username));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "check-in-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/user/".concat(user.id)
+  }, "".concat(user.firstName, " ").concat(user.lastName[0], ".")), ' is drinking a ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/beer/".concat(beer.id)
+  }, "".concat(beer.name, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(checkIn.review, " - ").concat((0,_util_time_util__WEBPACK_IMPORTED_MODULE_1__.elapsedTime)(checkIn.created_at))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckInShow);
@@ -3287,6 +3302,30 @@ var logout = function logout() {
     method: 'DELETE',
     url: '/api/session'
   });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/time_util.js":
+/*!************************************!*\
+  !*** ./frontend/util/time_util.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "elapsedTime": () => /* binding */ elapsedTime
+/* harmony export */ });
+var elapsedTime = function elapsedTime(dateString) {
+  var currentDate = new Date();
+  var targetTime = new Date(dateString).getTime(); // debugger
+
+  var elapsedTime = (currentDate.getTime() - targetTime) / 1000;
+  var currentMonth = currentDate.getMonth() + 1;
+  var currentYear = currentDate.getFullYear();
+  if (elapsedTime < 60) return 'a few seconds ago';else if (elapsedTime < 120) return 'a minute ago';else if (elapsedTime < 3600) return "".concat(Math.floor(elapsedTime / 60), " minutes ago");else if (elapsedTime < 7200) return "an hour ago";else if (elapsedTime < 86400) return "".concat(Math.floor(elapsedTime / 3600), " hours ago");else if (elapsedTime < 172, 800) return "one day ago";else if (elapsedTime < 2678400 && [1, 3, 5, 7, 8, 10, 12].includes(currentMonth)) return "".concat(Math.floor(elapsedTime / 86400), " days ago");else if (elapsedTime < 2592000 && [11, 4, 6, 9].includes(currentMonth)) return "".concat(Math.floor(elapsedTime / 86, 400), " days ago");else if (elapsedTime < 2505600 && currentYear % 4 === 0) return "".concat(Math.floor(elapsedTime / 86400), " days ago");else if (elapsedTime < 2419200 && currentYear % 4 !== 0) return "".concat(Math.floor(elapsedTime / 86400), " days ago");else if (elapsedTime < 5356800 && [1, 3, 5, 7, 8, 10, 12].includes(currentMonth)) return "a month ago";else if (elapsedTime < 5184000 && [11, 4, 6, 9].includes(currentMonth)) return "a month ago";else if (elapsedTime < 5011200 && currentYear % 4 === 0) return "a month ago";else if (elapsedTime < 4838400 && currentYear % 4 !== 0) return "a month ago";else if (elapsedTime < 31536000) return "".concat(Math.floor(elapsedTime / 2592000), " months ago");else if (elapsedTime < 63072000) return "a year ago";else if (elapsedTime <= 63072000) return "".concat(Math.floor(elapsedTime / 31536000), " years ago");
+  return elapsedTime;
 };
 
 /***/ }),

@@ -76,7 +76,8 @@ const BeerContentTop = ({ beer, currentUserId }) => {
                 </div>
 
                 <div className='bct-mid-inner-div'>
-                    <p>Review Rating</p>
+                    <p>Rating:</p>
+                    <img className="rating" src={window.fourStars} alt="" />
                 </div>
 
                 <div className='bct-mid-inner-div'>

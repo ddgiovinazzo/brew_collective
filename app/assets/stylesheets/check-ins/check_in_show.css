@@ -1,0 +1,15 @@
+.check-in-content > p{
+    display: inline;
+}
+.check-in-content{
+    font-size: 18px;
+    padding: 20px;
+    border-top: 1px lightgray solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.check-in-content:last-child{
+    border-bottom: 1px lightgray solid;
+}
