@@ -20,7 +20,7 @@ Beer.create(name: 'Breakfast Stout', brewery_id: Brewery.where(name: "Founders B
     serving_style: 'Stout - Oatmeal', abv: 8.3, ibu: 60,
     flavor_profile: 'The coffee lover’s consummate beer. Brewed with an abundance of flaked oats, bitter and imported chocolates, and Sumatra and Kona coffee, this stout has an intense fresh-roasted java nose topped with a frothy, cinnamon-colored head that goes forever.')
 
-Beer.update(name: 'Two Hearted Ale', brewery_id: Brewery.where(name: "Bell's Brewery").pluck(:id).first,
+Beer.create(name: 'Two Hearted Ale', brewery_id: Brewery.where(name: "Bell's Brewery").pluck(:id).first,
     serving_style: 'IPA - American', abv: 7, ibu: 55, 
     flavor_profile: "Brewed with 100% Centennial hops from the Pacific Northwest and named after the Two Hearted River in Michigan’s Upper Peninsula, this IPA is bursting with hop aromas ranging from pine to grapefruit from massive hop additions in both the kettle and the fermenter.\n\nPerfectly balanced with a malt backbone and combined with the signature fruity aromas of Bell's house yeast, this beer is remarkably drinkable and well suited for adventures everywhere.")
 
