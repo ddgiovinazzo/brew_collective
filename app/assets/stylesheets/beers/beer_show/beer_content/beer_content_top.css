@@ -51,7 +51,7 @@ color: #0D1F2D;
     border-bottom: 1px solid lightgray;
 }
 .bct-mid-inner-div > p{
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .bct-mid-inner-div:nth-child(1),
@@ -61,7 +61,7 @@ color: #0D1F2D;
 .bct-mid-inner-div:nth-child(3){
     border-right: 1px solid lightgray;
     display: flex;
-    width: fit-content;
+    min-width: fit-content;
     padding: 0 10px
 
 }
@@ -69,5 +69,5 @@ color: #0D1F2D;
     padding: 0 2px
 }
 .rating{
-    height: 16px;
+    height: 22px;
 }

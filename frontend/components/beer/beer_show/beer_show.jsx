@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import CheckInFormContainer from '../../check-in/check-in-form-container'
-import BeerContent from './beer_content/beer_content'
-import BeerActivity from './beer_activity'
+import BeerContentTop from './beer_content/beer_content_top'
+import BeerContentBottom from './beer_content/beer_content_bottom'
+import CheckInShowContainer from '../../check-in/check_in_show/check_in_show_container'
 
 const Beer = ({ match, beer, fetchBeer, currentUser }) => {
 
     const [update, setUpdate] = useState(false)
     const [openModal, setOpenModal] = useState(false)
 
-    useEffect(() => { fetchBeer(match.params.beerId)}, [update])
+    useEffect(() => { fetchBeer(match.params.beerId) }, [update])
 
     if (!beer) {
         return (
@@ -18,9 +19,18 @@ const Beer = ({ match, beer, fetchBeer, currentUser }) => {
             </div>
         )
     }
-
-
-    
+    const noCheckIns = <p>There doesn't seem to be any recent activity!</p>
+    const checkIns = []
+    let ratings = 0
+    const totalRatings = 0
+    const avgRating = totalRatings ? ratings / totalRatings : 0
+    beer.checkIns.forEach(checkIn => {
+        if(checkIn.rating){
+            ratings += checkIn.rating
+            totalRatings ++
+        }
+        checkIns.push(<CheckInShowContainer key={checkIn.id} checkIn={checkIn} beer={beer} />)
+    })
     return (
         <div className='main-outer'>
 
@@ -28,16 +38,25 @@ const Beer = ({ match, beer, fetchBeer, currentUser }) => {
 
                 {
                     openModal ?
-                        <CheckInFormContainer 
-                            beer_id={beer.id} 
-                            user_id={currentUser.id} 
-                            setOpenModal={setOpenModal} 
+                        <CheckInFormContainer
+                            beer_id={beer.id}
+                            user_id={currentUser.id}
+                            setOpenModal={setOpenModal}
                         />
                         : null
                 }
 
-                {<BeerContent beer={beer} setOpenModal={setOpenModal}/>}
-                {<BeerActivity beer={beer} />}
+                <div className='beer-show-container'>
+                    <BeerContentTop beer={beer} avgRating={avgRating} totalRatings={totalRatings}/>
+                    <BeerContentBottom beer={beer} setOpenModal={setOpenModal} />
+                </div>
+
+                <div className="content-container">
+                    <div id='recent-activity'>
+                        <h4>Global Recent Activity</h4>
+                        {beer.checkIns.length ? checkIns : noCheckIns}
+                    </div>
+                </div>
             </div>
 
         </div>

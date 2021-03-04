@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 
 
-const BeerContentTop = ({ beer, currentUserId }) => {
+const BeerContentTop = ({ beer, currentUserId, avgRating, totalRatings  }) => {
     const uniques = {}
     let uniquesCount = 0
     beer.checkIns.forEach(checkIn => {
@@ -22,6 +22,15 @@ const BeerContentTop = ({ beer, currentUserId }) => {
             date.getFullYear() === currentDate.getFullYear()
         )
     })
+
+    const caps = ()=>{
+        if(avgRating < 1) return window.zeroCaps
+        else if(avgRating < 2) return window.oneCap
+        else if(avgRating < 3) return window.twoCaps
+        else if(avgRating < 4) return window.threeCaps
+        else if(avgRating < 5) return window.fourCaps
+        else return window.fiveCaps
+    }
 
     return (
         <div className='bct-container'>
@@ -76,12 +85,12 @@ const BeerContentTop = ({ beer, currentUserId }) => {
                 </div>
 
                 <div className='bct-mid-inner-div'>
-                    <p>Rating:</p>
-                    <img className="rating" src={window.fourStars} alt="" />
+                    <img className="rating" src={caps()} alt="" />
+                    <p>({avgRating})</p>
                 </div>
 
                 <div className='bct-mid-inner-div'>
-                    <p>Total Reviews</p>
+                    <p>{totalRatings} Ratings</p>
                 </div>
 
             </div>

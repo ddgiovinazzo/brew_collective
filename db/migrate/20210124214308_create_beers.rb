@@ -4,7 +4,7 @@ class CreateBeers < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.integer :brewery_id, null: false
       t.string :serving_style, null: false
-      t.integer :abv, null: false
+      t.float :abv, null: false
       t.integer :ibu, null: false
       t.text :flavor_profile, null: false
 

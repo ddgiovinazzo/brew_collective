@@ -5,4 +5,5 @@ class Beer < ApplicationRecord
     has_one_attached :image
     has_many :check_ins, dependent: :destroy
     belongs_to :brewery
+
 end

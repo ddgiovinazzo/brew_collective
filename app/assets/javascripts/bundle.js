@@ -1057,10 +1057,10 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/beer/beer_show/beer_activity.jsx":
-/*!**************************************************************!*\
-  !*** ./frontend/components/beer/beer_show/beer_activity.jsx ***!
-  \**************************************************************/
+/***/ "./frontend/components/beer/beer_show/beer_content/beer_content_bottom.jsx":
+/*!*********************************************************************************!*\
+  !*** ./frontend/components/beer/beer_show/beer_content/beer_content_bottom.jsx ***!
+  \*********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1069,44 +1069,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../check-in/check_in_show/check_in_show_container */ "./frontend/components/check-in/check_in_show/check_in_show_container.js");
-
-
-
-var BeerActivity = function BeerActivity(_ref) {
-  var beer = _ref.beer;
-  var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There doesn't seem to be any recent activity!");
-  var checkins = beer.checkIns.map(function (checkIn) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_1__.default, {
-      key: checkIn.id,
-      checkIn: checkIn,
-      beer: beer
-    });
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "content-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "recent-activity"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Global Recent Activity"), beer.checkIns.length ? checkins : noCheckIns));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BeerActivity);
-
-/***/ }),
-
-/***/ "./frontend/components/beer/beer_show/beer_content/beer_content.jsx":
-/*!**************************************************************************!*\
-  !*** ./frontend/components/beer/beer_show/beer_content/beer_content.jsx ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _beer_content_top__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./beer_content_top */ "./frontend/components/beer/beer_show/beer_content/beer_content_top.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1121,8 +1083,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-var BeerContent = function BeerContent(_ref) {
+var BeerContentBottom = function BeerContentBottom(_ref) {
   var beer = _ref.beer,
       setOpenModal = _ref.setOpenModal;
   if (!beer) return null;
@@ -1145,10 +1106,6 @@ var BeerContent = function BeerContent(_ref) {
     }
   }, " Show Less"));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "beer-show-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_beer_content_top__WEBPACK_IMPORTED_MODULE_1__.default, {
-    beer: beer
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-content-bottom"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-content-bottom-details-container"
@@ -1163,10 +1120,10 @@ var BeerContent = function BeerContent(_ref) {
     className: "btn btn-primary tooltip beer-content-bottom-buttons"
   }, "\u2713", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bottom"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Check-in this Beer ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null)))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Check-in this Beer ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))))));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BeerContent);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BeerContentBottom);
 
 /***/ }),
 
@@ -1188,7 +1145,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var BeerContentTop = function BeerContentTop(_ref) {
   var beer = _ref.beer,
-      currentUserId = _ref.currentUserId;
+      currentUserId = _ref.currentUserId,
+      avgRating = _ref.avgRating,
+      totalRatings = _ref.totalRatings;
   var uniques = {};
   var uniquesCount = 0;
   beer.checkIns.forEach(function (checkIn) {
@@ -1205,6 +1164,11 @@ var BeerContentTop = function BeerContentTop(_ref) {
     var date = new Date(checkIn.created_at);
     return date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear();
   });
+
+  var caps = function caps() {
+    if (avgRating < 1) return window.zeroCaps;else if (avgRating < 2) return window.oneCap;else if (avgRating < 3) return window.twoCaps;else if (avgRating < 4) return window.threeCaps;else if (avgRating < 5) return window.fourCaps;else return window.fiveCaps;
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1234,13 +1198,13 @@ var BeerContentTop = function BeerContentTop(_ref) {
     className: "bct-mid-inner-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.ibu, " IBU")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-mid-inner-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Rating:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "rating",
-    src: window.fourStars,
+    src: caps(),
     alt: ""
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "(", avgRating, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-mid-inner-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total Reviews"))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, totalRatings, " Ratings"))));
 };
 
 var mSTP = function mSTP(_ref2) {
@@ -1267,8 +1231,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _check_in_check_in_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../check-in/check-in-form-container */ "./frontend/components/check-in/check-in-form-container.js");
-/* harmony import */ var _beer_content_beer_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./beer_content/beer_content */ "./frontend/components/beer/beer_show/beer_content/beer_content.jsx");
-/* harmony import */ var _beer_activity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./beer_activity */ "./frontend/components/beer/beer_show/beer_activity.jsx");
+/* harmony import */ var _beer_content_beer_content_top__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./beer_content/beer_content_top */ "./frontend/components/beer/beer_show/beer_content/beer_content_top.jsx");
+/* harmony import */ var _beer_content_beer_content_bottom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./beer_content/beer_content_bottom */ "./frontend/components/beer/beer_show/beer_content/beer_content_bottom.jsx");
+/* harmony import */ var _check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../check-in/check_in_show/check_in_show_container */ "./frontend/components/check-in/check_in_show/check_in_show_container.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1280,6 +1245,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
 
 
 
@@ -1314,6 +1282,23 @@ var Beer = function Beer(_ref) {
     }));
   }
 
+  var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There doesn't seem to be any recent activity!");
+  var checkIns = [];
+  var ratings = 0;
+  var totalRatings = 0;
+  var avgRating = totalRatings ? ratings / totalRatings : 0;
+  beer.checkIns.forEach(function (checkIn) {
+    if (checkIn.rating) {
+      ratings += checkIn.rating;
+      _readOnlyError("totalRatings"), totalRatings++;
+    }
+
+    checkIns.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_4__.default, {
+      key: checkIn.id,
+      checkIn: checkIn,
+      beer: beer
+    }));
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "main-outer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1322,12 +1307,20 @@ var Beer = function Beer(_ref) {
     beer_id: beer.id,
     user_id: currentUser.id,
     setOpenModal: setOpenModal
-  }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_beer_content_beer_content__WEBPACK_IMPORTED_MODULE_2__.default, {
+  }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "beer-show-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_beer_content_beer_content_top__WEBPACK_IMPORTED_MODULE_2__.default, {
+    beer: beer,
+    avgRating: avgRating,
+    totalRatings: totalRatings
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_beer_content_beer_content_bottom__WEBPACK_IMPORTED_MODULE_3__.default, {
     beer: beer,
     setOpenModal: setOpenModal
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_beer_activity__WEBPACK_IMPORTED_MODULE_3__.default, {
-    beer: beer
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "content-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    id: "recent-activity"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Global Recent Activity"), beer.checkIns.length ? checkIns : noCheckIns))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Beer);
