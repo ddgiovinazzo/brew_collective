@@ -4,13 +4,16 @@ import BeerContentTop from './beer_content/beer_content_top'
 import BeerContentBottom from './beer_content/beer_content_bottom'
 import CheckInShowContainer from '../../check-in/check_in_show/check_in_show_container'
 
-const Beer = ({ match, beer, fetchBeer, currentUser }) => {
-
+const BeerShow = (props) => {
+    const {match, fetchBeer, currentUser, fetchUsers, beer} = props
+    
     const [update, setUpdate] = useState(false)
     const [openModal, setOpenModal] = useState(false)
-
-    useEffect(() => { fetchBeer(match.params.beerId) }, [update])
-
+    useEffect(() => {
+        fetchBeer(match.params.beerId)
+        .then(({beer:{userIds}}) =>{if(userIds)fetchUsers(userIds)})
+    }, [update])
+    
     if (!beer) {
         return (
             <div className='main-outer'>
@@ -19,19 +22,37 @@ const Beer = ({ match, beer, fetchBeer, currentUser }) => {
             </div>
         )
     }
+
+    const {beer: {checkIns, ratings}} = props
+    
     const noCheckIns = <p>There doesn't seem to be any recent activity!</p>
-    const checkIns = []
-    let ratings = 0
-    let totalRatings = 0
-    beer.checkIns.forEach(checkIn => {
-        if(checkIn.rating){
-            ratings += checkIn.rating
-            totalRatings ++
+    const uniques = {}
+    const stats = {
+        uniquesCount: 0,
+        you: 0,
+        monthly: 0
+    }
+    const checkInList = []
+
+    checkIns.forEach(checkIn => {
+        const currentDate = new Date()
+        const date = new Date(checkIn.createdAt)
+
+        if(
+            date.getMonth() === currentDate.getMonth() &&
+            date.getFullYear() === currentDate.getFullYear()
+        )
+            stats.monthly++
+
+        if (!uniques[checkIn.userId]) {
+            uniques[checkIn.userId] = 1;
+            stats.uniquesCount++
         }
-        checkIns.push(<CheckInShowContainer key={checkIn.id} checkIn={checkIn} beer={beer} />)
+        if(checkIn.userId === currentUser.id) stats.you++
+        
+        checkInList.push(<CheckInShowContainer key={checkIn.id} beer={beer} checkIn={checkIn}/>)
     })
 
-    const avgRating = totalRatings ? (ratings / totalRatings).toFixed(2) : 0
 
     return (
         <div className='main-outer'>
@@ -49,14 +70,14 @@ const Beer = ({ match, beer, fetchBeer, currentUser }) => {
                 }
 
                 <div className='beer-show-container'>
-                    <BeerContentTop beer={beer} avgRating={avgRating} totalRatings={totalRatings}/>
+                    <BeerContentTop beer={beer} checkIns={checkIns} ratings={ratings} stats={stats}/>
                     <BeerContentBottom beer={beer} setOpenModal={setOpenModal} />
                 </div>
 
                 <div className="content-container">
                     <div id='recent-activity'>
                         <h4>Global Recent Activity</h4>
-                        {beer.checkIns.length ? checkIns : noCheckIns}
+                        {beer.checkIns.length? checkInList : noCheckIns}
                     </div>
                 </div>
             </div>
@@ -70,4 +91,4 @@ const Beer = ({ match, beer, fetchBeer, currentUser }) => {
     )
 }
 
-export default Beer
+export default BeerShow

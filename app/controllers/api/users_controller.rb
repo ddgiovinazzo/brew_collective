@@ -9,6 +9,12 @@ class Api::UsersController < ApplicationController
         end    
     end
 
+    def search
+        ids = params[:user_ids].split(',')
+        @users = User.where(id: ids)
+            render "/api/users/index"
+    end
+
     def show
         @user = User.find(params[:id])
     end

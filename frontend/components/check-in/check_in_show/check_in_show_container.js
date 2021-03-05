@@ -1,17 +1,16 @@
 import { connect } from 'react-redux';
-import {fetchUser} from '../../../actions/user_actions'
 import CheckInShow from './check_in_show'
 
-const mSTP = (state, ownProps)=>{
+const mSTP = ({entities:{users}}, ownProps)=>{
     return{
-        user: state.entities.users[ownProps.checkIn.user_id]
+        user: users[ownProps.checkIn.userId]
     }
 }
-const mDTP = (dispatch)=>{
-    return{
-        fetchUser: user_id => dispatch(fetchUser(user_id))
-    }
-}
+// const mDTP = (dispatch)=>{
+//     return{
+//         fetchUser: user_id => dispatch(fetchUser(user_id))
+//     }
+// }
 
 
-export default connect(mSTP,mDTP)(CheckInShow)
+export default connect(mSTP,null)(CheckInShow)
