@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavSearchContainer from '../search/nav_search/nav_search_container'
 import { Link } from 'react-router-dom'
 
 const NavBar = ({ currentUserId, logout }) => {
@@ -29,11 +30,8 @@ const NavBar = ({ currentUserId, logout }) => {
                         {dropdown}
                     </div>
 
-
-                    <div id='search-bar-container' >
-                        <input id="search-bar" placeholder="Find a beer..." type="text" />
-                        <i className="fas fa-search fa-med search-icon"></i>
-                    </div>
+                    {<NavSearchContainer/>}
+                    
                 </div>
             </div>
 

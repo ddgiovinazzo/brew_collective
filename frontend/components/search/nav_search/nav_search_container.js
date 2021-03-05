@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import NavBar from './navbar'
+import { fetchAllBeers } from '../../../actions/beer_actions';
+import NavSearch from './nav_search'
 
 const mSTP = (state) => {
   return {
@@ -12,8 +12,8 @@ const mSTP = (state) => {
 
 const mDTP = dispatch => {
   return {
-    logout: (user) => dispatch(logout(user))
+    fetchAllBeers: ()=> dispatch(fetchAllBeers())
   };
 };
 
-export default connect(mSTP, mDTP)(NavBar)
+export default connect(mSTP, mDTP)(NavSearch)

@@ -17,5 +17,5 @@ export const fetchCheckIns = checkIns => dispatch =>(
 
 export const createCheckIn = checkIn => dispatch =>(
     CheckInAPIUtil.createCheckIn(checkIn)
-    // .then(beer => dispatch(receiveBeer(beer)))
+    .then(beer => dispatch(receiveBeer(beer)))
 )

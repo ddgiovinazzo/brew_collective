@@ -9,11 +9,11 @@ const BeerShow = (props) => {
     
     const [update, setUpdate] = useState(0)
     const [openModal, setOpenModal] = useState(false)
-    useEffect(() => {
-        fetchBeer(match.params.beerId)
-        .then(({beer:{userIds}}) =>{if(userIds)fetchUsers(userIds)})
-    }, [update])
-    
+        
+   useEffect(() => {
+    if(beer && beer.userIds) fetchUsers(beer.userIds)
+   }, [update])
+   
     if (!beer) {
         return (
             <div className='main-outer'>
@@ -22,6 +22,8 @@ const BeerShow = (props) => {
             </div>
         )
     }
+    if(!update)setUpdate(update + 1)
+    
 
     const {beer: {checkIns, ratings}} = props
     

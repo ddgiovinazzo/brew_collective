@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom'
 
 class BeerIndex extends React.Component {
 
-    componentDidMount(){
-        this.props.fetchAllBeers()
-    }
+
 
     render() {
 
