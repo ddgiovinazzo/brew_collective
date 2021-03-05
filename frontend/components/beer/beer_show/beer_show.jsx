@@ -22,8 +22,7 @@ const Beer = ({ match, beer, fetchBeer, currentUser }) => {
     const noCheckIns = <p>There doesn't seem to be any recent activity!</p>
     const checkIns = []
     let ratings = 0
-    const totalRatings = 0
-    const avgRating = totalRatings ? ratings / totalRatings : 0
+    let totalRatings = 0
     beer.checkIns.forEach(checkIn => {
         if(checkIn.rating){
             ratings += checkIn.rating
@@ -31,6 +30,9 @@ const Beer = ({ match, beer, fetchBeer, currentUser }) => {
         }
         checkIns.push(<CheckInShowContainer key={checkIn.id} checkIn={checkIn} beer={beer} />)
     })
+
+    const avgRating = totalRatings ? (ratings / totalRatings).toFixed(2) : 0
+
     return (
         <div className='main-outer'>
 

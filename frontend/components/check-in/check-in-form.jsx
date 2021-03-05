@@ -6,7 +6,8 @@ const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn }) => {
     const [checkIn, setCheckIn] = useState({
         user_id,
         beer_id,
-        review: ""
+        review: "",
+        rating: 0
     })
 
     const handleText = (e) => {
@@ -15,6 +16,18 @@ const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn }) => {
 
         setCounter(255 - e.currentTarget.value.length)
         setCheckIn(handleCheckIn)
+    }
+
+    const handleRating = (e) => {
+        const handleCheckIn = Object.assign({}, checkIn)
+        handleCheckIn["rating"] = e.currentTarget.value
+        setCheckIn(handleCheckIn)
+    }
+
+    const displayRating = (rating)=>{
+        if(rating === '1') return '1 Star'
+        if(parseInt(rating) > 1) return `${rating} Stars`
+        else return 'No Rating'
     }
 
     const handleSubmit = (e) => {
@@ -33,14 +46,15 @@ const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn }) => {
                 <form className="modal-form">
 
                     <div className="review-container">
-                        <textarea onChange={handleText} placeholder="What did you think?"></textarea>
+                        <textarea onChange={handleText} placeholder="What did you think?" maxLength="255"></textarea>
                         <p className="counter">{counter}</p>
                     </div>
-                    <div className="slidecontainer">
-                        <input type="range" min="0" max="5" defaultValue="0" className="slider" id="myRange" />
+                    <div className="slide-container">
+                        <input onChange={handleRating} type="range" min="0" max="5" defaultValue="0" className="slider" id="slider" />
+                        <div>{displayRating(checkIn.rating)}</div>
                     </div>
-
                     <button onClick={handleSubmit} className='form-submit'>Confirm</button>
+
 
                 </form>
             </div>

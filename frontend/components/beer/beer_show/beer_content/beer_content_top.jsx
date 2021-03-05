@@ -32,6 +32,7 @@ const BeerContentTop = ({ beer, currentUserId, avgRating, totalRatings  }) => {
         else return window.fiveCaps
     }
 
+
     return (
         <div className='bct-container'>
             <div className='bct-row'>

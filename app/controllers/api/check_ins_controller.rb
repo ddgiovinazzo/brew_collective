@@ -15,7 +15,7 @@ class Api::CheckInsController < ApplicationController
     
     private
     def check_in_params
-        params.require(:check_in).permit(:beer_id, :user_id, :review)
+        params.require(:check_in).permit(:beer_id, :user_id, :review, :rating)
     end
 
 end

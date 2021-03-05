@@ -63,29 +63,32 @@ cursor: pointer;
     border-radius: 3px;
     
 }
-.slidecontainer {
+.slide-container {
     width: 100%;
+    height: 50px;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .slider {
     -webkit-appearance: none;
     appearance: none;
-    width: 50%; 
+    width: 60%; 
     height: 10px;
     border-radius: 20px;
-    background: #d3d3d3; 
+    background: #88958D; 
     outline: none;
-    opacity: 0.7;
+    opacity: 0.5;
     -webkit-transition: .2s;
     transition: opacity .2s;
   }
   
 
   .slider:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
   
 

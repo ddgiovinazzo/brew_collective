@@ -1246,8 +1246,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 
 
 
@@ -1286,11 +1284,10 @@ var Beer = function Beer(_ref) {
   var checkIns = [];
   var ratings = 0;
   var totalRatings = 0;
-  var avgRating = totalRatings ? ratings / totalRatings : 0;
   beer.checkIns.forEach(function (checkIn) {
     if (checkIn.rating) {
       ratings += checkIn.rating;
-      _readOnlyError("totalRatings"), totalRatings++;
+      totalRatings++;
     }
 
     checkIns.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_4__.default, {
@@ -1299,6 +1296,7 @@ var Beer = function Beer(_ref) {
       beer: beer
     }));
   });
+  var avgRating = totalRatings ? (ratings / totalRatings).toFixed(2) : 0;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "main-outer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1441,7 +1439,8 @@ var CheckInForm = function CheckInForm(_ref) {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     user_id: user_id,
     beer_id: beer_id,
-    review: ""
+    review: "",
+    rating: 0
   }),
       _useState4 = _slicedToArray(_useState3, 2),
       checkIn = _useState4[0],
@@ -1452,6 +1451,17 @@ var CheckInForm = function CheckInForm(_ref) {
     handleCheckIn["review"] = e.currentTarget.value;
     setCounter(255 - e.currentTarget.value.length);
     setCheckIn(handleCheckIn);
+  };
+
+  var handleRating = function handleRating(e) {
+    var handleCheckIn = Object.assign({}, checkIn);
+    handleCheckIn["rating"] = e.currentTarget.value;
+    setCheckIn(handleCheckIn);
+  };
+
+  var displayRating = function displayRating(rating) {
+    if (rating === '1') return '1 Star';
+    if (parseInt(rating) > 1) return "".concat(rating, " Stars");else return 'No Rating';
   };
 
   var handleSubmit = function handleSubmit(e) {
@@ -1482,19 +1492,21 @@ var CheckInForm = function CheckInForm(_ref) {
     className: "review-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
     onChange: handleText,
-    placeholder: "What did you think?"
+    placeholder: "What did you think?",
+    maxLength: "255"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "counter"
   }, counter)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "slidecontainer"
+    className: "slide-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    onChange: handleRating,
     type: "range",
     min: "0",
     max: "5",
     defaultValue: "0",
     className: "slider",
-    id: "myRange"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    id: "slider"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, displayRating(checkIn.rating))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleSubmit,
     className: "form-submit"
   }, "Confirm"))));
