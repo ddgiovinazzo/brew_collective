@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn }) => {
+const CheckInForm = (props) => {
+    const { setOpenModal, user_id, beer_id, createCheckIn, setUpdate, update} = props
     const [counter, setCounter] = useState(255)
 
     const [checkIn, setCheckIn] = useState({
@@ -33,7 +34,10 @@ const CheckInForm = ({ setOpenModal, user_id, beer_id, createCheckIn }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         createCheckIn(checkIn)
-        setOpenModal(false)
+        .then(()=>{
+            setUpdate(update + 1)
+            setOpenModal(false)
+        })
     }
 
     return (

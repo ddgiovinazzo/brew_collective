@@ -300,9 +300,8 @@ var fetchCheckIns = function fetchCheckIns(checkIns) {
 };
 var createCheckIn = function createCheckIn(checkIn) {
   return function (dispatch) {
-    return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.createCheckIn(checkIn).then(function (beer) {
-      return dispatch((0,_beer_actions__WEBPACK_IMPORTED_MODULE_1__.receiveBeer)(beer));
-    });
+    return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.createCheckIn(checkIn) // .then(beer => dispatch(receiveBeer(beer)))
+    ;
   };
 };
 
@@ -1273,7 +1272,7 @@ var BeerShow = function BeerShow(props) {
       fetchUsers = props.fetchUsers,
       beer = props.beer;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       update = _useState2[0],
       setUpdate = _useState2[1];
@@ -1333,7 +1332,9 @@ var BeerShow = function BeerShow(props) {
   }, openModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_form_container__WEBPACK_IMPORTED_MODULE_1__.default, {
     beer_id: beer.id,
     user_id: currentUser.id,
-    setOpenModal: setOpenModal
+    setOpenModal: setOpenModal,
+    setUpdate: setUpdate,
+    update: update
   }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-show-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_beer_content_beer_content_top__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -1464,11 +1465,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var CheckInForm = function CheckInForm(_ref) {
-  var setOpenModal = _ref.setOpenModal,
-      user_id = _ref.user_id,
-      beer_id = _ref.beer_id,
-      createCheckIn = _ref.createCheckIn;
+var CheckInForm = function CheckInForm(props) {
+  var setOpenModal = props.setOpenModal,
+      user_id = props.user_id,
+      beer_id = props.beer_id,
+      createCheckIn = props.createCheckIn,
+      setUpdate = props.setUpdate,
+      update = props.update;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(255),
       _useState2 = _slicedToArray(_useState, 2),
@@ -1505,8 +1508,10 @@ var CheckInForm = function CheckInForm(_ref) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    createCheckIn(checkIn);
-    setOpenModal(false);
+    createCheckIn(checkIn).then(function () {
+      setUpdate(update + 1);
+      setOpenModal(false);
+    });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

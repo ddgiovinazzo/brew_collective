@@ -7,7 +7,7 @@ import CheckInShowContainer from '../../check-in/check_in_show/check_in_show_con
 const BeerShow = (props) => {
     const {match, fetchBeer, currentUser, fetchUsers, beer} = props
     
-    const [update, setUpdate] = useState(false)
+    const [update, setUpdate] = useState(0)
     const [openModal, setOpenModal] = useState(false)
     useEffect(() => {
         fetchBeer(match.params.beerId)
@@ -65,6 +65,8 @@ const BeerShow = (props) => {
                             beer_id={beer.id}
                             user_id={currentUser.id}
                             setOpenModal={setOpenModal}
+                            setUpdate={setUpdate}
+                            update={update}
                         />
                         : null
                 }
