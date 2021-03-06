@@ -2065,6 +2065,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _nav_search_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav_search_index */ "./frontend/components/search/nav_search/nav_search_index.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2080,8 +2081,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var NavSearch = function NavSearch(_ref) {
-  var currentUserId = _ref.currentUserId,
+  var beers = _ref.beers,
       logout = _ref.logout,
       fetchAllBeers = _ref.fetchAllBeers;
 
@@ -2093,15 +2095,29 @@ var NavSearch = function NavSearch(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return fetchAllBeers();
   }, [update]);
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      searchText = _useState4[0],
+      setSearchText = _useState4[1];
+
+  var handleSearch = function handleSearch(e) {
+    setSearchText(e.currentTarget.value);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "search-bar-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    onChange: handleSearch,
     id: "search-bar",
     placeholder: "Find a beer...",
     type: "text"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     className: "fas fa-search fa-med search-icon"
-  }));
+  })), searchText ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_nav_search_index__WEBPACK_IMPORTED_MODULE_1__.default, {
+    searchText: searchText,
+    beers: beers
+  }) : null);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavSearch);
@@ -2142,6 +2158,41 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_nav_search__WEBPACK_IMPORTED_MODULE_2__.default));
+
+/***/ }),
+
+/***/ "./frontend/components/search/nav_search/nav_search_index.jsx":
+/*!********************************************************************!*\
+  !*** ./frontend/components/search/nav_search/nav_search_index.jsx ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+
+var NavSearchIndex = function NavSearchIndex(_ref) {
+  var beers = _ref.beers,
+      searchText = _ref.searchText;
+  var results = beers.filter(function (beer) {
+    return beer.name.includes(searchText);
+  });
+  var names = results.map(function (result) {
+    return result.name;
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "nsi-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "nsi-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "BEERS (", beers.length, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, names));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavSearchIndex);
 
 /***/ }),
 
