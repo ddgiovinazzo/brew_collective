@@ -1,11 +1,11 @@
 export const elapsedTime = (dateString)=>{
     const currentDate = new Date()
     const targetTime = new Date(dateString).getTime()
-    debugger
     const elapsedTime = (currentDate.getTime() - targetTime) / 1000
     const currentMonth = (currentDate.getMonth()+1)
     const currentYear = (currentDate.getFullYear())
-
+    
+    debugger
     if(elapsedTime < 60) return 'a few seconds ago'
 
     else if(elapsedTime < 120) return 'a minute ago'
