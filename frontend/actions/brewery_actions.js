@@ -1,4 +1,5 @@
 import * as BreweryAPIUtil from '../util/brewery_util'
+import {receiveBeer} from '../actions/beer_actions'
 
 export const RECEIVE_ALL_BREWERIES = 'RECEIVE_ALL_BREWERIES'
 export const RECEIVE_BREWERY = 'RECEIVE_BREWERY'
@@ -27,12 +28,12 @@ export const fetchBrewery = breweryId => dispatch =>(
     .then(brewery => dispatch(receiveBrewery(brewery)))
 )
 
-export const createBrewery = brewery => dispatch =>(
-    BreweryAPIUtil.createBrewery(brewery)
-    .then(brewery => dispatch(receiveBrewery(brewery)), err => (
+export const createBrewery = (brewery, beer) => dispatch =>(
+    BreweryAPIUtil.createBrewery(brewery, beer)
+    .then(beer => dispatch(receiveBeer(beer)), err => (
         dispatch(receiveBreweryErrors(err.responseJSON))
       ))
-)
+    )
 
 export const receiveBreweryErrors = (errors) => ({
     type: RECEIVE_BREWERY_ERRORS,

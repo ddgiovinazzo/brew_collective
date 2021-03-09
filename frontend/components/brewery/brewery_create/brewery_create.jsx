@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { countryList, breweryTypes } from "./util";
 
 const BreweryCreate = (props) => {
-    const { brewery, setBrewery, setCreateBrewery } = props
+    const { brewery, setBrewery, setNewBrewery } = props
 
     const handleInput = (type) => {
         const newBrewery = Object.assign({}, brewery)
@@ -31,8 +31,7 @@ const BreweryCreate = (props) => {
 
             <div className='cb-input-container'>
                 <label className='form-label' htmlFor="">BREWERY TYPE</label>
-
-
+                
                 <div className='cb-input-lg input-cont'>
                     <select className='select' defaultValue="Brewery Type" onChange={handleInput('brewery_type')} >
                         <option disabled>Brewery Type</option>
@@ -47,17 +46,18 @@ const BreweryCreate = (props) => {
 
 
                 <div className='cb-input-lg input-cont'>
-                    <select className='select' defaultValue="Brewery Country" onChange={handleInput('country')} >
+                <input list="brewery-country"className='input' onChange={handleInput('country')} />
+                    <datalist id="brewery-country" className='select' defaultValue="Brewery Country"  >
                         <option disabled>Brewery Country</option>
                         {countries}
-                    </select>
+                    </datalist>
                 </div>
 
             </div>
 
             <div className='cb-input-container'>
 
-                <p className='bc-cancel' onClick={() => setCreateBrewery(false)}>Cancel New Brewery</p>
+                <p className='bc-cancel' onClick={() => setNewBrewery(false)}>Cancel New Brewery</p>
 
             </div>
 

@@ -18,7 +18,7 @@ const mDTP = dispatch => {
     fetchAllBreweries: () => dispatch(fetchAllBreweries()),
     clearBeerErrors: () => dispatch(clearBeerErrors()),
     clearBreweryErrors: () => dispatch(clearBreweryErrors()),
-    createBrewery: (brewery) => dispatch(createBrewery(brewery))
+    createBrewery: (brewery, beer) => dispatch(createBrewery(brewery, beer))
   };
 };
 

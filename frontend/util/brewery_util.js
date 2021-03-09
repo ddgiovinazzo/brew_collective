@@ -1,8 +1,8 @@
-export const createBrewery = brewery => (
+export const createBrewery = (brewery, beer) => (
     $.ajax({
       method: 'POST',
-      url: '/api/breweries',
-      data: { brewery }
+      url: '/api/beers/brewery',
+      data: { brewery, beer }
     })
 );
 

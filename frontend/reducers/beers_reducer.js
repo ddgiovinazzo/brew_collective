@@ -1,7 +1,6 @@
 import { RECEIVE_ALL_BEERS ,RECEIVE_BEER } from '../actions/beer_actions';
 
 const beersReducer = (state = {}, action) => {
-  
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALL_BEERS:

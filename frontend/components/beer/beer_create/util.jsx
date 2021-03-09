@@ -24,6 +24,8 @@ export const guideLines = (
 
 export const renderErrors = (errors) => {
     return (
+
+        <div className='cb-errors-container'>
             <ul className='errors'>
                 {errors.map((error, i) => (
                     <li key={`error-${i}`}>
@@ -31,5 +33,7 @@ export const renderErrors = (errors) => {
                     </li>
                 ))}
             </ul>
+
+        </div>
     );
 }
