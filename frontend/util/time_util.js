@@ -15,7 +15,7 @@ export const elapsedTime = (dateString)=>{
     else if(elapsedTime < 7200) return `an hour ago`
     else if(elapsedTime < 86400) return `${Math.floor(elapsedTime / 3600)} hours ago`
 
-    else if(elapsedTime >=86400 && elapsedTime < 172,800) return `yesterday`
+    // else if(elapsedTime >=86400 && elapsedTime < 172,800) return `yesterday`
     else if(elapsedTime >= 172800 && elapsedTime < 2678400 && [1,3,5,7,8,10,12].includes(currentMonth)) return `${Math.floor(elapsedTime / 86400)} days ago`
     else if(elapsedTime < 2592000 && [11,4,6,9].includes(currentMonth)) return `${Math.floor(elapsedTime / 86,400)} days ago`
     else if(elapsedTime < 2505600 && currentYear % 4 === 0) return `${Math.floor(elapsedTime / 86400)} days ago`
