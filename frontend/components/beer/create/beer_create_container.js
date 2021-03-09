@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {createBeer} from '../../../actions/beer_actions';
-import {fetchAllBreweries, createBrewery,clearBreweryErrors} from '../../../actions/brewery_actions';
-import NewBeer from './new_beer';
+import {createBrewery,clearBreweryErrors} from '../../../actions/brewery_actions';
+import BeerCreate from './beer_create';
 import { clearBeerErrors } from "../../../actions/beer_actions";
 
 const mSTP = ({entities:{breweries, users},session, errors}) => {
@@ -15,11 +15,9 @@ const mSTP = ({entities:{breweries, users},session, errors}) => {
 const mDTP = dispatch => {
   return {
     createBeer: (beer) => dispatch(createBeer(beer)),
-    fetchAllBreweries: () => dispatch(fetchAllBreweries()),
     clearBeerErrors: () => dispatch(clearBeerErrors()),
-    clearBreweryErrors: () => dispatch(clearBreweryErrors()),
     createBrewery: (brewery, beer) => dispatch(createBrewery(brewery, beer))
   };
 };
 
-export default connect(mSTP, mDTP)(NewBeer)
+export default connect(mSTP, mDTP)(BeerCreate)

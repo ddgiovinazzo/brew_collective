@@ -16,11 +16,6 @@ const BeerContentBottom = ({ beer, setOpenModal}) => {
             <p className="psuedo-link" onClick={() => setShortenSentence(true)}> Show Less</p>
         </div>
     )
-    const smallSentence = (
-        <div>
-            <p>{beer.flavorProfile}</p>
-        </div>
-    )
 
 
     return(
@@ -29,7 +24,7 @@ const BeerContentBottom = ({ beer, setOpenModal}) => {
 
             <div className='beer-content-bottom-details'>
                 {
-                    beer.flavorProfile.length < 83 ? smallSentence : shortenSentence ?
+                    beer.flavorProfile.length >= 83 && shortenSentence ?
                         shortenedSentence : regularSentence
                 }
             </div>

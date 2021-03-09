@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {elapsedTime} from '../../../util/time_util'
 
 
-const CheckInShow = ({checkIn, user, beer})=>{
+const CheckInShow = ({checkIn, user, beer, brewery})=>{
         
     if(!checkIn || !user) return null
     return(
@@ -13,7 +13,7 @@ const CheckInShow = ({checkIn, user, beer})=>{
             {' is drinking a '}
             <Link to={`/beer/${beer.id}`}>{`${beer.name}`}</Link>
             {' by '}
-            <Link to={``}>{`${beer.brewery.name}`}</Link>
+            <Link to={``}>{`${brewery.name}`}</Link>
             </p>
             <br/>
             <p>{`${checkIn.review} - ${elapsedTime(checkIn.createdAt)}`}</p>

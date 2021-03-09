@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavSearchContainer from '../search/nav_search/nav_search_container'
 import { Link } from 'react-router-dom'
 
-const NavBar = ({ currentUserId, logout }) => {
-
+const NavBar = (props) => {
+    const { currentUserId, logout} = props
+    const {fetchAllBeers, fetchAllUsers, fetchAllBreweries } = props
     const [renderDropdown, setRenderDropdown] = useState(false)
+    const [update, setUpdate] = useState(0)
+    useEffect(() =>{fetchAllBeers(); fetchAllUsers(); fetchAllBreweries()}, [update])
     const dropdown = (
         <div className="dropdown-outer" >
 

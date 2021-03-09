@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { fetchAllBeers } from '../../../actions/beer_actions';
 import NavSearch from './nav_search'
 
 const mSTP = (state) => {
@@ -10,10 +9,5 @@ const mSTP = (state) => {
   };
 };
 
-const mDTP = dispatch => {
-  return {
-    fetchAllBeers: ()=> dispatch(fetchAllBeers())
-  };
-};
 
-export default connect(mSTP, mDTP)(NavSearch)
+export default connect(mSTP, null)(NavSearch)

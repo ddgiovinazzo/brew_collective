@@ -4,7 +4,11 @@ import Img from "../../../image/image";
 
 
 const BeerContentTop = (props) => {
-    const { beer, beer:{checkIns}, ratings, stats, brewery} = props
+    const { beer, beer:{checkIns}, ratings, stats} = props
+
+
+
+
 
     const caps = ()=>{
         if(ratings.avg < 1) return window.zeroCaps
@@ -14,7 +18,6 @@ const BeerContentTop = (props) => {
         else if(ratings.avg < 5) return window.fourCaps
          return window.fiveCaps
     }
-
     return (
         <div className='bct-container'>
             <div className='bct-row'>
@@ -24,7 +27,7 @@ const BeerContentTop = (props) => {
                     </div>
                     <div className='bct-title'>
                         <h1>{beer.name}</h1>
-                        <p>{brewery.name}</p>
+                        <p>{beer.brewery.name}</p>
                         <p>{beer.servingStyle}</p>
 
                     </div>
@@ -81,7 +84,6 @@ const BeerContentTop = (props) => {
 
     )
 }
-
 
 
 export default BeerContentTop

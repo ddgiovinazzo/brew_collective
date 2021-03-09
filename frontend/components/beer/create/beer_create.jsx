@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import beer_styles from './beer_styles';
-import BreweryCreate from '../../brewery/brewery_create/brewery_create';
+import BreweryCreate from '../../brewery/create/brewery_create';
 import { guideLines, renderErrors } from "./util";
 
-const NewBeer = (props) => {
+const BeerCreate = (props) => {
     const { errors } = props
-    const [update, setUpdate] = useState(false)
+    const [update, setUpdate] = useState(0)
     const [brewerySearch, setBrewerySearch] = useState("")
     const [newBrewery, setNewBrewery] = useState(false)
     const [textLimit, setTextLimit] = useState(750)
@@ -28,19 +28,12 @@ const NewBeer = (props) => {
     })
 
     useEffect(() => {
-        if (props.errors.length > 0) {
-            props.clearBreweryErrors()
-            props.clearBeerErrors()
-        }
-        props.fetchAllBreweries()
-    }, [update])
+        if (props.errors.length > 0) props.clearBeerErrors()}, [update])
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const { createBeer, createBrewery } = props
-        const { clearBreweryErrors, clearBeerErrors, history } = props
-        if (errors.length > 0) { clearBreweryErrors(); clearBeerErrors() }
 
         if (newBrewery) {
             return createBrewery(brewery, beer)
@@ -183,4 +176,4 @@ const NewBeer = (props) => {
     )
 
 }
-export default NewBeer
+export default BeerCreate

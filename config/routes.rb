@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:create, :show]
-    get "users/search/:user_ids", to: "users#search"
+    resources :users, only: [:index, :create, :show]
     resources :beers, only: [:index, :create, :show]
     post "beers/brewery", to: "beers#brewery"
     resources :breweries, only: [:index, :create, :show]

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import NavSearchIndex from './nav_search_index'
 import { Link } from 'react-router-dom'
 
-const NavSearch = ({ beers, logout, fetchAllBeers }) => {  
-    const [update, setUpdate] = useState(0)
-    useEffect(() =>fetchAllBeers(), [update])
+const NavSearch = ({ beers}) => {  
+
 
     const [searchText, setSearchText] = useState("")
     
