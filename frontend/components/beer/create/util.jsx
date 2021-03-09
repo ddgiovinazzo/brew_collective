@@ -22,10 +22,10 @@ export const guideLines = (
     </div>
 )
 
-export const renderErrors = (errors) => {
+export const renderErrors = (errors, className) => {
     return (
 
-        <div className='cb-errors-container'>
+        <div className={className}>
             <ul className='errors'>
                 {errors.map((error, i) => (
                     <li key={`error-${i}`}>

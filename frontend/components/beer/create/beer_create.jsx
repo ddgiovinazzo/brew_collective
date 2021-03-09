@@ -27,8 +27,9 @@ const BeerCreate = (props) => {
         }
     })
 
-    useEffect(() => {
-        if (props.errors.length > 0) props.clearBeerErrors()}, [update])
+    useEffect(
+        () => {if (props.errors.length > 0) props.clearBeerErrors()}, [update]
+    )
 
 
     const handleSubmit = (e) => {
@@ -105,7 +106,7 @@ const BeerCreate = (props) => {
 
                 <form className={!props.errors.length ? 'cb-form' : 'cb-form cb-form-errors'} action="">
                     {guideLines}
-                    {errors.length > 0 ? renderErrors(errors) : null}
+                    {errors.length > 0 ? renderErrors(errors, 'cb-errors-container') : null}
 
                     <div className="cb-input-container">
                         <label className='form-label' htmlFor="">BEER NAME</label>

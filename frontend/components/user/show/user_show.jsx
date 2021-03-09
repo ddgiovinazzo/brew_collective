@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import Fallback from "../../fallback/fallback";
-import BreweryContent from './brewery_content/brewery_content'
+import UserContent from './user_content/user_content'
 import CheckInShowContainer from '../../check-in/check_in_show/check_in_show_container'
+import {isEmpty} from '../util'
 
-const UserShow = ({currentUser, brewery, beers}) => {
+const UserShow = ({currentUser, breweries, beers}) => {
  
-    if (!currentUser) return <Fallback/>
+    if (!currentUser || isEmpty(breweries) || isEmpty(beers)) return <Fallback/>
 
     const {checkIns} = currentUser
     
     const noCheckIns = <p>This user has no activity.</p>
     const uniques = {}
-    const uniquesCount = 0
+    let uniquesCount = 0
 
     const checkInList = []
 
@@ -34,7 +35,7 @@ const UserShow = ({currentUser, brewery, beers}) => {
             <div className='home-grid'>
 
                 <div className='beer-show-container'>
-                    {/* <BreweryContent brewery={brewery} ratings={ratings} stats={stats}/> */}
+                    <UserContent currentUser={currentUser} uniquesCount={uniquesCount} />
                 </div>
 
                 <div className="content-container">
