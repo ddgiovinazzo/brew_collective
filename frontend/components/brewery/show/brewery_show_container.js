@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import BreweryShow from './beer_show';
+import BreweryShow from './brewery_show';
 
-const mSTP = ({entities:{breweries, users},session}) => {
+const mSTP = ({entities:{breweries, users, beers},session}, {match}) => {
   return {
     currentUser: users[session.id],
-    brewery: breweries[ownProps.match.params.breweryId],
+    brewery: breweries[match.params.breweryId],
+    beers
   };
 };
 

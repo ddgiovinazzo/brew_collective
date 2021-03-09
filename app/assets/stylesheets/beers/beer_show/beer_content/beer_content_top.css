@@ -19,7 +19,7 @@ font-weight: 400;
 margin-bottom: 5px;
 color: #0D1F2D;
 }
-.bct-title p:nth-child(2){
+.bct-title a{
     color: #586BA4;
     font-size: 20px;
     margin-bottom: 5px;

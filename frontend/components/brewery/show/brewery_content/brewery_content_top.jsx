@@ -1,10 +1,9 @@
 import React from "react";
-import { connect } from 'react-redux';
 import Img from "../../../image/image";
 
 
-const BeerContentTop = (props) => {
-    const { beer, beer:{checkIns}, ratings, stats} = props
+const BreweryContentTop = (props) => {
+    const { brewery, brewery:{checkIns}, ratings, stats} = props
 
 
 
@@ -23,12 +22,12 @@ const BeerContentTop = (props) => {
             <div className='bct-row'>
                 <div className="beer-content-left-container">
                     <div className='bct-img'>
-                        <Img className="beer-img" src={beer.imageUrl} dft={window.defaultBeer} alt="beer"/>
+                        <Img className="beer-img" src={brewery.imageUrl} dft={window.defaultBeer} alt="brewery"/>
                     </div>
                     <div className='bct-title'>
-                        <h1>{beer.name}</h1>
-                        <p>{beer.brewery.name}</p>
-                        <p>{beer.servingStyle}</p>
+                        <h1>{brewery.name}</h1>
+                        <p>{brewery.country}</p>
+                        <p>{brewery.breweryType}</p>
 
                     </div>
 
@@ -61,13 +60,6 @@ const BeerContentTop = (props) => {
 
             </div>
             <div className='bct-row'>
-                <div className='bct-mid-inner-div'>
-                    <p>{beer.abv}% ABV</p>
-                </div>
-
-                <div className='bct-mid-inner-div'>
-                    <p>{beer.ibu} IBU</p>
-                </div>
 
                 <div className='bct-mid-inner-div'>
                     <img className="rating" src={caps()} alt="" />
@@ -78,6 +70,12 @@ const BeerContentTop = (props) => {
                     <p>{ratings.total} Ratings</p>
                 </div>
 
+                <div className='bct-mid-inner-div'>
+                    <p>
+                        {brewery.beerTotal} 
+                        {brewery.beerTotal === 1 ? " Beer" : " Beers"}
+                    </p>
+                </div>
             </div>
 
         </div>
@@ -86,4 +84,4 @@ const BeerContentTop = (props) => {
 }
 
 
-export default BeerContentTop
+export default BreweryContentTop

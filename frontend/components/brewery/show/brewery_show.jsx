@@ -1,21 +1,16 @@
 import React, { useState } from "react";
+import Fallback from "../../fallback/fallback";
+
 import CheckInFormContainer from '../../check-in/check-in-form-container'
-import BeerContentTop from './beer_content/beer_content_top'
-import BeerContentBottom from './beer_content/beer_content_bottom'
+import BreweryContentTop from './brewery_content/brewery_content_top'
+import BeerContentBottom from './brewery_content/beer_content_bottom'
 import CheckInShowContainer from '../../check-in/check_in_show/check_in_show_container'
 
-const BreweryShow = ({currentUser, brewery}) => {
+const BreweryShow = ({currentUser, brewery, beers}) => {
  
-    if (!brewery) {
-        return (
-            <div className='main-outer'>
-                <div className='home-grid'>
-                </div>
-            </div>
-        )
-    }    
+    if (!brewery) return <Fallback/>
 
-    const {brewery: {checkIns, ratings}} = props
+    const {checkIns, ratings} = brewery
     
     const noCheckIns = <p>There doesn't seem to be any recent activity!</p>
     const uniques = {}
@@ -42,7 +37,7 @@ const BreweryShow = ({currentUser, brewery}) => {
         }
         if(checkIn.userId === currentUser.id) stats.you++
         
-        checkInList.push(<CheckInShowContainer key={checkIn.id} beer={beer} checkIn={checkIn}/>)
+        checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beers[checkIn.beerId]} checkIn={checkIn}/>)
     })
 
 
@@ -52,8 +47,8 @@ const BreweryShow = ({currentUser, brewery}) => {
             <div className='home-grid'>
 
                 <div className='beer-show-container'>
-                    {/* <BeerContentTop beer={beer} checkIns={checkIns} ratings={ratings} stats={stats}/>
-                    <BeerContentBottom beer={beer} setOpenModal={setOpenModal} /> */}
+                    <BreweryContentTop brewery={brewery} ratings={ratings} stats={stats}/>
+                    {/* <BeerContentBottom beer={beer} setOpenModal={setOpenModal} /> */}
                 </div>
 
                 <div className="content-container">

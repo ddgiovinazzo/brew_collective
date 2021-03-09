@@ -5,7 +5,7 @@ import {elapsedTime} from '../../../util/time_util'
 
 const CheckInShow = ({checkIn, user, beer, brewery})=>{
         
-    if(!checkIn || !user) return null
+    if(!checkIn || !user || !beer) return null
     return(
         <div className="check-in-content">
             <p>
@@ -13,7 +13,7 @@ const CheckInShow = ({checkIn, user, beer, brewery})=>{
             {' is drinking a '}
             <Link to={`/beer/${beer.id}`}>{`${beer.name}`}</Link>
             {' by '}
-            <Link to={``}>{`${brewery.name}`}</Link>
+            <Link to={`/brewery/${brewery.id}`}>{`${brewery.name}`}</Link>
             </p>
             <br/>
             <p>{`${checkIn.review} - ${elapsedTime(checkIn.createdAt)}`}</p>

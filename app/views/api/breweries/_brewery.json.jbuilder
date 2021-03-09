@@ -7,7 +7,6 @@ json.image_url url
 unique_user_ids = {}
 ratings = []
 
-
 json.checkIns do
     json.array!(brewery.check_ins.reverse) do |check_in|
         ratings << check_in.rating if check_in.rating > 0
@@ -21,4 +20,4 @@ json.ratings do
     json.avg ratings_avg
 end
 
-
+json.beer_total brewery.beers.length

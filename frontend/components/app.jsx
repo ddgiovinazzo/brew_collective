@@ -7,6 +7,7 @@ import UserContainer from './user/user'
 import BeerCreateContainer from './beer/create/beer_create_container'
 import BeerIndexContainer from './beer/beer_index/beer_index_container'
 import BeerShowContainer from './beer/beer_show/beer_show_container'
+import BreweryShowContainer from './brewery/show/brewery_show_container'
 import Footer from './footer/footer'
 
 
@@ -28,6 +29,7 @@ const App = () => {
         <ProtectedRoute exact path="/home" component={HomeContainer} />
         <ProtectedRoute exact path="/user/:userId" component={UserContainer} />
         <ProtectedRoute exact path="/beer/:beerId" component={BeerShowContainer} />
+        <ProtectedRoute exact path="/brewery/:breweryId" component={BreweryShowContainer} />
         <ProtectedRoute exact path="/newbeer" component={BeerCreateContainer} />
         <ProtectedRoute exact path="/beers"  component={BeerIndexContainer} />
         <Route path="/"  component={Footer} />

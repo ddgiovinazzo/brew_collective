@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 import Img from "../../../image/image";
 
 
@@ -24,7 +24,8 @@ const BeerContentTop = (props) => {
                     </div>
                     <div className='bct-title'>
                         <h1>{beer.name}</h1>
-                        <p>{brewery.name}</p>
+                        <Link to={`/brewery/${brewery.id}`}>{brewery.name}</Link>
+
                         <p>{beer.servingStyle}</p>
 
                     </div>
