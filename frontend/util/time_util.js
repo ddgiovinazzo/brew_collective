@@ -6,6 +6,7 @@ export const elapsedTime = (dateString)=>{
     const currentYear = (currentDate.getFullYear())
     
     console.log(elapsedTime)
+    console.log(elapsedTime >= 172800 && elapsedTime < 2678400 && [1,3,5,7,8,10,12].includes(currentMonth))
     if(elapsedTime < 60) return 'a few seconds ago'
 
     else if(elapsedTime < 120) return 'a minute ago'
