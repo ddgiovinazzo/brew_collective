@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Fallback from "../../fallback/fallback";
-
-import CheckInFormContainer from '../../check-in/check-in-form-container'
-import BreweryContentTop from './brewery_content/brewery_content_top'
-import BeerContentBottom from './brewery_content/beer_content_bottom'
+import BreweryContent from './brewery_content/brewery_content'
 import CheckInShowContainer from '../../check-in/check_in_show/check_in_show_container'
 
 const BreweryShow = ({currentUser, brewery, beers}) => {
@@ -47,8 +44,7 @@ const BreweryShow = ({currentUser, brewery, beers}) => {
             <div className='home-grid'>
 
                 <div className='beer-show-container'>
-                    <BreweryContentTop brewery={brewery} ratings={ratings} stats={stats}/>
-                    {/* <BeerContentBottom beer={beer} setOpenModal={setOpenModal} /> */}
+                    <BreweryContent brewery={brewery} ratings={ratings} stats={stats}/>
                 </div>
 
                 <div className="content-container">

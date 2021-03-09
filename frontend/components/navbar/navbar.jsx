@@ -3,7 +3,7 @@ import NavSearchContainer from '../search/nav_search/nav_search_container'
 import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
-    const { currentUserId, logout} = props
+    const { currentUser, logout} = props
     const {fetchAllBeers, fetchAllUsers, fetchAllBreweries } = props
     const [renderDropdown, setRenderDropdown] = useState(false)
     const [update, setUpdate] = useState(0)
@@ -13,7 +13,7 @@ const NavBar = (props) => {
 
             <div  className="dropdown">
                 <i className="arrow"></i>
-                <Link className='nav-links' to={`/user/${currentUserId}`}>My Profile</Link>
+                <Link className='nav-links' to={`/user/${currentUser.id}`}>My Profile</Link>
                 <p onClick={() => logout()} className='nav-links' >Logout</p>
             </div>
         </div>

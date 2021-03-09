@@ -496,7 +496,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash */ "./frontend/components/splash.jsx");
 /* harmony import */ var _home_home_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home_container */ "./frontend/components/home/home_container.js");
-/* harmony import */ var _user_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user/user */ "./frontend/components/user/user.jsx");
+/* harmony import */ var _user_show_user_show_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user/show/user_show_container */ "./frontend/components/user/show/user_show_container.js");
 /* harmony import */ var _beer_create_beer_create_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./beer/create/beer_create_container */ "./frontend/components/beer/create/beer_create_container.js");
 /* harmony import */ var _beer_beer_index_beer_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./beer/beer_index/beer_index_container */ "./frontend/components/beer/beer_index/beer_index_container.js");
 /* harmony import */ var _beer_beer_show_beer_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./beer/beer_show/beer_show_container */ "./frontend/components/beer/beer_show/beer_show_container.js");
@@ -545,7 +545,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/user/:userId",
-    component: _user_user__WEBPACK_IMPORTED_MODULE_4__.default
+    component: _user_show_user_show_container__WEBPACK_IMPORTED_MODULE_4__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/beer/:beerId",
@@ -1450,80 +1450,10 @@ var breweryTypes = ["Macro Brewery", "Micro Brewery", "Nano Brewery", "Brew Pub"
 
 /***/ }),
 
-/***/ "./frontend/components/brewery/show/brewery_content/beer_content_bottom.jsx":
-/*!**********************************************************************************!*\
-  !*** ./frontend/components/brewery/show/brewery_content/beer_content_bottom.jsx ***!
-  \**********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-var BeerContentBottom = function BeerContentBottom(_ref) {
-  var beer = _ref.beer,
-      setOpenModal = _ref.setOpenModal;
-  if (!beer) return null;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-      _useState2 = _slicedToArray(_useState, 2),
-      shortenSentence = _useState2[0],
-      setShortenSentence = _useState2[1];
-
-  var shortenedSentence = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.flavorProfile.slice(0, 83)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "psuedo-link",
-    onClick: function onClick() {
-      return setShortenSentence(false);
-    }
-  }, " Show More"));
-  var regularSentence = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, beer.flavorProfile), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "psuedo-link",
-    onClick: function onClick() {
-      return setShortenSentence(true);
-    }
-  }, " Show Less"));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "beer-content-bottom"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "beer-content-bottom-details-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "beer-content-bottom-details"
-  }, beer.flavorProfile.length >= 83 && shortenSentence ? shortenedSentence : regularSentence)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "beer-content-bottom-buttons-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    onClick: function onClick() {
-      return setOpenModal(true);
-    },
-    className: "btn btn-primary tooltip beer-content-bottom-buttons"
-  }, "\u2713", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "bottom"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Check-in this Beer ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))))));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BeerContentBottom);
-
-/***/ }),
-
-/***/ "./frontend/components/brewery/show/brewery_content/brewery_content_top.jsx":
-/*!**********************************************************************************!*\
-  !*** ./frontend/components/brewery/show/brewery_content/brewery_content_top.jsx ***!
-  \**********************************************************************************/
+/***/ "./frontend/components/brewery/show/brewery_content/brewery_content.jsx":
+/*!******************************************************************************!*\
+  !*** ./frontend/components/brewery/show/brewery_content/brewery_content.jsx ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1602,12 +1532,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _fallback_fallback__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../fallback/fallback */ "./frontend/components/fallback/fallback.jsx");
-/* harmony import */ var _check_in_check_in_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../check-in/check-in-form-container */ "./frontend/components/check-in/check-in-form-container.js");
-/* harmony import */ var _brewery_content_brewery_content_top__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./brewery_content/brewery_content_top */ "./frontend/components/brewery/show/brewery_content/brewery_content_top.jsx");
-/* harmony import */ var _brewery_content_beer_content_bottom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./brewery_content/beer_content_bottom */ "./frontend/components/brewery/show/brewery_content/beer_content_bottom.jsx");
-/* harmony import */ var _check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../check-in/check_in_show/check_in_show_container */ "./frontend/components/check-in/check_in_show/check_in_show_container.js");
-
-
+/* harmony import */ var _brewery_content_brewery_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./brewery_content/brewery_content */ "./frontend/components/brewery/show/brewery_content/brewery_content.jsx");
+/* harmony import */ var _check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../check-in/check_in_show/check_in_show_container */ "./frontend/components/check-in/check_in_show/check_in_show_container.js");
 
 
 
@@ -1639,7 +1565,7 @@ var BreweryShow = function BreweryShow(_ref) {
     }
 
     if (checkIn.userId === currentUser.id) stats.you++;
-    checkInList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_5__.default, {
+    checkInList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_3__.default, {
       key: checkIn.id,
       brewery: brewery,
       beer: beers[checkIn.beerId],
@@ -1652,7 +1578,7 @@ var BreweryShow = function BreweryShow(_ref) {
     className: "home-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-show-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_brewery_content_brewery_content_top__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_brewery_content_brewery_content__WEBPACK_IMPORTED_MODULE_2__.default, {
     brewery: brewery,
     ratings: ratings,
     stats: stats
@@ -1917,74 +1843,6 @@ var mSTP = function mSTP(_ref, ownProps) {
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, null)(_check_in_show__WEBPACK_IMPORTED_MODULE_1__.default));
-
-/***/ }),
-
-/***/ "./frontend/components/cover.jsx":
-/*!***************************************!*\
-  !*** ./frontend/components/cover.jsx ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-var Cover = /*#__PURE__*/function (_React$Component) {
-  _inherits(Cover, _React$Component);
-
-  var _super = _createSuper(Cover);
-
-  function Cover() {
-    _classCallCheck(this, Cover);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Cover, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "show-img-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        id: "show-img",
-        src: window.show,
-        alt: ""
-      }));
-    }
-  }]);
-
-  return Cover;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cover);
 
 /***/ }),
 
@@ -2298,7 +2156,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var NavBar = function NavBar(props) {
-  var currentUserId = props.currentUserId,
+  var currentUser = props.currentUser,
       logout = props.logout;
   var fetchAllBeers = props.fetchAllBeers,
       fetchAllUsers = props.fetchAllUsers,
@@ -2327,7 +2185,7 @@ var NavBar = function NavBar(props) {
     className: "arrow"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "nav-links",
-    to: "/user/".concat(currentUserId)
+    to: "/user/".concat(currentUser.id)
   }, "My Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     onClick: function onClick() {
       return logout();
@@ -3172,10 +3030,10 @@ var Splash = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/user/user.jsx":
-/*!*******************************************!*\
-  !*** ./frontend/components/user/user.jsx ***!
-  \*******************************************/
+/***/ "./frontend/components/user/show/brewery_content/brewery_content.jsx":
+/*!***************************************************************************!*\
+  !*** ./frontend/components/user/show/brewery_content/brewery_content.jsx ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3184,84 +3042,157 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _cover__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cover */ "./frontend/components/cover.jsx");
-/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* harmony import */ var _image_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../image/image */ "./frontend/components/image/image.jsx");
 
 
 
+var BreweryContentTop = function BreweryContentTop(props) {
+  var brewery = props.brewery,
+      checkIns = props.brewery.checkIns,
+      ratings = props.ratings,
+      stats = props.stats;
+
+  var caps = function caps() {
+    if (ratings.avg < 1) return window.zeroCaps;else if (ratings.avg < 2) return window.oneCap;else if (ratings.avg < 3) return window.twoCaps;else if (ratings.avg < 4) return window.threeCaps;else if (ratings.avg < 5) return window.fourCaps;
+    return window.fiveCaps;
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-container brewery"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-row brewery"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "beer-content-left-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-img"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_1__.default, {
+    className: "beer-img",
+    src: brewery.imageUrl,
+    dft: window.defaultBeer,
+    alt: "brewery"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-title brewery"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, brewery.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.breweryType))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "beer-content-right-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "home-grid-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "home-grid-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.uniquesCount))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "home-grid-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Monthly"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.monthly)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.you)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-row brewery"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-mid-inner-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    className: "rating",
+    src: caps(),
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "(", ratings.avg, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-mid-inner-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ratings.total, " Ratings")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-mid-inner-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.beerTotal, brewery.beerTotal === 1 ? " Beer" : " Beers"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreweryContentTop);
+
+/***/ }),
+
+/***/ "./frontend/components/user/show/user_show.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/user/show/user_show.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _fallback_fallback__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../fallback/fallback */ "./frontend/components/fallback/fallback.jsx");
+/* harmony import */ var _brewery_content_brewery_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./brewery_content/brewery_content */ "./frontend/components/user/show/brewery_content/brewery_content.jsx");
+/* harmony import */ var _check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../check-in/check_in_show/check_in_show_container */ "./frontend/components/check-in/check_in_show/check_in_show_container.js");
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
 
 
 
-var User = /*#__PURE__*/function (_React$Component) {
-  _inherits(User, _React$Component);
 
-  var _super = _createSuper(User);
 
-  function User() {
-    _classCallCheck(this, User);
 
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(User, [{
-    key: "currentUserCheck",
-    value: function currentUserCheck() {
-      return parseInt(this.props.match.params.userId) === this.props.currentUser.id;
+var UserShow = function UserShow(_ref) {
+  var currentUser = _ref.currentUser,
+      brewery = _ref.brewery,
+      beers = _ref.beers;
+  if (!currentUser) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
+  var checkIns = currentUser.checkIns;
+  var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "This user has no activity.");
+  var uniques = {};
+  var uniquesCount = 0;
+  var checkInList = [];
+  checkIns.forEach(function (checkIn) {
+    if (!uniques[checkIn.beerId]) {
+      uniques[checkIn.beerId] = 1;
+      _readOnlyError("uniquesCount"), uniquesCount++;
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "home-grid"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cover__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "main"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "content-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "photobox"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "content"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "sidebar"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "wishlist-container"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "top-beers"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "top-venues"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "likes"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
-        id: "footer-container"
-      }));
-    }
-  }]);
 
-  return User;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+    var beer = beers[checkIn.beerId];
+    var brewery = breweries[beer.breweryId];
+    checkInList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_3__.default, {
+      key: checkIn.id,
+      brewery: brewery,
+      beer: beer,
+      checkIn: checkIn
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "main-outer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "home-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "beer-show-container"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "content-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    id: "recent-activity"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Your Recent Activity"), checkIns.length ? checkInList : noCheckIns))));
+};
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (User);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserShow);
+
+/***/ }),
+
+/***/ "./frontend/components/user/show/user_show_container.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/user/show/user_show_container.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _user_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_show */ "./frontend/components/user/show/user_show.jsx");
+
+
+
+var mSTP = function mSTP(_ref) {
+  var _ref$entities = _ref.entities,
+      breweries = _ref$entities.breweries,
+      users = _ref$entities.users,
+      beers = _ref$entities.beers,
+      session = _ref.session;
+  return {
+    currentUser: users[session.id],
+    breweries: breweries,
+    beers: beers
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, null)(_user_show__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
