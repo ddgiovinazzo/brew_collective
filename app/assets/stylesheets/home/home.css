@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-bottom: 0;
+    bottom: 0;
 }
 
 #recent-activity >h4{
@@ -98,7 +98,6 @@ bottom: 0;
 }
 .home-grid-row > div:hover{
     background-color: rgb(240, 240, 240);
-    cursor: pointer;
 }
 .home-grid-row > div:first-child{
     border-right: solid 1px lightgray;

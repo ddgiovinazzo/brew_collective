@@ -18,13 +18,13 @@ const BreweryContentTop = (props) => {
          return window.fiveCaps
     }
     return (
-        <div className='bct-container'>
-            <div className='bct-row'>
+        <div className='bct-container brewery'>
+            <div className='bct-row brewery'>
                 <div className="beer-content-left-container">
                     <div className='bct-img'>
                         <Img className="beer-img" src={brewery.imageUrl} dft={window.defaultBeer} alt="brewery"/>
                     </div>
-                    <div className='bct-title'>
+                    <div className='bct-title brewery'>
                         <h1>{brewery.name}</h1>
                         <p>{brewery.country}</p>
                         <p>{brewery.breweryType}</p>
@@ -59,7 +59,7 @@ const BreweryContentTop = (props) => {
                 </div>
 
             </div>
-            <div className='bct-row'>
+            <div className='bct-row brewery'>
 
                 <div className='bct-mid-inner-div'>
                     <img className="rating" src={caps()} alt="" />

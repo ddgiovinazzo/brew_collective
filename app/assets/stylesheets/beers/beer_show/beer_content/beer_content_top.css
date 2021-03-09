@@ -14,7 +14,7 @@
 }
 
 .bct-title h1:first-child{
-font-size: 32px;
+font-size:32px;
 font-weight: 400;
 margin-bottom: 5px;
 color: #0D1F2D;
@@ -70,4 +70,5 @@ color: #0D1F2D;
 }
 .rating{
     height: 22px;
+    padding: 0 5px
 }
