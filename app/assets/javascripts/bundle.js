@@ -590,6 +590,22 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./frontend/components/beer/beer_create/beer_styles.js":
+/*!*************************************************************!*\
+  !*** ./frontend/components/beer/beer_create/beer_styles.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+var styles = ['Adambier', 'Altbier', 'American Wild Ale', 'Australian Sparkling Ale', 'Barleywine - American', 'Barleywine - English', 'Barleywine - Other', 'Belgian Blonde', 'Belgian Dubbel', 'Belgian Quadrupel', 'Belgian Strong Dark Ale', 'Belgian Strong Golden Ale', 'Belgian Tripel', 'Bière de Champagne / Bière Brut', 'Black & Tan', 'Blonde Ale', 'Bock - Doppelbock', 'Bock - Eisbock (Traditional)', 'Bock - Hell / Maibock / Lentebock', 'Bock - Single / Traditional', 'Bock - Weizenbock', 'Bock - Weizendoppelbock', 'Brett Beer', 'Brown Ale - American', 'Brown Ale - Belgian', 'Brown Ale - English', 'Brown Ale - Imperial / Double', 'Brown Ale - Other', 'Burton Ale', 'California Common', 'Chilli / Chile Beer', 'Cider - Dry', 'Cider - Graff', 'Cider - Herbed / Spiced / Hopped', 'Cider - Ice / Applewine', 'Cider - Other Fruit', 'Cider - Perry', 'Cider - Rosé', 'Cider - Sweet', 'Cider - Traditional', 'Cream Ale', 'Dampfbier', 'Dark Ale', 'Dunkelweizen', 'English Bitter', 'English Mild Ale', 'Extra Special / Strong Bitter', 'Farmhouse Ale - Bière de Garde', 'Farmhouse Ale - Bière de Mars', 'Farmhouse Ale - Other', 'Farmhouse Ale - Sahti', 'Farmhouse Ale - Saison', 'Festbier', 'Freeze-Distilled Beer', 'Fruit Beer', 'Ginger Beer', 'Gluten-Free', 'Golden Ale', 'Grape Ale - Italian', 'Grape Ale - Other', 'Grisette', 'Gruit / Ancient Herbed Ale', 'Grätzer / Grodziskie', 'Happoshu', 'Hard Seltzer', 'Hefeweizen', 'Hefeweizen Light / Leicht', 'Historical Beer - Other', 'Honey Beer', 'IPA - American', 'IPA - Belgian', 'IPA - Black / Cascadian Dark Ale', 'IPA - Brett', 'IPA - Brut', 'IPA - English', 'IPA - Farmhouse', 'IPA - Imperial / Double', 'IPA - Imperial / Double Black', 'IPA - Imperial / Double Milkshake', 'IPA - Imperial / Double New England', 'IPA - International', 'IPA - Milkshake', 'IPA - New England', 'IPA - Quadruple', 'IPA - Red', 'IPA - Rye', 'IPA - Session / India Session Ale', 'IPA - Sour', 'IPA - Triple', 'IPA - Triple New England', 'IPA - White', 'Kellerbier / Zwickelbier', 'Kentucky Common', 'Kombucha', 'Kristallweizen', 'Kvass', 'Kölsch', 'Lager - Amber', 'Lager - American', 'Lager - American Amber / Red', 'Lager - American Light', 'Lager - Dark', 'Lager - Dortmunder / Export', 'Lager - Euro Dark', 'Lager - Euro Pale', 'Lager - Helles', 'Lager - IPL (India Pale Lager)', 'Lager - Japanese Rice', 'Lager - Munich Dunkel', 'Lager - Pale', 'Lager - Red', 'Lager - Strong', 'Lager - Vienna', 'Lager - Winter', 'Lambic - Faro', 'Lambic - Framboise', 'Lambic - Fruit', 'Lambic - Gueuze', 'Lambic - Kriek', 'Lambic - Traditional', 'Lichtenhainer', 'Malt Beer', 'Malt Liquor', 'Mead - Acerglyn / Maple Wine', 'Mead - Braggot', 'Mead - Cyser', 'Mead - Melomel', 'Mead - Metheglin', 'Mead - Other', 'Mead - Pyment', 'Mead - Traditional', 'Mumme', 'Märzen', 'Non-Alcoholic Beer', 'Old Ale', 'Other', 'Pale Ale - American', 'Pale Ale - Australian', 'Pale Ale - Belgian', 'Pale Ale - English', 'Pale Ale - International', 'Pale Ale - Milkshake', 'Pale Ale - New England', 'Pale Ale - New Zealand', 'Patersbier', 'Pilsner - Czech', 'Pilsner - German', 'Pilsner - Imperial / Double', 'Pilsner - Other', 'Porter - American', 'Porter - Baltic', 'Porter - Coffee', 'Porter - English', 'Porter - Imperial / Double', 'Porter - Imperial / Double Baltic', 'Porter - Imperial / Double Coffee', 'Porter - Other', 'Pumpkin / Yam Beer', 'Rauchbier', 'Red Ale - American Amber / Red', 'Red Ale - Imperial / Double', 'Red Ale - Irish', 'Red Ale - Other', 'Roggenbier', 'Root Beer', 'Rye Beer', 'Rye Wine', 'Schwarzbier', 'Scotch Ale / Wee Heavy', 'Scottish Ale', 'Scottish Export Ale', 'Shandy / Radler', 'Smoked Beer', 'Sour - Berliner Weisse', 'Sour - Flanders Oud Bruin', 'Sour - Flanders Red Ale', 'Sour - Fruited', 'Sour - Fruited Berliner Weisse', 'Sour - Fruited Gose', 'Sour - Gose', 'Sour - Other', 'Specialty Grain', 'Spiced / Herbed Beer', 'Steinbier', 'Stout - American', 'Stout - Coffee', 'Stout - English', 'Stout - Foreign / Export', 'Stout - Imperial / Double', 'Stout - Imperial / Double Coffee', 'Stout - Imperial / Double Milk', 'Stout - Imperial / Double Oatmeal', 'Stout - Imperial / Double Pastry', 'Stout - Imperial / Double White', 'Stout - Irish Dry', 'Stout - Milk / Sweet', 'Stout - Oatmeal', 'Stout - Other', 'Stout - Oyster', 'Stout - Pastry', 'Stout - Russian Imperial', 'Stout - White', 'Strong Ale - American', 'Strong Ale - English', 'Strong Ale - Other', 'Table Beer', 'Traditional Ale', 'Wheat Beer - American Pale Wheat', 'Wheat Beer - Other', 'Wheat Beer - Wheat Wine', 'Wheat Beer - Witbier', 'Wild Ale - Other', 'Winter Ale', 'Winter Warmer', 'Zoigl'];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (styles);
+
+/***/ }),
+
 /***/ "./frontend/components/beer/beer_create/new_beer.jsx":
 /*!***********************************************************!*\
   !*** ./frontend/components/beer/beer_create/new_beer.jsx ***!
@@ -602,286 +618,218 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var _beer_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./beer_styles */ "./frontend/components/beer/beer_create/beer_styles.js");
+/* harmony import */ var _brewery_brewery_create_brewery_create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../brewery/brewery_create/brewery_create */ "./frontend/components/brewery/brewery_create/brewery_create.jsx");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./frontend/components/beer/beer_create/util.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var NewBeer = /*#__PURE__*/function (_React$Component) {
-  _inherits(NewBeer, _React$Component);
 
-  var _super = _createSuper(NewBeer);
 
-  function NewBeer(props) {
-    var _this;
 
-    _classCallCheck(this, NewBeer);
+var NewBeer = function NewBeer(props) {
+  var errors = props.errors;
 
-    _this = _super.call(this, props);
-    _this.state = {
-      breweryFlag: false,
-      textLimit: 750,
-      beer: {
-        name: null,
-        brewery_id: null,
-        serving_style: null,
-        abv: null,
-        ibu: null,
-        flavor_profile: null
-      },
-      brewery: {
-        name: null
-      }
-    };
-    _this.handleText = _this.handleText.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      update = _useState2[0],
+      setUpdate = _useState2[1];
 
-  _createClass(NewBeer, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.errors.length > 0) {
-        this.props.clearBreweryErrors();
-        this.props.clearBeerErrors();
-      }
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      createBrewery = _useState4[0],
+      setCreateBrewery = _useState4[1];
 
-      this.props.fetchAllBreweries();
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(750),
+      _useState6 = _slicedToArray(_useState5, 2),
+      textLimit = _useState6[0],
+      setTextLimit = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    name: null,
+    brewery_id: null,
+    serving_style: null,
+    abv: null,
+    ibu: null,
+    flavor_profile: null
+  }),
+      _useState8 = _slicedToArray(_useState7, 2),
+      beer = _useState8[0],
+      setBeer = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    brewery: {
+      name: null,
+      type: null,
+      country: null
     }
-  }, {
-    key: "handleText",
-    value: function handleText(e) {
-      var newBeer = Object.assign({}, this.state.beer);
-      newBeer['flavor_profile'] = e.currentTarget.value;
-      this.setState({
-        textLimit: 750 - e.currentTarget.value.length,
-        beer: newBeer
-      });
+  }),
+      _useState10 = _slicedToArray(_useState9, 2),
+      brewery = _useState10[0],
+      setBrewery = _useState10[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (props.errors.length > 0) {
+      props.clearBreweryErrors();
+      props.clearBeerErrors();
     }
-  }, {
-    key: "renderErrors",
-    value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "errors-container-create-beer"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "errors"
-      }, this.props.errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-          key: "error-".concat(i)
-        }, error);
-      })));
+
+    props.fetchAllBreweries();
+  }, [update]);
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    var createBeer = props.createBeer,
+        createBrewery = props.createBrewery;
+    var clearBreweryErrors = props.clearBreweryErrors,
+        clearBeerErrors = props.clearBeerErrors,
+        history = props.history;
+
+    if (errors.length > 0) {
+      clearBreweryErrors();
+      clearBeerErrors();
     }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this2 = this;
 
-      e.preventDefault();
+    var newBeer = Object.assign({}, beer);
 
-      if (this.props.errors.length > 0) {
-        this.props.clearBreweryErrors();
-        this.props.clearBeerErrors();
-      }
-
-      var _this$props = this.props,
-          createBeer = _this$props.createBeer,
-          createBrewery = _this$props.createBrewery,
-          breweries = _this$props.breweries;
-      var _this$state = this.state,
-          beer = _this$state.beer,
-          breweryFlag = _this$state.breweryFlag;
-      var newBeer = Object.assign({}, beer);
-
-      if (breweryFlag && Object.values(newBeer).every(function (attr) {
-        return attr;
-      })) {
-        createBrewery({
-          name: beer.brewery_id
-        }).then(function (payload) {
-          newBeer.brewery_id = payload.brewery.id;
-          createBeer(newBeer).then(function (payload) {
-            return _this2.props.history.push("/beer/".concat(payload.beer.id));
-          });
-        });
-      } else {
+    if (createBrewery && Object.values(newBeer).every(function (attr) {
+      return attr;
+    })) {
+      createBrewery(brewery).then(function (payload) {
+        newBeer.brewery_id = payload.brewery.id;
         createBeer(newBeer).then(function (payload) {
-          return _this2.props.history.push("/beer/".concat(payload.beer.id));
+          return history.push("/beer/".concat(payload.beer.id));
         });
-      } // let breweryExists = false
-      // for (let i = 0; i < breweries.length; i++) {
-      //     if (breweries[i].name === beer.brewery_id) {
-      //         breweryExists = true
-      //         newBeer.brewery_id = breweries[i].id
-      //         break
-      //     }
-      // }
-      // if (breweryExists) {
-      //     createBeer(newBeer)
-      //     this.props.history.push('/beers')
-      // } else {
-      //     createBrewery({ name: beer.brewery_id }).then(payload => {
-      //         newBeer.brewery_id = payload.brewery.id
-      //         createBeer(newBeer)
-      //         this.props.history.push('/beers')
-      //     })
-      // }
-
-    }
-  }, {
-    key: "handleInput",
-    value: function handleInput(type) {
-      var _this3 = this;
-
-      var newBeer = Object.assign({}, this.state.beer);
-      return function (e) {
-        newBeer[type] = e.currentTarget.value;
-        return _this3.setState({
-          beer: newBeer
-        });
-      };
-    }
-  }, {
-    key: "handleBrewery",
-    value: function handleBrewery(e) {
-      if (e.currentTarget.value === 'add-brewery') {
-        return this.setState({
-          breweryFlag: true
-        });
-      } else {
-        var newBeer = Object.assign({}, this.state.beer);
-        newBeer['brewery_id'] = e.currentTarget.value;
-        return this.setState({
-          beer: newBeer
-        });
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this4 = this;
-
-      var beers = ['Belgian', 'Brown Ale', 'Cider', 'Gluten Free', 'Ipa', 'Lager', 'Mead', 'Pale Ale', 'Red Ale', 'Sour', 'Stout'];
-      var beerOptions = beers.map(function (beer, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-          key: i,
-          value: beer
-        }, beer);
       });
-      var breweries = this.props.breweries.map(function (brewery) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-          key: brewery.id,
-          value: brewery.id
-        }, brewery.name);
+    } else {
+      createBeer(newBeer).then(function (payload) {
+        return history.push("/beer/".concat(payload.beer.id));
       });
-      var breweryCreate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "BREWERY NAME", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-input-lg"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.handleInput('brewery_id'),
-        type: ""
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        id: "brewery-creation-cancel",
-        onClick: function onClick() {
-          return _this4.setState({
-            breweryFlag: false
-          });
-        }
-      }, "Cancel New Brewery"));
-      var brewerySelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "BREWERY NAME", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-input-lg"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-        onChange: this.handleBrewery.bind(this),
-        className: "create-beer-input-lg"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: null
-      }, "Brewery Name"), breweries, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "add-brewery"
-      }, "Click Here to Add a Brewery."))));
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "main-outer"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "home-grid"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: !this.props.errors.length ? 'create-beer-form' : 'create-beer-form create-beer-errors-form',
-        action: ""
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "create-beer-content"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Add New Beer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Didn't find what you were looking for?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Use this form to add a new beer."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Beer Creation Guidelines"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        id: "create-beer-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Don't include the brewery in the beer name."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Only add the vintage year if the year is part of the label artwork. \"Bottled On\" and \"Best Before\" dates are not valid for this."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Please make your beer name proper case."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Do not create a beer that are blends of 2 or more beers. This goes for any beers that are blended at a Bar/Brewery after kegging."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Give your homebrew an original name, don't use another name for beer that is commerical to avoid confusion."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "For homebrews, please create your own brewery name, do not use another Homebrewery that has already been created that isn't your brewery."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Homebrew clones are not allowed. Always give your beer a unique name - do not use the name of the kit or the recipe."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Please do not add non-supported drinks (Wine, Water, etc)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Please note that by not following these guidelines may results in revoking of your Beer Creation privileges.")), this.props.errors.length > 0 ? this.renderErrors() : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "BEER NAME", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-input-lg"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.handleInput('name'),
-        type: ""
-      }))), this.state.breweryFlag ? breweryCreate : brewerySelect, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-custom-input-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "ABV", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-input-sm"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.handleInput('abv')
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "IBU", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-input-sm"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        onChange: this.handleInput('ibu')
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "STYLE", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-select"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-        onChange: this.handleInput('serving_style')
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select A Style"), beerOptions)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "form-label",
-        htmlFor: ""
-      }, "DESCRIPTION", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "create-beer-description"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        className: "counter"
-      }, this.state.textLimit.toString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
-        onChange: this.handleText,
-        maxLength: "750"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "form-submit create-beer-submit"
-      }, "Add Beer"))));
     }
-  }]);
+  };
 
-  return NewBeer;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+  var handleInput = function handleInput(type, handleText) {
+    var newBeer = Object.assign({}, beer);
+    return function (e) {
+      newBeer[type] = e.currentTarget.value;
+      setBeer(newBeer);
+      if (handleText) setTextLimit(750 - e.currentTarget.value.length);
+    };
+  };
+
+  var handleBrewery = function handleBrewery(e) {
+    console.log(e.currentTarget.innerHTML);
+
+    if (e.currentTarget.innerHTML === "Don't see your brewery? Click Here to add it.") {
+      setCreateBrewery(true);
+    } else {
+      handleInput("brewery_id");
+    }
+  };
+
+  var beerOptions = _beer_styles__WEBPACK_IMPORTED_MODULE_1__.default.map(function (beer, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      key: i,
+      value: beer
+    }, beer);
+  });
+  var breweries = props.breweries.map(function (brewery) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      onClick: handleBrewery,
+      key: brewery.id,
+      value: brewery.id
+    }, brewery.name);
+  });
+  var brewerySelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "BREWERY NAME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-lg input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "brewery-list"
+  }, breweries, breweries, breweries, breweries, breweries, breweries, breweries, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: handleBrewery,
+    value: "hey"
+  }, "Don't see your brewery? Click Here to add it."))));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "main-outer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "home-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    onSubmit: handleSubmit,
+    className: !props.errors.length ? 'cb-form' : 'cb-form cb-form-errors',
+    action: ""
+  }, _util__WEBPACK_IMPORTED_MODULE_3__.guideLines, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-errors-container"
+  }, errors.length > 0 ? (0,_util__WEBPACK_IMPORTED_MODULE_3__.renderErrors)(errors) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "BEER NAME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-lg input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    className: "input",
+    onChange: handleInput('name'),
+    type: ""
+  }))), createBrewery ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_brewery_brewery_create_brewery_create__WEBPACK_IMPORTED_MODULE_2__.default, {
+    brewery: brewery,
+    setBrewery: setBrewery,
+    setCreateBrewery: setCreateBrewery
+  }) : brewerySelect, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-custom-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "ABV"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-sm input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    className: "input",
+    onChange: handleInput('abv')
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "IBU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-sm input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    className: "input",
+    onChange: handleInput('ibu')
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "STYLE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-select input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    className: "select",
+    onChange: handleInput('serving_style', false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select A Style"), beerOptions)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "DESCRIPTION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-textArea input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "counter"
+  }, textLimit), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+    className: "textArea",
+    onChange: handleInput('flavor_profile', true),
+    maxLength: "750"
+  }))))));
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NewBeer);
 
@@ -902,7 +850,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/beer_actions */ "./frontend/actions/beer_actions.js");
 /* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
 /* harmony import */ var _new_beer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./new_beer */ "./frontend/components/beer/beer_create/new_beer.jsx");
-
 
 
 
@@ -943,6 +890,37 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_new_beer__WEBPACK_IMPORTED_MODULE_3__.default));
+
+/***/ }),
+
+/***/ "./frontend/components/beer/beer_create/util.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/beer/beer_create/util.jsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "guideLines": () => /* binding */ guideLines,
+/* harmony export */   "renderErrors": () => /* binding */ renderErrors
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var guideLines = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  id: "create-beer-content"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Add New Beer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Didn't find what you were looking for? Use this form to add a new beer."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Beer Creation Guidelines"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+  id: "create-beer-list"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Don't include the brewery in the beer name."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Only add the vintage year if the year is part of the label artwork. \"Bottled On\" and \"Best Before\" dates are not valid for "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Please make your beer name proper case."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Do not create a beer that are blends of 2 or more beers. This goes for any beers that are blended at a Bar/Brewery after kegging."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Give your homebrew an original name, don't use another name for beer that is commerical to avoid confusion."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "For homebrews, please create your own brewery name, do not use another Homebrewery that has already been created that isn't your brewery."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Homebrew clones are not allowed. Always give your beer a unique name - do not use the name of the kit or the recipe."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Please do not add non-supported drinks (Wine, Water, etc)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Please note that by not following these guidelines may results in revoking of your Beer Creation privileges.")));
+var renderErrors = function renderErrors(errors) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "errors"
+  }, errors.map(function (error, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: "error-".concat(i)
+    }, error);
+  }));
+};
 
 /***/ }),
 
@@ -1400,6 +1378,118 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_beer_show__WEBPACK_IMPORTED_MODULE_4__.default));
+
+/***/ }),
+
+/***/ "./frontend/components/brewery/brewery_create/brewery_create.jsx":
+/*!***********************************************************************!*\
+  !*** ./frontend/components/brewery/brewery_create/brewery_create.jsx ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./frontend/components/brewery/brewery_create/util.js");
+
+
+
+var BreweryCreate = function BreweryCreate(props) {
+  var brewery = props.brewery,
+      setBrewery = props.setBrewery,
+      setCreateBrewery = props.setCreateBrewery;
+
+  var handleInput = function handleInput(type) {
+    var newBrewery = Object.assign({}, brewery);
+    return function (e) {
+      newBrewery[type] = e.currentTarget.value;
+      setBrewery(newBrewery);
+    };
+  };
+
+  var types = _util__WEBPACK_IMPORTED_MODULE_1__.breweryTypes.map(function (type) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      key: type,
+      value: type
+    }, type);
+  });
+  var countries = _util__WEBPACK_IMPORTED_MODULE_1__.countryList.map(function (country) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      key: country,
+      value: country
+    }, country);
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "brewery"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "BREWERY NAME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-lg input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    autoFocus: true,
+    className: "input",
+    onChange: handleInput('name'),
+    type: ""
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "BREWERY TYPE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-lg input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    className: "select",
+    defaultValue: "Brewery Type",
+    onChange: handleInput('brewery_type')
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    disabled: true
+  }, "Brewery Type"), types))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "form-label",
+    htmlFor: ""
+  }, "BREWERY COUNTRY"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-lg input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    className: "select",
+    defaultValue: "Brewery Country",
+    onChange: handleInput('country')
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    disabled: true
+  }, "Brewery Country"), countries))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cb-input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "bc-cancel",
+    onClick: function onClick() {
+      return setCreateBrewery(false);
+    }
+  }, "Cancel New Brewery")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreweryCreate);
+
+/***/ }),
+
+/***/ "./frontend/components/brewery/brewery_create/util.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/brewery/brewery_create/util.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "countryList": () => /* binding */ countryList,
+/* harmony export */   "breweryTypes": () => /* binding */ breweryTypes
+/* harmony export */ });
+var countryList = ["Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua And Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia, Plurinational State Of", "Bonaire, Sint Eustatius And Saba", "Bosnia And Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, The Democratic Republic Of The", "Cook Islands", "Costa Rica", "Côte D'ivoire", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-bissau", "Guyana", "Haiti", "Heard Island And Mcdonald Islands", "Holy See (vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran, Islamic Republic Of", "Iraq", "Ireland", "Isle Of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic Of", "Korea, Republic Of", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia, The Former Yugoslav Republic Of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States Of", "Moldova, Republic Of", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestine, State Of", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russian Federation", "Rwanda", "Saint Barthélemy", "Saint Helena, Ascension And Tristan Da Cunha", "Saint Kitts And Nevis", "Saint Lucia", "Saint Martin (french Part)", "Saint Pierre And Miquelon", "Saint Vincent And The Grenadines", "Samoa", "San Marino", "Sao Tome And Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten (dutch Part)", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia And The South Sandwich Islands", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard And Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province Of China", "Tajikistan", "Tanzania, United Republic Of", "Thailand", "Timor-leste", "Togo", "Tokelau", "Tonga", "Trinidad And Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks And Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela, Bolivarian Republic Of", "Viet Nam", "Virgin Islands, British", "Virgin Islands, U.s.", "Wallis And Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
+var breweryTypes = ["Macro Brewery", "Micro Brewery", "Nano Brewery", "Brew Pub", "Home Brewery", "Bar / Restaurant / Store", "Cidery", "Meadery", "Contract Brewery", "Regional Brewery"];
 
 /***/ }),
 

@@ -1,0 +1,98 @@
+.cb-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: fit-content;
+    background-color: white;
+    padding: 20px;
+    color: #0D1F2D;
+}
+.cb-form .input, .select, .textArea, .dataList{
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    resize: none;
+}
+
+.cb-form-errors{
+    background-color: white;
+    height: fit-content;
+    padding: 20px;
+}
+
+.cb-errors-container > ul{
+    list-style: none;
+}
+
+.cb-form .cb-input-container{
+    padding: 10px;
+}
+
+.cb-custom-input-container{
+    width: 440px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px
+}
+.cb-form .input-cont{
+    border: 2px solid lightgray;
+    border-radius: 3px;
+}
+.cb-form .input-cont:focus-within{
+    border: 2px solid #0D1F2D;
+}
+
+.cb-input-lg{
+    width: 436px;
+}
+.cb-input-sm{
+    width: 87px;
+}
+.cb-select{
+    width: 230px;
+}
+
+.form-label{
+    font-size: 12px;
+    color: #757575;
+    padding: 5px
+}
+
+.cb-textArea{
+    width: 436px;
+    height: 100px;
+    position: relative;
+}
+
+.counter{
+    bottom:0;
+    right: 0;
+    position: absolute;
+    color: #0D1F2D;
+    font-size: 12px;
+    padding: 3px;
+    background-color: #EAFDF8;
+    margin: 2px;
+}
+
+.bc-cancel{
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #931F1D;
+}
+.brewery .cb-input-container:last-child{
+    padding: 0 10px;
+}
+
+.brewery-list{
+    overflow-y: scroll;
+    height: 100px;
+}

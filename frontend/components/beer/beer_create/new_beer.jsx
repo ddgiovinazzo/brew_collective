@@ -1,257 +1,190 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import beer_styles from './beer_styles';
+import BreweryCreate from '../../brewery/brewery_create/brewery_create';
+import { guideLines, renderErrors } from "./util";
 
-class NewBeer extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            breweryFlag: false,
-            textLimit: 750,
-            beer: {
-                name: null,
-                brewery_id: null,
-                serving_style: null,
-                abv: null,
-                ibu: null,
-                flavor_profile: null,
-            },
-            brewery: {
-                name: null
-            }
+const NewBeer = (props) => {
+    const { errors } = props
+    const [update, setUpdate] = useState(false)
+    const [createBrewery, setCreateBrewery] = useState(false)
+    const [textLimit, setTextLimit] = useState(750)
+    const [beer, setBeer] = useState({
+        name: null,
+        brewery_id: null,
+        serving_style: null,
+        abv: null,
+        ibu: null,
+        flavor_profile: null
+    })
+    const [brewery, setBrewery] = useState({
+        brewery: {
+            name: null,
+            type: null,
+            country: null,
         }
+    })
 
-        this.handleText = this.handleText.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
-
-    componentDidMount() {
-        if (this.props.errors.length > 0) {
-            this.props.clearBreweryErrors()
-            this.props.clearBeerErrors()
+    useEffect(() => {
+        if (props.errors.length > 0) {
+            props.clearBreweryErrors()
+            props.clearBeerErrors()
         }
-        this.props.fetchAllBreweries()
-    }
+        props.fetchAllBreweries()
+    }, [update])
 
-    handleText(e) {
-        const newBeer = Object.assign({}, this.state.beer)
-        newBeer['flavor_profile'] = e.currentTarget.value
-        this.setState({
-            textLimit: 750 - e.currentTarget.value.length,
-            beer: newBeer
-        })
-    }
 
-    renderErrors() {
-        return (
-            <div className='errors-container-create-beer'>
-
-                <ul className='errors'>
-                    {this.props.errors.map((error, i) => (
-                        <li key={`error-${i}`}>
-                            {error}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
-
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        if (this.props.errors.length > 0) {
-            this.props.clearBreweryErrors()
-            this.props.clearBeerErrors()
-        }
-        const { createBeer, createBrewery, breweries } = this.props
-        const { beer, breweryFlag } = this.state
+        const { createBeer, createBrewery } = props
+        const { clearBreweryErrors, clearBeerErrors, history } = props
+        if (errors.length > 0) { clearBreweryErrors(); clearBeerErrors() }
 
         const newBeer = Object.assign({}, beer)
 
-        if(breweryFlag && Object.values(newBeer).every(attr=>attr)){
-            createBrewery({ name: beer.brewery_id })
+        if (createBrewery && Object.values(newBeer).every(attr => attr)) {
+            createBrewery(brewery)
                 .then(
-                    payload =>{
+                    payload => {
                         newBeer.brewery_id = payload.brewery.id
-        
+
                         createBeer(newBeer)
-                        .then((payload)=>this.props.history.push(`/beer/${payload.beer.id}`))
+                            .then((payload) => history.push(`/beer/${payload.beer.id}`))
                     }
-                )     
-        }else{
+                )
+        } else {
             createBeer(newBeer)
-            .then((payload)=>this.props.history.push(`/beer/${payload.beer.id}`))
+                .then((payload) => history.push(`/beer/${payload.beer.id}`))
         }
 
-        // let breweryExists = false
-        // for (let i = 0; i < breweries.length; i++) {
-
-        //     if (breweries[i].name === beer.brewery_id) {
-        //         breweryExists = true
-        //         newBeer.brewery_id = breweries[i].id
-        //         break
-        //     }
-        // }
-
-        // if (breweryExists) {
-        //     createBeer(newBeer)
-        //     this.props.history.push('/beers')
-
-        // } else {
-
-        //     createBrewery({ name: beer.brewery_id }).then(payload => {
-        //         newBeer.brewery_id = payload.brewery.id
-
-        //         createBeer(newBeer)
-        //         this.props.history.push('/beers')
-        //     })
-        // }
     }
 
-    handleInput(type) {
-        const newBeer = Object.assign({}, this.state.beer)
-
-        return (e) => {
-
+    const handleInput = (type, handleText) => {
+        const newBeer = Object.assign({}, beer)
+        return e => {
             newBeer[type] = e.currentTarget.value
-
-            return this.setState({
-                beer: newBeer
-            })
-        }
-
-    }
-
-    handleBrewery(e){
-        if(e.currentTarget.value === 'add-brewery'){
-            return this.setState({
-                breweryFlag: true
-            })
-        }else{
-            const newBeer = Object.assign({}, this.state.beer)
-            newBeer['brewery_id'] = e.currentTarget.value
-            
-            return this.setState({
-                beer: newBeer
-            })
+            setBeer(newBeer)
+            if (handleText) setTextLimit(750 - e.currentTarget.value.length)
         }
     }
-    
-    render() {
 
-        const beers = [
-            'Belgian',
-            'Brown Ale',
-            'Cider',
-            'Gluten Free',
-            'Ipa',
-            'Lager',
-            'Mead',
-            'Pale Ale',
-            'Red Ale',
-            'Sour',
-            'Stout'
-        ]
-        const beerOptions = beers.map((beer, i) => <option key={i} value={beer}>{beer}</option>)
-
-        const breweries = this.props.breweries.map(brewery => <option key={brewery.id} value={brewery.id}>{brewery.name}</option> )
-
-        const breweryCreate = (
-            <label className='form-label' htmlFor="">BREWERY NAME
-                       
-
-            <div className='create-beer-input-lg'>
-                        <input onChange={this.handleInput('brewery_id')} type="" />
-                    </div>
-                        <p id='brewery-creation-cancel'onClick={()=>this.setState({breweryFlag: false})}>Cancel New Brewery</p>
-                </label>
-        )
-        const brewerySelect = (
-            <label className='form-label' htmlFor="">BREWERY NAME
-                       
-            
-            <div className='create-beer-input-lg'>
-                        <select onChange={this.handleBrewery.bind(this)} className='create-beer-input-lg'>
-                            <option value={null}>Brewery Name</option>
-                            {breweries}
-                            <option value='add-brewery'>Click Here to Add a Brewery.</option>
-                        </select>
-                    </div>
-                </label>
-        )
-
-        return (
-            <div className='main-outer'>
-                            <div className='home-grid'>
-
-                    <form onSubmit={this.handleSubmit} className={!this.props.errors.length ? 'create-beer-form' : 'create-beer-form create-beer-errors-form'} action="">
-                        <div id='create-beer-content'>
-                            <h1>Add New Beer</h1>
-                            <br />
-                            <h2>Didn't find what you were looking for?</h2>
-                            <h2>Use this form to add a new beer.</h2>
-                            <br />
-                            <h2>Beer Creation Guidelines</h2>
-                            <br />
-                            <ul id='create-beer-list'>
-                                <li>Don't include the brewery in the beer name.</li>
-                                <li>Only add the vintage year if the year is part of the label artwork. "Bottled On" and "Best Before" dates are not valid for this.</li>
-                                <li>Please make your beer name proper case.</li>
-                                <li>Do not create a beer that are blends of 2 or more beers. This goes for any beers that are blended at a Bar/Brewery after kegging.</li>
-                                <li>Give your homebrew an original name, don't use another name for beer that is commerical to avoid confusion.</li>
-                                <li>For homebrews, please create your own brewery name, do not use another Homebrewery that has already been created that isn't your brewery.</li>
-                                <li>Homebrew clones are not allowed. Always give your beer a unique name - do not use the name of the kit or the recipe.</li>
-                                <li>Please do not add non-supported drinks (Wine, Water, etc)</li>
-                                <li>Please note that by not following these guidelines may results in revoking of your Beer Creation privileges.</li>
-                            </ul>
-                        {this.props.errors.length > 0 ? this.renderErrors() : null}
-                        </div>
-                        <label className='form-label' htmlFor="">BEER NAME
-
-                    <div className='create-beer-input-lg'>
-                                <input onChange={this.handleInput('name')} type="" />
-                            </div>
-                        </label>
-
-                        {this.state.breweryFlag ? breweryCreate : brewerySelect}
-
-                        <div className='create-beer-custom-input-container'>
-
-                            <label className='form-label' htmlFor="">ABV
-                            <div className='create-beer-input-sm'>
-                                    <input onChange={this.handleInput('abv')} />
-                                </div>
-                            </label>
-                            
-                            <label className='form-label' htmlFor="">IBU
-                        <div className='create-beer-input-sm'>
-                                    <input onChange={this.handleInput('ibu')} />
-
-                                </div>
-                            </label>
-
-
-                            <label className='form-label' htmlFor="">STYLE
-
-                        <div className='create-beer-select'>
-                                    <select onChange={this.handleInput('serving_style')}>
-                                        <option>Select A Style</option>
-                                        {beerOptions}
-                                    </select>
-                                </div>
-                            </label>
-
-                        </div>
-                        <label className='form-label' htmlFor="">DESCRIPTION
-                    <div className='create-beer-description'>
-
-                                <span className='counter'>{this.state.textLimit.toString()}</span>
-                                <textarea onChange={this.handleText} maxLength="750" />
-                            </div>
-                        </label>
-                        <button className='form-submit create-beer-submit'>Add Beer</button>
-                    </form>
-                    </div>
-                </div>
-        )
+    const handleBrewery = (e) => {
+        console.log(e.currentTarget.innerHTML)
+        if (e.currentTarget.innerHTML === "Don't see your brewery? Click Here to add it.") {
+            setCreateBrewery(true)
+        } else {
+            handleInput("brewery_id")
+        }
     }
+
+    const beerOptions = beer_styles.map((beer, i) => <option key={i} value={beer}>{beer}</option>)
+
+    const breweries = props.breweries.map(brewery => <li onClick={handleBrewery} key={brewery.id} value={brewery.id}>{brewery.name}</li>)
+
+
+    const brewerySelect = (
+
+        <div className='cb-input-container'>
+            <label className='form-label' htmlFor="">BREWERY NAME</label>
+
+
+            <div className='cb-input-lg input-cont'>
+
+                <ul className="brewery-list">
+                {breweries}
+                {breweries}
+                {breweries}
+                {breweries}
+                {breweries}
+                {breweries}
+                {breweries}
+                <li onClick={handleBrewery} value={"hey"}>Don't see your brewery? Click Here to add it.</li>
+                </ul>
+                {/* <input list="brewery-name"className='input'onChange={handleBrewery} />
+                    <datalist className="dataList" id="brewery-name">
+
+                    <option disabled>Brewery Name</option>
+                    {breweries}
+                    </datalist> */}
+            </div>
+
+        </div>
+
+    )
+
+    return (
+        <div className='main-outer'>
+            <div className='home-grid'>
+
+                <form onSubmit={handleSubmit} className={!props.errors.length ? 'cb-form' : 'cb-form cb-form-errors'} action="">
+                    {guideLines}
+                    <div className='cb-errors-container'>
+                    {errors.length > 0 ? renderErrors(errors) : null}
+
+                    </div>
+
+                    <div className="cb-input-container">
+                        <label className='form-label' htmlFor="">BEER NAME</label>
+
+                        <div className='cb-input-lg input-cont'>
+                            <input className='input' onChange={handleInput('name')} type="" />
+                        </div>
+
+                    </div>
+
+
+                    {createBrewery ?
+                        <BreweryCreate brewery={brewery} setBrewery={setBrewery} setCreateBrewery={setCreateBrewery} />
+                        : brewerySelect
+                    }
+
+                    <div className='cb-custom-input-container'>
+
+                        <div >
+                            <label className='form-label' htmlFor="">ABV</label>
+
+                            <div className='cb-input-sm input-cont'>
+                                <input className='input' onChange={handleInput('abv')} />
+                            </div>
+
+                        </div>
+
+                        <div >
+                            <label className='form-label' htmlFor="">IBU</label>
+
+                            <div className='cb-input-sm input-cont'>
+                                <input className='input' onChange={handleInput('ibu')} />
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <label className='form-label' htmlFor="">STYLE</label>
+
+                            <div className='cb-select input-cont'>
+                                <select className='select' onChange={handleInput('serving_style', false)}>
+                                    <option>Select A Style</option>
+                                    {beerOptions}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className='cb-input-container'>
+                        <label className='form-label' htmlFor="">DESCRIPTION</label>
+
+                        <div className='cb-textArea input-cont'>
+
+                            <span className='counter'>{textLimit}</span>
+                            <textarea className='textArea' onChange={handleInput('flavor_profile', true)} maxLength="750" />
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    )
+
 }
 export default NewBeer

@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import {createBeer} from '../../../actions/beer_actions';
-import {fetchAllBreweries, createBrewery} from '../../../actions/brewery_actions';
+import {fetchAllBreweries, createBrewery,clearBreweryErrors} from '../../../actions/brewery_actions';
 import NewBeer from './new_beer';
 import { clearBeerErrors } from "../../../actions/beer_actions";
-import { clearBreweryErrors } from "../../../actions/brewery_actions";
 
 const mSTP = ({entities:{breweries, users},session, errors}) => {
   return {

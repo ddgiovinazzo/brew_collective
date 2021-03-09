@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_154649) do
 
   create_table "breweries", force: :cascade do |t|
     t.string "name", null: false
-    t.string "brewery_type"
-    t.string "brewery_country"
+    t.string "brewery_type", null: false
+    t.string "country", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_breweries_on_name", unique: true
