@@ -674,7 +674,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var mSTP = function mSTP(_ref) {
   var _ref$entities = _ref.entities,
       beers = _ref$entities.beers,
@@ -698,9 +697,6 @@ var mDTP = function mDTP(dispatch) {
     },
     clearBeerErrors: function clearBeerErrors() {
       return dispatch((0,_actions_beer_actions__WEBPACK_IMPORTED_MODULE_1__.clearBeerErrors)());
-    },
-    clearBreweryErrors: function clearBreweryErrors() {
-      return dispatch((0,_actions_brewery_actions__WEBPACK_IMPORTED_MODULE_2__.clearBreweryErrors)());
     },
     createBrewery: function createBrewery(brewery) {
       return dispatch((0,_actions_brewery_actions__WEBPACK_IMPORTED_MODULE_2__.createBrewery)(brewery));
@@ -3311,40 +3307,6 @@ var beersReducer = function beersReducer() {
 
 /***/ }),
 
-/***/ "./frontend/reducers/breweries_errors_reducer.js":
-/*!*******************************************************!*\
-  !*** ./frontend/reducers/breweries_errors_reducer.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_BREWERY_ERRORS:
-      return action.errors;
-
-    case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_BREWERY_ERRORS:
-      return [];
-
-    case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.ADD_BREWERY_ERROR:
-      return action.error;
-
-    default:
-      return state;
-  }
-});
-
-/***/ }),
-
 /***/ "./frontend/reducers/breweries_reducer.js":
 /*!************************************************!*\
   !*** ./frontend/reducers/breweries_reducer.js ***!
@@ -3387,38 +3349,6 @@ var breweriesReducer = function breweriesReducer() {
 
 /***/ }),
 
-/***/ "./frontend/reducers/check_ins_reducer.js":
-/*!************************************************!*\
-  !*** ./frontend/reducers/check_ins_reducer.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
-
-
-var checkInsReducer = function checkInsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
-
-  switch (action.type) {
-    case _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CHECK_INS:
-      return action.checkIns;
-
-    default:
-      return state;
-  }
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkInsReducer);
-
-/***/ }),
-
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -3430,21 +3360,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _breweries_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./breweries_reducer */ "./frontend/reducers/breweries_reducer.js");
 /* harmony import */ var _beers_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./beers_reducer */ "./frontend/reducers/beers_reducer.js");
-/* harmony import */ var _check_ins_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./check_ins_reducer */ "./frontend/reducers/check_ins_reducer.js");
 
 
 
 
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
   breweries: _breweries_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
-  beers: _beers_reducer__WEBPACK_IMPORTED_MODULE_2__.default,
-  checkIns: _check_ins_reducer__WEBPACK_IMPORTED_MODULE_3__.default
+  beers: _beers_reducer__WEBPACK_IMPORTED_MODULE_2__.default
 }));
 
 /***/ }),
@@ -3460,18 +3387,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./beer_errors_reducer */ "./frontend/reducers/beer_errors_reducer.js");
-/* harmony import */ var _breweries_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./breweries_errors_reducer */ "./frontend/reducers/breweries_errors_reducer.js");
 
 
 
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  beers: _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
-  breweries: _breweries_errors_reducer__WEBPACK_IMPORTED_MODULE_2__.default
+  beers: _beer_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 }));
 
 /***/ }),
