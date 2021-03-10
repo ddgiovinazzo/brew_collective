@@ -3168,7 +3168,7 @@ var UserShow = function UserShow(_ref) {
     className: "content-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "recent-activity"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Your Recent Activity"), checkIns.length ? checkInList : noCheckIns))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, user.id === currentUser.id ? "Your Recent Activity" : "Recent Activity"), checkIns.length ? checkInList : noCheckIns))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserShow);

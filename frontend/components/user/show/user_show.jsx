@@ -40,7 +40,7 @@ const UserShow = ({currentUser, user, breweries, beers}) => {
 
                 <div className="content-container">
                     <div id='recent-activity'>
-                        <h4>Your Recent Activity</h4>
+                        <h4>{user.id === currentUser.id ? "Your Recent Activity" : "Recent Activity"}</h4>
                         {checkIns.length? checkInList : noCheckIns}
                     </div>
                 </div>
