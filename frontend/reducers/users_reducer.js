@@ -1,5 +1,4 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_USER, RECEIVE_ALL_USERS } from '../actions/user_actions';
+import { RECEIVE_USER, RECEIVE_USERS, RECEIVE_ALL_USERS } from '../actions/user_actions';
 import { RECEIVE_ALL } from '../actions/check_in_actions';
 
 const usersReducer = (state = {}, action) => {
@@ -11,8 +10,11 @@ const usersReducer = (state = {}, action) => {
       return action.users;
     case RECEIVE_USER:
       return Object.assign({}, state, { [action.user.id]: action.user });
-    case RECEIVE_CURRENT_USER:
-      return Object.assign({}, state, { [action.currentUser.id]: action.currentUser });
+    case RECEIVE_USERS:
+      const newState = Object.assign({}, state)
+      const users = Object.values(action.users)
+      users.forEach(user=> newState[user.id] = user)
+      return newState
 
     default:
       return state;

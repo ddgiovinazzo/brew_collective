@@ -1,12 +1,16 @@
 import React from "react";
 import Img from "../../../image/image";
+import FriendshipButton from "../../../friendship/friendship_button_container";
 
 
 const UserContentTop = (props) => {
     const { uniquesCount, user, currentUser} = props
     const {firstName, lastName, username, location, gender, checkIns} = user
+  
+    const isCurrentUser = user.id === currentUser.id
+    const name = isCurrentUser ? `${firstName} ${lastName}` : `${firstName} ${lastName[0]}.`
 
-    const name = user.id === currentUser.id ? `${firstName} ${lastName}` : `${firstName} ${lastName[0]}.`
+
 
     return (
         <div className='bct-container'>
@@ -42,7 +46,7 @@ const UserContentTop = (props) => {
                             </div>
                             <div>
                                 <p>Friends</p>
-                                <p>0</p>
+                                <p>{user.friends}</p>
                             </div>
                         </div>
                     </div>
@@ -50,11 +54,16 @@ const UserContentTop = (props) => {
                 </div>
 
             </div>
-
+            {
+                !isCurrentUser ?  
+                    <FriendshipButton 
+                    currentUser={currentUser} 
+                    user={user}/>
+                    : null
+            }
         </div>
 
     )
 }
-
 
 export default UserContentTop

@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     post "beers/brewery", to: "beers#brewery"
     resources :breweries, only: [:index, :create, :show]
     resources :check_ins, only: [:create, :show]
-    get "check_ins/search/:beer_id", to: "check_ins#search"
+    get "check_ins/search/:user_ids", to: "check_ins#search"
+    resources :friendships, only: [:create, :update, :destroy, :show]
     resource :session, only: [:create, :destroy, :show]
-
   end
   root "static_pages#root"
 end

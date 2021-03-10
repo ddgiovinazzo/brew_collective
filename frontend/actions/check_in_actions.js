@@ -1,15 +1,19 @@
 import * as CheckInAPIUtil from '../util/check_in_util'
 
-export const RECEIVE_CHECK_IN = 'RECEIVE_CHECK_IN'
+export const RECEIVE_CHECK_INS = 'RECEIVE_CHECK_INS'
 export const RECEIVE_ALL = 'RECEIVE_ALL'
 
 const receiveAll = (all)=>({
     type: RECEIVE_ALL,
     all
 })
+const receiveCheckIns = (checkIns)=>({
+    type: RECEIVE_CHECK_INS,
+    checkIns
+})
 
-export const fetchCheckIns = checkIns => dispatch =>(
-    CheckInAPIUtil.fetchCheckIns(checkIns)
+export const fetchCheckIns = userIds => dispatch =>(
+    CheckInAPIUtil.fetchCheckIns(userIds)
     .then(checkIns => dispatch(receiveCheckIns(checkIns)))
 )
 

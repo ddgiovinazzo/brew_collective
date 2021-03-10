@@ -1,14 +1,18 @@
 import { connect } from 'react-redux';
 import Home from './home';
+import { fetchCheckIns } from "../../actions/check_in_actions";
 
 
-const mSTP = ({entities:{beers, users},session, errors}) => {
+const mSTP = ({entities:{beers, users, checkIns, breweries},session}) => {
   return {
-    errors: errors.beers,
     beers: Object.values(beers),
+    breweries: Object.values(breweries),
+    checkIns: Object.values(checkIns),
     currentUser: users[session.id]
   };
 };
 
-
-export default connect(mSTP, null)(Home)
+const mDTP = dispatch =>({
+  fetchCheckIns: userIds => dispatch(fetchCheckIns(userIds))
+})
+export default connect(mSTP, mDTP)(Home)

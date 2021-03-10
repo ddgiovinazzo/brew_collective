@@ -6,7 +6,7 @@ import { clearBeerErrors } from "../../../actions/beer_actions";
 
 const mSTP = ({entities:{breweries, users},session, errors}) => {
   return {
-    errors: errors.breweries.concat(errors.beers),
+    errors: errors.beers,
     breweries: Object.values(breweries),
     currentUser: users[session.id]
   };

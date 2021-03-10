@@ -1,6 +1,6 @@
-export const fetchCheckIns = beer_id => {
+export const fetchCheckIns = user_ids => {
     return $.ajax({
-      url: `/api/check_ins/search/${beer_id}`,
+      url: `/api/check_ins/search/${user_ids}`
     })
   };
 

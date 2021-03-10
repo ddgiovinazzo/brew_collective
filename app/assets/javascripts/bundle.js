@@ -248,14 +248,14 @@ var createBrewery = function createBrewery(brewery, beer) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RECEIVE_CHECK_IN": () => /* binding */ RECEIVE_CHECK_IN,
+/* harmony export */   "RECEIVE_CHECK_INS": () => /* binding */ RECEIVE_CHECK_INS,
 /* harmony export */   "RECEIVE_ALL": () => /* binding */ RECEIVE_ALL,
 /* harmony export */   "fetchCheckIns": () => /* binding */ fetchCheckIns,
 /* harmony export */   "createCheckIn": () => /* binding */ createCheckIn
 /* harmony export */ });
 /* harmony import */ var _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/check_in_util */ "./frontend/util/check_in_util.js");
 
-var RECEIVE_CHECK_IN = 'RECEIVE_CHECK_IN';
+var RECEIVE_CHECK_INS = 'RECEIVE_CHECK_INS';
 var RECEIVE_ALL = 'RECEIVE_ALL';
 
 var receiveAll = function receiveAll(all) {
@@ -265,9 +265,16 @@ var receiveAll = function receiveAll(all) {
   };
 };
 
-var fetchCheckIns = function fetchCheckIns(checkIns) {
+var receiveCheckIns = function receiveCheckIns(checkIns) {
+  return {
+    type: RECEIVE_CHECK_INS,
+    checkIns: checkIns
+  };
+};
+
+var fetchCheckIns = function fetchCheckIns(userIds) {
   return function (dispatch) {
-    return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.fetchCheckIns(checkIns).then(function (checkIns) {
+    return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.fetchCheckIns(userIds).then(function (checkIns) {
       return dispatch(receiveCheckIns(checkIns));
     });
   };
@@ -276,6 +283,51 @@ var createCheckIn = function createCheckIn(checkIn) {
   return function (dispatch) {
     return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.createCheckIn(checkIn).then(function (all) {
       return dispatch(receiveAll(all));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/friendship_actions.js":
+/*!************************************************!*\
+  !*** ./frontend/actions/friendship_actions.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_ALL_BREWERIES": () => /* binding */ RECEIVE_ALL_BREWERIES,
+/* harmony export */   "RECEIVE_BREWERY": () => /* binding */ RECEIVE_BREWERY,
+/* harmony export */   "createFriendship": () => /* binding */ createFriendship,
+/* harmony export */   "updateFriendship": () => /* binding */ updateFriendship,
+/* harmony export */   "deleteFriendship": () => /* binding */ deleteFriendship
+/* harmony export */ });
+/* harmony import */ var _util_friendship_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/friendship_util */ "./frontend/util/friendship_util.js");
+/* harmony import */ var _user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_actions */ "./frontend/actions/user_actions.js");
+
+
+var RECEIVE_ALL_BREWERIES = 'RECEIVE_ALL_BREWERIES';
+var RECEIVE_BREWERY = 'RECEIVE_BREWERY';
+var createFriendship = function createFriendship(friendship) {
+  return function (dispatch) {
+    return _util_friendship_util__WEBPACK_IMPORTED_MODULE_0__.createFriendship(friendship).then(function (users) {
+      return dispatch((0,_user_actions__WEBPACK_IMPORTED_MODULE_1__.receiveUsers)(users));
+    });
+  };
+};
+var updateFriendship = function updateFriendship(friendship) {
+  return function (dispatch) {
+    return _util_friendship_util__WEBPACK_IMPORTED_MODULE_0__.updateFriendship(friendship).then(function (users) {
+      return dispatch((0,_user_actions__WEBPACK_IMPORTED_MODULE_1__.receiveUsers)(users));
+    });
+  };
+};
+var deleteFriendship = function deleteFriendship(friendshipId) {
+  return function (dispatch) {
+    return _util_friendship_util__WEBPACK_IMPORTED_MODULE_0__.deleteFriendship(friendshipId).then(function (users) {
+      return dispatch((0,_user_actions__WEBPACK_IMPORTED_MODULE_1__.receiveUsers)(users));
     });
   };
 };
@@ -390,7 +442,9 @@ var addError = function addError(error) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_USER": () => /* binding */ RECEIVE_USER,
+/* harmony export */   "RECEIVE_USERS": () => /* binding */ RECEIVE_USERS,
 /* harmony export */   "RECEIVE_ALL_USERS": () => /* binding */ RECEIVE_ALL_USERS,
+/* harmony export */   "receiveUsers": () => /* binding */ receiveUsers,
 /* harmony export */   "receiveUser": () => /* binding */ receiveUser,
 /* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers,
 /* harmony export */   "fetchUser": () => /* binding */ fetchUser
@@ -398,15 +452,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_util */ "./frontend/util/user_util.js");
 
 var RECEIVE_USER = 'RECEIVE_USER';
+var RECEIVE_USERS = 'RECEIVE_USERS';
 var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 
-var receiveUsers = function receiveUsers(users) {
+var receiveAllUsers = function receiveAllUsers(users) {
   return {
     type: RECEIVE_ALL_USERS,
     users: users
   };
 };
 
+var receiveUsers = function receiveUsers(users) {
+  return {
+    type: RECEIVE_USERS,
+    users: users
+  };
+};
 var receiveUser = function receiveUser(user) {
   return {
     type: RECEIVE_USER,
@@ -416,7 +477,7 @@ var receiveUser = function receiveUser(user) {
 var fetchAllUsers = function fetchAllUsers() {
   return function (dispatch) {
     return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllUsers().then(function (users) {
-      return dispatch(receiveUsers(users));
+      return dispatch(receiveAllUsers(users));
     });
   };
 };
@@ -1255,7 +1316,7 @@ var mSTP = function mSTP(_ref) {
       session = _ref.session,
       errors = _ref.errors;
   return {
-    errors: errors.breweries.concat(errors.beers),
+    errors: errors.beers,
     breweries: Object.values(breweries),
     currentUser: users[session.id]
   };
@@ -2031,6 +2092,105 @@ var Footer = function Footer() {
 
 /***/ }),
 
+/***/ "./frontend/components/friendship/friendship_button.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/friendship/friendship_button.jsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var FriendshipButton = function FriendshipButton(props) {
+  var currentUser = props.currentUser,
+      user = props.user;
+  var createFriendship = props.createFriendship,
+      updateFriendship = props.updateFriendship,
+      deleteFriendship = props.deleteFriendship;
+  var requested = currentUser.friendshipsAsRequestor[user.id];
+  var sendingRequest = requested && requested.status === "pending";
+  var received = currentUser.friendshipsAsReceiver[user.id];
+  var receivingRequest = received && received.status === "pending";
+  var acceptedSentrequest = requested && requested.status === "accepted";
+  var acceptedReceivedRequest = received && received.status === "accepted";
+  var accepted = acceptedSentrequest || acceptedReceivedRequest;
+
+  var text = function text() {
+    if (sendingRequest) return "Cancel Friend Request";else if (receivingRequest) return "Accept Friend Request";else if (accepted) return "Delete Friend";else return "Add Friend";
+  };
+
+  var handleFriendship = function handleFriendship() {
+    if (accepted || sendingRequest) {
+      var friendshipId = requested ? requested.id : received.id;
+      deleteFriendship(friendshipId);
+    } else if (receivingRequest) {
+      var friendship = {
+        id: received.id,
+        status: "accepted"
+      };
+      console.log(friendship);
+      updateFriendship(friendship);
+    } else {
+      var _friendship = {
+        requestor_id: currentUser.id,
+        receiver_id: user.id,
+        status: "pending"
+      };
+      createFriendship(_friendship);
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: handleFriendship,
+    className: "form-submit"
+  }, text());
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FriendshipButton);
+
+/***/ }),
+
+/***/ "./frontend/components/friendship/friendship_button_container.jsx":
+/*!************************************************************************!*\
+  !*** ./frontend/components/friendship/friendship_button_container.jsx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _friendship_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./friendship_button */ "./frontend/components/friendship/friendship_button.jsx");
+/* harmony import */ var _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/friendship_actions */ "./frontend/actions/friendship_actions.js");
+
+
+
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    createFriendship: function createFriendship(friendship) {
+      return dispatch((0,_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_2__.createFriendship)(friendship));
+    },
+    updateFriendship: function updateFriendship(friendship) {
+      return dispatch((0,_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_2__.updateFriendship)(friendship));
+    },
+    deleteFriendship: function deleteFriendship(friendship) {
+      return dispatch((0,_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_2__.deleteFriendship)(friendship));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mDTP)(_friendship_button__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
 /***/ "./frontend/components/home/home.jsx":
 /*!*******************************************!*\
   !*** ./frontend/components/home/home.jsx ***!
@@ -2043,12 +2203,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _fallback_fallback__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../fallback/fallback */ "./frontend/components/fallback/fallback.jsx");
+/* harmony import */ var _check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../check-in/check_in_show/check_in_show_container */ "./frontend/components/check-in/check_in_show/check_in_show_container.js");
+/* harmony import */ var _user_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/util */ "./frontend/components/user/util.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
 
 
 
 var Home = function Home(_ref) {
-  var currentUser = _ref.currentUser;
+  var currentUser = _ref.currentUser,
+      fetchCheckIns = _ref.fetchCheckIns,
+      checkIns = _ref.checkIns,
+      beers = _ref.beers,
+      breweries = _ref.breweries;
+  var requested = Object.keys(currentUser.friendshipsAsRequestor);
+  var received = Object.keys(currentUser.friendshipsAsReceiver);
+  var friends = requested.concat(received);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      update = _useState2[0],
+      setUpdate = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchCheckIns(friends);
+  }, [update]);
+  if ((0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(breweries) || (0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(beers)) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
+  var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You don't seem to have any recent activity!");
+  var uniques = {};
+  var uniquesCount = 0;
+  var checkInList = [];
+  checkIns.forEach(function (checkIn) {
+    if (!uniques[checkIn.beerId]) {
+      uniques[checkIn.beerId] = 1;
+      uniquesCount++;
+    }
+
+    var beer = beers[checkIn.beerId];
+    var brewery = breweries[beer.breweryId];
+    checkInList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_2__.default, {
+      key: checkIn.id,
+      brewery: brewery,
+      beer: beer,
+      checkIn: checkIn
+    }));
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "main-outer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2059,9 +2273,9 @@ var Home = function Home(_ref) {
     id: "content-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "recent-activity"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Recent Friend Activity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You don't seem to have any recent activity!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Recent Friend Activity"), checkIns.length ? checkInList : noCheckIns, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/newbeer"
-  }, "Add a Beer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Add a Beer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/beers"
   }, "Beer Index"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "sidebar"
@@ -2073,9 +2287,9 @@ var Home = function Home(_ref) {
     className: "home-grid-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, uniquesCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends")))))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.friends), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends")))))))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
@@ -2095,6 +2309,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./frontend/components/home/home.jsx");
+/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
+
 
 
 
@@ -2102,16 +2318,26 @@ var mSTP = function mSTP(_ref) {
   var _ref$entities = _ref.entities,
       beers = _ref$entities.beers,
       users = _ref$entities.users,
-      session = _ref.session,
-      errors = _ref.errors;
+      checkIns = _ref$entities.checkIns,
+      breweries = _ref$entities.breweries,
+      session = _ref.session;
   return {
-    errors: errors.beers,
     beers: Object.values(beers),
+    breweries: Object.values(breweries),
+    checkIns: Object.values(checkIns),
     currentUser: users[session.id]
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, null)(_home__WEBPACK_IMPORTED_MODULE_1__.default));
+var mDTP = function mDTP(dispatch) {
+  return {
+    fetchCheckIns: function fetchCheckIns(userIds) {
+      return dispatch((0,_actions_check_in_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCheckIns)(userIds));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_home__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -3067,6 +3293,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _image_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../image/image */ "./frontend/components/image/image.jsx");
+/* harmony import */ var _friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../friendship/friendship_button_container */ "./frontend/components/friendship/friendship_button_container.jsx");
+
 
 
 
@@ -3080,7 +3308,8 @@ var UserContentTop = function UserContentTop(props) {
       location = user.location,
       gender = user.gender,
       checkIns = user.checkIns;
-  var name = user.id === currentUser.id ? "".concat(firstName, " ").concat(lastName) : "".concat(firstName, " ").concat(lastName[0], ".");
+  var isCurrentUser = user.id === currentUser.id;
+  var name = isCurrentUser ? "".concat(firstName, " ").concat(lastName) : "".concat(firstName, " ").concat(lastName[0], ".");
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3099,7 +3328,10 @@ var UserContentTop = function UserContentTop(props) {
     className: "home-grid-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, uniquesCount))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0")))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.friends)))))), !isCurrentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_2__.default, {
+    currentUser: currentUser,
+    user: user
+  }) : null);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserContentTop);
@@ -3349,6 +3581,38 @@ var breweriesReducer = function breweriesReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/check_ins_reducer.js":
+/*!************************************************!*\
+  !*** ./frontend/reducers/check_ins_reducer.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
+
+
+var usersReducer = function usersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CHECK_INS:
+      return action.checkIns;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (usersReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -3360,18 +3624,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _breweries_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./breweries_reducer */ "./frontend/reducers/breweries_reducer.js");
 /* harmony import */ var _beers_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./beers_reducer */ "./frontend/reducers/beers_reducer.js");
+/* harmony import */ var _check_ins_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./check_ins_reducer */ "./frontend/reducers/check_ins_reducer.js");
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
   breweries: _breweries_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
-  beers: _beers_reducer__WEBPACK_IMPORTED_MODULE_2__.default
+  beers: _beers_reducer__WEBPACK_IMPORTED_MODULE_2__.default,
+  checkIns: _check_ins_reducer__WEBPACK_IMPORTED_MODULE_3__.default
 }));
 
 /***/ }),
@@ -3517,11 +3784,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
-/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -3532,17 +3797,22 @@ var usersReducer = function usersReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_ALL:
+    case _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_ALL:
       return Object.assign({}, state, _defineProperty({}, action.all.user.id, action.all.user));
 
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_ALL_USERS:
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_USERS:
       return action.users;
 
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER:
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_USER:
       return Object.assign({}, state, _defineProperty({}, action.user.id, action.user));
 
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
-      return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_USERS:
+      var newState = Object.assign({}, state);
+      var users = Object.values(action.users);
+      users.forEach(function (user) {
+        return newState[user.id] = user;
+      });
+      return newState;
 
     default:
       return state;
@@ -3666,9 +3936,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchCheckIns": () => /* binding */ fetchCheckIns,
 /* harmony export */   "createCheckIn": () => /* binding */ createCheckIn
 /* harmony export */ });
-var fetchCheckIns = function fetchCheckIns(beer_id) {
+var fetchCheckIns = function fetchCheckIns(user_ids) {
   return $.ajax({
-    url: "/api/check_ins/search/".concat(beer_id)
+    url: "/api/check_ins/search/".concat(user_ids)
   });
 };
 var createCheckIn = function createCheckIn(check_in) {
@@ -3678,6 +3948,46 @@ var createCheckIn = function createCheckIn(check_in) {
     data: {
       check_in: check_in
     }
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/friendship_util.js":
+/*!******************************************!*\
+  !*** ./frontend/util/friendship_util.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createFriendship": () => /* binding */ createFriendship,
+/* harmony export */   "updateFriendship": () => /* binding */ updateFriendship,
+/* harmony export */   "deleteFriendship": () => /* binding */ deleteFriendship
+/* harmony export */ });
+var createFriendship = function createFriendship(friendship) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/friendships',
+    data: {
+      friendship: friendship
+    }
+  });
+};
+var updateFriendship = function updateFriendship(friendship) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "/api/friendships/".concat(friendship.id),
+    data: {
+      friendship: friendship
+    }
+  });
+};
+var deleteFriendship = function deleteFriendship(friendshipId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/friendships/".concat(friendshipId)
   });
 };
 

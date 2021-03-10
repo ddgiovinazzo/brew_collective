@@ -23,6 +23,14 @@ class User < ApplicationRecord
 
     has_many :check_ins, dependent: :destroy
 
+    has_many :friendships_as_requestor,
+    foreign_key: :requestor_id,
+    class_name: :Friendship
+
+    has_many :friendships_as_receiver,
+    foreign_key: :receiver_id,
+    class_name: :Friendship
+
     attr_reader :password
     
     after_initialize :ensure_session_token
