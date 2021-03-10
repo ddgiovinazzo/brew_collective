@@ -1,13 +1,11 @@
 import * as CheckInAPIUtil from '../util/check_in_util'
 
-import { receiveBeer } from "./beer_actions";
-
 export const RECEIVE_CHECK_IN = 'RECEIVE_CHECK_IN'
-export const RECEIVE_CHECK_INS = 'RECEIVE_CHECK_INS'
+export const RECEIVE_ALL = 'RECEIVE_ALL'
 
-const receiveCheckIns = (checkIns)=>({
-    type: RECEIVE_CHECK_INS,
-    checkIns
+const receiveAll = (all)=>({
+    type: RECEIVE_ALL,
+    all
 })
 
 export const fetchCheckIns = checkIns => dispatch =>(
@@ -17,5 +15,5 @@ export const fetchCheckIns = checkIns => dispatch =>(
 
 export const createCheckIn = checkIn => dispatch =>(
     CheckInAPIUtil.createCheckIn(checkIn)
-    .then(beer => dispatch(receiveBeer(beer)))
+    .then(all => dispatch(receiveAll(all)))
 )

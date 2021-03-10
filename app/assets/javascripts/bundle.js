@@ -249,21 +249,19 @@ var createBrewery = function createBrewery(brewery, beer) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_CHECK_IN": () => /* binding */ RECEIVE_CHECK_IN,
-/* harmony export */   "RECEIVE_CHECK_INS": () => /* binding */ RECEIVE_CHECK_INS,
+/* harmony export */   "RECEIVE_ALL": () => /* binding */ RECEIVE_ALL,
 /* harmony export */   "fetchCheckIns": () => /* binding */ fetchCheckIns,
 /* harmony export */   "createCheckIn": () => /* binding */ createCheckIn
 /* harmony export */ });
 /* harmony import */ var _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/check_in_util */ "./frontend/util/check_in_util.js");
-/* harmony import */ var _beer_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./beer_actions */ "./frontend/actions/beer_actions.js");
-
 
 var RECEIVE_CHECK_IN = 'RECEIVE_CHECK_IN';
-var RECEIVE_CHECK_INS = 'RECEIVE_CHECK_INS';
+var RECEIVE_ALL = 'RECEIVE_ALL';
 
-var receiveCheckIns = function receiveCheckIns(checkIns) {
+var receiveAll = function receiveAll(all) {
   return {
-    type: RECEIVE_CHECK_INS,
-    checkIns: checkIns
+    type: RECEIVE_ALL,
+    all: all
   };
 };
 
@@ -276,8 +274,8 @@ var fetchCheckIns = function fetchCheckIns(checkIns) {
 };
 var createCheckIn = function createCheckIn(checkIn) {
   return function (dispatch) {
-    return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.createCheckIn(checkIn).then(function (beer) {
-      return dispatch((0,_beer_actions__WEBPACK_IMPORTED_MODULE_1__.receiveBeer)(beer));
+    return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.createCheckIn(checkIn).then(function (all) {
+      return dispatch(receiveAll(all));
     });
   };
 };
@@ -3283,7 +3281,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/beer_actions */ "./frontend/actions/beer_actions.js");
+/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3295,6 +3295,9 @@ var beersReducer = function beersReducer() {
   switch (action.type) {
     case _actions_beer_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_BEERS:
       return action.beers;
+
+    case _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_ALL:
+      return Object.assign({}, state, _defineProperty({}, action.all.beer.id, action.all.beer));
 
     case _actions_beer_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_BEER:
       return Object.assign({}, state, _defineProperty({}, action.beer.id, action.beer));
@@ -3354,7 +3357,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/brewery_actions */ "./frontend/actions/brewery_actions.js");
+/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3366,6 +3371,9 @@ var breweriesReducer = function breweriesReducer() {
   switch (action.type) {
     case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_BREWERIES:
       return action.breweries;
+
+    case _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_ALL:
+      return Object.assign({}, state, _defineProperty({}, action.all.brewery.id, action.all.brewery));
 
     case _actions_brewery_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_BREWERY:
       return Object.assign({}, state, _defineProperty({}, action.brewery.id, action.brewery));
@@ -3587,7 +3595,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3598,6 +3608,9 @@ var usersReducer = function usersReducer() {
   Object.freeze(state);
 
   switch (action.type) {
+    case _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_ALL:
+      return Object.assign({}, state, _defineProperty({}, action.all.user.id, action.all.user));
+
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_ALL_USERS:
       return action.users;
 
