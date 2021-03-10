@@ -1833,7 +1833,7 @@ var CheckInShow = function CheckInShow(_ref) {
     className: "rating c-rating",
     src: caps(),
     alt: ""
-  }) : null, review ? renderReview : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "- ".concat((0,_util_time_util__WEBPACK_IMPORTED_MODULE_1__.elapsedTime)(checkIn.createdAt))));
+  }) : null, review ? renderReview : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "- ".concat((0,_util_time_util__WEBPACK_IMPORTED_MODULE_1__.elapsedTime)(checkIn.createdAt), " -")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckInShow);

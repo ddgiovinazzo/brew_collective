@@ -60,5 +60,3 @@ beers = [
 breweries.each{|brewery| Brewery.create(brewery)}
 beers.each{|beer| Beer.create(beer)}
 users.each{|user| User.create(user)}
-
-

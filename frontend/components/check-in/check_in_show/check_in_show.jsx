@@ -41,7 +41,7 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
             </p>
             {rating ? <img className="rating c-rating" src={caps()} alt="" /> : null}
                 {review ? renderReview : <br/>}
-            <p>{`- ${elapsedTime(checkIn.createdAt)}`}</p>
+            <p>{`- ${elapsedTime(checkIn.createdAt)} -`}</p>
         </div>
     )
 }
