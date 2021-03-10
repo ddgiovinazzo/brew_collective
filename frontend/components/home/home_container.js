@@ -4,7 +4,7 @@ import Home from './home';
 
 const mSTP = ({entities:{beers, users},session, errors}) => {
   return {
-    errors: errors.breweries.concat(errors.beers),
+    errors: errors.beers,
     beers: Object.values(beers),
     currentUser: users[session.id]
   };

@@ -681,7 +681,7 @@ var mSTP = function mSTP(_ref) {
       session = _ref.session,
       errors = _ref.errors;
   return {
-    errors: errors.breweries.concat(errors.beers),
+    errors: errors.beers,
     beers: Object.values(beers),
     currentUser: users[session.id]
   };
@@ -2105,7 +2105,7 @@ var mSTP = function mSTP(_ref) {
       session = _ref.session,
       errors = _ref.errors;
   return {
-    errors: errors.breweries.concat(errors.beers),
+    errors: errors.beers,
     beers: Object.values(beers),
     currentUser: users[session.id]
   };
@@ -2598,7 +2598,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         className: "form-submit demo-btn ",
         onClick: function onClick() {
           return _this3.props.login({
-            username: 'demo',
+            username: 'flickfeature73',
             password: 'password'
           });
         }
