@@ -3,10 +3,10 @@ import Img from "../../../image/image";
 
 
 const UserContentTop = (props) => {
-    const { uniquesCount, currentUser} = props
-    const {location, country} = currentUser
+    const { uniquesCount, user, currentUser} = props
+    const {firstName, lastName, username, location, gender, checkIns} = user
 
-    const formatLocation = location ? `${location} ${country}` : country
+    const name = user.id === currentUser.id ? `${firstName} ${lastName}` : `${firstName} ${lastName[0]}.`
 
     return (
         <div className='bct-container'>
@@ -16,10 +16,10 @@ const UserContentTop = (props) => {
                         {/* <Img className="beer-img" src={brewery.imageUrl} dft={window.defaultBeer} alt="brewery"/> */}
                     </div>
                     <div className='bct-title'>
-                        <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
-                        <p>{currentUser.username}</p>
-                        <p>{formatLocation}</p>
-                        <p>{currentUser.gender}</p>
+                        <h1>{name}</h1>
+                        <p>{username}</p>
+                        <p>{location ? location : null}</p>
+                        <p>{gender ? gender : null}</p>
                     </div>
 
                 </div>
@@ -28,7 +28,7 @@ const UserContentTop = (props) => {
                         <div className='home-grid-row'>
                             <div>
                                 <p>Total</p>
-                                <p>{currentUser.checkIns.length}</p>
+                                <p>{checkIns.length}</p>
                             </div>
                             <div>
                                 <p>Unique</p>

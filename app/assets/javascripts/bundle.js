@@ -1711,10 +1711,12 @@ var CheckInForm = function CheckInForm(props) {
     setCheckIn(handleCheckIn);
   };
 
-  var handleRating = function handleRating(e) {
+  var handleInput = function handleInput(type) {
     var handleCheckIn = Object.assign({}, checkIn);
-    handleCheckIn["rating"] = e.currentTarget.value;
-    setCheckIn(handleCheckIn);
+    return function (e) {
+      handleCheckIn[type] = e.currentTarget.value;
+      setCheckIn(handleCheckIn);
+    };
   };
 
   var displayRating = function displayRating(rating) {
@@ -1758,7 +1760,7 @@ var CheckInForm = function CheckInForm(props) {
   }, counter)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "slide-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    onChange: handleRating,
+    onChange: handleInput("rating"),
     type: "range",
     min: "0",
     max: "5",
@@ -1799,6 +1801,32 @@ var CheckInShow = function CheckInShow(_ref) {
       beer = _ref.beer,
       brewery = _ref.brewery;
   if (!checkIn || !user || !beer) return null;
+  var rating = checkIn.rating,
+      review = checkIn.review;
+  var renderReview = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIn.review), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+
+  var caps = function caps() {
+    switch (rating) {
+      case 1:
+        return window.oneCap;
+
+      case 2:
+        return window.twoCaps;
+
+      case 3:
+        return window.threeCaps;
+
+      case 4:
+        return window.fourCaps;
+
+      case 5:
+        return window.fiveCaps;
+
+      default:
+        return null;
+    }
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "check-in-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
@@ -1807,7 +1835,11 @@ var CheckInShow = function CheckInShow(_ref) {
     to: "/beer/".concat(beer.id)
   }, "".concat(beer.name)), ' by ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/brewery/".concat(brewery.id)
-  }, "".concat(brewery.name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(checkIn.review, " - ").concat((0,_util_time_util__WEBPACK_IMPORTED_MODULE_1__.elapsedTime)(checkIn.createdAt))));
+  }, "".concat(brewery.name))), rating ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    className: "rating c-rating",
+    src: caps(),
+    alt: ""
+  }) : null, review ? renderReview : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "- ".concat((0,_util_time_util__WEBPACK_IMPORTED_MODULE_1__.elapsedTime)(checkIn.createdAt))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckInShow);
@@ -3046,10 +3078,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var UserContentTop = function UserContentTop(props) {
   var uniquesCount = props.uniquesCount,
+      user = props.user,
       currentUser = props.currentUser;
-  var location = currentUser.location,
-      country = currentUser.country;
-  var formatLocation = location ? "".concat(location, " ").concat(country) : country;
+  var firstName = user.firstName,
+      lastName = user.lastName,
+      username = user.username,
+      location = user.location,
+      gender = user.gender,
+      checkIns = user.checkIns;
+  var name = user.id === currentUser.id ? "".concat(firstName, " ").concat(lastName) : "".concat(firstName, " ").concat(lastName[0], ".");
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3060,13 +3097,13 @@ var UserContentTop = function UserContentTop(props) {
     className: "bct-img"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "".concat(currentUser.firstName, " ").concat(currentUser.lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, formatLocation), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.gender))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, location ? location : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, gender ? gender : null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-content-right-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, uniquesCount))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, uniquesCount))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0")))))));
 };
@@ -3099,10 +3136,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var UserShow = function UserShow(_ref) {
   var currentUser = _ref.currentUser,
+      user = _ref.user,
       breweries = _ref.breweries,
       beers = _ref.beers;
-  if (!currentUser || (0,_util__WEBPACK_IMPORTED_MODULE_4__.isEmpty)(breweries) || (0,_util__WEBPACK_IMPORTED_MODULE_4__.isEmpty)(beers)) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
-  var checkIns = currentUser.checkIns;
+  if (!user || (0,_util__WEBPACK_IMPORTED_MODULE_4__.isEmpty)(breweries) || (0,_util__WEBPACK_IMPORTED_MODULE_4__.isEmpty)(beers)) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
+  var checkIns = user.checkIns;
   var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "This user has no activity.");
   var uniques = {};
   var uniquesCount = 0;
@@ -3130,6 +3168,7 @@ var UserShow = function UserShow(_ref) {
     className: "beer-show-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_content_user_content__WEBPACK_IMPORTED_MODULE_2__.default, {
     currentUser: currentUser,
+    user: user,
     uniquesCount: uniquesCount
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "content-container"
@@ -3158,14 +3197,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(_ref) {
+var mSTP = function mSTP(_ref, _ref2) {
   var _ref$entities = _ref.entities,
       breweries = _ref$entities.breweries,
       users = _ref$entities.users,
       beers = _ref$entities.beers,
       session = _ref.session;
+  var match = _ref2.match;
   return {
     currentUser: users[session.id],
+    user: users[match.params.userId],
     breweries: breweries,
     beers: beers
   };

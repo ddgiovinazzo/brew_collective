@@ -4,11 +4,11 @@ import UserContent from './user_content/user_content'
 import CheckInShowContainer from '../../check-in/check_in_show/check_in_show_container'
 import {isEmpty} from '../util'
 
-const UserShow = ({currentUser, breweries, beers}) => {
+const UserShow = ({currentUser, user, breweries, beers}) => {
  
-    if (!currentUser || isEmpty(breweries) || isEmpty(beers)) return <Fallback/>
+    if (!user || isEmpty(breweries) || isEmpty(beers)) return <Fallback/>
 
-    const {checkIns} = currentUser
+    const {checkIns} = user
     
     const noCheckIns = <p>This user has no activity.</p>
     const uniques = {}
@@ -35,7 +35,7 @@ const UserShow = ({currentUser, breweries, beers}) => {
             <div className='home-grid'>
 
                 <div className='beer-show-container'>
-                    <UserContent currentUser={currentUser} uniquesCount={uniquesCount} />
+                    <UserContent currentUser={currentUser} user={user} uniquesCount={uniquesCount} />
                 </div>
 
                 <div className="content-container">

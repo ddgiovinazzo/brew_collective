@@ -13,3 +13,7 @@
 .check-in-content:last-child{
     border-bottom: 1px lightgray solid;
 }
+
+.c-rating{
+    padding-top: 20px;
+}

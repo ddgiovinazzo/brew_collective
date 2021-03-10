@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_154649) do
     t.integer "beer_id", null: false
     t.integer "user_id", null: false
     t.string "review"
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["beer_id"], name: "index_check_ins_on_beer_id"

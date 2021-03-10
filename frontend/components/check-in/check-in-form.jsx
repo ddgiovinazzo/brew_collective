@@ -19,10 +19,12 @@ const CheckInForm = (props) => {
         setCheckIn(handleCheckIn)
     }
 
-    const handleRating = (e) => {
+    const handleInput = (type) => {
         const handleCheckIn = Object.assign({}, checkIn)
-        handleCheckIn["rating"] = e.currentTarget.value
-        setCheckIn(handleCheckIn)
+        return (e)=>{
+            handleCheckIn[type] = e.currentTarget.value
+            setCheckIn(handleCheckIn)
+        }
     }
 
     const displayRating = (rating)=>{
@@ -53,9 +55,10 @@ const CheckInForm = (props) => {
                         <p className="counter">{counter}</p>
                     </div>
                     <div className="slide-container">
-                        <input onChange={handleRating} type="range" min="0" max="5" defaultValue="0" className="slider" id="slider" />
+                        <input onChange={handleInput("rating")} type="range" min="0" max="5" defaultValue="0" className="slider" id="slider" />
                         <div>{displayRating(checkIn.rating)}</div>
                     </div>
+
                     <button onClick={handleSubmit} className='form-submit'>Confirm</button>
 
 

@@ -6,7 +6,7 @@ class CreateCheckIns < ActiveRecord::Migration[5.2]
       t.index [ :beer_id ]
       t.index [ :user_id ]
       t.string :review
-      t.integer :rating, default: nil
+      t.integer :rating, default: 0
 
       t.timestamps
     end
