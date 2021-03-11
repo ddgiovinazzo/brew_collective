@@ -43,11 +43,19 @@ end
 json.friend_ids friend_ids
 json.friend_pending_ids friend_pending_ids
 
+uniques = {}
+unique_check_ins = 0
+
 json.checkIns do
     json.array!(user.check_ins.reverse) do |check_in|
+        if !uniques[check_in.beer_id]
+            uniques[check_in.beer_id] = 1
+            unique_check_ins += 1
+        end
         json.partial! '/api/check_ins/check_in.json.jbuilder', check_in: check_in
     end
 end
+json.unique_check_ins unique_check_ins
 
 if user.photo.attached?
     json.photo_url url_for(user.photo)

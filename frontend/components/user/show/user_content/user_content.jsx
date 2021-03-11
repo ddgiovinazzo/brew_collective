@@ -39,7 +39,7 @@ const UserContentTop = (props) => {
                             </div>
                             <div>
                                 <p>Unique</p>
-                                <p>{uniquesCount}</p>
+                                <p>{user.uniqueCheckIns}</p>
                             </div>
                         </div>
                         <div className='home-grid-row'>

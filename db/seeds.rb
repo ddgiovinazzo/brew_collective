@@ -57,6 +57,6 @@ beers = [
     flavor_profile: "Legendary showman P.T. Barnum once noted, “everybody drank cider-spirits called ‘gumption’.” Our Woodchuck GUMPTION™ celebrates the spirit of P.T. Barnum and those with the gumption to follow their own path. We pair the fresh juice of common eating apples with dry cider apples to bring you a bold and unique drinking experience. "},
 ]
 
+users.each{|user| User.create(user)}
 breweries.each{|brewery| Brewery.create(brewery)}
 beers.each{|beer| Beer.create(beer)}
-users.each{|user| User.create(user)}

@@ -17,18 +17,11 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
     if (isEmpty(breweries) || isEmpty(beers)) return <Fallback />
 
     const noCheckIns = <p>You don't seem to have any recent activity!</p>
-    const uniques = {}
-    let uniquesCount = 0
-
     const checkInList = []
 
     for (let i = checkIns.length - 1; i >= 0; i--) {
         const checkIn = checkIns[i];
-
-        if (!uniques[checkIn.beerId]) {
-            uniques[checkIn.beerId] = 1;
-            uniquesCount++
-        }
+        
         const beer = beers[checkIn.beerId]
         const brewery = breweries[beer.breweryId]
         checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beer} checkIn={checkIn} />)
@@ -59,11 +52,11 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
                             <div className='home-grid-container'>
                                 <div className='home-grid-row'>
                                     <div>
-                                        <p>{checkIns.length}</p>
+                                        <p>{currentUser.checkIns.length}</p>
                                         <p>Total</p>
                                     </div>
                                     <div>
-                                        <p>{uniquesCount}</p>
+                                        <p>{currentUser.uniqueCheckIns}</p>
                                         <p>Unique</p>
                                     </div>
                                 </div>

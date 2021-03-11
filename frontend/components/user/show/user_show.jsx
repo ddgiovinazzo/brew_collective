@@ -11,18 +11,9 @@ const UserShow = ({currentUser, user, breweries, beers}) => {
     const {checkIns} = user
     
     const noCheckIns = <p>This user has no activity.</p>
-    const uniques = {}
-    let uniquesCount = 0
-
     const checkInList = []
 
     checkIns.forEach(checkIn => {
-
-        if (!uniques[checkIn.beerId]) {
-            uniques[checkIn.beerId] = 1;
-            uniquesCount++
-        }
-        
         const beer = beers[checkIn.beerId]
         const brewery = breweries[beer.breweryId]
         checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beer} checkIn={checkIn}/>)
@@ -35,7 +26,7 @@ const UserShow = ({currentUser, user, breweries, beers}) => {
             <div className='home-grid'>
 
                 <div className='beer-show-container'>
-                    <UserContent currentUser={currentUser} user={user} uniquesCount={uniquesCount} />
+                    <UserContent currentUser={currentUser} user={user} />
                 </div>
 
                 <div className="content-container">
