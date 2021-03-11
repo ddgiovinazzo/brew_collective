@@ -29,7 +29,6 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
             uniques[checkIn.beerId] = 1;
             uniquesCount++
         }
-        debugger
         const beer = beers[checkIn.beerId]
         const brewery = breweries[beer.breweryId]
         checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beer} checkIn={checkIn} />)

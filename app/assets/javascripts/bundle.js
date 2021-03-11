@@ -2271,7 +2271,6 @@ var Home = function Home(_ref) {
       uniquesCount++;
     }
 
-    debugger;
     var beer = beers[checkIn.beerId];
     var brewery = breweries[beer.breweryId];
     checkInList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_2__.default, {
