@@ -5,8 +5,8 @@ import { fetchCheckIns } from "../../actions/check_in_actions";
 
 const mSTP = ({entities:{beers, users, checkIns, breweries},session}) => {
   return {
-    beers: Object.values(beers),
-    breweries: Object.values(breweries),
+    beers,
+    breweries,
     checkIns: Object.values(checkIns),
     currentUser: users[session.id]
   };

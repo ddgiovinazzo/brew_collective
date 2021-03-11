@@ -14,7 +14,7 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
         fetchCheckIns(currentUser.friendIds)
     }, [update])
 
-    if (!breweries.length || !beers.length) return <Fallback />
+    if (isEmpty(breweries) || isEmpty(beers)) return <Fallback />
 
     const noCheckIns = <p>You don't seem to have any recent activity!</p>
     const uniques = {}
@@ -29,6 +29,7 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
             uniques[checkIn.beerId] = 1;
             uniquesCount++
         }
+        debugger
         const beer = beers[checkIn.beerId]
         const brewery = breweries[beer.breweryId]
         checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beer} checkIn={checkIn} />)

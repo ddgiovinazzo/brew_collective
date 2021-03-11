@@ -2257,7 +2257,7 @@ var Home = function Home(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchCheckIns(currentUser.friendIds);
   }, [update]);
-  if (!breweries.length || !beers.length) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
+  if ((0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(breweries) || (0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(beers)) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
   var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You don't seem to have any recent activity!");
   var uniques = {};
   var uniquesCount = 0;
@@ -2271,6 +2271,7 @@ var Home = function Home(_ref) {
       uniquesCount++;
     }
 
+    debugger;
     var beer = beers[checkIn.beerId];
     var brewery = breweries[beer.breweryId];
     checkInList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -2340,8 +2341,8 @@ var mSTP = function mSTP(_ref) {
       breweries = _ref$entities.breweries,
       session = _ref.session;
   return {
-    beers: Object.values(beers),
-    breweries: Object.values(breweries),
+    beers: beers,
+    breweries: breweries,
     checkIns: Object.values(checkIns),
     currentUser: users[session.id]
   };
