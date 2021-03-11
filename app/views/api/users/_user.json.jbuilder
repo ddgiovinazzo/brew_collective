@@ -1,12 +1,19 @@
 json.key_format! camelize: :lower
-
 json.extract! user, :id, :username, :email, :last_name, :first_name, :country, :gender, :location, :birthday
+friend_ids = []
+friend_pending_ids = []
 
 if user.friendships_as_requestor.empty?
     json.friendships_as_requestor({})
 else
     json.friendships_as_requestor do
         user.friendships_as_requestor.each do |friendship|
+            if friendship.status == "accepted"
+                friend_ids << friendship.receiver_id
+            else
+                friend_pending_ids << friendship.receiver_id
+            end
+
             json.set! friendship.receiver_id do
                 json.partial! '/api/friendships/friendship.json.jbuilder', friendship: friendship
             end
@@ -19,6 +26,13 @@ if user.friendships_as_receiver.empty?
 else
     json.friendships_as_receiver do
         user.friendships_as_receiver.each do |friendship|
+
+             if friendship.status == "accepted"
+                friend_ids << friendship.requestor_id
+             else
+                friend_pending_ids << friendship.requestor_id
+             end
+
             json.set! friendship.requestor_id do
                 json.partial! '/api/friendships/friendship.json.jbuilder', friendship: friendship
             end
@@ -26,10 +40,17 @@ else
     end
 end
 
+json.friend_ids friend_ids
+json.friend_pending_ids friend_pending_ids
+
 json.checkIns do
     json.array!(user.check_ins.reverse) do |check_in|
         json.partial! '/api/check_ins/check_in.json.jbuilder', check_in: check_in
     end
 end
 
-json.friends user.friendships_as_receiver.length + user.friendships_as_requestor.length
+if user.photo.attached?
+    json.photo_url url_for(user.photo)
+else
+    json.photo_url ""
+end

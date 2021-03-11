@@ -13,42 +13,55 @@ const FriendshipButton = (props) =>{
     const acceptedSentrequest = requested && requested.status === "accepted"
     const acceptedReceivedRequest = received && received.status === "accepted"
     const accepted = acceptedSentrequest || acceptedReceivedRequest
-
+    
     const text = ()=>{
-        if (sendingRequest) return "Cancel Friend Request"
+        if (sendingRequest) return "Friend Request Sent"
         else if (receivingRequest) return "Accept Friend Request"
         else if (accepted) return "Delete Friend"
         else return "Add Friend"
     }
-
-    const handleFriendship = ()=>{
-
-        if (accepted || sendingRequest){
-            const friendshipId = requested ? requested.id : received.id
-            deleteFriendship(friendshipId)
-        }
-
-        else if (receivingRequest){
-            const friendship = {
-                id: received.id,
-                status: "accepted"
-            }
-            console.log(friendship)
-            updateFriendship(friendship)
-        }
-
-        else {
-            const friendship = {
-                requestor_id: currentUser.id,
-                receiver_id: user.id,
-                status : "pending"
-            }
-            createFriendship(friendship)
-        }
+    
+    const handleDelete=()=>{
+        const friendshipId = requested ? requested.id : received.id
+        deleteFriendship(friendshipId)
     }
 
+    const handleUpdate=()=>{
+        const friendship = {
+            id: received.id,
+            status: "accepted"
+        }
+        console.log(friendship)
+        updateFriendship(friendship)
+    }
+
+    const handleCreate=()=>{
+        const friendship = {
+            requestor_id: currentUser.id,
+            receiver_id: user.id,
+            status : "pending"
+        }
+        createFriendship(friendship)
+    }
+    
+    const handleFriendship = ()=>{
+        if (accepted) handleDelete()
+        else if (receivingRequest) handleUpdate()
+        else handleCreate()
+    }
+
+
  
-    return <button onClick={handleFriendship} className="form-submit">{text()}</button>
+    return(
+        <div>
+            <button onClick={handleFriendship} className="form-submit">{text()}</button>
+            {
+                sendingRequest || receivingRequest ?
+                <button onClick={handleDelete} className="form-submit">Cancel Friend Request</button>
+                :null
+            }
+        </div>
+    )
 }
 
 export default FriendshipButton

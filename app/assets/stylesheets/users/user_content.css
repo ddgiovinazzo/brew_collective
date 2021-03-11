@@ -1,0 +1,24 @@
+#uc-location {
+    font-size: 18px;
+}
+.uc-title *{
+    padding: 5px;
+}
+.uc-title h1{
+    font-size: 32px;
+    font-weight: 400;
+    color: #0D1F2D;
+}
+
+#user-image-file{
+    display: none;
+}
+
+.top.user{
+    bottom:110px;
+
+}
+
+.change{
+    cursor: pointer;
+}

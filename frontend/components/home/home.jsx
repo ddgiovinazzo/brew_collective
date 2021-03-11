@@ -1,23 +1,20 @@
-import React, {useEffect, useState} from "react";
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 import Fallback from "../fallback/fallback";
 import CheckInShowContainer from '../check-in/check_in_show/check_in_show_container'
-import {isEmpty} from '../user/util'
+import { isEmpty } from '../user/util'
 
 
 
 
-const Home = ({currentUser, fetchCheckIns, checkIns, beers, breweries})=> {
-    const requested = Object.keys(currentUser.friendshipsAsRequestor)
-    const received = Object.keys(currentUser.friendshipsAsReceiver)
-    const friends = requested.concat(received)
+const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
 
     const [update, setUpdate] = useState(0)
     useEffect(() => {
-        fetchCheckIns(friends)
+        fetchCheckIns(currentUser.friendIds)
     }, [update])
 
-    if (isEmpty(breweries) || isEmpty(beers)) return <Fallback/>
+    if (isEmpty(breweries) || isEmpty(beers)) return <Fallback />
 
     const noCheckIns = <p>You don't seem to have any recent activity!</p>
     const uniques = {}
@@ -25,37 +22,38 @@ const Home = ({currentUser, fetchCheckIns, checkIns, beers, breweries})=> {
 
     const checkInList = []
 
-    checkIns.forEach(checkIn => {
+    for (let i = checkIns.length - 1; i >= 0; i--) {
+        const checkIn = checkIns[i];
 
         if (!uniques[checkIn.beerId]) {
             uniques[checkIn.beerId] = 1;
             uniquesCount++
         }
-        
         const beer = beers[checkIn.beerId]
         const brewery = breweries[beer.breweryId]
-        checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beer} checkIn={checkIn}/>)
-    })
-        return (
-            <div className="main-outer">
+        checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beer} checkIn={checkIn} />)
+    }
+    
+    return (
+        <div className="main-outer">
 
             <div className='home-grid'>
                 <div id='main'>
                     <div id='content-container'>
-                 
+
                         <div id='recent-activity'>
                             <h4>Recent Friend Activity</h4>
-                            {checkIns.length? checkInList : noCheckIns}
-                        <Link to='/newbeer'>Add a Beer</Link>
-                        <br/>
-                        <Link to='/beers'>Beer Index</Link>
+                            {checkIns.length ? checkInList : noCheckIns}
+                            <Link to='/newbeer'>Add a Beer</Link>
+                            <br />
+                            <Link to='/beers'>Beer Index</Link>
                         </div>
                     </div>
                     <div id='sidebar'>
                         <div className="personal-stats">
                             <div>
-                            <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
-                            <p><i className="fas fa-user home-icon"></i> {currentUser.username}</p>
+                                <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
+                                <p><i className="fas fa-user home-icon"></i> {currentUser.username}</p>
 
                             </div>
                             <div className='home-grid-container'>
@@ -65,17 +63,17 @@ const Home = ({currentUser, fetchCheckIns, checkIns, beers, breweries})=> {
                                         <p>Total</p>
                                     </div>
                                     <div>
-                                    <p>{uniquesCount}</p>
+                                        <p>{uniquesCount}</p>
                                         <p>Unique</p>
                                     </div>
                                 </div>
                                 <div className='home-grid-row'>
                                     <div>
-                                    <p>0</p>
+                                        <p>0</p>
                                         <p>Badges</p>
                                     </div>
                                     <div>
-                                    <p>{currentUser.friends}</p>
+                                        <p>{currentUser.friendIds.length}</p>
                                         <p>Friends</p>
                                     </div>
                                 </div>
@@ -88,8 +86,8 @@ const Home = ({currentUser, fetchCheckIns, checkIns, beers, breweries})=> {
             </div>
 
         </div>
-        )
-    
+    )
+
 }
 
 export default Home

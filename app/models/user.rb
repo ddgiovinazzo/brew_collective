@@ -31,6 +31,8 @@ class User < ApplicationRecord
     foreign_key: :receiver_id,
     class_name: :Friendship
 
+    has_one_attached :photo
+
     attr_reader :password
     
     after_initialize :ensure_session_token

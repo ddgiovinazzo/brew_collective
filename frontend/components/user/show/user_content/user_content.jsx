@@ -1,28 +1,30 @@
 import React from "react";
 import Img from "../../../image/image";
+import SetImg from "../../../image/set_image";
 import FriendshipButton from "../../../friendship/friendship_button_container";
 
 
 const UserContentTop = (props) => {
-    const { uniquesCount, user, currentUser} = props
-    const {firstName, lastName, username, location, gender, checkIns} = user
-  
+    const { uniquesCount, user, currentUser } = props
+    const { firstName, lastName, username, location, gender, checkIns } = user
+
     const isCurrentUser = user.id === currentUser.id
     const name = isCurrentUser ? `${firstName} ${lastName}` : `${firstName} ${lastName[0]}.`
 
-
+    const changeImage = <SetImg className="beer-img user-img" src={user.photoUrl} dft={window.defaultBeer} alt="user" />
+    const image = <Img className="beer-img user-img" src={user.photoUrl} dft={window.defaultBeer} alt="user" />
 
     return (
         <div className='bct-container'>
             <div className='bct-row'>
                 <div className="beer-content-left-container">
                     <div className='bct-img'>
-                        {/* <Img className="beer-img" src={brewery.imageUrl} dft={window.defaultBeer} alt="brewery"/> */}
+                        {isCurrentUser ? changeImage : image}
                     </div>
-                    <div className='bct-title'>
+                    <div className='uc-title'>
                         <h1>{name}</h1>
                         <p>{username}</p>
-                        <p>{location ? location : null}</p>
+                        <p id="uc-location">{location ? location : null}</p>
                         <p>{gender ? gender : null}</p>
                     </div>
 
@@ -46,7 +48,7 @@ const UserContentTop = (props) => {
                             </div>
                             <div>
                                 <p>Friends</p>
-                                <p>{user.friends}</p>
+                                <p>{user.friendIds.length}</p>
                             </div>
                         </div>
                     </div>
@@ -55,10 +57,10 @@ const UserContentTop = (props) => {
 
             </div>
             {
-                !isCurrentUser ?  
-                    <FriendshipButton 
-                    currentUser={currentUser} 
-                    user={user}/>
+                !isCurrentUser ?
+                    <FriendshipButton
+                        currentUser={currentUser}
+                        user={user} />
                     : null
             }
         </div>

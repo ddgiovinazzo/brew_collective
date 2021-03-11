@@ -2,3 +2,10 @@
     height: 100px;
     width: 100px;
 }
+.user-img{
+    object-fit: cover;
+    border-radius: 50%;
+}
+#file-upload-hidden{
+    display: none;
+}
