@@ -1,11 +1,16 @@
-class Api::UsersController < ApplicationController
+ENV['AWS_ACCESS_KEY_ID'] = Rails.application.credentials.aws[:access_key_id]
+ENV["AWS_SECRET_ACCESS_KEY"] = Rails.application.credentials.aws[:secret_access_key]
+ENV['AWS_REGION'] = Rails.application.credentials.aws[:region]
 
+class Api::UsersController < ApplicationController
+    
     def index
         @users = User.all
     end
-
+    
     def create
         @user = User.new(user_params)
+
         if @user.save
             login!(@user)
             render :show
@@ -13,9 +18,17 @@ class Api::UsersController < ApplicationController
             render json: @user.errors.full_messages, status: 422
         end    
     end
-
+    
     def update
         @user = User.find(params[:id])
+        if @user.photo.attached?
+            s3 = Aws::S3::Resource.new
+            bucket = s3.bucket(Rails.application.credentials.aws[:dev][:bucket])
+            obj = bucket.object(url_for(@user.photo))
+            obj.delete
+            @user.photo.destroy
+        end
+
         if @user.update(user_params)
             render :show
         else
