@@ -6,7 +6,7 @@ import FriendshipButton from "../../../friendship/friendship_button_container";
 
 const UserContentTop = (props) => {
     const { uniquesCount, user, currentUser } = props
-    const { firstName, lastName, username, location, gender, checkIns } = user
+    const { firstName, lastName, username, location, gender, checkIns, country } = user
 
     const isCurrentUser = user.id === currentUser.id
     const name = isCurrentUser ? `${firstName} ${lastName}` : `${firstName} ${lastName[0]}.`
@@ -25,6 +25,7 @@ const UserContentTop = (props) => {
                         <h1>{name}</h1>
                         <p>{username}</p>
                         <p id="uc-location">{location ? location : null}</p>
+                        <p>{country}</p>
                         <p>{gender ? gender : null}</p>
                     </div>
 

@@ -3516,7 +3516,8 @@ var UserContentTop = function UserContentTop(props) {
       username = user.username,
       location = user.location,
       gender = user.gender,
-      checkIns = user.checkIns;
+      checkIns = user.checkIns,
+      country = user.country;
   var isCurrentUser = user.id === currentUser.id;
   var name = isCurrentUser ? "".concat(firstName, " ").concat(lastName) : "".concat(firstName, " ").concat(lastName[0], ".");
   var changeImage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_set_image__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -3543,7 +3544,7 @@ var UserContentTop = function UserContentTop(props) {
     className: "uc-title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     id: "uc-location"
-  }, location ? location : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, gender ? gender : null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, location ? location : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, gender ? gender : null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-content-right-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-container"
