@@ -17,3 +17,10 @@
 .c-rating{
     padding-top: 20px;
 }
+
+.check-in-img-container{
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    padding: 20px;
+}

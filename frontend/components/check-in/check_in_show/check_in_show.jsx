@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import { elapsedTime } from '../../../util/time_util'
+import Img from "../../image/image";
+
 
 
 const CheckInShow = ({ checkIn, user, beer, brewery }) => {
@@ -32,6 +34,14 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
 
     return (
         <div className="check-in-content">
+            <div className="check-in-img-container">
+                <Link to={`user/${user.id}`}>
+                    <Img className="user-img check_in-img" src={user.photoUrl} dft={window.defaultBeer} alt="user" />
+                </Link>
+                <Link to={`beer/${beer.id}`}>
+                    <Img className="user-img check_in-img" src={beer.imageUrl} dft={window.defaultBeer} alt="user" />
+                </Link>
+            </div>
             <p>
                 <Link to={`/user/${user.id}`}>{`${user.firstName} ${user.lastName[0]}.`}</Link>
                 {' is drinking a '}
@@ -40,7 +50,7 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
                 <Link to={`/brewery/${brewery.id}`}>{`${brewery.name}`}</Link>
             </p>
             {rating ? <img className="rating c-rating" src={caps()} alt="" /> : null}
-                {review ? renderReview : <br/>}
+            {review ? renderReview : <br />}
             <p>{`- ${elapsedTime(checkIn.createdAt)} -`}</p>
         </div>
     )

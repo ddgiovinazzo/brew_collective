@@ -10,13 +10,16 @@
 # b1.image.attach(io: f1, filename: 'breakfast_stout.jpeg')
 require 'open-uri'
 
-
+[1,2,3,4,5,6,7].combination(2).to_a.each do |subArray|
+    Friendship.create(requestor_id: subArray[0], receiver_id: subArray[1], status: "accepted")
+end
+Friendship.where(id: [2,1,5]).each{|d| d.destroy}
 users = [
     {username: 'flickfeature73', password:'password', email: 'flickfeature73@demo.com', country: 'United States', first_name: 'Flick', last_name: 'Van Rossum', gender: 'he/him/his', location: 'New York', birthday: DateTime.new(1998,6,11)},
-    {username: 'lewindavisbangbang61', password:'password', email: 'lewindavisbangbang61@demo.com', country: 'United Kingdom', first_name: 'Lewin', last_name: 'Davis', gender: 'they/them/theirs', location: '', birthday: DateTime.new(1985,8,16)},
+    {username: 'lewindavisbb61', password:'password', email: 'lewindavisbangbang61@demo.com', country: 'United Kingdom', first_name: 'Lewin', last_name: 'Davis', gender: 'they/them/theirs', location: '', birthday: DateTime.new(1985,8,16)},
     {username: 'obviouslyannalise', password:'password', email: 'obviouslyannalise@demo.com', country: 'United States', first_name: 'Annalise', last_name: 'Horn', gender: 'she/her/hers', location: 'Austin', birthday: DateTime.new(1996,6,25)},
     {username: 'lorettadimov24', password:'password', email: 'lorettadimov24@demo.com', country: 'Russia', first_name: 'Loretta', last_name: 'Dimov', gender: 'she/her/hers', location: 'St. Petersburg', birthday: DateTime.new(1987,7,28)},
-    {username: 'miraoakum18', password:'password', email: 'miraoakum18@demo.com', country: 'United States', first_name: 'Mira', last_name: 'Cooney', gender: 'she/her/hers', location: 'Jersey City', birthday: DateTime.new(1993,2,17)},
+    {username: 'miraoakum18', password:'password', email: 'miraoakum18@demo.com', country: 'United States', first_name: 'Mira', last_name: 'Coley', gender: 'she/her/hers', location: 'Jersey City', birthday: DateTime.new(1993,2,17)},
     {username: 'wonderleontine19', password:'password', email: 'wonderlontine19@demo.com', country: 'France', first_name: 'Léontine', last_name: 'Amerighi', gender: 'they/them/theirs', location: 'Paris', birthday: DateTime.new(1988,8,16)},
     {username: 'juliecroissant', password:'password', email: 'juliecroissant@demo.com', country: 'United States', first_name: 'Julie', last_name: 'Ericson', gender: '', location: '', birthday: DateTime.new(1990,3,10)},
 ]

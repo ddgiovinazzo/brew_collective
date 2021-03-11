@@ -9,3 +9,8 @@
 #file-upload-hidden{
     display: none;
 }
+
+.check_in-img{
+    height: 75px;
+    width: 75px;
+}
