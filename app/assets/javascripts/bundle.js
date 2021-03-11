@@ -1897,14 +1897,14 @@ var CheckInShow = function CheckInShow(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "check-in-img-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "user/".concat(user.id)
+    to: "/user/".concat(user.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_2__.default, {
     className: "user-img check_in-img",
     src: user.photoUrl,
     dft: window.defaultBeer,
     alt: "user"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "beer/".concat(beer.id)
+    to: "/beer/".concat(beer.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_2__.default, {
     className: "user-img check_in-img",
     src: beer.imageUrl,

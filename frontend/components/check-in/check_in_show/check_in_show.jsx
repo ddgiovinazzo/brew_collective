@@ -35,10 +35,10 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
     return (
         <div className="check-in-content">
             <div className="check-in-img-container">
-                <Link to={`user/${user.id}`}>
+                <Link to={`/user/${user.id}`}>
                     <Img className="user-img check_in-img" src={user.photoUrl} dft={window.defaultBeer} alt="user" />
                 </Link>
-                <Link to={`beer/${beer.id}`}>
+                <Link to={`/beer/${beer.id}`}>
                     <Img className="user-img check_in-img" src={beer.imageUrl} dft={window.defaultBeer} alt="user" />
                 </Link>
             </div>
