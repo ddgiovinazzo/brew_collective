@@ -12,7 +12,8 @@ class Api::CheckInsController < ApplicationController
     end
 
     def search
-        @check_ins = CheckIn.where(user_id: params[:user_ids])
+        user_ids = params[:user_ids].split(",")
+        @check_ins = CheckIn.where(user_id: user_ids)
             render "/api/check_ins/index"
     end
 

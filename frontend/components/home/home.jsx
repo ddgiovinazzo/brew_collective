@@ -11,10 +11,10 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
 
     const [update, setUpdate] = useState(0)
     useEffect(() => {
-        fetchCheckIns(currentUser.friendIds)
+        fetchCheckIns(currentUser.friendIds.length? currentUser.friendIds : "x")
     }, [update])
 
-    if (isEmpty(breweries) || isEmpty(beers) || !checkIns.length) return <Fallback />
+    if (isEmpty(breweries) || isEmpty(beers)) return <Fallback />
 
     const noCheckIns = <p>You don't seem to have any recent activity!</p>
     const uniques = {}

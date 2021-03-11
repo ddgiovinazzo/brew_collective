@@ -2255,9 +2255,9 @@ var Home = function Home(_ref) {
       setUpdate = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchCheckIns(currentUser.friendIds);
+    fetchCheckIns(currentUser.friendIds.length ? currentUser.friendIds : "x");
   }, [update]);
-  if ((0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(breweries) || (0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(beers) || !checkIns.length) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
+  if ((0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(breweries) || (0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(beers)) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
   var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You don't seem to have any recent activity!");
   var uniques = {};
   var uniquesCount = 0;
