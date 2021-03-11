@@ -14,7 +14,7 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
         fetchCheckIns(currentUser.friendIds)
     }, [update])
 
-    if (isEmpty(breweries) || isEmpty(beers)) return <Fallback />
+    if (!breweries.length || !beers.length) return <Fallback />
 
     const noCheckIns = <p>You don't seem to have any recent activity!</p>
     const uniques = {}
