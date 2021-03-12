@@ -1938,7 +1938,7 @@ var CheckInShow = function CheckInShow(_ref) {
     alt: "user"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/user/".concat(user.id)
-  }, "".concat(user.firstName, " ").concat(user.lastName[0], ".")), ' is drinking a ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "".concat(user.firstName, " ").concat(user.lastName[0], ".")), " is drinking ".concat(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(beer.name[0]) ? "an" : "a", " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/beer/".concat(beer.id)
   }, "".concat(beer.name)), ' by ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/brewery/".concat(brewery.id)

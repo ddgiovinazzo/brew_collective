@@ -44,7 +44,7 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
             </div>
             <p>
                 <Link to={`/user/${user.id}`}>{`${user.firstName} ${user.lastName[0]}.`}</Link>
-                {' is drinking a '}
+                {` is drinking ${['a','e','i','o','u','A','E','I','O','U'].includes(beer.name[0]) ? "an" : "a"} `}
                 <Link to={`/beer/${beer.id}`}>{`${beer.name}`}</Link>
                 {' by '}
                 <Link to={`/brewery/${brewery.id}`}>{`${brewery.name}`}</Link>
