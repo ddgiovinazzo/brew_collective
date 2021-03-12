@@ -55,7 +55,7 @@ const BeerCreate = (props) => {
         }
     }
 
-
+    
     const breweryInput = (e) => {
         const breweryName = e.currentTarget.innerHTML
         document.getElementById("brewery-input").value = breweryName
@@ -65,22 +65,33 @@ const BeerCreate = (props) => {
         setBeer(newBeer)
         setBrewerySearch("")
     }
-
+    
+    const handleSort = (array) => {
+        return array.sort((a,b)=>{
+           if(a.key[0].toLowerCase() === brewerySearch[0].toLowerCase()) return -1
+           else if( b.key[0].toLowerCase() === brewerySearch[0].toLowerCase() ) return 1
+           else if(a.key < b.key) return -1
+           else return 1
+        })
+   }
+    
     const beerOptions = beer_styles.map((beer, i) => <option key={i} value={beer}>{beer}</option>)
 
     const breweries = []
 
-    props.breweries.forEach(brewery => {
-        if (brewery.name.split(" ").join("").toLowerCase()
-            .includes(brewerySearch.split(" ").join("").toLowerCase()))
-            breweries.push(<li onClick={breweryInput} key={brewery.id} value={brewery.id}>{brewery.name}</li>)
-    })
+    for (let i = 0; brewerySearch && i < props.breweries.length; i++) {
+        const brewery = props.breweries[i];
+        if(brewery.name.toLowerCase().includes(brewerySearch.toLowerCase()))
+        breweries.push(
+            <li onClick={breweryInput} key={brewery.name} value={brewery.id}>{brewery.name}</li>
+    )
+    }
 
     const breweryList = (
 
         <div className='cb-input-lg input-cont brewery-list-cont'>
             <ul className="brewery-list">
-                {breweries}
+                {handleSort(breweries)}
                 <li onClick={() => { setNewBrewery(true); setBrewerySearch("") }}>Don't see your brewery? Click Here to add it.</li>
             </ul>
         </div>
@@ -92,7 +103,7 @@ const BeerCreate = (props) => {
 
 
             <div className='cb-input-lg input-cont '>
-                <input id="brewery-input" onChange={(e) => setBrewerySearch(e.currentTarget.value)} className='input' type="" />
+                <input id="brewery-input" onChange={(e) => setBrewerySearch(e.currentTarget.value)} className='cb input' type="" />
             </div>
             {brewerySearch ? breweryList : null}
 
@@ -112,7 +123,7 @@ const BeerCreate = (props) => {
                         <label className='form-label' htmlFor="">BEER NAME</label>
 
                         <div className='cb-input-lg input-cont'>
-                            <input className='input' onChange={handleInput('name')} type="" />
+                            <input className='cb input' onChange={handleInput('name')} type="" />
                         </div>
 
                     </div>
@@ -129,7 +140,7 @@ const BeerCreate = (props) => {
                             <label className='form-label' htmlFor="">ABV</label>
 
                             <div className='cb-input-sm input-cont'>
-                                <input className='input' onChange={handleInput('abv')} />
+                                <input className='cb input sm' onChange={handleInput('abv')} />
                             </div>
 
                         </div>
@@ -138,7 +149,7 @@ const BeerCreate = (props) => {
                             <label className='form-label' htmlFor="">IBU</label>
 
                             <div className='cb-input-sm input-cont'>
-                                <input className='input' onChange={handleInput('ibu')} />
+                                <input className='cb input sm' onChange={handleInput('ibu')} />
                             </div>
 
                         </div>
@@ -147,7 +158,7 @@ const BeerCreate = (props) => {
                             <label className='form-label' htmlFor="">STYLE</label>
 
                             <div className='cb-select input-cont'>
-                                <input list="serving-style" className='input' onChange={handleInput('serving_style')} />
+                                <input list="serving-style" className='cb input' onChange={handleInput('serving_style')} />
 
                                 <datalist id='serving-style' >
                                     <option>Select A Style</option>
@@ -164,7 +175,7 @@ const BeerCreate = (props) => {
                         <div className='cb-textArea input-cont'>
 
                             <span className='counter'>{textLimit}</span>
-                            <textarea className='textArea' onChange={handleInput('flavor_profile', true)} maxLength="750" />
+                            <textarea className='cb textArea' onChange={handleInput('flavor_profile', true)} maxLength="750" />
                         </div>
 
                     </div>

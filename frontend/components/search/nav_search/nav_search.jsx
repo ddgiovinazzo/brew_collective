@@ -3,6 +3,9 @@ import NavSearchIndex from './nav_search_index'
 import { Link } from 'react-router-dom'
 
 const NavSearch = (props) => {
+    const {location:{pathname}} = props
+    if (pathname === "/beers") return null 
+    
     const {beers, searchText, setSearchText} = props
 
     const handleSearch = (e) => {

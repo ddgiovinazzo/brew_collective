@@ -6,3 +6,42 @@
 #beer-index-list-container > ul > a{
     padding: 5px 0;
 }
+
+#recent-activity.bidx{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    border-bottom: none;
+}
+
+.bidx-search-bar-container{
+    background-color: rgb(240, 240, 240);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bidx-input-container{
+    width: 80%;
+    height: 25%;
+    background-color: white;
+    border: rgb(175, 175, 175) 2px solid;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+#bidx-search-bar{
+    width: 92%;
+    height: 100%;
+    font-size: 22px;
+}
+
+.nsi-search-results.bidx:first-child{
+    border-top: none;
+}

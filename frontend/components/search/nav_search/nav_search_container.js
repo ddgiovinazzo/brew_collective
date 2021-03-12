@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import NavSearch from './nav_search'
+import {withRouter} from "react-router-dom"
 
 const mSTP = (state) => {
   return {
@@ -12,4 +13,4 @@ const mDTP = dispatch =>({
 })
 
 
-export default connect(mSTP, null)(NavSearch)
+export default withRouter(connect(mSTP, null)(NavSearch))

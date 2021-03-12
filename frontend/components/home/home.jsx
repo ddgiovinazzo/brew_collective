@@ -52,8 +52,6 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
                                 </Link>
                                 <p><i className="fas fa-user home-icon"></i> {currentUser.username}</p>
                             </div>
-                                <Link to='/newbeer'>Add a Beer</Link>
-                                <Link to='/beers'>Beer Index</Link>
                             <div className='home-grid-container'>
                                 <div className='home-grid-row'>
                                     <div>

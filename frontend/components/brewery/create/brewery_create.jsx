@@ -24,7 +24,7 @@ const BreweryCreate = (props) => {
                 <label className='form-label' htmlFor="">BREWERY NAME</label>
 
                 <div className='cb-input-lg input-cont'>
-                    <input autoFocus className='input' onChange={handleInput('name')} type="" />
+                    <input autoFocus className='cb input' onChange={handleInput('name')} type="" />
                 </div>
 
             </div>
@@ -33,7 +33,7 @@ const BreweryCreate = (props) => {
                 <label className='form-label' htmlFor="">BREWERY TYPE</label>
                 
                 <div className='cb-input-lg input-cont'>
-                    <select className='select' defaultValue="Brewery Type" onChange={handleInput('brewery_type')} >
+                    <select className='cb select' defaultValue="Brewery Type" onChange={handleInput('brewery_type')} >
                         <option disabled>Brewery Type</option>
                         {types}
                     </select>
@@ -46,8 +46,8 @@ const BreweryCreate = (props) => {
 
 
                 <div className='cb-input-lg input-cont'>
-                <input list="brewery-country"className='input' onChange={handleInput('country')} />
-                    <datalist id="brewery-country" className='select' defaultValue="Brewery Country"  >
+                <input list="brewery-country"className='cb input' onChange={handleInput('country')} />
+                    <datalist id="brewery-country" className='cb select' defaultValue="Brewery Country"  >
                         <option disabled>Brewery Country</option>
                         {countries}
                     </datalist>

@@ -27,7 +27,7 @@ const NavSearchIndex = ({ beers, setSearchText, searchText}) => {
         if(beer.name.toLowerCase().includes(search.value.toLowerCase()))
             results.push(
                 <div key={beer.name} className="nsi-search-results">
-                    <Link key={beer.id} onClick={clearSearch} key={beer.id} to={`/beer/${beer.id}`}>{beer.name}</Link>
+                    <Link key={beer.id} onClick={clearSearch} to={`/beer/${beer.id}`}>{beer.name}</Link>
                     <Img key={beer.imageUrl} className="nav-search-img" src={beer.imageUrl} dft={window.defaultBeer} alt={beer.name} />
                 </div>
             )
@@ -43,7 +43,7 @@ const NavSearchIndex = ({ beers, setSearchText, searchText}) => {
             <div className="nsi-search-results-container">
                 {handleSort(results)}
                 <div className="nsi-search-results">
-                    <Link to="">See More Beers</Link>
+                    <Link onClick={clearSearch} to="/beers">See More Beers</Link>
                 </div>
             </div>
         </div>
