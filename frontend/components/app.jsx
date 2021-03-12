@@ -19,10 +19,17 @@ const App = () => {
   const [searchText, setSearchText] = useState("")
   const navSearchProps=[{searchText}, {setSearchText}]
 
+  const onMouseDown = () =>{
+    if(searchText) setSearchText(null)
+  }
+
+  const onKeyDown = (e) =>{
+    if(searchText && e.key === "Escape") setSearchText(null)
+  }
 
   return (
 
-    <div onMouseDown={()=>{if(searchText) setSearchText(null)}}className="app-container">
+    <div onKeyDown={onKeyDown} onMouseDown={onMouseDown}className="app-container">
 
         <AuthRoute exact path="/login" component={SignIn} />
         <AuthRoute exact path="/signup" component={SignUp} />

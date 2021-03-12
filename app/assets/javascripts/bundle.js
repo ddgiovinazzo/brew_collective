@@ -610,10 +610,18 @@ var App = function App() {
   }, {
     setSearchText: setSearchText
   }];
+
+  var onMouseDown = function onMouseDown() {
+    if (searchText) setSearchText(null);
+  };
+
+  var onKeyDown = function onKeyDown(e) {
+    if (searchText && e.key === "Escape") setSearchText(null);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    onMouseDown: function onMouseDown() {
-      if (searchText) setSearchText(null);
-    },
+    onKeyDown: onKeyDown,
+    onMouseDown: onMouseDown,
     className: "app-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
