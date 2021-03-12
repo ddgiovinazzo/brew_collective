@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom'
 const NavBar = (props) => {
     const { currentUser, logout } = props
     const { fetchAllBeers, fetchAllUsers, fetchAllBreweries } = props
-    const [renderDropdown, setRenderDropdown] = useState(false)
+    const {searchText, setSearchText} = props
+
     const [update, setUpdate] = useState(0)
     useEffect(() => { fetchAllBeers(); fetchAllUsers(); fetchAllBreweries() }, [update])
     if(!currentUser) return null
 
     return (
-        <div className='header-container'>
+        <div  className='header-container'>
             <div className='header-content-container'>
 
 
@@ -31,7 +32,7 @@ const NavBar = (props) => {
                         </div>
                     </div>
 
-                    {<NavSearchContainer />}
+                    {<NavSearchContainer searchText={searchText} setSearchText={setSearchText}/>}
 
                 </div>
             </div>

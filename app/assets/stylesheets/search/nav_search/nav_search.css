@@ -1,12 +1,13 @@
 #search-bar{
     border: none;
+    font-size: 16px;
 }
 
 #search-bar-container{
     padding: 10px;
     background-color: white;
     border-radius: 3px;
-    width: 180px;
+    width: 200px;
     height: 15px;
     position: relative;
     display: flex;
@@ -25,29 +26,58 @@
 .nsi-container{
     position: absolute;
     top: 36px;
-    width: 200px;
+    width: 220px;
     background-color: white;
     height: fit-content;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding: 0 5px;
     box-shadow: 5px 5px 15px 3px rgba(0,0,0,0.4);
 
 }
 .nsi-header{
-    width: 100%;
-    background-color: #EAFDF8;
-    height: 24px;
+    background-color: rgb(240, 240, 240);
     display: flex;
     align-items: center;
-    padding: 5px 5px;
+    padding: 10px;
 }
 .nsi-header > p{
-    padding: 10px;
-    font-size: 12px;
-}
-.nsi-container > p{
-    padding: 10px;
     font-size: 14px;
+    font-weight: 400;
+
+}
+
+.nsi-search-results-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.nsi-search-results{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: lightgray solid 1px;
+}
+.nsi-search-results:first-child{
+    border-top: lightgray solid 1px;
+}
+.nsi-search-results:last-child{
+    border-bottom: none;
+}
+.nsi-search-results:last-child > a{
+    font-size: 14px;
+    font-weight: 400;
+}
+.nsi-search-results > a{
+    font-size: 16px;
+}
+
+.search-background{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

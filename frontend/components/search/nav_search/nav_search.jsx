@@ -2,25 +2,24 @@ import React, { useState, useEffect } from "react";
 import NavSearchIndex from './nav_search_index'
 import { Link } from 'react-router-dom'
 
-const NavSearch = ({ beers}) => {  
+const NavSearch = (props) => {
+    const {beers, searchText, setSearchText} = props
 
-
-    const [searchText, setSearchText] = useState("")
-    
-    const handleSearch = (e)=>{
+    const handleSearch = (e) => {
         setSearchText(e.currentTarget.value)
     }
 
     return (
-        <div id='search-bar-container' >
-            <div>
 
-            <input onChange={handleSearch} id="search-bar" placeholder="Find a beer..." type="text" />
-            <i className="fas fa-search fa-med search-icon"></i>
+            <div onMouseDown={(e)=>e.stopPropagation()} id='search-bar-container' >
+                <div>
+
+                    <input onChange={handleSearch} id="search-bar" placeholder="Find a beer..." type="text" />
+                    <i className="fas fa-search fa-med search-icon"></i>
+                </div>
+
+                {searchText ? <NavSearchIndex searchText={searchText} setSearchText={setSearchText} beers={beers} /> : null}
             </div>
-
-            {searchText ?  <NavSearchIndex searchText={searchText} beers={beers}/> : null }
-        </div>
 
     )
 
