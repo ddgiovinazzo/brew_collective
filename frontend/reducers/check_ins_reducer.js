@@ -1,6 +1,6 @@
 import { RECEIVE_CHECK_INS } from '../actions/check_in_actions';
 
-const usersReducer = (state = {}, action) => {
+const checkInsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CHECK_INS:
@@ -10,4 +10,4 @@ const usersReducer = (state = {}, action) => {
   }
 };
 
-export default usersReducer;
+export default checkInsReducer;

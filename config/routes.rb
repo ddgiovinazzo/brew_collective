@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :check_ins, only: [:create, :show]
     get "check_ins/search/:user_ids", to: "check_ins#search"
     resources :friendships, only: [:create, :update, :destroy, :show]
+    resources :awards, only: [:create, :destroy]
+    resources :badges, only: [:index]
     resource :session, only: [:create, :destroy, :show]
   end
   root "static_pages#root"

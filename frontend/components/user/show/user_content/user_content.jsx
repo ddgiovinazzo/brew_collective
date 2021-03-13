@@ -45,7 +45,7 @@ const UserContentTop = (props) => {
                         <div className='home-grid-row'>
                             <div>
                                 <p>Badges</p>
-                                <p>0</p>
+                                <p>{user.badges}</p>
                             </div>
                             <div>
                                 <p>Friends</p>

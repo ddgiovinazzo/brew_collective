@@ -1,8 +1,57 @@
 import React, { useState, useEffect } from "react";
 
 const CheckInForm = (props) => {
-    const { setOpenModal, user_id, beer_id, createCheckIn} = props
+    const { setOpenModal, user, beer, createCheckIn, createAward} = props
+    const user_id = user.id
+    const beer_id = beer.id
     const [counter, setCounter] = useState(255)
+
+    const awardCreate =  (user, beer) =>{
+        const {awards} = user
+    
+        const newAward={user_id: user.id, badge_name: null}
+    
+        const awardsList = []
+        if(user.checkIns.length > 4 && !awards["apprentice"]){
+            newAward.badge_name = "Apprentice"
+            createAward(newAward)
+            awardsList.push(newAward.badge_name)
+        }
+    
+        else if(user.checkIns.length < 5 && awards["apprentice"])
+            deleteAward(awards["Apprentice"].id)
+    
+        if(user.checkIns.length >= 10 && !awards["journeyman"]){
+            newAward.badge_name = "Journeyman"
+            createAward(newAward)
+            awardsList.push(newAward.badge_name)
+        }
+    
+        else if(user.checkIns.length < 5 && awards["journeyman"])
+            deleteAward(awards["Journeyman"].id)
+    
+        if(beer.servingStyle.includes("IPA") && !awards["i Believe in IPA!"]){
+            newAward.badge_name = "I Believe in IPA!"
+            createAward(newAward)
+            awardsList.push(newAward.badge_name)
+        }
+        
+        if(
+            beer.servingStyle.includes("Porter") && !awards["heavy Weight"] ||
+            beer.servingStyle.includes("Stout") && !awards["Heavy Weight"]
+        ){
+            newAward.badge_name = "Heavy Weight"
+            createAward(newAward)
+            awardsList.push(newAward.badge_name)
+        }
+    
+        if(beer.servingStyle.includes("Hefeweizen") && !awards["heffenista"]){
+            newAward.badge_name = "Heffenista"
+            createAward(newAward)
+            awardsList.push(newAward.badge_name)
+        }
+        return awardsList
+    }
 
     const [checkIn, setCheckIn] = useState({
         user_id,
@@ -23,7 +72,7 @@ const CheckInForm = (props) => {
         const handleCheckIn = Object.assign({}, checkIn)
         return (e)=>{
             handleCheckIn[type] = e.currentTarget.value
-            setCheckIn(handleCheckIn)
+             setCheckIn(handleCheckIn)
         }
     }
 
@@ -36,7 +85,8 @@ const CheckInForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         createCheckIn(checkIn)
-        .then(()=>{
+        .then((action)=>{
+            awardCreate(action.all.user, beer)
             setOpenModal(false)
         })
     }

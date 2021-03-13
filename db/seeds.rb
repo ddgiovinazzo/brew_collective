@@ -1,4 +1,4 @@
-Beer.create!([
+Beer.create([
   {name: "Breakfast Stout", brewery_id: 1, serving_style: "Stout - Oatmeal", abv: 8.3, ibu: 60, flavor_profile: "The coffee lover’s consummate beer. Brewed with an abundance of flaked oats, bitter and imported chocolates, and Sumatra and Kona coffee, this stout has an intense fresh-roasted java nose topped with a frothy, cinnamon-colored head that goes forever."},
   {name: "All Day IPA", brewery_id: 1, serving_style: "IPA - Session / India Session Ale", abv: 4.7, ibu: 42, flavor_profile: "Satisfies your tastes while keeping your senses sharp. Brewed with a complex array of ingredients. Balanced for optimal aromatics and a clean finish."},
   {name: "Dirty Bastard", brewery_id: 1, serving_style: "Scotch Ale / Wee Heavy", abv: 8.5, ibu: 50, flavor_profile: "Dark ruby in color. Brewed with seven varieties of imported malts. Complex, with hints of smoke and peat, malty richness and a right hook of hops."},
@@ -21,7 +21,7 @@ Beer.create!([
   {name: "Piedboeuf Tripel", brewery_id: 8, serving_style: "Table Beer", abv: 3.8, ibu: 0, flavor_profile: "Not to be confused with the belgian tripel style. It's named tripel because it has nearly three times the ABV of a Piedboeuf blond."},
   {name: "JavaHead Stout", brewery_id: 9, serving_style: "Stout - Coffee", abv: 7.5, ibu: 60, flavor_profile: "JavaHead is like a day at Tröegs; it’s hard to tell where the coffee ends and the beer begins. This creamy oatmeal stout is infused with locally roasted, cold steeped coffee through our HopBack vessel, releasing subtle hints of cocoa, roasted nuts and dark mocha."}
 ])
-Brewery.create!([
+Brewery.create([
   {name: "Founders Brewing Co.", brewery_type: "Regional Brewery", country: "United States"},
   {name: "Bell's Brewery", brewery_type: "Regional Brewery", country: "United States"},
   {name: "Coors Brewing Company", brewery_type: "Macro Brewery", country: "United States"},
@@ -32,13 +32,13 @@ Brewery.create!([
   {name: "Brasserie Jupiler", brewery_type: "Macro Brewery", country: "Belgium"},
   {name: "Tröegs Independent Brewing", brewery_type: "Regional Brewery", country: "United States"}
 ])
-CheckIn.create!([
+CheckIn.create([
   {beer_id: 5, user_id: 1, review: "The good stuff!", rating: 5},
   {beer_id: 3, user_id: 3, review: "", rating: 3},
   {beer_id: 2, user_id: 2, review: "", rating: 3},
   {beer_id: 2, user_id: 1, review: "", rating: 4}
 ])
-Friendship.create!([
+Friendship.create([
   {requestor_id: 1, receiver_id: 2, status: "accepted"},
   {requestor_id: 1, receiver_id: 3, status: "accepted"},
   {requestor_id: 1, receiver_id: 4, status: "accepted"},
@@ -62,7 +62,7 @@ Friendship.create!([
   {requestor_id: 6, receiver_id: 7, status: "accepted"}
 ])
 
-User.create!([
+User.create([
   {id: 4, username: "lorettadimov24", email: "lorettadimov24@demo.com", country: "Russia", first_name: "Loretta", last_name: "Dimov", gender: "she/her/hers", location: "St. Petersburg", birthday: "1987-07-28 00:00:00"},
   {id: 6, username: "wonderleontine19", email: "wonderlontine19@demo.com", country: "France", first_name: "Léontine", last_name: "Amerighi", gender: "they/them/theirs", location: "Paris", birthday: "1988-08-16 00:00:00"},
   {id: 7, username: "juliecroissant", email: "juliecroissant@demo.com", country: "United States", first_name: "Julie", last_name: "Ericson", gender: "", location: "", birthday: "1990-03-10 00:00:00"},
@@ -70,4 +70,12 @@ User.create!([
   {id: 1, username: "flickfeature73", email: "flickfeature73@demo.com", country: "United States", first_name: "Flick", last_name: "Van Rossum", gender: "he/him/his", location: "New York", birthday: "1998-06-11 00:00:00"},
   {id: 2, username: "lewindavisbb61", email: "lewindavisbangbang61@demo.com", country: "United Kingdom", first_name: "Lewin", last_name: "Davis", gender: "they/them/theirs", location: "", birthday: "1985-08-16 00:00:00"},
   {id: 5, username: "miraoakum18", email: "miraoakum18@demo.com", country: "United States", first_name: "Mira", last_name: "Coley", gender: "she/her/hers", location: "Jersey City", birthday: "1993-02-17 00:00:00"}
+])
+
+Badge.create([
+  {name: "Apprentice", description: "Looks like you're getting around. You've enjoyed at least 5 different beers!"},
+  {name: "Journeyman", description: "You're getting the hang of it, but there’s much more to try. That’s over 10 unique brews!"},
+  {name: "I Believe in IPA!", description: "We believe in IPA and you should too. You certainly have a taste for the hops!"},
+  {name: "Heavy Weight", description: "Porters and Stouts are rich with both history and flavor. Roasty, dark, and delicious, these two styles helped start it all."},
+  {name: "Heffenista", description: "It may not be cloudy outside, but your brew definitely is! That’s at least 30 different hefeweizens."}
 ])

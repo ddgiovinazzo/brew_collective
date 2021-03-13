@@ -62,3 +62,20 @@ if user.photo.attached?
 else
     json.photo_url ""
 end
+
+if user.awards.empty?
+    json.awards({})
+else
+    json.awards do
+        user.awards.each do |award|
+            json.set! award.badge.name do
+                json.id award.id
+                json.badge do
+                    json.partial! '/api/badges/badge.json.jbuilder', badge: award.badge
+                end
+            end
+        end
+    end
+end
+
+json.badges user.awards.length

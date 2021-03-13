@@ -30,6 +30,8 @@ class User < ApplicationRecord
     has_many :friendships_as_receiver,
     foreign_key: :receiver_id,
     class_name: :Friendship
+    
+    has_many :awards
 
     has_one_attached :photo
 

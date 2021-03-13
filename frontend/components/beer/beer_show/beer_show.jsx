@@ -51,8 +51,8 @@ const BeerShow = ({ currentUser, beer, breweries }) => {
                 {
                     openModal ?
                         <CheckInFormContainer
-                            beer_id={beer.id}
-                            user_id={currentUser.id}
+                            beer={beer}
+                            user={currentUser}
                             setOpenModal={setOpenModal}
                         />
                         : null

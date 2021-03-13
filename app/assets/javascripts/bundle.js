@@ -79,6 +79,72 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ }),
 
+/***/ "./frontend/actions/award_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/award_actions.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createAward": () => /* binding */ createAward,
+/* harmony export */   "deleteAward": () => /* binding */ deleteAward
+/* harmony export */ });
+/* harmony import */ var _util_award_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/award_util */ "./frontend/util/award_util.js");
+/* harmony import */ var _user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_actions */ "./frontend/actions/user_actions.js");
+
+
+var createAward = function createAward(award) {
+  return function (dispatch) {
+    _util_award_util__WEBPACK_IMPORTED_MODULE_0__.createAward(award).then(function (users) {
+      return dispatch((0,_user_actions__WEBPACK_IMPORTED_MODULE_1__.receiveUser)(users));
+    });
+  };
+};
+var deleteAward = function deleteAward(award) {
+  return function (dispatch) {
+    return FriendshipAPIUtil.deleteAward(award).then(function (user) {
+      return dispatch((0,_user_actions__WEBPACK_IMPORTED_MODULE_1__.receiveUser)(user));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/badge_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/badge_actions.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_ALL_BADGES": () => /* binding */ RECEIVE_ALL_BADGES,
+/* harmony export */   "fetchAllBadges": () => /* binding */ fetchAllBadges
+/* harmony export */ });
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_util */ "./frontend/util/user_util.js");
+
+var RECEIVE_ALL_BADGES = 'RECEIVE_ALL_BADGES';
+
+var receiveBadges = function receiveBadges(badges) {
+  return {
+    type: RECEIVE_ALL_BADGES,
+    badges: badges
+  };
+};
+
+var fetchAllBadges = function fetchAllBadges() {
+  return function (dispatch) {
+    return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllBadges().then(function (badges) {
+      return dispatch(receiveBadges(badges));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/beer_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/beer_actions.js ***!
@@ -298,8 +364,6 @@ var createCheckIn = function createCheckIn(checkIn) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RECEIVE_ALL_BREWERIES": () => /* binding */ RECEIVE_ALL_BREWERIES,
-/* harmony export */   "RECEIVE_BREWERY": () => /* binding */ RECEIVE_BREWERY,
 /* harmony export */   "createFriendship": () => /* binding */ createFriendship,
 /* harmony export */   "updateFriendship": () => /* binding */ updateFriendship,
 /* harmony export */   "deleteFriendship": () => /* binding */ deleteFriendship
@@ -308,8 +372,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_actions */ "./frontend/actions/user_actions.js");
 
 
-var RECEIVE_ALL_BREWERIES = 'RECEIVE_ALL_BREWERIES';
-var RECEIVE_BREWERY = 'RECEIVE_BREWERY';
 var createFriendship = function createFriendship(friendship) {
   return function (dispatch) {
     return _util_friendship_util__WEBPACK_IMPORTED_MODULE_0__.createFriendship(friendship).then(function (users) {
@@ -1065,8 +1127,8 @@ var BeerShow = function BeerShow(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid"
   }, openModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_form_container__WEBPACK_IMPORTED_MODULE_2__.default, {
-    beer_id: beer.id,
-    user_id: currentUser.id,
+    beer: beer,
+    user: currentUser,
     setOpenModal: setOpenModal
   }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "beer-show-container"
@@ -1772,6 +1834,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
 /* harmony import */ var _check_in_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./check-in-form */ "./frontend/components/check-in/check-in-form.jsx");
+/* harmony import */ var _actions_award_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/award_actions */ "./frontend/actions/award_actions.js");
+
 
 
 
@@ -1780,6 +1844,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     createCheckIn: function createCheckIn(checkIn) {
       return dispatch((0,_actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__.createCheckIn)(checkIn));
+    },
+    createAward: function createAward(award) {
+      return dispatch((0,_actions_award_actions__WEBPACK_IMPORTED_MODULE_3__.createAward)(award));
     }
   };
 };
@@ -1816,14 +1883,58 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var CheckInForm = function CheckInForm(props) {
   var setOpenModal = props.setOpenModal,
-      user_id = props.user_id,
-      beer_id = props.beer_id,
-      createCheckIn = props.createCheckIn;
+      user = props.user,
+      beer = props.beer,
+      createCheckIn = props.createCheckIn,
+      createAward = props.createAward;
+  var user_id = user.id;
+  var beer_id = beer.id;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(255),
       _useState2 = _slicedToArray(_useState, 2),
       counter = _useState2[0],
       setCounter = _useState2[1];
+
+  var awardCreate = function awardCreate(user, beer) {
+    var awards = user.awards;
+    var newAward = {
+      user_id: user.id,
+      badge_name: null
+    };
+    var awardsList = [];
+
+    if (user.checkIns.length > 4 && !awards["apprentice"]) {
+      newAward.badge_name = "Apprentice";
+      createAward(newAward);
+      awardsList.push(newAward.badge_name);
+    } else if (user.checkIns.length < 5 && awards["apprentice"]) deleteAward(awards["Apprentice"].id);
+
+    if (user.checkIns.length >= 10 && !awards["journeyman"]) {
+      newAward.badge_name = "Journeyman";
+      createAward(newAward);
+      awardsList.push(newAward.badge_name);
+    } else if (user.checkIns.length < 5 && awards["journeyman"]) deleteAward(awards["Journeyman"].id);
+
+    if (beer.servingStyle.includes("IPA") && !awards["i Believe in IPA!"]) {
+      newAward.badge_name = "I Believe in IPA!";
+      createAward(newAward);
+      awardsList.push(newAward.badge_name);
+    }
+
+    if (beer.servingStyle.includes("Porter") && !awards["heavy Weight"] || beer.servingStyle.includes("Stout") && !awards["Heavy Weight"]) {
+      newAward.badge_name = "Heavy Weight";
+      createAward(newAward);
+      awardsList.push(newAward.badge_name);
+    }
+
+    if (beer.servingStyle.includes("Hefeweizen") && !awards["heffenista"]) {
+      newAward.badge_name = "Heffenista";
+      createAward(newAward);
+      awardsList.push(newAward.badge_name);
+    }
+
+    return awardsList;
+  };
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     user_id: user_id,
@@ -1857,7 +1968,8 @@ var CheckInForm = function CheckInForm(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    createCheckIn(checkIn).then(function () {
+    createCheckIn(checkIn).then(function (action) {
+      awardCreate(action.all.user, beer);
       setOpenModal(false);
     });
   };
@@ -2343,9 +2455,9 @@ var Home = function Home(_ref) {
       setUpdate = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchCheckIns(currentUser.friendIds.length ? currentUser.friendIds : "x");
+    fetchCheckIns(currentUser && currentUser.friendIds.length ? currentUser.friendIds : "x");
   }, [update]);
-  if ((0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(breweries) || (0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(beers)) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
+  if (!currentUser || (0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(breweries) || (0,_user_util__WEBPACK_IMPORTED_MODULE_3__.isEmpty)(beers)) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
   var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You don't seem to have any recent activity!");
   var checkInList = [];
 
@@ -2394,7 +2506,7 @@ var Home = function Home(_ref) {
     className: "home-grid-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.checkIns.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.uniqueCheckIns), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.friendIds.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends")))))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.badges), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.friendIds.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends")))))))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
@@ -3570,7 +3682,7 @@ var UserContentTop = function UserContentTop(props) {
     className: "home-grid-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.uniqueCheckIns))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.friendIds.length)))))), !isCurrentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Badges"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.badges)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.friendIds.length)))))), !isCurrentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_3__.default, {
     currentUser: currentUser,
     user: user
   }) : null);
@@ -3694,6 +3806,38 @@ var isEmpty = function isEmpty(obj) {
 
   return true;
 };
+
+/***/ }),
+
+/***/ "./frontend/reducers/badges_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/badges_reducer.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actions_badge_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/badge_actions */ "./frontend/actions/badge_actions.js");
+
+
+var badgesReducer = function badgesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_badge_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_BADGES:
+      return action.badges;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (badgesReducer);
 
 /***/ }),
 
@@ -3829,7 +3973,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
 
 
-var usersReducer = function usersReducer() {
+var checkInsReducer = function checkInsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
@@ -3843,7 +3987,7 @@ var usersReducer = function usersReducer() {
   }
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (usersReducer);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkInsReducer);
 
 /***/ }),
 
@@ -3858,21 +4002,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _breweries_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./breweries_reducer */ "./frontend/reducers/breweries_reducer.js");
 /* harmony import */ var _beers_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./beers_reducer */ "./frontend/reducers/beers_reducer.js");
 /* harmony import */ var _check_ins_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./check_ins_reducer */ "./frontend/reducers/check_ins_reducer.js");
+/* harmony import */ var _badges_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./badges_reducer */ "./frontend/reducers/badges_reducer.js");
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
   breweries: _breweries_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
   beers: _beers_reducer__WEBPACK_IMPORTED_MODULE_2__.default,
-  checkIns: _check_ins_reducer__WEBPACK_IMPORTED_MODULE_3__.default
+  checkIns: _check_ins_reducer__WEBPACK_IMPORTED_MODULE_3__.default,
+  badges: _badges_reducer__WEBPACK_IMPORTED_MODULE_4__.default
 }));
 
 /***/ }),
@@ -4084,6 +4231,36 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/award_util.js":
+/*!*************************************!*\
+  !*** ./frontend/util/award_util.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createAward": () => /* binding */ createAward,
+/* harmony export */   "deleteAward": () => /* binding */ deleteAward
+/* harmony export */ });
+var createAward = function createAward(award) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/awards',
+    data: {
+      award: award
+    }
+  });
+};
+var deleteAward = function deleteAward(awardId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/awards/".concat(awardId)
+  });
+};
 
 /***/ }),
 

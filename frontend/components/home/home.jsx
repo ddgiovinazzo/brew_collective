@@ -12,10 +12,10 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
 
     const [update, setUpdate] = useState(0)
     useEffect(() => {
-        fetchCheckIns(currentUser.friendIds.length ? currentUser.friendIds : "x")
+        fetchCheckIns(currentUser && currentUser.friendIds.length ? currentUser.friendIds : "x")
     }, [update])
 
-    if (isEmpty(breweries) || isEmpty(beers)) return <Fallback />
+    if (!currentUser || isEmpty(breweries) || isEmpty(beers)) return <Fallback />
 
     const noCheckIns = <p>You don't seem to have any recent activity!</p>
     const checkInList = []
@@ -65,7 +65,7 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
                                 </div>
                                 <div className='home-grid-row'>
                                     <div>
-                                        <p>0</p>
+                                        <p>{currentUser.badges}</p>
                                         <p>Badges</p>
                                     </div>
                                     <div>
