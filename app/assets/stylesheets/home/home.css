@@ -48,11 +48,24 @@
     background-color: white;
     width: 252px;
     padding: 24px;
-    border-bottom: solid lightgrey 1px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 24px;
+}
+.personal-stats.home-badges{
+    margin-bottom: none;
+}
+.personal-stats.home-badges > div:first-child{
+    width: 100%;
+    border-bottom: solid lightgrey 1px;       
+
+}
+.personal-stats.home-badges > div:first-child > p{
+    font-size: 18px;
+    font-weight: bold;
+    color: inherit;
 }
 .personal-stats > *{
     padding: 5px;

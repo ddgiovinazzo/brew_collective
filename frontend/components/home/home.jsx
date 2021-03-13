@@ -74,8 +74,21 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
                                     </div>
                                 </div>
                             </div>
+
+                            
                         </div>
+
+                        <div className="personal-stats home-badges">
+                            <div>
+                                <p>Badges</p>
+                            </div>                            
+                        </div>
+
                     </div>
+
+                    
+
+                    
                 </div>
 
 
