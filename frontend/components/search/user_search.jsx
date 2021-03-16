@@ -56,8 +56,14 @@ const UserSearch = (props) => {
                 </Link>
             </div>
         )
-        if (!searchText) results.push(result)
-        if (searchText && name.toLowerCase().includes(searchText.toLowerCase())) results.push(result)
+        if(isCurrentUser){
+            if (!searchText) results.push(result)
+            if (searchText && name.toLowerCase().includes(searchText.toLowerCase())) results.push(result)
+        }
+        else if(!isCurrentUser && !receiver && !requestor){
+            if (!searchText) results.push(result)
+            if (searchText && name.toLowerCase().includes(searchText.toLowerCase())) results.push(result)
+        }
     }
 
     if (!results.length && !searchText) return null

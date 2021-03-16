@@ -2273,9 +2273,11 @@ var FriendshipButton = function FriendshipButton(props) {
     if (accepted) handleDelete();else if (receivingRequest) handleUpdate();else handleCreate();
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !sendingRequest ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "friend-button-container"
+  }, !sendingRequest ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleFriendship,
-    className: "form-submit"
+    className: "form-submit friend-button"
   }, text()) : null, sendingRequest || receivingRequest ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleDelete,
     className: "form-submit friend-button"
@@ -3102,8 +3104,14 @@ var UserSearch = function UserSearch(props) {
       dft: window.defaultBeer,
       alt: name
     })));
-    if (!searchText) results.push(result);
-    if (searchText && name.toLowerCase().includes(searchText.toLowerCase())) results.push(result);
+
+    if (isCurrentUser) {
+      if (!searchText) results.push(result);
+      if (searchText && name.toLowerCase().includes(searchText.toLowerCase())) results.push(result);
+    } else if (!isCurrentUser && !receiver && !requestor) {
+      if (!searchText) results.push(result);
+      if (searchText && name.toLowerCase().includes(searchText.toLowerCase())) results.push(result);
+    }
   }
 
   if (!results.length && !searchText) return null;

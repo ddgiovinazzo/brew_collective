@@ -133,6 +133,8 @@
 }
 
 .form-submit.friend-button{
-    margin-top: 20px;
     width: 242px;
+}
+.friend-button-container{
+    margin-top: 10px;
 }

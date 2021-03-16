@@ -53,10 +53,10 @@ const FriendshipButton = (props) =>{
 
  
     return(
-        <div>
+        <div className="friend-button-container">
                 {
                     !sendingRequest ?
-                        <button onClick={handleFriendship} className="form-submit">{text()}</button>
+                        <button onClick={handleFriendship} className="form-submit friend-button">{text()}</button>
                         : null
 
                 }
