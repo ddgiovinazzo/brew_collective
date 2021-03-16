@@ -64,7 +64,7 @@ const BeerContentTop = (props) => {
                 </div>
 
                 <div className='bct-mid-inner-div'>
-                    <p>{beer.ibu} IBU</p>
+                    <p>{!beer.ibu ? "No" : beer.ibu} IBU</p>
                 </div>
 
                 <div className='bct-mid-inner-div'>
@@ -73,7 +73,7 @@ const BeerContentTop = (props) => {
                 </div>
 
                 <div className='bct-mid-inner-div'>
-                    <p>{ratings.total} Ratings</p>
+                    <p>{ratings.total} {ratings.total === 1 ? `Rating` : `Ratings`}</p>
                 </div>
 
             </div>
