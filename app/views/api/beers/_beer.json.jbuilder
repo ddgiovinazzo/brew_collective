@@ -11,7 +11,7 @@ ratings = []
 json.checkIns do
     json.array!(beer.check_ins.reverse) do |check_in|
         ratings << check_in.rating if check_in.rating > 0
-        json.partial! '/api/check_ins/check_in', check_in: check_in
+        json.partial! '/api/check_ins/check_in.json.jbuilder', check_in: check_in
     end
 end
 

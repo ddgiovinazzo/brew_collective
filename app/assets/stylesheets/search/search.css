@@ -1,0 +1,17 @@
+.search-results{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: lightgray solid 1px;
+}
+.search-results:last-child{
+    border-bottom: none;
+}
+.search-results > a, .search-results > p{
+    font-size: 18px;
+}
+
+.add-beer{
+    display: flex;
+}

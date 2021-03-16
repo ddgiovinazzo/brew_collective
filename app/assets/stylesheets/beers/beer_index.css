@@ -1,3 +1,6 @@
+#beer-index-list-container {
+    width: 90%;
+}
 #beer-index-list-container > ul{
     display: flex;
     flex-direction: column;

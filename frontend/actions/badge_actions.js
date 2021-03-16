@@ -1,4 +1,4 @@
-import * as BadgeAPIUtil from '../util/user_util'
+import * as BadgeAPIUtil from '../util/badge_util'
 
 export const RECEIVE_ALL_BADGES = 'RECEIVE_ALL_BADGES'
 

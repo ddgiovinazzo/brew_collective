@@ -39,11 +39,11 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
                     <Img className="user-img check_in-img" src={user.photoUrl} dft={window.defaultBeer} alt="user" />
                 </Link>
                 <Link to={`/beer/${beer.id}`}>
-                    <Img className="user-img check_in-img" src={beer.imageUrl} dft={window.defaultBeer} alt="user" />
+                    <Img className="check_in-img" src={beer.imageUrl} dft={window.defaultBeer} alt="user" />
                 </Link>
             </div>
             <p>
-                <Link to={`/user/${user.id}`}>{`${user.firstName} ${user.lastName[0]}.`}</Link>
+                <Link to={`/user/${user.id}`}>{`${user.firstName} ${user.lastName}`}</Link>
                 {` is drinking ${['a','e','i','o','u','A','E','I','O','U'].includes(beer.name[0]) ? "an" : "a"} `}
                 <Link to={`/beer/${beer.id}`}>{`${beer.name}`}</Link>
                 {' by '}

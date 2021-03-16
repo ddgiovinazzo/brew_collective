@@ -52,7 +52,6 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 24px;
 }
 .personal-stats.home-badges{
     margin-bottom: none;
@@ -67,12 +66,13 @@
     font-weight: bold;
     color: inherit;
 }
-.personal-stats > *{
-    padding: 5px;
-}
+
 .personal-stats > div > p{
     display: flex;
     align-items: center;
+    font-size: 14px;
+}
+.home-username > p:first-of-type{
     color:#88958D;
     font-size: 12px;
 }
@@ -94,11 +94,11 @@
     display: flex;
     justify-content: center;
 }
-.home-grid-row:first-child{
+/* .home-grid-row:first-child{
     border-bottom: solid 1px lightgray;
-}
+} */
 
-.home-grid-row > div{
+.home-grid-row > a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,20 +107,32 @@
     height: 30px;
     padding: 10px;
     background-color: rgb(245, 245, 245);
+    border-right: solid 1px lightgray;
+    color: inherit;
 }
-.home-grid-row > div >p{
+.home-grid-row > a >p{
     margin: 2px;
 }
-.home-grid-row > div:hover{
+.home-grid-row > a:hover{
     background-color: rgb(240, 240, 240);
+    color: inherit;
 }
-.home-grid-row > div:first-child{
-    border-right: solid 1px lightgray;
+.home-grid-row > a:last-child{
+    border-right: none
 }
 .home-username{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150px;
     justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.home-username > *{
+    padding: 5px;
+}
+
+.form-submit.friend-button{
+    margin-top: 20px;
+    width: 242px;
 }

@@ -12,32 +12,41 @@ const CheckInForm = (props) => {
         const newAward={user_id: user.id, badge_name: null}
     
         const awardsList = []
-        if(user.checkIns.length > 4 && !awards["apprentice"]){
+        if(user.uniqueCheckIns > 0 && !awards["Newbie"]){
+            newAward.badge_name = "Newbie"
+            createAward(newAward)
+            awardsList.push(newAward.badge_name)
+        }
+    
+        else if(user.uniqueCheckIns < 1 && awards["Newbie"])
+            deleteAward(awards["Newbie"].id)
+
+        if(user.uniqueCheckIns > 24 && !awards["Apprentice"]){
             newAward.badge_name = "Apprentice"
             createAward(newAward)
             awardsList.push(newAward.badge_name)
         }
     
-        else if(user.checkIns.length < 5 && awards["apprentice"])
+        else if(user.uniqueCheckIns < 25 && awards["Apprentice"])
             deleteAward(awards["Apprentice"].id)
     
-        if(user.checkIns.length >= 10 && !awards["journeyman"]){
+        if(user.uniqueCheckIns > 49 && !awards["Journeyman"]){
             newAward.badge_name = "Journeyman"
             createAward(newAward)
             awardsList.push(newAward.badge_name)
         }
     
-        else if(user.checkIns.length < 5 && awards["journeyman"])
+        else if(user.uniqueCheckIns < 50 && awards["Journeyman"])
             deleteAward(awards["Journeyman"].id)
-    
-        if(beer.servingStyle.includes("IPA") && !awards["i Believe in IPA!"]){
+            
+        if(beer.servingStyle.includes("IPA") && !awards["I Believe in IPA"]){
             newAward.badge_name = "I Believe in IPA!"
             createAward(newAward)
             awardsList.push(newAward.badge_name)
         }
         
         if(
-            beer.servingStyle.includes("Porter") && !awards["heavy Weight"] ||
+            beer.servingStyle.includes("Porter") && !awards["Heavy Weight"] ||
             beer.servingStyle.includes("Stout") && !awards["Heavy Weight"]
         ){
             newAward.badge_name = "Heavy Weight"
@@ -45,7 +54,7 @@ const CheckInForm = (props) => {
             awardsList.push(newAward.badge_name)
         }
     
-        if(beer.servingStyle.includes("Hefeweizen") && !awards["heffenista"]){
+        if(beer.servingStyle.includes("Hefeweizen") && !awards["Heffenista"]){
             newAward.badge_name = "Heffenista"
             createAward(newAward)
             awardsList.push(newAward.badge_name)

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
 import Fallback from "../fallback/fallback";
 import CheckInShowContainer from '../check-in/check_in_show/check_in_show_container'
 import { isEmpty } from '../user/util'
-import Img from "../image/image";
+import UserSidebar from "../user/user_sidebar"
 
 
 
@@ -28,10 +27,11 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
         checkInList.push(<CheckInShowContainer key={checkIn.id} brewery={brewery} beer={beer} checkIn={checkIn} />)
     }
 
+
     return (
         <div className="main-outer">
 
-            <div className='home-grid'>
+        <div className='home-grid'>
                 <div id='main'>
                     <div id='content-container'>
 
@@ -41,54 +41,7 @@ const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
 
                         </div>
                     </div>
-                    <div id='sidebar'>
-                        <div className="personal-stats">
-                            <div className="home-username">
-                                <Link to={`user/${currentUser.id}`}>
-                                    <Img className="beer-img user-img" src={currentUser.photoUrl} dft={window.defaultBeer} alt="user" />
-                                </Link>
-                                <Link to={`user/${currentUser.id}`}>
-                                    <h1>{`${currentUser.firstName} ${currentUser.lastName}`}</h1>
-                                </Link>
-                                <p><i className="fas fa-user home-icon"></i> {currentUser.username}</p>
-                            </div>
-                            <div className='home-grid-container'>
-                                <div className='home-grid-row'>
-                                    <div>
-                                        <p>{currentUser.checkIns.length}</p>
-                                        <p>Total</p>
-                                    </div>
-                                    <div>
-                                        <p>{currentUser.uniqueCheckIns}</p>
-                                        <p>Unique</p>
-                                    </div>
-                                </div>
-                                <div className='home-grid-row'>
-                                    <div>
-                                        <p>{currentUser.badges}</p>
-                                        <p>Badges</p>
-                                    </div>
-                                    <div>
-                                        <p>{currentUser.friendIds.length}</p>
-                                        <p>Friends</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-                        </div>
-
-                        <div className="personal-stats home-badges">
-                            <div>
-                                <p>Badges</p>
-                            </div>                            
-                        </div>
-
-                    </div>
-
-                    
-
-                    
+                    <UserSidebar user={currentUser} isCurrentUser={true}/> 
                 </div>
 
 

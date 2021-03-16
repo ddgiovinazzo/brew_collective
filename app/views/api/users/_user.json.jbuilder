@@ -68,11 +68,25 @@ if user.awards.empty?
 else
     json.awards do
         user.awards.each do |award|
+            json.key_format! :itself
             json.set! award.badge.name do
+                json.key_format! camelize: :lower
                 json.id award.id
                 json.badge do
                     json.partial! '/api/badges/badge.json.jbuilder', badge: award.badge
                 end
+            end
+        end
+    end
+end
+
+if user.beers.empty?
+    json.beers({})
+else
+    json.beers do
+        user.beers.each do |beer|
+            json.set! beer.id do
+                json.partial! '/api/beers/beer.json.jbuilder', beer: beer
             end
         end
     end

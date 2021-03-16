@@ -73,8 +73,9 @@ User.create([
 ])
 
 Badge.create([
-  {name: "Apprentice", description: "Looks like you're getting around. You've enjoyed at least 5 different beers!"},
-  {name: "Journeyman", description: "You're getting the hang of it, but there’s much more to try. That’s over 10 unique brews!"},
+  {name: "Newbie", description: "So, you're new around here? Congrats on your first brew! This one's for you."},
+  {name: "Apprentice", description: "Looks like you're getting around. You've enjoyed at least 25 different beers!"},
+  {name: "Journeyman", description: "You're getting the hang of it, but there’s much more to try. That’s over 50 unique brews!"},
   {name: "I Believe in IPA!", description: "We believe in IPA and you should too. You certainly have a taste for the hops!"},
   {name: "Heavy Weight", description: "Porters and Stouts are rich with both history and flavor. Roasty, dark, and delicious, these two styles helped start it all."},
   {name: "Heffenista", description: "It may not be cloudy outside, but your brew definitely is! That’s at least 30 different hefeweizens."}

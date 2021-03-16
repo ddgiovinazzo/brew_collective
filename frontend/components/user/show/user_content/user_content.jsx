@@ -2,7 +2,7 @@ import React from "react";
 import Img from "../../../image/image";
 import SetImg from "../../../image/set_image";
 import FriendshipButton from "../../../friendship/friendship_button_container";
-
+import UserStats from "../../user_stats"
 
 const UserContentTop = (props) => {
     const { uniquesCount, user, currentUser } = props
@@ -31,29 +31,7 @@ const UserContentTop = (props) => {
 
                 </div>
                 <div className='beer-content-right-container'>
-                    <div className='home-grid-container'>
-                        <div className='home-grid-row'>
-                            <div>
-                                <p>Total</p>
-                                <p>{checkIns.length}</p>
-                            </div>
-                            <div>
-                                <p>Unique</p>
-                                <p>{user.uniqueCheckIns}</p>
-                            </div>
-                        </div>
-                        <div className='home-grid-row'>
-                            <div>
-                                <p>Badges</p>
-                                <p>{user.badges}</p>
-                            </div>
-                            <div>
-                                <p>Friends</p>
-                                <p>{user.friendIds.length}</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    <UserStats user={user}/>
                 </div>
 
             </div>

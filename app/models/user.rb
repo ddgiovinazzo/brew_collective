@@ -32,6 +32,9 @@ class User < ApplicationRecord
     class_name: :Friendship
     
     has_many :awards
+    
+    has_many :beers,
+    through: :check_ins
 
     has_one_attached :photo
 

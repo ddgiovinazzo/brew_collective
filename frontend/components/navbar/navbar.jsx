@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NavSearchContainer from '../search/nav_search/nav_search_container'
 import { Link } from 'react-router-dom'
+import Img from "../image/image";
+
 
 const NavBar = (props) => {
     const { currentUser, logout } = props
@@ -21,7 +23,8 @@ const NavBar = (props) => {
                 <div className="nav-content-right">
 
                     <div className="dropdown-container">
-                        <i className="far fa-2x fa-user-circle dropbtn"></i>
+                        <Img className="nav-search-img user-img" src={currentUser.photoUrl} dft={window.defaultBeer} alt="user" />
+
                         <div className="dropdown-outer" >
 
                             <div className="dropdown">

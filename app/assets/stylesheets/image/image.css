@@ -2,6 +2,11 @@
     height: 100px;
     width: 100px;
 }
+.badge-img{
+    height: 52px;
+    width: 52px;
+    padding: 4px;
+}
 .user-img{
     object-fit: cover;
     border-radius: 50%;
