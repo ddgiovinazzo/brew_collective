@@ -6,61 +6,61 @@ const CheckInForm = (props) => {
     const beer_id = beer.id
     const [counter, setCounter] = useState(255)
 
-    const awardCreate =  (user, beer) =>{
-        const {awards} = user
+    // const awardCreate =  (user, beer) =>{
+    //     const {awards} = user
     
-        const newAward={user_id: user.id, badge_name: null}
+    //     const newAward={user_id: user.id, badge_name: null}
     
-        const awardsList = []
-        if(user.uniqueCheckIns > 0 && !awards["Newbie"]){
-            newAward.badge_name = "Newbie"
-            createAward(newAward)
-            awardsList.push(newAward.badge_name)
-        }
+    //     const awardsList = []
+    //     if(user.uniqueCheckIns > 0 && !awards["Newbie"]){
+    //         newAward.badge_name = "Newbie"
+    //         createAward(newAward)
+    //         awardsList.push(newAward.badge_name)
+    //     }
     
-        else if(user.uniqueCheckIns < 1 && awards["Newbie"])
-            deleteAward(awards["Newbie"].id)
+    //     else if(user.uniqueCheckIns < 1 && awards["Newbie"])
+    //         deleteAward(awards["Newbie"].id)
 
-        if(user.uniqueCheckIns > 24 && !awards["Apprentice"]){
-            newAward.badge_name = "Apprentice"
-            createAward(newAward)
-            awardsList.push(newAward.badge_name)
-        }
+    //     if(user.uniqueCheckIns > 24 && !awards["Apprentice"]){
+    //         newAward.badge_name = "Apprentice"
+    //         createAward(newAward)
+    //         awardsList.push(newAward.badge_name)
+    //     }
     
-        else if(user.uniqueCheckIns < 25 && awards["Apprentice"])
-            deleteAward(awards["Apprentice"].id)
+    //     else if(user.uniqueCheckIns < 25 && awards["Apprentice"])
+    //         deleteAward(awards["Apprentice"].id)
     
-        if(user.uniqueCheckIns > 49 && !awards["Journeyman"]){
-            newAward.badge_name = "Journeyman"
-            createAward(newAward)
-            awardsList.push(newAward.badge_name)
-        }
+    //     if(user.uniqueCheckIns > 49 && !awards["Journeyman"]){
+    //         newAward.badge_name = "Journeyman"
+    //         createAward(newAward)
+    //         awardsList.push(newAward.badge_name)
+    //     }
     
-        else if(user.uniqueCheckIns < 50 && awards["Journeyman"])
-            deleteAward(awards["Journeyman"].id)
+    //     else if(user.uniqueCheckIns < 50 && awards["Journeyman"])
+    //         deleteAward(awards["Journeyman"].id)
             
-        if(beer.servingStyle.includes("IPA") && !awards["I Believe in IPA"]){
-            newAward.badge_name = "I Believe in IPA!"
-            createAward(newAward)
-            awardsList.push(newAward.badge_name)
-        }
+    //     if(beer.servingStyle.includes("IPA") && !awards["I Believe in IPA"]){
+    //         newAward.badge_name = "I Believe in IPA!"
+    //         createAward(newAward)
+    //         awardsList.push(newAward.badge_name)
+    //     }
         
-        if(
-            beer.servingStyle.includes("Porter") && !awards["Heavy Weight"] ||
-            beer.servingStyle.includes("Stout") && !awards["Heavy Weight"]
-        ){
-            newAward.badge_name = "Heavy Weight"
-            createAward(newAward)
-            awardsList.push(newAward.badge_name)
-        }
+    //     if(
+    //         beer.servingStyle.includes("Porter") && !awards["Heavy Weight"] ||
+    //         beer.servingStyle.includes("Stout") && !awards["Heavy Weight"]
+    //     ){
+    //         newAward.badge_name = "Heavy Weight"
+    //         createAward(newAward)
+    //         awardsList.push(newAward.badge_name)
+    //     }
     
-        if(beer.servingStyle.includes("Hefeweizen") && !awards["Heffenista"]){
-            newAward.badge_name = "Heffenista"
-            createAward(newAward)
-            awardsList.push(newAward.badge_name)
-        }
-        return awardsList
-    }
+    //     if(beer.servingStyle.includes("Hefeweizen") && !awards["Heffenista"]){
+    //         newAward.badge_name = "Heffenista"
+    //         createAward(newAward)
+    //         awardsList.push(newAward.badge_name)
+    //     }
+    //     return awardsList
+    // }
 
     const [checkIn, setCheckIn] = useState({
         user_id,
@@ -95,7 +95,7 @@ const CheckInForm = (props) => {
         e.preventDefault()
         createCheckIn(checkIn)
         .then((action)=>{
-            awardCreate(action.all.user, beer)
+            // awardCreate(action.all.user, beer)
             setOpenModal(false)
         })
     }

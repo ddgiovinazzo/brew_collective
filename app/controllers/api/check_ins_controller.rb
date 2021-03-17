@@ -11,6 +11,18 @@ class Api::CheckInsController < ApplicationController
         end    
     end
 
+    def destroy
+        @check_in = CheckIn.find(params[:id])
+            @beer = Beer.find(@check_in.beer_id)
+            @brewery = Brewery.find(@beer.brewery_id)
+            @user = User.find(@check_in.user_id)
+        if @check_in.destroy
+            render :show
+        else
+            render json: @check_in.errors.full_messages, status: 422
+        end    
+    end
+
     def search
         user_ids = params[:user_ids].split(",")
         @check_ins = CheckIn.where(user_id: user_ids)

@@ -21,3 +21,8 @@ export const createCheckIn = checkIn => dispatch =>(
     CheckInAPIUtil.createCheckIn(checkIn)
     .then(all => dispatch(receiveAll(all)))
 )
+
+export const deleteCheckIn = checkInId => dispatch =>(
+    CheckInAPIUtil.deleteCheckIn(checkInId)
+    .then(all => dispatch(receiveAll(all)))
+)

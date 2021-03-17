@@ -11,3 +11,9 @@ export const createCheckIn = check_in => {
       data: {check_in}
     })
   };
+export const deleteCheckIn = check_in_id => {
+    return $.ajax({
+      method: 'DELETE',
+      url: `/api/check_ins/${check_in_id}`
+    })
+  };

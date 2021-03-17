@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import { elapsedTime } from '../../../util/time_util'
 import Img from "../../image/image";
+import CheckInDeleteContainer from '../../check-in/delete/check_in_delete_container'
 
 
 
-const CheckInShow = ({ checkIn, user, beer, brewery }) => {
+const CheckInShow = ({ checkIn, user, beer, brewery, currentUser }) => {
 
     if (!checkIn || !user || !beer) return null
+    const [openModal, setOpenModal] = useState(false)
+
+    const isCurrentUser = user.id === currentUser.id
 
     const { rating, review } = checkIn
     const renderReview = (
@@ -44,7 +48,7 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
             </div>
             <p>
                 <Link to={`/user/${user.id}`}>{`${user.firstName} ${user.lastName}`}</Link>
-                {` is drinking ${['a','e','i','o','u','A','E','I','O','U'].includes(beer.name[0]) ? "an" : "a"} `}
+                {` is drinking ${['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(beer.name[0]) ? "an" : "a"} `}
                 <Link to={`/beer/${beer.id}`}>{`${beer.name}`}</Link>
                 {' by '}
                 <Link to={`/brewery/${brewery.id}`}>{`${brewery.name}`}</Link>
@@ -52,6 +56,23 @@ const CheckInShow = ({ checkIn, user, beer, brewery }) => {
             {rating ? <img className="rating c-rating" src={caps()} alt="" /> : null}
             {review ? renderReview : <br />}
             <p>{`- ${elapsedTime(checkIn.createdAt)} -`}</p>
+
+            {
+                isCurrentUser ?
+                    <i onClick={() => setOpenModal(true)} className="fas fa-ellipsis-v check-in-delete-elipsis"></i>
+
+                    :null
+            }
+
+            {
+                openModal ?
+                    <CheckInDeleteContainer
+                        checkIn={checkIn}
+                        setOpenModal={setOpenModal}
+                    />
+                    : null
+            }
+
         </div>
     )
 }

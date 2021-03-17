@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :beers, only: [:index, :create, :show]
     post "beers/brewery", to: "beers#brewery"
     resources :breweries, only: [:index, :create, :show]
-    resources :check_ins, only: [:create, :show]
+    resources :check_ins, only: [:create, :show, :destroy]
     get "check_ins/search/:user_ids", to: "check_ins#search"
     resources :friendships, only: [:create, :update, :destroy, :show]
     resources :awards, only: [:create, :destroy]

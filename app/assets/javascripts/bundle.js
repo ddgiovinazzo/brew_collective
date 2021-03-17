@@ -317,7 +317,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_CHECK_INS": () => /* binding */ RECEIVE_CHECK_INS,
 /* harmony export */   "RECEIVE_ALL": () => /* binding */ RECEIVE_ALL,
 /* harmony export */   "fetchCheckIns": () => /* binding */ fetchCheckIns,
-/* harmony export */   "createCheckIn": () => /* binding */ createCheckIn
+/* harmony export */   "createCheckIn": () => /* binding */ createCheckIn,
+/* harmony export */   "deleteCheckIn": () => /* binding */ deleteCheckIn
 /* harmony export */ });
 /* harmony import */ var _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/check_in_util */ "./frontend/util/check_in_util.js");
 
@@ -348,6 +349,13 @@ var fetchCheckIns = function fetchCheckIns(userIds) {
 var createCheckIn = function createCheckIn(checkIn) {
   return function (dispatch) {
     return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.createCheckIn(checkIn).then(function (all) {
+      return dispatch(receiveAll(all));
+    });
+  };
+};
+var deleteCheckIn = function deleteCheckIn(checkInId) {
+  return function (dispatch) {
+    return _util_check_in_util__WEBPACK_IMPORTED_MODULE_0__.deleteCheckIn(checkInId).then(function (all) {
       return dispatch(receiveAll(all));
     });
   };
@@ -1912,54 +1920,52 @@ var CheckInForm = function CheckInForm(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(255),
       _useState2 = _slicedToArray(_useState, 2),
       counter = _useState2[0],
-      setCounter = _useState2[1];
+      setCounter = _useState2[1]; // const awardCreate =  (user, beer) =>{
+  //     const {awards} = user
+  //     const newAward={user_id: user.id, badge_name: null}
+  //     const awardsList = []
+  //     if(user.uniqueCheckIns > 0 && !awards["Newbie"]){
+  //         newAward.badge_name = "Newbie"
+  //         createAward(newAward)
+  //         awardsList.push(newAward.badge_name)
+  //     }
+  //     else if(user.uniqueCheckIns < 1 && awards["Newbie"])
+  //         deleteAward(awards["Newbie"].id)
+  //     if(user.uniqueCheckIns > 24 && !awards["Apprentice"]){
+  //         newAward.badge_name = "Apprentice"
+  //         createAward(newAward)
+  //         awardsList.push(newAward.badge_name)
+  //     }
+  //     else if(user.uniqueCheckIns < 25 && awards["Apprentice"])
+  //         deleteAward(awards["Apprentice"].id)
+  //     if(user.uniqueCheckIns > 49 && !awards["Journeyman"]){
+  //         newAward.badge_name = "Journeyman"
+  //         createAward(newAward)
+  //         awardsList.push(newAward.badge_name)
+  //     }
+  //     else if(user.uniqueCheckIns < 50 && awards["Journeyman"])
+  //         deleteAward(awards["Journeyman"].id)
+  //     if(beer.servingStyle.includes("IPA") && !awards["I Believe in IPA"]){
+  //         newAward.badge_name = "I Believe in IPA!"
+  //         createAward(newAward)
+  //         awardsList.push(newAward.badge_name)
+  //     }
+  //     if(
+  //         beer.servingStyle.includes("Porter") && !awards["Heavy Weight"] ||
+  //         beer.servingStyle.includes("Stout") && !awards["Heavy Weight"]
+  //     ){
+  //         newAward.badge_name = "Heavy Weight"
+  //         createAward(newAward)
+  //         awardsList.push(newAward.badge_name)
+  //     }
+  //     if(beer.servingStyle.includes("Hefeweizen") && !awards["Heffenista"]){
+  //         newAward.badge_name = "Heffenista"
+  //         createAward(newAward)
+  //         awardsList.push(newAward.badge_name)
+  //     }
+  //     return awardsList
+  // }
 
-  var awardCreate = function awardCreate(user, beer) {
-    var awards = user.awards;
-    var newAward = {
-      user_id: user.id,
-      badge_name: null
-    };
-    var awardsList = [];
-
-    if (user.uniqueCheckIns > 0 && !awards["Newbie"]) {
-      newAward.badge_name = "Newbie";
-      createAward(newAward);
-      awardsList.push(newAward.badge_name);
-    } else if (user.uniqueCheckIns < 1 && awards["Newbie"]) deleteAward(awards["Newbie"].id);
-
-    if (user.uniqueCheckIns > 24 && !awards["Apprentice"]) {
-      newAward.badge_name = "Apprentice";
-      createAward(newAward);
-      awardsList.push(newAward.badge_name);
-    } else if (user.uniqueCheckIns < 25 && awards["Apprentice"]) deleteAward(awards["Apprentice"].id);
-
-    if (user.uniqueCheckIns > 49 && !awards["Journeyman"]) {
-      newAward.badge_name = "Journeyman";
-      createAward(newAward);
-      awardsList.push(newAward.badge_name);
-    } else if (user.uniqueCheckIns < 50 && awards["Journeyman"]) deleteAward(awards["Journeyman"].id);
-
-    if (beer.servingStyle.includes("IPA") && !awards["I Believe in IPA"]) {
-      newAward.badge_name = "I Believe in IPA!";
-      createAward(newAward);
-      awardsList.push(newAward.badge_name);
-    }
-
-    if (beer.servingStyle.includes("Porter") && !awards["Heavy Weight"] || beer.servingStyle.includes("Stout") && !awards["Heavy Weight"]) {
-      newAward.badge_name = "Heavy Weight";
-      createAward(newAward);
-      awardsList.push(newAward.badge_name);
-    }
-
-    if (beer.servingStyle.includes("Hefeweizen") && !awards["Heffenista"]) {
-      newAward.badge_name = "Heffenista";
-      createAward(newAward);
-      awardsList.push(newAward.badge_name);
-    }
-
-    return awardsList;
-  };
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     user_id: user_id,
@@ -1994,7 +2000,7 @@ var CheckInForm = function CheckInForm(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     createCheckIn(checkIn).then(function (action) {
-      awardCreate(action.all.user, beer);
+      // awardCreate(action.all.user, beer)
       setOpenModal(false);
     });
   };
@@ -2057,9 +2063,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _util_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/time_util */ "./frontend/util/time_util.js");
 /* harmony import */ var _image_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../image/image */ "./frontend/components/image/image.jsx");
+/* harmony import */ var _check_in_delete_check_in_delete_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../check-in/delete/check_in_delete_container */ "./frontend/components/check-in/delete/check_in_delete_container.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -2069,8 +2089,16 @@ var CheckInShow = function CheckInShow(_ref) {
   var checkIn = _ref.checkIn,
       user = _ref.user,
       beer = _ref.beer,
-      brewery = _ref.brewery;
+      brewery = _ref.brewery,
+      currentUser = _ref.currentUser;
   if (!checkIn || !user || !beer) return null;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      openModal = _useState2[0],
+      setOpenModal = _useState2[1];
+
+  var isCurrentUser = user.id === currentUser.id;
   var rating = checkIn.rating,
       review = checkIn.review;
   var renderReview = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIn.review), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
@@ -2101,31 +2129,39 @@ var CheckInShow = function CheckInShow(_ref) {
     className: "check-in-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "check-in-img-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_2__.default, {
     className: "user-img check_in-img",
     src: user.photoUrl,
     dft: window.defaultBeer,
     alt: "user"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/beer/".concat(beer.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_2__.default, {
     className: "check_in-img",
     src: beer.imageUrl,
     dft: window.defaultBeer,
     alt: "user"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id)
-  }, "".concat(user.firstName, " ").concat(user.lastName)), " is drinking ".concat(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(beer.name[0]) ? "an" : "a", " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "".concat(user.firstName, " ").concat(user.lastName)), " is drinking ".concat(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(beer.name[0]) ? "an" : "a", " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/beer/".concat(beer.id)
-  }, "".concat(beer.name)), ' by ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "".concat(beer.name)), ' by ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/brewery/".concat(brewery.id)
   }, "".concat(brewery.name))), rating ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "rating c-rating",
     src: caps(),
     alt: ""
-  }) : null, review ? renderReview : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "- ".concat((0,_util_time_util__WEBPACK_IMPORTED_MODULE_1__.elapsedTime)(checkIn.createdAt), " -")));
+  }) : null, review ? renderReview : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "- ".concat((0,_util_time_util__WEBPACK_IMPORTED_MODULE_1__.elapsedTime)(checkIn.createdAt), " -")), isCurrentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    onClick: function onClick() {
+      return setOpenModal(true);
+    },
+    className: "fas fa-ellipsis-v check-in-delete-elipsis"
+  }) : null, openModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_delete_check_in_delete_container__WEBPACK_IMPORTED_MODULE_3__.default, {
+    checkIn: checkIn,
+    setOpenModal: setOpenModal
+  }) : null);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckInShow);
@@ -2149,9 +2185,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(_ref, ownProps) {
-  var users = _ref.entities.users;
+  var users = _ref.entities.users,
+      session = _ref.session;
   return {
-    user: users[ownProps.checkIn.userId]
+    user: users[ownProps.checkIn.userId],
+    currentUser: users[session.id]
   };
 }; // const mDTP = (dispatch)=>{
 //     return{
@@ -2161,6 +2199,93 @@ var mSTP = function mSTP(_ref, ownProps) {
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, null)(_check_in_show__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./frontend/components/check-in/delete/check_in_delete.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/check-in/delete/check_in_delete.jsx ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var CheckInDelete = function CheckInDelete(props) {
+  var setOpenModal = props.setOpenModal,
+      checkIn = props.checkIn,
+      deleteCheckIn = props.deleteCheckIn;
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    deleteCheckIn(checkIn.id).then(function () {
+      return setOpenModal(false);
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "modal-outer",
+    onClick: function onClick() {
+      return setOpenModal(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "modal-form-container",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "check-in-top"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Delete Check-In")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    className: "modal-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Are you sure you want to delete this check-in?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "cid-button-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: handleSubmit,
+    className: "form-submit cid-button"
+  }, "Yes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: function onClick() {
+      return setOpenModal(false);
+    },
+    className: "form-submit cid-button"
+  }, "No")))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckInDelete);
+
+/***/ }),
+
+/***/ "./frontend/components/check-in/delete/check_in_delete_container.js":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/check-in/delete/check_in_delete_container.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/check_in_actions */ "./frontend/actions/check_in_actions.js");
+/* harmony import */ var _check_in_delete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./check_in_delete */ "./frontend/components/check-in/delete/check_in_delete.jsx");
+
+
+
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    deleteCheckIn: function deleteCheckIn(checkInId) {
+      return dispatch((0,_actions_check_in_actions__WEBPACK_IMPORTED_MODULE_1__.deleteCheckIn)(checkInId));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mDTP)(_check_in_delete__WEBPACK_IMPORTED_MODULE_2__.default));
 
 /***/ }),
 
@@ -4763,7 +4888,8 @@ var fetchBrewery = function fetchBrewery(breweryId) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchCheckIns": () => /* binding */ fetchCheckIns,
-/* harmony export */   "createCheckIn": () => /* binding */ createCheckIn
+/* harmony export */   "createCheckIn": () => /* binding */ createCheckIn,
+/* harmony export */   "deleteCheckIn": () => /* binding */ deleteCheckIn
 /* harmony export */ });
 var fetchCheckIns = function fetchCheckIns(user_ids) {
   return $.ajax({
@@ -4777,6 +4903,12 @@ var createCheckIn = function createCheckIn(check_in) {
     data: {
       check_in: check_in
     }
+  });
+};
+var deleteCheckIn = function deleteCheckIn(check_in_id) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/check_ins/".concat(check_in_id)
   });
 };
 
