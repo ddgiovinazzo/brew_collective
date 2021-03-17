@@ -55,8 +55,9 @@ cursor: pointer;
 .review-container > textarea{
     padding: 5px;
     resize: none;
-    width: 95%;
-    height: 85%;
+    width: 97%;
+    height: 100%;
+    background-color: transparent;
 }
 .review-container:focus-within{
     border: #0D1F2D 2px solid;

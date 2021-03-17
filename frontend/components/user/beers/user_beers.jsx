@@ -20,7 +20,7 @@ const UserBeers = ({user, currentUserId}) => {
                     <div id='content-container'>
                         <BeerSearch beers={Object.values(user.beers)} placeholder={`Search ${userTitle} Checked-In Beers`}/>
                     </div>
-                    <UserSidebar user={user} />
+                    <UserSidebar user={user} isCurrentUser={true} />
                 </div>
 
 

@@ -13,17 +13,21 @@
     top:60px;
     left:50%;
     transform:translate(-50%, 0);
-    padding:10px 20px;
+    padding:5px;
     color:white;
-    background-color:#0D1F2D;
+    background-color:rgba(31, 61, 83, 0.8);
     font-weight:normal;
     font-size:13px;
     position:absolute;
-    box-shadow:0 1px 8px rgba(0,0,0,0.5);
     width: max-content;
     visibility: hidden;
     opacity: 0;
     transition:  0.8s ;
+    border-radius: 3px;
+}
+
+.tooltip .bottom.ci-tips {
+    top:25px;
 }
 
 .tooltip {
@@ -54,7 +58,13 @@
     height:12px;
     left:50%;
     transform:translate(-50%,50%) rotate(45deg);
-    background-color:#0D1F2D;
-    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    background-color:rgba(31, 61, 83, 0.8);
 }
 
+.ci-question{
+    color: #FF8558;
+}
+.ci-question:hover{
+    color: #009F93;
+    cursor: pointer;
+}

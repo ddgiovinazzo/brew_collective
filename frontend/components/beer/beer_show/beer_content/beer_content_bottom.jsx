@@ -43,7 +43,7 @@ const BeerContentBottom = ({ beer, setOpenModal}) => {
 
                 &#10003;
 
-        <div className="bottom">
+                <div className="bottom">
                     <p>Check-in this Beer <i></i></p>
 
                 </div>

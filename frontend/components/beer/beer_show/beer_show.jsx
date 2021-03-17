@@ -18,30 +18,21 @@ const BeerShow = ({ currentUser, beer, breweries }) => {
     const uniques = {}
     const stats = {
         uniquesCount: 0,
-        you: 0,
-        monthly: 0
+        you: 0
     }
     const checkInList = []
 
     checkIns.forEach(checkIn => {
-        // const currentDate = new Date()
-        // const date = new Date(checkIn.createdAt)
-
-        // if (
-        //     date.getMonth() === currentDate.getMonth() &&
-        //     date.getFullYear() === currentDate.getFullYear()
-        // )
-        //     stats.monthly++
+        const checkInShow = <CheckInShowContainer key={checkIn.id} beer={beer} checkIn={checkIn} brewery={brewery} />
 
         if (!uniques[checkIn.userId]) {
             uniques[checkIn.userId] = 1;
             stats.uniquesCount++
         }
-        if (checkIn.userId === currentUser.id) stats.you++
+        if (checkIn.userId === currentUser.id)stats.you++
 
-        checkInList.push(<CheckInShowContainer key={checkIn.id} beer={beer} checkIn={checkIn} brewery={brewery} />)
+        checkInList.push(checkInShow)
     })
-
 
     return (
         <div className='main-outer'>

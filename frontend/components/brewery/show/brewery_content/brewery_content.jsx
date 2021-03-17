@@ -33,13 +33,31 @@ const BreweryContentTop = (props) => {
                         </div>
 
                         <div className='home-grid-container'>
-                            <div className='home-grid-row'>
+                        <div className='home-grid-row'>
                                 <div>
-                                    <p>Total</p>
+                                    <div>Total (
+                                        
+                                        <span className="btn btn-primary tooltip ci-question">?
+                                            <div className="bottom ci-tips">
+                                                Total Check-Ins All Time<i></i>
+                                             </div>
+                                        </span>
+
+                                    )
+                                    </div>
                                     <p>{checkIns.length}</p>
                                 </div>
                                 <div>
-                                    <p>Unique</p>
+                                    <div>Unique (
+                                        
+                                        <span className="btn btn-primary tooltip ci-question">?
+                                            <div className="bottom ci-tips">
+                                                Number of Users All Time<i></i>
+                                             </div>
+                                        </span>
+
+                                    )
+                                    </div>
                                     <p>{stats.uniquesCount}</p>
                                 </div>
                                 <div>
