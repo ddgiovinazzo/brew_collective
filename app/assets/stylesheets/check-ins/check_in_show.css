@@ -26,14 +26,14 @@
     padding: 20px;
 }
 
-.check-in-delete-elipsis {
+.check-in-delete-ellipsis {
     position: absolute;
     top: 10px;
     font-size: 18px;
     right: 5px;
     color: #b9c5be;
 }
-.check-in-delete-elipsis:hover {
+.check-in-delete-ellipsis:hover {
     cursor: pointer;
     color: #88958D;
 }

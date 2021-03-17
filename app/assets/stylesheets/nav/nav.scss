@@ -29,7 +29,6 @@
 }
 
 
-
 #brew_collective-logo-nav{
     transform: scale(.7);
    filter: invert(100%);
@@ -37,37 +36,20 @@
 
 .dropdown-container { 
     position: relative;
-    display: inline-block;
 }
 
-.fa-user-circle{
-    color: white;
-}
-.fa-user-circle:hover{
-    cursor: pointer;
-}
-.dropdown-container:hover .dropdown-outer{
-    display: flex;
-}
-.dropdown-outer{
+.dropdown{
     position: absolute;
-    left: 42px;
-    top: 74px;
+    left: 15px;
+    top: 116px;
     transform: translate(-50%, -50%);
     align-items: center;
     justify-content: center;
-    height: 90px;
-    display: none;
     z-index: 2;
-}
-
-
-.dropdown {
     background-color: #0D1F2D;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    position: relative;
 }
-  
+
   .nav-links {
     color: white;
     padding: 10px 20px;
@@ -76,6 +58,11 @@
     border-bottom: 1px solid #484646;
     cursor: pointer;
     width: max-content;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+           user-select: none;
   }
   .nav-links:hover {
     color: #88958D;
@@ -103,4 +90,10 @@
     transform:translate(-50%,50%) rotate(45deg);
     background-color:#0D1F2D;
     box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}
+
+.nb-ellipsis{
+    color: lightgray;
+    padding: 10px;
+    font-size: 22px;
 }

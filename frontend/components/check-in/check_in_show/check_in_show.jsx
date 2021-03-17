@@ -59,7 +59,7 @@ const CheckInShow = ({ checkIn, user, beer, brewery, currentUser }) => {
 
             {
                 isCurrentUser ?
-                    <i onClick={() => setOpenModal(true)} className="fas fa-ellipsis-v check-in-delete-elipsis"></i>
+                    <i onClick={() => setOpenModal(true)} className="fas fa-ellipsis-v check-in-delete-ellipsis"></i>
 
                     :null
             }

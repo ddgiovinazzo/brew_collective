@@ -20,10 +20,12 @@ import NavBarContainer from './navbar/navbar_container'
 const App = () => {
 
   const [searchText, setSearchText] = useState("")
-  const navSearchProps=[{searchText}, {setSearchText}]
+  const [dropdown, setDropdown] = useState(false)
+  const navSearchProps=[{searchText}, {setSearchText}, {dropdown}, {setDropdown}]
 
   const onMouseDown = () =>{
     if(searchText) setSearchText(null)
+    if(dropdown) setDropdown(false)
   }
 
   const onKeyDown = (e) =>{
@@ -32,7 +34,11 @@ const App = () => {
 
   return (
 
-    <div onKeyDown={onKeyDown} onMouseDown={onMouseDown}className="app-container">
+    <div
+      onKeyDown={onKeyDown} 
+      onMouseDown={onMouseDown}
+      className="app-container"
+    >
 
         <AuthRoute exact path="/login" component={SignIn} />
         <AuthRoute exact path="/signup" component={SignUp} />

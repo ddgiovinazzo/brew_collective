@@ -681,14 +681,24 @@ var App = function App() {
       searchText = _useState2[0],
       setSearchText = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      dropdown = _useState4[0],
+      setDropdown = _useState4[1];
+
   var navSearchProps = [{
     searchText: searchText
   }, {
     setSearchText: setSearchText
+  }, {
+    dropdown: dropdown
+  }, {
+    setDropdown: setDropdown
   }];
 
   var onMouseDown = function onMouseDown() {
     if (searchText) setSearchText(null);
+    if (dropdown) setDropdown(false);
   };
 
   var onKeyDown = function onKeyDown(e) {
@@ -2157,7 +2167,7 @@ var CheckInShow = function CheckInShow(_ref) {
     onClick: function onClick() {
       return setOpenModal(true);
     },
-    className: "fas fa-ellipsis-v check-in-delete-elipsis"
+    className: "fas fa-ellipsis-v check-in-delete-ellipsis"
   }) : null, openModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_delete_check_in_delete_container__WEBPACK_IMPORTED_MODULE_3__.default, {
     checkIn: checkIn,
     setOpenModal: setOpenModal
@@ -2857,6 +2867,8 @@ var NavBar = function NavBar(props) {
       fetchAllBreweries = props.fetchAllBreweries;
   var searchText = props.searchText,
       setSearchText = props.setSearchText;
+  var dropdown = props.dropdown,
+      setDropdown = props.setDropdown;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2869,6 +2881,13 @@ var NavBar = function NavBar(props) {
     fetchAllBreweries();
   }, [update]);
   if (!currentUser) return null;
+
+  var handleDropdown = function handleDropdown(e) {
+    e.stopPropagation();
+    if (searchText) setSearchText(null);
+    dropdown ? setDropdown(false) : e.button != 2 ? setDropdown(true) : null;
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "header-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2881,29 +2900,46 @@ var NavBar = function NavBar(props) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "nav-content-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "dropdown-container"
+    onMouseDown: handleDropdown
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_2__.default, {
     className: "nav-search-img user-img",
     src: currentUser.photoUrl,
     dft: window.defaultBeer,
     alt: "user"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "dropdown-outer"
+  })), dropdown ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "dropdown-container",
+    onClick: function onClick() {
+      return setDropdown(false);
+    },
+    onMouseDown: function onMouseDown(e) {
+      return e.stopPropagation();
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "dropdown"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     className: "arrow"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     className: "nav-links",
+    to: "/"
+  }, "Recent Activity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: "nav-links",
     to: "/user/".concat(currentUser.id)
-  }, "My Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "My Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: "nav-links",
+    to: "/user/".concat(currentUser.id, "/beers")
+  }, "Beer History"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: "nav-links",
+    to: "/user/".concat(currentUser.id, "/friends")
+  }, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     onClick: function onClick() {
       return logout();
     },
     className: "nav-links"
-  }, "Logout")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_nav_search_nav_search_container__WEBPACK_IMPORTED_MODULE_1__.default, {
+  }, "Logout"))) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_nav_search_nav_search_container__WEBPACK_IMPORTED_MODULE_1__.default, {
     searchText: searchText,
-    setSearchText: setSearchText
+    setSearchText: setSearchText,
+    dropdow: dropdown,
+    setDropdown: setDropdown
   }))));
 };
 
@@ -3118,18 +3154,24 @@ var NavSearch = function NavSearch(props) {
   if (pathname === "/beers") return null;
   var beers = props.beers,
       searchText = props.searchText,
-      setSearchText = props.setSearchText;
+      setSearchText = props.setSearchText,
+      dropdown = props.dropdown,
+      setDropdown = props.setDropdown;
 
   var handleSearch = function handleSearch(e) {
     setSearchText(e.currentTarget.value);
   };
 
+  var onMouseDown = function onMouseDown(e) {
+    e.stopPropagation();
+    if (dropdown) setDropdown(false);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    onMouseDown: function onMouseDown(e) {
-      return e.stopPropagation();
-    },
+    onMouseDown: onMouseDown,
     id: "search-bar-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    autoComplete: "off",
     onChange: handleSearch,
     id: "search-bar",
     placeholder: "Find a beer...",
