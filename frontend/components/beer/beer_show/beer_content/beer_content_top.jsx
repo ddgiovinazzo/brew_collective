@@ -1,18 +1,18 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Img from "../../../image/image";
 
 
 const BeerContentTop = (props) => {
-    const { beer, beer:{checkIns}, ratings, stats, brewery} = props
+    const { beer, beer: { checkIns }, ratings, stats, brewery } = props
 
-    const caps = ()=>{
-        if(ratings.avg < 1) return window.zeroCaps
-        else if(ratings.avg < 2) return window.oneCap
-        else if(ratings.avg < 3) return window.twoCaps
-        else if(ratings.avg < 4) return window.threeCaps
-        else if(ratings.avg < 5) return window.fourCaps
-         return window.fiveCaps
+    const caps = () => {
+        if (ratings.avg < 1) return window.zeroCaps
+        else if (ratings.avg < 2) return window.oneCap
+        else if (ratings.avg < 3) return window.twoCaps
+        else if (ratings.avg < 4) return window.threeCaps
+        else if (ratings.avg < 5) return window.fourCaps
+        return window.fiveCaps
     }
 
     return (
@@ -20,7 +20,7 @@ const BeerContentTop = (props) => {
             <div className='bct-row'>
                 <div className="beer-content-left-container">
                     <div className='bct-img'>
-                        <Img className="beer-img" src={beer.imageUrl} dft={window.defaultBeer} alt="beer"/>
+                        <Img className="beer-img" src={beer.imageUrl} dft={window.defaultBeer} alt="beer" />
                     </div>
                     <div className='bct-title'>
                         <h1>{beer.name}</h1>
@@ -38,21 +38,19 @@ const BeerContentTop = (props) => {
                                 <p>Total</p>
                                 <p>{checkIns.length}</p>
                             </div>
+
                             <div>
                                 <p>Unique</p>
                                 <p>{stats.uniquesCount}</p>
                             </div>
-                        </div>
-                        <div className='home-grid-row'>
-                            <div>
-                                <p>Monthly</p>
-                                <p>{stats.monthly}</p>
-                            </div>
+
                             <div>
                                 <p>You</p>
                                 <p>{stats.you}</p>
                             </div>
+
                         </div>
+
                     </div>
 
                 </div>

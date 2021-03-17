@@ -5,7 +5,7 @@
 }
 .bct-row{
     display: flex;
-    padding: 20px 10px;
+    padding: 20px 0px;
     justify-content: space-between;
     width: 90%;
 }
@@ -32,6 +32,10 @@ color: #0D1F2D;
 .beer-content-left-container{
     display: flex;
 }
+.beer-content-right-container{
+    display: flex;
+    align-items: center;
+}
 
 .bct-img{
     margin-right: 10px;
@@ -39,7 +43,7 @@ color: #0D1F2D;
     width: 100px;
 }
 
-.beer-content-top-title{
+.bct-title{
     padding: 5px 15px;
 }
 

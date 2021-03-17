@@ -28,16 +28,16 @@ const UserSidebar = ({user, isCurrentUser}) => {
                 <div className='home-grid-container'>
                     <div className='home-grid-row'>
                         <Link to={`/user/${user.id}`}>
-                            <p>{user.checkIns.length}</p>
                             <p>Total</p>
+                            <p>{user.checkIns.length}</p>
                         </Link>
                         <Link to={`/user/${user.id}/beers`}>
-                            <p>{user.uniqueCheckIns}</p>
                             <p>Unique</p>
+                            <p>{user.uniqueCheckIns}</p>
                         </Link>
                         <Link to={`/user/${user.id}/friends`}>
-                            <p>{user.friendIds.length}</p>
                             <p>Friends</p>
+                            <p>{user.friendIds.length}</p>
                         </Link>
                     </div>
 

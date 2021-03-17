@@ -86,38 +86,39 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 268px
 }
 
 .home-grid-row{
-    width: 90%;
     display: flex;
     justify-content: center;
 }
-/* .home-grid-row:first-child{
-    border-bottom: solid 1px lightgray;
-} */
 
-.home-grid-row > a{
+
+.home-grid-row > a, .home-grid-row > div{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50%;
+
     height: 30px;
     padding: 10px;
-    background-color: rgb(245, 245, 245);
     border-right: solid 1px lightgray;
-    color: inherit;
 }
-.home-grid-row > a >p{
+
+.home-grid-row > a{
+    background-color: rgb(245, 245, 245);
+    color: #0D1F2D;
+    width: 60px;
+}
+
+.home-grid-row > a >p, .home-grid-row > div >p{
     margin: 2px;
 }
 .home-grid-row > a:hover{
     background-color: rgb(240, 240, 240);
-    color: inherit;
+    color: #0D1F2D;
 }
-.home-grid-row > a:last-child{
+.home-grid-row > a:last-child, .home-grid-row > div:last-child{
     border-right: none
 }
 .home-username{
