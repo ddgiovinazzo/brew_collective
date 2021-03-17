@@ -19,14 +19,14 @@ const BreweryShow = ({currentUser, brewery, beers}) => {
     const checkInList = []
 
     checkIns.forEach(checkIn => {
-        const currentDate = new Date()
-        const date = new Date(checkIn.createdAt)
+        // const currentDate = new Date()
+        // const date = new Date(checkIn.createdAt)
 
-        if(
-            date.getMonth() === currentDate.getMonth() &&
-            date.getFullYear() === currentDate.getFullYear()
-        )
-            stats.monthly++
+        // if(
+        //     date.getMonth() === currentDate.getMonth() &&
+        //     date.getFullYear() === currentDate.getFullYear()
+        // )
+        //     stats.monthly++
 
         if (!uniques[checkIn.userId]) {
             uniques[checkIn.userId] = 1;

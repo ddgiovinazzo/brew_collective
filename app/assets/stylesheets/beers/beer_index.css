@@ -48,3 +48,7 @@
 .nsi-search-results.bidx:first-child{
     border-top: none;
 }
+
+#recent-activity.beer-search{
+    width: 700px;
+}

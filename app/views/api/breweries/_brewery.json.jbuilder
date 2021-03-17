@@ -21,3 +21,15 @@ json.ratings do
 end
 
 json.beer_total brewery.beers.length
+
+if brewery.beers.empty?
+    json.beers({})
+else
+    json.beers do
+        brewery.beers.each do |beer|
+            json.set! beer.id do
+                json.partial! '/api/beers/beer.json.jbuilder', beer: beer
+            end
+        end
+    end
+end

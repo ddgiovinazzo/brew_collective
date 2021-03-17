@@ -10,6 +10,7 @@ import BeerShowContainer from './beer/beer_show/beer_show_container'
 import UserBeersContainer from './user/beers/user_beers_container'
 import UserFriendsContainer from './user/friends/user_friends_container'
 import BreweryShowContainer from './brewery/show/brewery_show_container'
+import BreweryBeersContainer from './brewery/beers/brewery_beers_container'
 import Footer from './footer/footer'
 
 import SignIn from '../components/session_form/sign_in_form_container'
@@ -41,6 +42,7 @@ const App = () => {
         <ProtectedRoute exact path="/user/:userId" component={UserShowContainer} />
         <ProtectedRoute exact path="/beer/:beerId" component={BeerShowContainer} />
         <ProtectedRoute exact path="/brewery/:breweryId" component={BreweryShowContainer} />
+        <ProtectedRoute exact path="/brewery/:breweryId/beers"  component={BreweryBeersContainer} />
         <ProtectedRoute exact path="/newbeer" component={BeerCreateContainer} />
         <ProtectedRoute exact path="/beers"  component={BeerIndexContainer} />
         <ProtectedRoute exact path="/user/:userId/beers"  component={UserBeersContainer} />

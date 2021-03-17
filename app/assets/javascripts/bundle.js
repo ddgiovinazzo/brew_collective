@@ -622,7 +622,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash */ "./frontend/components/splash.jsx");
 /* harmony import */ var _home_home_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home_container */ "./frontend/components/home/home_container.js");
 /* harmony import */ var _user_show_user_show_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user/show/user_show_container */ "./frontend/components/user/show/user_show_container.js");
@@ -632,10 +632,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_beers_user_beers_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user/beers/user_beers_container */ "./frontend/components/user/beers/user_beers_container.js");
 /* harmony import */ var _user_friends_user_friends_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user/friends/user_friends_container */ "./frontend/components/user/friends/user_friends_container.js");
 /* harmony import */ var _brewery_show_brewery_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./brewery/show/brewery_show_container */ "./frontend/components/brewery/show/brewery_show_container.js");
-/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
-/* harmony import */ var _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/session_form/sign_in_form_container */ "./frontend/components/session_form/sign_in_form_container.js");
-/* harmony import */ var _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/session_form/sign_up_form_container */ "./frontend/components/session_form/sign_up_form_container.js");
-/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
+/* harmony import */ var _brewery_beers_brewery_beers_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./brewery/beers/brewery_beers_container */ "./frontend/components/brewery/beers/brewery_beers_container.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
+/* harmony import */ var _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/session_form/sign_in_form_container */ "./frontend/components/session_form/sign_in_form_container.js");
+/* harmony import */ var _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/session_form/sign_up_form_container */ "./frontend/components/session_form/sign_up_form_container.js");
+/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -647,6 +648,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -692,18 +694,18 @@ var App = function App() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/login",
-    component: _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_12__.default
+    component: _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_13__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/signup",
-    component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_13__.default
+    component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_14__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/",
     component: _splash__WEBPACK_IMPORTED_MODULE_2__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     path: "/",
-    component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_14__.default,
+    component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_15__.default,
     newProps: navSearchProps
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
@@ -723,6 +725,10 @@ var App = function App() {
     component: _brewery_show_brewery_show_container__WEBPACK_IMPORTED_MODULE_10__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
+    path: "/brewery/:breweryId/beers",
+    component: _brewery_beers_brewery_beers_container__WEBPACK_IMPORTED_MODULE_11__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    exact: true,
     path: "/newbeer",
     component: _beer_create_beer_create_container__WEBPACK_IMPORTED_MODULE_5__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
@@ -737,9 +743,9 @@ var App = function App() {
     exact: true,
     path: "/user/:userId/friends",
     component: _user_friends_user_friends_container__WEBPACK_IMPORTED_MODULE_9__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
     path: "/",
-    component: _footer_footer__WEBPACK_IMPORTED_MODULE_11__.default
+    component: _footer_footer__WEBPACK_IMPORTED_MODULE_12__.default
   }));
 };
 
@@ -1013,10 +1019,13 @@ var BeerShow = function BeerShow(_ref) {
   };
   var checkInList = [];
   checkIns.forEach(function (checkIn) {
-    var currentDate = new Date();
-    var date = new Date(checkIn.createdAt);
-    if (date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear()) stats.monthly++;
-
+    // const currentDate = new Date()
+    // const date = new Date(checkIn.createdAt)
+    // if (
+    //     date.getMonth() === currentDate.getMonth() &&
+    //     date.getFullYear() === currentDate.getFullYear()
+    // )
+    //     stats.monthly++
     if (!uniques[checkIn.userId]) {
       uniques[checkIn.userId] = 1;
       stats.uniquesCount++;
@@ -1435,6 +1444,97 @@ var renderErrors = function renderErrors(errors, className) {
 
 /***/ }),
 
+/***/ "./frontend/components/brewery/beers/brewery_beers.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/brewery/beers/brewery_beers.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _fallback_fallback__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../fallback/fallback */ "./frontend/components/fallback/fallback.jsx");
+/* harmony import */ var _show_brewery_content_brewery_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../show/brewery_content/brewery_content */ "./frontend/components/brewery/show/brewery_content/brewery_content.jsx");
+/* harmony import */ var _search_beer_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../search/beer_search */ "./frontend/components/search/beer_search.jsx");
+
+
+
+
+
+var BreweryBeers = function BreweryBeers(_ref) {
+  var currentUserId = _ref.currentUserId,
+      brewery = _ref.brewery;
+  if (!brewery) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
+  var checkIns = brewery.checkIns,
+      ratings = brewery.ratings;
+  var uniques = {};
+  var stats = {
+    uniquesCount: 0,
+    you: 0
+  };
+  checkIns.forEach(function (checkIn) {
+    if (!uniques[checkIn.userId]) {
+      uniques[checkIn.userId] = 1;
+      stats.uniquesCount++;
+    }
+
+    if (checkIn.userId === currentUserId) stats.you++;
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "main-outer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "home-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "beer-show-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_brewery_content_brewery_content__WEBPACK_IMPORTED_MODULE_2__.default, {
+    brewery: brewery,
+    ratings: ratings,
+    stats: stats
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "content-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_search_beer_search__WEBPACK_IMPORTED_MODULE_3__.default, {
+    beers: Object.values(brewery.beers),
+    placeholder: "Search Beers From ".concat(brewery.name)
+  }))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreweryBeers);
+
+/***/ }),
+
+/***/ "./frontend/components/brewery/beers/brewery_beers_container.js":
+/*!**********************************************************************!*\
+  !*** ./frontend/components/brewery/beers/brewery_beers_container.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _brewery_beers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./brewery_beers */ "./frontend/components/brewery/beers/brewery_beers.jsx");
+
+
+
+var mSTP = function mSTP(_ref, _ref2) {
+  var breweries = _ref.entities.breweries,
+      session = _ref.session;
+  var match = _ref2.match;
+  return {
+    brewery: breweries[match.params.breweryId],
+    currentUserId: session.id
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, null)(_brewery_beers__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
 /***/ "./frontend/components/brewery/create/brewery_create.jsx":
 /*!***************************************************************!*\
   !*** ./frontend/components/brewery/create/brewery_create.jsx ***!
@@ -1564,6 +1664,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _image_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../image/image */ "./frontend/components/image/image.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -1582,24 +1684,27 @@ var BreweryContentTop = function BreweryContentTop(props) {
     className: "bct-container brewery"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-row brewery"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "beer-content-left-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "bct-img"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    className: "bct-img",
+    to: "/brewery/".concat(brewery.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_1__.default, {
     className: "beer-img",
     src: brewery.imageUrl,
     dft: window.defaultBeer,
     alt: "brewery"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "bct-title brewery"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, brewery.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.breweryType))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "beer-content-right-container"
+    className: "bct-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-content-top"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, brewery.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-content-bottom"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bct-title brewery"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.breweryType)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.uniquesCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.you)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.uniquesCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.you))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-row brewery"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-mid-inner-div"
@@ -1611,7 +1716,9 @@ var BreweryContentTop = function BreweryContentTop(props) {
     className: "bct-mid-inner-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ratings.total, " ", ratings.total === 1 ? "Rating" : "Ratings")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-mid-inner-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, brewery.beerTotal, brewery.beerTotal === 1 ? " Beer" : " Beers"))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/brewery/".concat(brewery.id, "/beers")
+  }, brewery.beerTotal, brewery.beerTotal === 1 ? " Beer" : " Beers"))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreweryContentTop);
@@ -1654,10 +1761,13 @@ var BreweryShow = function BreweryShow(_ref) {
   };
   var checkInList = [];
   checkIns.forEach(function (checkIn) {
-    var currentDate = new Date();
-    var date = new Date(checkIn.createdAt);
-    if (date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear()) stats.monthly++;
-
+    // const currentDate = new Date()
+    // const date = new Date(checkIn.createdAt)
+    // if(
+    //     date.getMonth() === currentDate.getMonth() &&
+    //     date.getFullYear() === currentDate.getFullYear()
+    // )
+    //     stats.monthly++
     if (!uniques[checkIn.userId]) {
       uniques[checkIn.userId] = 1;
       stats.uniquesCount++;
@@ -2837,7 +2947,7 @@ var Search = function Search(props) {
   if (!results.length && !searchText) return null;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "recent-activity",
-    className: "bidx"
+    className: "bidx beer-search"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bidx-search-bar-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

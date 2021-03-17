@@ -1,13 +1,11 @@
 import React from "react";
 import Img from "../../../image/image";
+import { Link } from "react-router-dom"
+
 
 
 const BreweryContentTop = (props) => {
     const { brewery, brewery: { checkIns }, ratings, stats } = props
-
-
-
-
 
     const caps = () => {
         if (ratings.avg < 1) return window.zeroCaps
@@ -20,39 +18,42 @@ const BreweryContentTop = (props) => {
     return (
         <div className='bct-container brewery'>
             <div className='bct-row brewery'>
-                <div className="beer-content-left-container">
-                    <div className='bct-img'>
-                        <Img className="beer-img" src={brewery.imageUrl} dft={window.defaultBeer} alt="brewery" />
-                    </div>
-                    <div className='bct-title brewery'>
+                <Link className='bct-img' to={`/brewery/${brewery.id}`}>
+                    <Img className="beer-img" src={brewery.imageUrl} dft={window.defaultBeer} alt="brewery" />
+                </Link>
+                <div className="bct-content">
+                    <div className="bct-content-top">
                         <h1>{brewery.name}</h1>
-                        <p>{brewery.country}</p>
-                        <p>{brewery.breweryType}</p>
-
                     </div>
 
-                </div>
-                <div className='beer-content-right-container'>
-                    <div className='home-grid-container'>
-                        <div className='home-grid-row'>
-                            <div>
-                                <p>Total</p>
-                                <p>{checkIns.length}</p>
-                            </div>
-                            <div>
-                                <p>Unique</p>
-                                <p>{stats.uniquesCount}</p>
-                            </div>
-                            <div>
-                                <p>You</p>
-                                <p>{stats.you}</p>
+                    <div className="bct-content-bottom">
+                        <div className='bct-title brewery'>
+                            <p>{brewery.country}</p>
+                            <p>{brewery.breweryType}</p>
+                        </div>
+
+                        <div className='home-grid-container'>
+                            <div className='home-grid-row'>
+                                <div>
+                                    <p>Total</p>
+                                    <p>{checkIns.length}</p>
+                                </div>
+                                <div>
+                                    <p>Unique</p>
+                                    <p>{stats.uniquesCount}</p>
+                                </div>
+                                <div>
+                                    <p>You</p>
+                                    <p>{stats.you}</p>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-
                 </div>
-
             </div>
+
+
             <div className='bct-row brewery'>
 
                 <div className='bct-mid-inner-div'>
@@ -65,10 +66,10 @@ const BreweryContentTop = (props) => {
                 </div>
 
                 <div className='bct-mid-inner-div'>
-                    <p>
+                    <Link to={`/brewery/${brewery.id}/beers`}>
                         {brewery.beerTotal}
                         {brewery.beerTotal === 1 ? " Beer" : " Beers"}
-                    </p>
+                    </Link>
                 </div>
             </div>
 

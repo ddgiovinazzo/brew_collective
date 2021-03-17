@@ -1,8 +1,8 @@
 .bct-row.brewery:first-child{
-    padding: 30px 30px 10px 30px
+    padding: 20px 20px 5px 20px
 }
 .bct-row.brewery:last-child{
-    padding: 10px 30px 30px 30px
+    padding: 5px 20px 20px 20px
 }
 
  .bct-row.brewery .bct-mid-inner-div{
@@ -10,7 +10,4 @@
  }
  .bct-row.brewery .bct-mid-inner-div:last-child{
      border-right: none;
- }
- .bct-title.brewery > p{
-    font-size: 18px;
  }

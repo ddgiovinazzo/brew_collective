@@ -54,7 +54,7 @@ const Search = (props) => {
 
     return (
 
-        <div id='recent-activity' className="bidx">
+        <div id='recent-activity' className="bidx beer-search">
             <div className="bidx-search-bar-container">
                 <div className="bidx-input-container">
                     <i className="fas fa-search fa-2x search-icon"></i>
