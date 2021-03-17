@@ -3,7 +3,7 @@
     justify-content: space-between;
     position: relative;
     border-bottom: 1px solid lightgray;
-    padding: 20px 40px;
+    padding: 5px 40px 20px 40px;
 
 }
 
@@ -16,7 +16,7 @@
 }
 
 .beer-content-bottom-details-container{
-    width: 74%;
+    width: 85%;
 }
 
 #abv-container{

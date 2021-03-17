@@ -18,41 +18,39 @@ const BeerContentTop = (props) => {
     return (
         <div className='bct-container'>
             <div className='bct-row'>
-                <div className="beer-content-left-container">
-                    <div className='bct-img'>
-                        <Img className="beer-img" src={beer.imageUrl} dft={window.defaultBeer} alt="beer" />
-                    </div>
-                    <div className='bct-title'>
+
+                <Link className='bct-img' to={`/beer/${beer.id}`}>
+                    <Img className="beer-img" src={beer.imageUrl} dft={window.defaultBeer} alt="beer" />
+                </Link>
+                <div className="bct-content">
+                    <div className="bct-content-top">
                         <h1>{beer.name}</h1>
-                        <Link to={`/brewery/${brewery.id}`}>{brewery.name}</Link>
-
-                        <p>{beer.servingStyle}</p>
-
                     </div>
 
-                </div>
-                <div className='beer-content-right-container'>
-                    <div className='home-grid-container'>
-                        <div className='home-grid-row'>
-                            <div>
-                                <p>Total</p>
-                                <p>{checkIns.length}</p>
-                            </div>
+                    <div className="bct-content-bottom">
+                        <div className='bct-title brewery'>
+                            <Link to={`/brewery/${brewery.id}`}>{brewery.name}</Link>
+                            <p>{beer.servingStyle}</p>
+                        </div>
 
-                            <div>
-                                <p>Unique</p>
-                                <p>{stats.uniquesCount}</p>
+                        <div className='home-grid-container'>
+                            <div className='home-grid-row'>
+                                <div>
+                                    <p>Total</p>
+                                    <p>{checkIns.length}</p>
+                                </div>
+                                <div>
+                                    <p>Unique</p>
+                                    <p>{stats.uniquesCount}</p>
+                                </div>
+                                <div>
+                                    <p>You</p>
+                                    <p>{stats.you}</p>
+                                </div>
                             </div>
-
-                            <div>
-                                <p>You</p>
-                                <p>{stats.you}</p>
-                            </div>
-
                         </div>
 
                     </div>
-
                 </div>
 
             </div>

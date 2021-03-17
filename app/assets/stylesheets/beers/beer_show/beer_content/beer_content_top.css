@@ -9,9 +9,15 @@
     justify-content: space-between;
     width: 90%;
 }
-.bct-row:nth-child(2){
-    padding: 0 10px;
+
+.bct-row:first-child{
+    padding: 20px 20px 5px 20px;
+    width:85%
 }
+.bct-row:last-child{
+    padding: 5px 20px 20px 20px
+}
+
 
 .bct-content{
     display: flex;
@@ -41,8 +47,9 @@
     flex-direction: column;
     width: 100%;
 }
-.bct-title p{
-    font-size: 22px;
+.bct-title p, .bct-title a{
+    font-size: 20px;
+    padding: 2px 0;
 }
 
 .bct-mid-inner-div{
