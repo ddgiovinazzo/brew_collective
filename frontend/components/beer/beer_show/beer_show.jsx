@@ -30,9 +30,18 @@ const BeerShow = ({ currentUser, beer, breweries }) => {
             uniques[checkIn.userId] = 1;
             stats.uniquesCount++
         }
-        if (checkIn.userId === currentUser.id) stats.you++
+        if (checkIn.userId === currentUser.id){
+            stats.you++
+            if(sort === "you")checkInList.push(checkInShow)
+        }
 
-        checkInList.push(checkInShow)
+        const {friendshipsAsReceiver, friendshipsAsRequestor} = currentUser
+        const {userId} = checkIn
+        const fARec = friendshipsAsReceiver
+        const fAReq = friendshipsAsRequestor
+        const friend = fARec[userId] || fAReq[userId]
+        if(sort === "friends" && friend) checkInList.push(checkInShow)
+        if(sort === "global") checkInList.push(checkInShow)
     })
 
    const handleSort = (e) =>{
@@ -52,6 +61,12 @@ const BeerShow = ({ currentUser, beer, breweries }) => {
                 })
             }
             }
+    }
+
+    const activityText = () => {
+        if(sort === "global") return "Global Recent Activity"
+        if(sort === "friends") return "Your Recent Friends Activity"
+        if(sort === "you") return "Your Recent Activity"
     }
 
     return (
@@ -77,7 +92,7 @@ const BeerShow = ({ currentUser, beer, breweries }) => {
                 <div className="content-container">
                     <div id='recent-activity'>
                         <div className="activity-header">
-                            <h4>Global Recent Activity</h4>
+                            <h4>{activityText()}</h4>
                             <div className="activity-sort">
                                 <p>Sort By:</p>
                                 <p id="global" onClick={handleSort} className="sort activity-selected">Global</p>

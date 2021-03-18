@@ -939,7 +939,11 @@ var BeerContentTop = function BeerContentTop(props) {
     if (sort != "you") {
       setSort("you");
       var you = document.getElementById("you");
+      var global = document.getElementById("global");
+      var friends = document.getElementById("friends");
       you.classList.add("activity-selected");
+      global.classList.remove("activity-selected");
+      friends.classList.remove("activity-selected");
     }
   };
 
@@ -1077,8 +1081,19 @@ var BeerShow = function BeerShow(_ref) {
       stats.uniquesCount++;
     }
 
-    if (checkIn.userId === currentUser.id) stats.you++;
-    checkInList.push(checkInShow);
+    if (checkIn.userId === currentUser.id) {
+      stats.you++;
+      if (sort === "you") checkInList.push(checkInShow);
+    }
+
+    var friendshipsAsReceiver = currentUser.friendshipsAsReceiver,
+        friendshipsAsRequestor = currentUser.friendshipsAsRequestor;
+    var userId = checkIn.userId;
+    var fARec = friendshipsAsReceiver;
+    var fAReq = friendshipsAsRequestor;
+    var friend = fARec[userId] || fAReq[userId];
+    if (sort === "friends" && friend) checkInList.push(checkInShow);
+    if (sort === "global") checkInList.push(checkInShow);
   });
 
   var handleSort = function handleSort(e) {
@@ -1100,6 +1115,12 @@ var BeerShow = function BeerShow(_ref) {
         });
       }
     }
+  };
+
+  var activityText = function activityText() {
+    if (sort === "global") return "Global Recent Activity";
+    if (sort === "friends") return "Your Recent Friends Activity";
+    if (sort === "you") return "Your Recent Activity";
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1128,7 +1149,7 @@ var BeerShow = function BeerShow(_ref) {
     id: "recent-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "activity-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Global Recent Activity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, activityText()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "activity-sort"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Sort By:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     id: "global",

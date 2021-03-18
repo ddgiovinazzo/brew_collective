@@ -20,8 +20,11 @@ const BeerContentTop = (props) => {
         if(sort != "you"){
             setSort("you")
             const you = document.getElementById("you")
+            const global = document.getElementById("global")
+            const friends = document.getElementById("friends")
             you.classList.add("activity-selected")
-
+            global.classList.remove("activity-selected")
+            friends.classList.remove("activity-selected")
         }
     }  
 
