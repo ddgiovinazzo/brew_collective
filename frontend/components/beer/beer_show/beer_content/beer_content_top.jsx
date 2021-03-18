@@ -5,6 +5,7 @@ import Img from "../../../image/image";
 
 const BeerContentTop = (props) => {
     const { beer, beer: { checkIns }, ratings, stats, brewery } = props
+    const { sort, setSort } = props
 
     const caps = () => {
         if (ratings.avg < 1) return window.zeroCaps
@@ -14,6 +15,15 @@ const BeerContentTop = (props) => {
         else if (ratings.avg < 5) return window.fourCaps
         return window.fiveCaps
     }
+
+    const handleSort = () =>{
+        if(sort != "you"){
+            setSort("you")
+            const you = document.getElementById("you")
+            you.classList.add("activity-selected")
+
+        }
+    }  
 
     return (
         <div className='bct-container'>
@@ -38,7 +48,7 @@ const BeerContentTop = (props) => {
                                 <div>
                                     <div>Total (
                                         
-                                        <span className="btn btn-primary tooltip ci-question">?
+                                        <span className="tooltip ci-question">?
                                             <div className="bottom ci-tips">
                                                 Total Check-Ins All Time<i></i>
                                              </div>
@@ -51,7 +61,7 @@ const BeerContentTop = (props) => {
                                 <div>
                                     <div>Unique (
                                         
-                                        <span className="btn btn-primary tooltip ci-question">?
+                                        <span className="tooltip ci-question">?
                                             <div className="bottom ci-tips">
                                                 Number of Users All Time<i></i>
                                              </div>
@@ -63,7 +73,7 @@ const BeerContentTop = (props) => {
                                 </div>
                                 <div>
                                     <p>You</p>
-                                    <p className="you">{stats.you}</p>
+                                    <p onClick={handleSort}className="sort">{stats.you}</p>
                                 </div>
                             </div>
                         </div>

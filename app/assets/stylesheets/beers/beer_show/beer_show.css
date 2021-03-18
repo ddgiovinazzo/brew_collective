@@ -40,6 +40,12 @@
     transition: 0.8s ;
 
 }
+.tooltip:hover .bottom:hover {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.8s ;
+
+}
 
 .tooltip .bottom i {
     position:absolute;
@@ -67,4 +73,40 @@
 .ci-question:hover{
     color: #009F93;
     cursor: pointer;
+}
+
+.activity-header{
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.activity-header >h4{
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.activity-sort{
+    display: flex;
+    justify-content: space-between;
+    width:240px
+}
+.sort{
+    font-size: 16px;
+    color: #586BA4;
+}
+.sort:hover{
+    color: #FF8558;
+    cursor: pointer;
+}
+
+.sort.activity-selected{
+    color: inherit;
+    font-weight: bold;
+}
+.sort.activity-selected:hover{
+    color: inherit;
+    font-weight: bold;
+    cursor: inherit;
 }

@@ -927,10 +927,20 @@ var BeerContentTop = function BeerContentTop(props) {
       ratings = props.ratings,
       stats = props.stats,
       brewery = props.brewery;
+  var sort = props.sort,
+      setSort = props.setSort;
 
   var caps = function caps() {
     if (ratings.avg < 1) return window.zeroCaps;else if (ratings.avg < 2) return window.oneCap;else if (ratings.avg < 3) return window.twoCaps;else if (ratings.avg < 4) return window.threeCaps;else if (ratings.avg < 5) return window.fourCaps;
     return window.fiveCaps;
+  };
+
+  var handleSort = function handleSort() {
+    if (sort != "you") {
+      setSort("you");
+      var you = document.getElementById("you");
+      you.classList.add("activity-selected");
+    }
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -960,15 +970,16 @@ var BeerContentTop = function BeerContentTop(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total (", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "btn btn-primary tooltip ci-question"
+    className: "tooltip ci-question"
   }, "?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bottom ci-tips"
   }, "Total Check-Ins All Time", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Unique (", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "btn btn-primary tooltip ci-question"
+    className: "tooltip ci-question"
   }, "?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bottom ci-tips"
   }, "Number of Users All Time", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.uniquesCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "you"
+    onClick: handleSort,
+    className: "sort"
   }, stats.you))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1036,6 +1047,11 @@ var BeerShow = function BeerShow(_ref) {
       openModal = _useState2[0],
       setOpenModal = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("global"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      sort = _useState4[0],
+      setSort = _useState4[1];
+
   if (!beer) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
   var brewery = breweries[beer.breweryId];
   if (!brewery) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
@@ -1064,6 +1080,28 @@ var BeerShow = function BeerShow(_ref) {
     if (checkIn.userId === currentUser.id) stats.you++;
     checkInList.push(checkInShow);
   });
+
+  var handleSort = function handleSort(e) {
+    var sortValue = sort;
+
+    if (e.currentTarget.id != sort) {
+      var element = e.currentTarget;
+
+      if (sortValue != element.id) {
+        setSort(element.id);
+        sortValue = element.id;
+        element.classList.add("activity-selected");
+        var ids = ["global", "friends", "you"];
+        ids.forEach(function (id) {
+          if (id != sortValue) {
+            var currentElement = document.getElementById(id);
+            currentElement.classList.remove("activity-selected");
+          }
+        });
+      }
+    }
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "main-outer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1078,7 +1116,9 @@ var BeerShow = function BeerShow(_ref) {
     beer: beer,
     ratings: ratings,
     stats: stats,
-    brewery: brewery
+    brewery: brewery,
+    sort: sort,
+    setSort: setSort
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_beer_content_beer_content_bottom__WEBPACK_IMPORTED_MODULE_4__.default, {
     beer: beer,
     setOpenModal: setOpenModal
@@ -1086,7 +1126,23 @@ var BeerShow = function BeerShow(_ref) {
     className: "content-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "recent-activity"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Global Recent Activity"), beer.checkIns.length ? checkInList : noCheckIns))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "activity-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Global Recent Activity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "activity-sort"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Sort By:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "global",
+    onClick: handleSort,
+    className: "sort activity-selected"
+  }, "Global"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "friends",
+    onClick: handleSort,
+    className: "sort"
+  }, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "you",
+    onClick: handleSort,
+    className: "sort"
+  }, "You"))), beer.checkIns.length ? checkInList : noCheckIns))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BeerShow);
