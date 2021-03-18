@@ -100,7 +100,7 @@ const BeerShow = ({ currentUser, beer, breweries }) => {
                                 <p id="you" onClick={handleSort} className="sort">You</p>
                             </div>
                         </div>
-                        {beer.checkIns.length ? checkInList : noCheckIns}
+                        {checkInList.length ? checkInList : noCheckIns}
                     </div>
                 </div>
             </div>

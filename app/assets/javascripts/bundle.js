@@ -1163,7 +1163,7 @@ var BeerShow = function BeerShow(_ref) {
     id: "you",
     onClick: handleSort,
     className: "sort"
-  }, "You"))), beer.checkIns.length ? checkInList : noCheckIns))));
+  }, "You"))), checkInList.length ? checkInList : noCheckIns))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BeerShow);
@@ -1991,7 +1991,7 @@ var BreweryShow = function BreweryShow(_ref) {
     id: "you",
     onClick: handleSort,
     className: "sort"
-  }, "You"))), brewery.checkIns.length ? checkInList : noCheckIns))));
+  }, "You"))), checkInList.length ? checkInList : noCheckIns))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreweryShow);

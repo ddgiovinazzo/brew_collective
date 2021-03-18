@@ -65,7 +65,6 @@ const BreweryShow = ({ currentUser, brewery, beers }) => {
          if(sort === "you") return "Your Recent Activity"
      }
 
-
     return (
         <div className='main-outer'>
 
@@ -86,7 +85,7 @@ const BreweryShow = ({ currentUser, brewery, beers }) => {
                                 <p id="you" onClick={handleSort} className="sort">You</p>
                             </div>
                         </div>
-                        {brewery.checkIns.length ? checkInList : noCheckIns}
+                        {checkInList.length ? checkInList : noCheckIns}
                     </div>
                 </div>
             </div>
