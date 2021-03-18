@@ -24,7 +24,11 @@
     bottom: 0;
 }
 
-
+#recent-activity >h4{
+    font-size: 21px;
+    font-weight: bold;
+    padding: 5px;
+}
 #recent-activity >p{
     font-size: 21px;
     padding: 5px;
