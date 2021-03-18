@@ -45,6 +45,13 @@
     visibility:visible; opacity:1;
 }
 
+.tooltip:hover .top:hover {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.8s ;
+
+}
+
 .tooltip .top i {
     position:absolute;
     top:100%;
