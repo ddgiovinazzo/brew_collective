@@ -8,7 +8,7 @@ unique_user_ids = {}
 ratings = []
 
 json.checkIns do
-    json.array!(brewery.check_ins.reverse) do |check_in|
+    json.array!(brewery.check_ins) do |check_in|
         ratings << check_in.rating if check_in.rating > 0
         json.partial! '/api/check_ins/check_in', check_in: check_in
     end

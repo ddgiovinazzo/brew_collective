@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 
 const BreweryContentTop = (props) => {
     const { brewery, brewery: { checkIns }, ratings, stats } = props
+    const { sort, setSort } = props
+
 
     const caps = () => {
         if (ratings.avg < 1) return window.zeroCaps
@@ -15,6 +17,19 @@ const BreweryContentTop = (props) => {
         else if (ratings.avg < 5) return window.fourCaps
         return window.fiveCaps
     }
+
+    const handleSort = () =>{
+        if(sort != "you"){
+            setSort("you")
+            const you = document.getElementById("you")
+            const global = document.getElementById("global")
+            const friends = document.getElementById("friends")
+            you.classList.add("activity-selected")
+            global.classList.remove("activity-selected")
+            friends.classList.remove("activity-selected")
+        }
+    }  
+
     return (
         <div className='bct-container brewery'>
             <div className='bct-row brewery'>
@@ -37,7 +52,7 @@ const BreweryContentTop = (props) => {
                                 <div>
                                     <div>Total (
                                         
-                                        <span className="btn btn-primary tooltip ci-question">?
+                                        <span className="tooltip ci-question">?
                                             <div className="bottom ci-tips">
                                                 Total Check-Ins All Time<i></i>
                                              </div>
@@ -50,7 +65,7 @@ const BreweryContentTop = (props) => {
                                 <div>
                                     <div>Unique (
                                         
-                                        <span className="btn btn-primary tooltip ci-question">?
+                                        <span className="tooltip ci-question">?
                                             <div className="bottom ci-tips">
                                                 Number of Users All Time<i></i>
                                              </div>
@@ -62,7 +77,7 @@ const BreweryContentTop = (props) => {
                                 </div>
                                 <div>
                                     <p>You</p>
-                                    <p>{stats.you}</p>
+                                    <p onClick={handleSort}className="sort">{stats.you}</p>
                                 </div>
                             </div>
                         </div>

@@ -1776,10 +1776,24 @@ var BreweryContentTop = function BreweryContentTop(props) {
       checkIns = props.brewery.checkIns,
       ratings = props.ratings,
       stats = props.stats;
+  var sort = props.sort,
+      setSort = props.setSort;
 
   var caps = function caps() {
     if (ratings.avg < 1) return window.zeroCaps;else if (ratings.avg < 2) return window.oneCap;else if (ratings.avg < 3) return window.twoCaps;else if (ratings.avg < 4) return window.threeCaps;else if (ratings.avg < 5) return window.fourCaps;
     return window.fiveCaps;
+  };
+
+  var handleSort = function handleSort() {
+    if (sort != "you") {
+      setSort("you");
+      var you = document.getElementById("you");
+      var global = document.getElementById("global");
+      var friends = document.getElementById("friends");
+      you.classList.add("activity-selected");
+      global.classList.remove("activity-selected");
+      friends.classList.remove("activity-selected");
+    }
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1807,14 +1821,17 @@ var BreweryContentTop = function BreweryContentTop(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Total (", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "btn btn-primary tooltip ci-question"
+    className: "tooltip ci-question"
   }, "?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bottom ci-tips"
   }, "Total Check-Ins All Time", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Unique (", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "btn btn-primary tooltip ci-question"
+    className: "tooltip ci-question"
   }, "?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bottom ci-tips"
-  }, "Number of Users All Time", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.uniquesCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.you))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "Number of Users All Time", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, stats.uniquesCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    onClick: handleSort,
+    className: "sort"
+  }, stats.you))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-row brewery"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "bct-mid-inner-div"
@@ -1850,6 +1867,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fallback_fallback__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../fallback/fallback */ "./frontend/components/fallback/fallback.jsx");
 /* harmony import */ var _brewery_content_brewery_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./brewery_content/brewery_content */ "./frontend/components/brewery/show/brewery_content/brewery_content.jsx");
 /* harmony import */ var _check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../check-in/check_in_show/check_in_show_container */ "./frontend/components/check-in/check_in_show/check_in_show_container.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1862,35 +1891,74 @@ var BreweryShow = function BreweryShow(_ref) {
   if (!brewery) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fallback_fallback__WEBPACK_IMPORTED_MODULE_1__.default, null);
   var checkIns = brewery.checkIns,
       ratings = brewery.ratings;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("global"),
+      _useState2 = _slicedToArray(_useState, 2),
+      sort = _useState2[0],
+      setSort = _useState2[1];
+
   var noCheckIns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There doesn't seem to be any recent activity!");
   var uniques = {};
   var stats = {
     uniquesCount: 0,
-    you: 0,
-    monthly: 0
+    you: 0
   };
   var checkInList = [];
   checkIns.forEach(function (checkIn) {
-    // const currentDate = new Date()
-    // const date = new Date(checkIn.createdAt)
-    // if(
-    //     date.getMonth() === currentDate.getMonth() &&
-    //     date.getFullYear() === currentDate.getFullYear()
-    // )
-    //     stats.monthly++
+    var checkInShow = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_3__.default, {
+      key: checkIn.id,
+      brewery: brewery,
+      beer: beers[checkIn.beerId],
+      checkIn: checkIn
+    });
+
     if (!uniques[checkIn.userId]) {
       uniques[checkIn.userId] = 1;
       stats.uniquesCount++;
     }
 
-    if (checkIn.userId === currentUser.id) stats.you++;
-    checkInList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_check_in_check_in_show_check_in_show_container__WEBPACK_IMPORTED_MODULE_3__.default, {
-      key: checkIn.id,
-      brewery: brewery,
-      beer: beers[checkIn.beerId],
-      checkIn: checkIn
-    }));
+    if (checkIn.userId === currentUser.id) {
+      stats.you++;
+      if (sort === "you") checkInList.push(checkInShow);
+    }
+
+    var friendshipsAsReceiver = currentUser.friendshipsAsReceiver,
+        friendshipsAsRequestor = currentUser.friendshipsAsRequestor;
+    var userId = checkIn.userId;
+    var fARec = friendshipsAsReceiver;
+    var fAReq = friendshipsAsRequestor;
+    var friend = fARec[userId] || fAReq[userId];
+    if (sort === "friends" && friend) checkInList.push(checkInShow);
+    if (sort === "global") checkInList.push(checkInShow);
   });
+
+  var handleSort = function handleSort(e) {
+    var sortValue = sort;
+
+    if (e.currentTarget.id != sort) {
+      var element = e.currentTarget;
+
+      if (sortValue != element.id) {
+        setSort(element.id);
+        sortValue = element.id;
+        element.classList.add("activity-selected");
+        var ids = ["global", "friends", "you"];
+        ids.forEach(function (id) {
+          if (id != sortValue) {
+            var currentElement = document.getElementById(id);
+            currentElement.classList.remove("activity-selected");
+          }
+        });
+      }
+    }
+  };
+
+  var activityText = function activityText() {
+    if (sort === "global") return "Global Recent Activity";
+    if (sort === "friends") return "Your Recent Friends Activity";
+    if (sort === "you") return "Your Recent Activity";
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "main-outer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1900,12 +1968,30 @@ var BreweryShow = function BreweryShow(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_brewery_content_brewery_content__WEBPACK_IMPORTED_MODULE_2__.default, {
     brewery: brewery,
     ratings: ratings,
-    stats: stats
+    stats: stats,
+    sort: sort,
+    setSort: setSort
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "content-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "recent-activity"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Global Recent Activity"), brewery.checkIns.length ? checkInList : noCheckIns))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "activity-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, activityText()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "activity-sort"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Sort By:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "global",
+    onClick: handleSort,
+    className: "sort activity-selected"
+  }, "Global"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "friends",
+    onClick: handleSort,
+    className: "sort"
+  }, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "you",
+    onClick: handleSort,
+    className: "sort"
+  }, "You"))), brewery.checkIns.length ? checkInList : noCheckIns))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreweryShow);
