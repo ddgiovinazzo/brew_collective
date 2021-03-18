@@ -103,7 +103,7 @@ const BeerCreate = (props) => {
 
 
             <div className='cb-input-lg input-cont '>
-                <input id="brewery-input" onChange={(e) => setBrewerySearch(e.currentTarget.value)} className='cb input' type="" />
+                <input autoComplete="off"id="brewery-input" onChange={(e) => setBrewerySearch(e.currentTarget.value)} className='cb input' type="" />
             </div>
             {brewerySearch ? breweryList : null}
 

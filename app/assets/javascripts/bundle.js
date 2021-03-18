@@ -1364,6 +1364,7 @@ var BeerCreate = function BeerCreate(props) {
   }, "BREWERY NAME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "cb-input-lg input-cont "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    autoComplete: "off",
     id: "brewery-input",
     onChange: function onChange(e) {
       return setBrewerySearch(e.currentTarget.value);
