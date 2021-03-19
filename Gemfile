@@ -29,7 +29,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem "aws-sdk-s3"
 gem "font-awesome-rails"
-gem 'seed_dump'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
