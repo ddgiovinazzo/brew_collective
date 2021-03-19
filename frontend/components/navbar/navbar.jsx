@@ -51,6 +51,7 @@ const NavBar = (props) => {
                                     <Link className='nav-links' to={`/user/${currentUser.id}`}>My Profile</Link>
                                     <Link className='nav-links' to={`/user/${currentUser.id}/beers`}>Beer History</Link>
                                     <Link className='nav-links' to={`/user/${currentUser.id}/friends`}>Friends</Link>
+                                    <Link className='nav-links' to={`/account`}>Account Settings</Link>
                                     <p onClick={() => logout()} className='nav-links' >Logout</p>
                                 </div>
                             </div>

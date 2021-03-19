@@ -9,6 +9,7 @@ import BeerIndexContainer from './beer/beer_index/beer_index_container'
 import BeerShowContainer from './beer/beer_show/beer_show_container'
 import UserBeersContainer from './user/beers/user_beers_container'
 import UserFriendsContainer from './user/friends/user_friends_container'
+import UserUpdateContainer from './user/update/user_update_container'
 import BreweryShowContainer from './brewery/show/brewery_show_container'
 import BreweryBeersContainer from './brewery/beers/brewery_beers_container'
 import Footer from './footer/footer'
@@ -45,14 +46,15 @@ const App = () => {
         <AuthRoute exact path="/" component={Splash} />
         <ProtectedRoute path="/" component={NavBarContainer} newProps={navSearchProps}/>
         <ProtectedRoute exact path="/home" component={HomeContainer} />
-        <ProtectedRoute exact path="/user/:userId" component={UserShowContainer} />
         <ProtectedRoute exact path="/beer/:beerId" component={BeerShowContainer} />
         <ProtectedRoute exact path="/brewery/:breweryId" component={BreweryShowContainer} />
         <ProtectedRoute exact path="/brewery/:breweryId/beers"  component={BreweryBeersContainer} />
         <ProtectedRoute exact path="/newbeer" component={BeerCreateContainer} />
         <ProtectedRoute exact path="/beers"  component={BeerIndexContainer} />
+        <ProtectedRoute exact path="/user/:userId" component={UserShowContainer} />
         <ProtectedRoute exact path="/user/:userId/beers"  component={UserBeersContainer} />
         <ProtectedRoute exact path="/user/:userId/friends"  component={UserFriendsContainer} />
+        <ProtectedRoute exact path="/account"  component={UserUpdateContainer} />
         <Route path="/"  component={Footer} />
 
     </div>

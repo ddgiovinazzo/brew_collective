@@ -112,7 +112,6 @@
     font-weight: bold;
     margin-bottom: 10px ;
     letter-spacing: 1px;
-
 }
 
 .input-p{
@@ -144,9 +143,15 @@
     border-radius: 5px;
     width: 268px;
     height: 33px;
+    position: relative;
+
  }
 
  #input-p{
     color: #757575;
     padding: 5px
+ }
+
+ .input-container-secondary{
+    position: relative;
  }

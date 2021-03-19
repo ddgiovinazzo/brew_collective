@@ -11,7 +11,7 @@ const SignUp = (props) => {
         password_confirmation: '',
         pronouns: '',
         location: '',
-        country: 'United States of America',
+        country: 'United States',
         first_name: '',
         last_name: '',
         birthday: ''

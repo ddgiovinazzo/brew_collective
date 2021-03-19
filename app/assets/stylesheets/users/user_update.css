@@ -1,0 +1,19 @@
+.uu .uu-label{
+    position: absolute;
+    top:-15px;
+    left: 3px;
+    color: #88958D;
+
+}
+
+.uu *{
+    color: inherit;
+}
+
+.uu-input.form-input-secondary{
+    border: none;
+}
+
+.uu-submit{
+    color: white;
+}

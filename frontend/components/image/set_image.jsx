@@ -28,7 +28,7 @@ const SetImg = ({ src, dft, alt, className, currentUser, updateUser }) => {
             <div onClick={imageClick} className='btn btn-primary tooltip change'>
                 < img className={className} onError={addDefaultSrc} src={src} alt={alt} />
                 <div className="top user">
-                    <p>Change Image<i></i></p>
+                    <p>Change Profile Picture<i></i></p>
                 </div>
                 <input onChange={handleSubmit} 
                     id="file-upload-hidden" 

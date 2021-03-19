@@ -630,7 +630,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash */ "./frontend/components/splash.jsx");
 /* harmony import */ var _home_home_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home_container */ "./frontend/components/home/home_container.js");
 /* harmony import */ var _user_show_user_show_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user/show/user_show_container */ "./frontend/components/user/show/user_show_container.js");
@@ -639,12 +639,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _beer_beer_show_beer_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./beer/beer_show/beer_show_container */ "./frontend/components/beer/beer_show/beer_show_container.js");
 /* harmony import */ var _user_beers_user_beers_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user/beers/user_beers_container */ "./frontend/components/user/beers/user_beers_container.js");
 /* harmony import */ var _user_friends_user_friends_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user/friends/user_friends_container */ "./frontend/components/user/friends/user_friends_container.js");
-/* harmony import */ var _brewery_show_brewery_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./brewery/show/brewery_show_container */ "./frontend/components/brewery/show/brewery_show_container.js");
-/* harmony import */ var _brewery_beers_brewery_beers_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./brewery/beers/brewery_beers_container */ "./frontend/components/brewery/beers/brewery_beers_container.js");
-/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
-/* harmony import */ var _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/session_form/sign_in_form_container */ "./frontend/components/session_form/sign_in_form_container.js");
-/* harmony import */ var _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/session_form/sign_up_form_container */ "./frontend/components/session_form/sign_up_form_container.js");
-/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
+/* harmony import */ var _user_update_user_update_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user/update/user_update_container */ "./frontend/components/user/update/user_update_container.js");
+/* harmony import */ var _brewery_show_brewery_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./brewery/show/brewery_show_container */ "./frontend/components/brewery/show/brewery_show_container.js");
+/* harmony import */ var _brewery_beers_brewery_beers_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./brewery/beers/brewery_beers_container */ "./frontend/components/brewery/beers/brewery_beers_container.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
+/* harmony import */ var _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/session_form/sign_in_form_container */ "./frontend/components/session_form/sign_in_form_container.js");
+/* harmony import */ var _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/session_form/sign_up_form_container */ "./frontend/components/session_form/sign_up_form_container.js");
+/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -656,6 +657,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -712,18 +714,18 @@ var App = function App() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/login",
-    component: _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_13__.default
+    component: _components_session_form_sign_in_form_container__WEBPACK_IMPORTED_MODULE_14__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/signup",
-    component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_14__.default
+    component: _components_session_form_sign_up_form_container__WEBPACK_IMPORTED_MODULE_15__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
     path: "/",
     component: _splash__WEBPACK_IMPORTED_MODULE_2__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     path: "/",
-    component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_15__.default,
+    component: _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_16__.default,
     newProps: navSearchProps
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
@@ -731,20 +733,16 @@ var App = function App() {
     component: _home_home_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
-    path: "/user/:userId",
-    component: _user_show_user_show_container__WEBPACK_IMPORTED_MODULE_4__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
-    exact: true,
     path: "/beer/:beerId",
     component: _beer_beer_show_beer_show_container__WEBPACK_IMPORTED_MODULE_7__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/brewery/:breweryId",
-    component: _brewery_show_brewery_show_container__WEBPACK_IMPORTED_MODULE_10__.default
+    component: _brewery_show_brewery_show_container__WEBPACK_IMPORTED_MODULE_11__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/brewery/:breweryId/beers",
-    component: _brewery_beers_brewery_beers_container__WEBPACK_IMPORTED_MODULE_11__.default
+    component: _brewery_beers_brewery_beers_container__WEBPACK_IMPORTED_MODULE_12__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/newbeer",
@@ -755,15 +753,23 @@ var App = function App() {
     component: _beer_beer_index_beer_index_container__WEBPACK_IMPORTED_MODULE_6__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
+    path: "/user/:userId",
+    component: _user_show_user_show_container__WEBPACK_IMPORTED_MODULE_4__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    exact: true,
     path: "/user/:userId/beers",
     component: _user_beers_user_beers_container__WEBPACK_IMPORTED_MODULE_8__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/user/:userId/friends",
     component: _user_friends_user_friends_container__WEBPACK_IMPORTED_MODULE_9__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    exact: true,
+    path: "/account",
+    component: _user_update_user_update_container__WEBPACK_IMPORTED_MODULE_10__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
     path: "/",
-    component: _footer_footer__WEBPACK_IMPORTED_MODULE_12__.default
+    component: _footer_footer__WEBPACK_IMPORTED_MODULE_13__.default
   }));
 };
 
@@ -2975,7 +2981,7 @@ var SetImg = function SetImg(_ref) {
     alt: alt
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "top user"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Change Image", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Change Profile Picture", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     onChange: handleSubmit,
     id: "file-upload-hidden",
     type: "file",
@@ -3106,7 +3112,10 @@ var NavBar = function NavBar(props) {
   }, "Beer History"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     className: "nav-links",
     to: "/user/".concat(currentUser.id, "/friends")
-  }, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: "nav-links",
+    to: "/account"
+  }, "Account Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     onClick: function onClick() {
       return logout();
     },
@@ -3840,7 +3849,7 @@ var SignUp = function SignUp(props) {
     password_confirmation: '',
     pronouns: '',
     location: '',
-    country: 'United States of America',
+    country: 'United States',
     first_name: '',
     last_name: '',
     birthday: ''
@@ -4474,6 +4483,315 @@ var mSTP = function mSTP(_ref, _ref2) {
 
 /***/ }),
 
+/***/ "./frontend/components/user/update/user_update.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/user/update/user_update.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _beer_create_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../beer/create/util */ "./frontend/components/beer/create/util.jsx");
+/* harmony import */ var _brewery_create_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../brewery/create/util */ "./frontend/components/brewery/create/util.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var UserUpdate = function UserUpdate(props) {
+  var errors = props.errors,
+      currentUser = props.currentUser,
+      updateUser = props.updateUser,
+      clearErrors = props.clearErrors;
+  var username = currentUser.username,
+      email = currentUser.email,
+      pronouns = currentUser.pronouns,
+      location = currentUser.location,
+      country = currentUser.country,
+      gender = currentUser.gender,
+      firstName = currentUser.firstName,
+      lastName = currentUser.lastName,
+      birthday = currentUser.birthday;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    username: username,
+    email: email,
+    pronouns: pronouns,
+    location: location,
+    country: country,
+    gender: gender,
+    first_name: firstName,
+    last_name: lastName,
+    birthday: birthday
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      user = _useState2[0],
+      setUser = _useState2[1];
+
+  var splitBirthday = birthday.split("-");
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    year: splitBirthday[0],
+    month: splitBirthday[1],
+    day: splitBirthday[2].slice(0, 2)
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      updatebirthday = _useState4[0],
+      setUpdateBirthday = _useState4[1];
+
+  var year = updatebirthday.year,
+      month = updatebirthday.month,
+      day = updatebirthday.day;
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      update = _useState6[0],
+      setUpdate = _useState6[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (errors.length > 0) clearErrors();
+  }, [update]);
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    updateUser(user);
+  };
+
+  var handleInput = function handleInput(type) {
+    var newUser = Object.assign({}, user);
+    return function (e) {
+      user[type] = e.currentTarget.value;
+      setUser(newUser);
+    };
+  };
+
+  var handleBirthday = function handleBirthday(type) {
+    var newBirthday = Object.assign({}, birthday);
+    var year = newBirthday.year,
+        month = newBirthday.month,
+        day = newBirthday.day;
+    return function (e) {
+      newBirthday[type] = e.currentTarget.value;
+      var date = "".concat(year, "-").concat(month, "-").concat(day);
+      setBirthday(date);
+    };
+  };
+
+  var years = [];
+  var date = new Date();
+  date = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+
+  for (var i = date.getFullYear() - 18; i >= date.getFullYear() - 120; i--) {
+    years.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      key: "year".concat(i),
+      value: i
+    }, "".concat(i)));
+  }
+
+  var months = [];
+
+  for (var _i2 = 1; _i2 <= 12; _i2++) {
+    months.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      key: "months".concat(_i2),
+      value: _i2
+    }, _i2 < 10 ? "0".concat(_i2) : "".concat(_i2)));
+  }
+
+  var days = [];
+
+  for (var _i3 = 1; _i3 <= 31; _i3++) {
+    days.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      key: "days".concat(_i3),
+      value: _i3
+    }, _i3 < 10 ? "0".concat(_i3) : "".concat(_i3)));
+  }
+
+  var countries = _brewery_create_util__WEBPACK_IMPORTED_MODULE_2__.countryList.map(function (country) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      key: country,
+      value: country
+    }, country);
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "main-outer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "home-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    className: errors.length ? 'uu sign-up-form' : 'uu sign-up-form sign-up-form-errors'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profile Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-rows"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-col-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-sign-up"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "uu-label"
+  }, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    defaultValue: username,
+    className: "form-input",
+    type: "text",
+    onChange: handleInput('username')
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-sign-up"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "uu-label"
+  }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    defaultValue: email,
+    className: "form-input",
+    type: "text",
+    onChange: handleInput('email')
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-col-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-col-1 input-col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-secondary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "uu-label"
+  }, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    defaultValue: firstName,
+    className: "form-input-secondary",
+    type: "text",
+    onChange: handleInput('first_name')
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-secondary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "uu-label"
+  }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    defaultValue: lastName,
+    className: "form-input-secondary",
+    type: "text",
+    onChange: handleInput('last_name')
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-col-1 input-col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-secondary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "uu-label"
+  }, "Location (Optional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    defaultValue: location,
+    className: "form-input-secondary",
+    type: "text",
+    placeholder: "Location (Optional)",
+    onChange: handleInput('location')
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-secondary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    className: "uu-label"
+  }, "Pronouns (Optional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    defaultValue: gender,
+    onChange: handleInput('gender'),
+    className: "select"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    value: "they/them/theirs"
+  }, "they/them/theirs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    value: "she/her/hers"
+  }, "she/her/hers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    value: "he/him/his"
+  }, "he/him/his"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    value: ""
+  }, "Prefer not to Say")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-col-1 input-col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-sign-up"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "input-p"
+  }, "Country:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    defaultValue: country,
+    list: "user-country",
+    className: "uu-input form-input-secondary",
+    onChange: handleInput('country')
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("datalist", {
+    id: "user-country",
+    className: "select"
+  }, countries)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-sign-up"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "input-p"
+  }, "Birthday:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "form-birthday-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    defaultValue: month,
+    onChange: handleBirthday('month'),
+    className: "form-birthday",
+    type: "select"
+  }, months), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    defaultValue: day,
+    onChange: handleBirthday('day'),
+    className: "form-birthday",
+    type: "select"
+  }, days), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    defaultValue: year,
+    onChange: handleBirthday('year'),
+    className: "form-birthday",
+    type: "select"
+  }, years)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: handleSubmit,
+    className: "uu-submit form-submit"
+  }, "Update Profile")))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserUpdate);
+
+/***/ }),
+
+/***/ "./frontend/components/user/update/user_update_container.js":
+/*!******************************************************************!*\
+  !*** ./frontend/components/user/update/user_update_container.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/beer_actions */ "./frontend/actions/beer_actions.js");
+/* harmony import */ var _user_update__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_update */ "./frontend/components/user/update/user_update.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+
+
+
+var mSTP = function mSTP(_ref) {
+  var users = _ref.entities.users,
+      session = _ref.session,
+      errors = _ref.errors;
+  return {
+    errors: errors.session,
+    currentUser: users[session.id]
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    clearErrors: function clearErrors() {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__.clearErrors)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_user_update__WEBPACK_IMPORTED_MODULE_2__.default));
+
+/***/ }),
+
 /***/ "./frontend/components/user/user_sidebar.jsx":
 /*!***************************************************!*\
   !*** ./frontend/components/user/user_sidebar.jsx ***!
@@ -4486,9 +4804,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _image_set_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../image/set_image */ "./frontend/components/image/set_image.jsx");
-/* harmony import */ var _friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../friendship/friendship_button_container */ "./frontend/components/friendship/friendship_button_container.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _image_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../image/image */ "./frontend/components/image/image.jsx");
+/* harmony import */ var _image_set_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../image/set_image */ "./frontend/components/image/set_image.jsx");
+/* harmony import */ var _friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../friendship/friendship_button_container */ "./frontend/components/friendship/friendship_button_container.jsx");
+
 
 
 
@@ -4497,18 +4817,27 @@ __webpack_require__.r(__webpack_exports__);
 var UserSidebar = function UserSidebar(_ref) {
   var user = _ref.user,
       isCurrentUser = _ref.isCurrentUser;
+  var currentUserPhoto = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_set_image__WEBPACK_IMPORTED_MODULE_2__.default, {
+    className: "beer-img user-img",
+    src: user.photoUrl,
+    dft: window.defaultBeer,
+    alt: "user"
+  });
+  var userPhoto = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    to: "/user/".concat(user.id)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_1__.default, {
+    className: "beer-img user-img",
+    src: user.photoUrl,
+    dft: window.defaultBeer,
+    alt: "user"
+  }));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "sidebar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "personal-stats"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-username"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_set_image__WEBPACK_IMPORTED_MODULE_1__.default, {
-    className: "beer-img user-img",
-    src: user.photoUrl,
-    dft: window.defaultBeer,
-    alt: "user"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, isCurrentUser ? currentUserPhoto : userPhoto, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "".concat(user.firstName, " ").concat(user.lastName))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     className: "fas fa-user home-icon"
@@ -4516,13 +4845,13 @@ var UserSidebar = function UserSidebar(_ref) {
     className: "home-grid-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid-row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.checkIns.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id, "/beers")
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.uniqueCheckIns)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Unique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.uniqueCheckIns)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id, "/friends")
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.friendIds.length))), !isCurrentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_2__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Friends"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.friendIds.length))), !isCurrentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_friendship_friendship_button_container__WEBPACK_IMPORTED_MODULE_3__.default, {
     user: user
   }) : null)));
 };

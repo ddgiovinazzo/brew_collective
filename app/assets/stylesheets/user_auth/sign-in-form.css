@@ -82,7 +82,8 @@
  .form-input{
     margin-left: 4px;
     border: 1px solid lightgray;
-    border: none
+    border: none;
+    width: 80%;
 }
 
 
