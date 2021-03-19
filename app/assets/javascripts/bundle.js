@@ -4567,6 +4567,7 @@ var UserUpdate = function UserUpdate(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    if (errors.length > 0) clearErrors();
     updateUser(user);
   };
 
@@ -4579,20 +4580,22 @@ var UserUpdate = function UserUpdate(props) {
   };
 
   var splitBirthday = birthday.split("-");
-  var newBirthday = {
-    year: splitBirthday[0],
-    month: splitBirthday[1],
-    day: splitBirthday[2].slice(0, 2)
+  var currentBirthday = {
+    year: parseInt(splitBirthday[0]),
+    month: parseInt(splitBirthday[1]),
+    day: parseInt(splitBirthday[2].slice(0, 2))
   };
-  var year = newBirthday.year,
-      month = newBirthday.month,
-      day = newBirthday.day;
+  var year = currentBirthday.year,
+      month = currentBirthday.month,
+      day = currentBirthday.day;
 
-  var handleBirthday = function handleBirthday(type) {
-    var newUser = Object.assign({}, user);
-    return function (e) {
-      newBirthday[type] = e.currentTarget.value;
-      var date = "".concat(newBirthday.year, "-").concat(newBirthday.month, "-").concat(newBirthday.day);
+  var handleBirthday = function handleBirthday() {
+    return function () {
+      var newUser = Object.assign({}, user);
+      var year = document.getElementById("year").value;
+      var month = document.getElementById("month").value;
+      var day = document.getElementById("day").value;
+      var date = "".concat(year, "-").concat(month, "-").concat(day);
       newUser["birthday"] = date;
       setUser(newUser);
     };
@@ -4733,16 +4736,19 @@ var UserUpdate = function UserUpdate(props) {
     className: "form-birthday-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     defaultValue: month,
+    id: "month",
     onChange: handleBirthday('month'),
     className: "form-birthday",
     type: "select"
   }, months), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     defaultValue: day,
+    id: "day",
     onChange: handleBirthday('day'),
     className: "form-birthday",
     type: "select"
   }, days), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     defaultValue: year,
+    id: "year",
     onChange: handleBirthday('year'),
     className: "form-birthday",
     type: "select"

@@ -35,6 +35,7 @@ const UserUpdate = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (errors.length > 0) clearErrors()
         updateUser(user)
     }
 
@@ -49,23 +50,26 @@ const UserUpdate = (props) => {
 
     const splitBirthday = birthday.split("-")
 
-    const newBirthday = {
-        year: splitBirthday[0],
-        month: splitBirthday[1],
-        day: splitBirthday[2].slice(0,2)
+    const currentBirthday = {
+        year: parseInt(splitBirthday[0]),
+        month: parseInt(splitBirthday[1]),
+        day: parseInt(splitBirthday[2].slice(0,2))
     }
 
-    const {year, month, day} = newBirthday
-
-    const handleBirthday = (type) => {
-        const newUser = Object.assign({}, user)
-
-        return (e) => {
-            newBirthday[type] = e.currentTarget.value
-            const date = `${newBirthday.year}-${newBirthday.month}-${newBirthday.day}`
+    const {year, month, day} = currentBirthday
+    
+    const handleBirthday = () => {
+        return () =>{
+            const newUser = Object.assign({}, user)
+            const year = document.getElementById("year").value
+            const month = document.getElementById("month").value
+            const day = document.getElementById("day").value
+    
+            const date = `${year}-${month}-${day}`
             newUser["birthday"] = date
             setUser(newUser)
         }
+
     }
 
     const years = []
@@ -165,13 +169,13 @@ const UserUpdate = (props) => {
 
                             <p id="input-p">Birthday:</p>
                             <div className='form-birthday-container'>
-                                <select defaultValue={month} onChange={handleBirthday('month')} className='form-birthday' type="select" >
+                                <select defaultValue={month} id="month" onChange={handleBirthday('month')} className='form-birthday' type="select" >
                                     {months}
                                 </select>
-                                <select defaultValue={day} onChange={handleBirthday('day')} className='form-birthday' type="select" >
+                                <select defaultValue={day} id="day" onChange={handleBirthday('day')} className='form-birthday' type="select" >
                                     {days}
                                 </select>
-                                <select defaultValue={year} onChange={handleBirthday('year')} className='form-birthday' type="select" >
+                                <select defaultValue={year} id="year" onChange={handleBirthday('year')} className='form-birthday' type="select" >
                                     {years}
                                 </select>
                             </div >
