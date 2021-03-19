@@ -573,7 +573,7 @@ var updateUser = function updateUser(user) {
 };
 var updateUserPhoto = function updateUserPhoto(user) {
   return function (dispatch) {
-    _util_user_util__WEBPACK_IMPORTED_MODULE_0__.updateUserPhoto(user).then(function (user) {
+    return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.updateUserPhoto(user).then(function (user) {
       return dispatch(receiveUser(user));
     });
   };
@@ -4511,6 +4511,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _beer_create_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../beer/create/util */ "./frontend/components/beer/create/util.jsx");
 /* harmony import */ var _brewery_create_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../brewery/create/util */ "./frontend/components/brewery/create/util.js");
+/* harmony import */ var _image_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../image/image */ "./frontend/components/image/image.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -4527,11 +4528,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var UserUpdate = function UserUpdate(props) {
   var errors = props.errors,
       currentUser = props.currentUser,
       updateUser = props.updateUser,
-      clearErrors = props.clearErrors;
+      clearErrors = props.clearErrors,
+      updateUserPhoto = props.updateUserPhoto;
   var id = currentUser.id,
       username = currentUser.username,
       email = currentUser.email,
@@ -4662,13 +4665,46 @@ var UserUpdate = function UserUpdate(props) {
       value: country
     }, country);
   });
+  var fileInput = document.getElementById("file-upload-hidden");
+
+  var imageClick = function imageClick() {
+    fileInput.click();
+  };
+
+  var imageSubmit = function imageSubmit(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('user[id]', currentUser.id);
+    formData.append('user[photo]', fileInput.files[0]);
+    updateUserPhoto(formData).then(function () {
+      return fileInput.value = null;
+    });
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "main-outer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
     className: !errors.length ? 'uu sign-up-form' : 'uu sign-up-form sign-up-form-errors'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profile Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)(errors, "errors-container-sign-up") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Account Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "uu-header-text"
+  }, "Profile Picture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_3__.default, {
+    className: "beer-img user-img",
+    src: currentUser.photoUrl,
+    dft: window.defaultBeer,
+    alt: "user"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    onChange: imageSubmit,
+    id: "file-upload-hidden",
+    type: "file",
+    accept: "image/*"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: imageClick,
+    className: "uu-submit form-submit"
+  }, "Change Profile Picture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "uu-header-text"
+  }, "Profile Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)(errors, "errors-container-sign-up") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-col-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-col-1 input-col-3"
@@ -4782,9 +4818,13 @@ var UserUpdate = function UserUpdate(props) {
   }, years)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleSubmit,
     className: "uu-submit form-submit"
-  }, "Update Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "Update Profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "uu-header-text"
+  }, "Password Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-col-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "uu-input-container-outer input-col-1 input-col-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Password Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-container-secondary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "uu-input-container input-cont"
@@ -4860,6 +4900,9 @@ var mDTP = function mDTP(dispatch) {
     },
     updateUser: function updateUser(user) {
       return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.updateUser)(user));
+    },
+    updateUserPhoto: function updateUserPhoto(user) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.updateUserPhoto)(user));
     }
   };
 };
@@ -4893,12 +4936,6 @@ __webpack_require__.r(__webpack_exports__);
 var UserSidebar = function UserSidebar(_ref) {
   var user = _ref.user,
       isCurrentUser = _ref.isCurrentUser;
-  var currentUserPhoto = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_set_image__WEBPACK_IMPORTED_MODULE_2__.default, {
-    className: "beer-img user-img",
-    src: user.photoUrl,
-    dft: window.defaultBeer,
-    alt: "user"
-  });
   var userPhoto = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_image_image__WEBPACK_IMPORTED_MODULE_1__.default, {
@@ -4913,7 +4950,7 @@ var UserSidebar = function UserSidebar(_ref) {
     className: "personal-stats"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-username"
-  }, isCurrentUser ? currentUserPhoto : userPhoto, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  }, userPhoto, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/user/".concat(user.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "".concat(user.firstName, " ").concat(user.lastName))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     className: "fas fa-user home-icon"

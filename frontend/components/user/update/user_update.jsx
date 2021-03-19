@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { renderErrors } from '../../beer/create/util'
 import { countryList } from "../../brewery/create/util";
+import Img from "../../image/image";
+
 
 const UserUpdate = (props) => {
-    const { errors, currentUser, updateUser, clearErrors } = props
+    const { errors, currentUser, updateUser, clearErrors, updateUserPhoto } = props
     const {
         id,
         username,
@@ -122,14 +124,38 @@ const UserUpdate = (props) => {
         <option key={country} value={country}>{country}</option>
     ))
 
+    const fileInput = document.getElementById("file-upload-hidden")
 
+    const imageClick = () =>{
+        fileInput.click()
+    }
+
+    const imageSubmit = (e) =>{
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('user[id]', currentUser.id)
+        formData.append('user[photo]', fileInput.files[0])
+        updateUserPhoto(formData)
+        .then(()=>fileInput.value = null)
+    }
 
     return (
         <div className='main-outer'>
             <div className='home-grid'>
-
                 <form className={!errors.length ? 'uu sign-up-form' : 'uu sign-up-form sign-up-form-errors'}>
-                    <h1>Profile Settings</h1>
+                    <h1>Account Settings</h1>
+                <h2 className="uu-header-text">Profile Picture</h2>
+
+                    <Img className="beer-img user-img" src={currentUser.photoUrl} dft={window.defaultBeer} alt="user" />
+                    <input onChange={imageSubmit} 
+                    id="file-upload-hidden" 
+                    type="file"
+                    accept="image/*"
+                />
+                    <button onClick={imageClick} className='uu-submit form-submit'>Change Profile Picture</button>
+
+
+                    <h2 className="uu-header-text">Profile Settings</h2>
                     <br />
                     {errors.length > 0 ? renderErrors(errors, "errors-container-sign-up") : null}
 
@@ -204,10 +230,13 @@ const UserUpdate = (props) => {
                         </div>
 
                         <button onClick={handleSubmit} className='uu-submit form-submit'>Update Profile</button>
+                    </div>
+
+                        <h2 className="uu-header-text">Password Settings</h2>
+                    <div className='input-col-2'>
+
 
                         <div className='uu-input-container-outer input-col-1 input-col-3' >
-                            <h1>Password Settings</h1>
-
                             <div className="input-container-secondary">
 
                                 <div className='uu-input-container input-cont'>
@@ -233,6 +262,7 @@ const UserUpdate = (props) => {
 
                         <button onClick={passwordSubmit} className='uu-submit form-submit'>Update Password</button>
                     </div>
+                    
                 </form>
 
 

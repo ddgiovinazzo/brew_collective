@@ -38,6 +38,6 @@ export const updateUser = user => dispatch =>(
       ))
 )
 export const updateUserPhoto = user => dispatch =>{
-    UserAPIUtil.updateUserPhoto(user)
+    return UserAPIUtil.updateUserPhoto(user)
     .then(user => (dispatch(receiveUser(user))))
 }
