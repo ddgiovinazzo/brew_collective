@@ -2681,7 +2681,7 @@ var FriendshipButton = function FriendshipButton(props) {
   var accepted = acceptedSentrequest || acceptedReceivedRequest;
 
   var text = function text() {
-    if (sendingRequest) return "Friend Request Sent";else if (receivingRequest) return "Accept Friend Request";else if (accepted) return "Delete Friend";else return "Add Friend";
+    if (sendingRequest) return "Friend Request Sent";else if (receivingRequest) return "Accept Friend Request";else if (accepted) return "Unfriend";else return "Add Friend";
   };
 
   var handleDelete = function handleDelete() {

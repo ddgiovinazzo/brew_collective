@@ -17,7 +17,7 @@ const FriendshipButton = (props) =>{
     const text = ()=>{
         if (sendingRequest) return "Friend Request Sent"
         else if (receivingRequest) return "Accept Friend Request"
-        else if (accepted) return "Delete Friend"
+        else if (accepted) return "Unfriend"
         else return "Add Friend"
     }
     
