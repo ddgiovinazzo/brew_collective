@@ -18,9 +18,17 @@ class Api::UsersController < ApplicationController
             render json: @user.errors.full_messages, status: 422
         end    
     end
-    
     def update
         @user = User.find(params[:id])
+        if @user.update(user_params)
+            render :show
+        else
+            render json: @user.errors.full_messages, status: 422
+        end    
+    end
+    
+    def photo
+        @user = User.find(params[:user][:id])
         if @user.photo.attached?
             s3 = Aws::S3::Resource.new
             bucket = s3.bucket(Rails.application.credentials.aws[:dev][:bucket])

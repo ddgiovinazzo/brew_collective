@@ -24,7 +24,6 @@ export const guideLines = (
 
 export const renderErrors = (errors, className) => {
     return (
-
         <div className={className}>
             <ul className='errors'>
                 {errors.map((error, i) => (

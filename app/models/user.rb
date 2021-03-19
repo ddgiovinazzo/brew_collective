@@ -3,6 +3,12 @@ class User < ApplicationRecord
         uniqueness: { case_sensitive: false },
         length: {minimum: 2}
 
+    validates :first_name,
+        presence: true
+
+    validates :last_name,
+        presence: true
+
     validates :email,
         presence: true,
         format: {

@@ -1,4 +1,5 @@
 import * as UserAPIUtil from '../util/user_util'
+import {receiveErrors} from '../actions/session_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
@@ -30,5 +31,13 @@ export const fetchUser = userId => dispatch =>(
 
 export const updateUser = user => dispatch =>(
     UserAPIUtil.updateUser(user)
-    .then(user => dispatch(receiveUser(user)))
+    .then(user => (
+        dispatch(receiveUser(user))
+      ), err => (
+        dispatch(receiveErrors(err.responseJSON))
+      ))
 )
+export const updateUserPhoto = user => dispatch =>{
+    UserAPIUtil.updateUserPhoto(user)
+    .then(user => (dispatch(receiveUser(user))))
+}

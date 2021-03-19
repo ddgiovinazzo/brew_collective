@@ -4,33 +4,26 @@ import { countryList } from "../brewery/create/util";
 
 const SignUp = (props) => {
 
+    const { errors, signup, clearErrors } = props
+
     const [user, setUser] = useState({
-        username: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        pronouns: '',
-        location: '',
-        country: 'United States',
-        first_name: '',
-        last_name: '',
-        birthday: ''
-
-    })
-
-    const [birthday, setBirthday] = useState({
-        year: '',
-        month: '',
-        day: ''
+        id: null,
+        username: null,
+        email: null,
+        location: null,
+        country: null,
+        gender: null,
+        first_name: null,
+        last_name: null,
+        birthday: null
     })
 
     const [update, setUpdate] = useState(0)
     useEffect(
-        () => { if (props.errors.length > 0) props.clearErrors() }, [update]
+        () => { if (errors.length > 0) clearErrors() }, [update]
     )
 
     const handleSubmit = (e) => {
-        const { signup } = props
         e.preventDefault()
         signup(user)
     }
@@ -39,23 +32,25 @@ const SignUp = (props) => {
     const handleInput = (type) => {
         const newUser = Object.assign({}, user)
         return (e) => {
-            user[type] = e.currentTarget.value
+            newUser[type] = e.currentTarget.value
             setUser(newUser)
         }
     }
 
-    const handleBirthday = (type) => {
-        const newBirthday = Object.assign({}, birthday)
-        const { year, month, day } = newBirthday
-        return (e) => {
-            newBirthday[type] = e.currentTarget.value
-            const date = `${year}-${month}-${day}`;
-            setBirthday(date)
+    const handleBirthday = () => {
+        return () =>{
+            const newUser = Object.assign({}, user)
+            const year = document.getElementById("year").value
+            const month = document.getElementById("month").value
+            const day = document.getElementById("day").value
+    
+            const date = `${year}-${month}-${day}`
+            newUser["birthday"] = date
+            
+            setUser(newUser)
         }
+
     }
-
-
-    const redirect = (e) => e.stopPropagation()
 
     const years = []
     let date = new Date()
@@ -84,12 +79,14 @@ const SignUp = (props) => {
         <option key={country} value={country}>{country}</option>
     ))
 
+    const redirect = (e) => e.stopPropagation()
+
     return (
 
-        <div onClick={() => { props.history.push('/') }} className="splash-container" >
+        <div onClick={() => { props.history.push('/');if (errors.length > 0) clearErrors() }} className="splash-container" >
             <form onClick={redirect} className={!props.errors.length ? 'sign-up-form' : 'sign-up-form sign-up-form-errors'}>
                 <span id='brew_collective-logo-container'><img id="brew_collective-logo" src={window.brew_collective_text} alt="" /></span>
-                {props.errors.length > 0 ? renderErrors() : null}
+                {props.errors.length > 0 ? renderErrors(errors, "errors-container-sign-up") : null}
 
 
                 <div className='input-rows'>
@@ -112,7 +109,7 @@ const SignUp = (props) => {
 
                         <div className="input-container-sign-up">
                             <i className="fas sign-up-icons fa-lock icon"></i>
-                            <input className='form-input' type="password" placeholder='Password' onChange={handleInput('password')} />
+                            <input autoComplete="new-password" className='form-input' type="password" placeholder='Password' onChange={handleInput('password')} />
                         </div>
 
 
@@ -157,7 +154,7 @@ const SignUp = (props) => {
 
                         <div className="input-container-secondary">
 
-                            <input placeholder="Country"list="user-country" className='form-input-secondary' onChange={handleInput('country')} />
+                            <input placeholder="Country" list="user-country" className='form-input-secondary' onChange={handleInput('country')} />
                             <datalist id="user-country" className='select'>
                                 <option disabled>Country</option>
                                 {countries}
@@ -167,24 +164,24 @@ const SignUp = (props) => {
 
                             <p id="input-p">Birthday:</p>
                             <div className='form-birthday-container'>
-                                <select onChange={handleBirthday('month')} className='form-birthday' type="select" >
-                                    <option value={null}>MM</option>
+                                <select id="month" onChange={handleBirthday()} className='form-birthday' type="select" >
+                                    <option value={""}>MM</option>
                                     {months}
                                 </select>
-                                <select onChange={handleBirthday('day')} className='form-birthday' type="select" >
-                                    <option value={null}>DD</option>
+                                <select id="day" onChange={handleBirthday()} className='form-birthday' type="select" >
+                                    <option value={""}>DD</option>
 
                                     {days}
                                 </select>
-                                <select onChange={handleBirthday('year')} className='form-birthday' type="select" >
-                                    <option value={null}>YYYY</option>
+                                <select id="year" onChange={handleBirthday()} className='form-birthday' type="select" >
+                                    <option value={""}>YYYY</option>
                                     {years}
                                 </select>
                             </div >
                         </div>
                     </div>
 
-            <button onClick={handleSubmit} className='form-submit'>Create Account</button>
+                    <button onClick={handleSubmit} className='form-submit'>Create Account</button>
                 </div>
             </form>
 

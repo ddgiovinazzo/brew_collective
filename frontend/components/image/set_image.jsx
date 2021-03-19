@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import {connect} from "react-redux"
-import {updateUser} from "../../actions/user_actions"
+import {updateUserPhoto} from "../../actions/user_actions"
 // import ImageForm from "./image_form/image_form";
 
-const SetImg = ({ src, dft, alt, className, currentUser, updateUser }) => {
+const SetImg = ({ src, dft, alt, className, currentUser, updateUserPhoto }) => {
     const addDefaultSrc = (e) => e.target.src = dft
 
     // const [openModal, setOpenModal] = useState(false)
@@ -18,7 +18,7 @@ const SetImg = ({ src, dft, alt, className, currentUser, updateUser }) => {
         const formData = new FormData()
         formData.append('user[id]', currentUser.id)
         formData.append('user[photo]', fileInput.files[0])
-        updateUser(formData)
+        updateUserPhoto(formData)
         .then(()=>fileInput.value = null)
     }
 
@@ -46,7 +46,7 @@ const mSTP = ({entities:{users}, session}) =>({
     currentUser: users[session.id]
 })
 const mDTP = dispatch =>({
-    updateUser: user => dispatch(updateUser(user))
+    updateUserPhoto: user => dispatch(updateUserPhoto(user))
 })
 
 export default connect(mSTP, mDTP)(SetImg)

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, Redirect } from 'react-router-dom';
+import { renderErrors } from '../beer/create/util'
+
 
 class SignIn extends React.Component {
 
@@ -67,7 +69,7 @@ class SignIn extends React.Component {
 
                             <span id='brew_collective-logo-container'><img id="brew_collective-logo" src={window.brew_collective_text} alt="" /></span>
 
-                            {this.props.errors.length > 0 ? this.renderErrors() : null}
+                            {this.props.errors.length > 0 ? renderErrors(this.props.errors, "errors-container-sign-in") : null}
                             <div className="input-container-sign-in">
                                 <i className="fas fa-user icon sign-up-icons"></i>
                                 <input className='form-input' type="text" placeholder='Username' onChange={this.handleInput('username')} />

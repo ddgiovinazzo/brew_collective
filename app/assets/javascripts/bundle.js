@@ -518,9 +518,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "receiveUser": () => /* binding */ receiveUser,
 /* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers,
 /* harmony export */   "fetchUser": () => /* binding */ fetchUser,
-/* harmony export */   "updateUser": () => /* binding */ updateUser
+/* harmony export */   "updateUser": () => /* binding */ updateUser,
+/* harmony export */   "updateUserPhoto": () => /* binding */ updateUserPhoto
 /* harmony export */ });
 /* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_util */ "./frontend/util/user_util.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 var RECEIVE_USER = 'RECEIVE_USER';
 var RECEIVE_USERS = 'RECEIVE_USERS';
@@ -562,6 +565,15 @@ var fetchUser = function fetchUser(userId) {
 var updateUser = function updateUser(user) {
   return function (dispatch) {
     return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.updateUser(user).then(function (user) {
+      return dispatch(receiveUser(user));
+    }, function (err) {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.receiveErrors)(err.responseJSON));
+    });
+  };
+};
+var updateUserPhoto = function updateUserPhoto(user) {
+  return function (dispatch) {
+    _util_user_util__WEBPACK_IMPORTED_MODULE_0__.updateUserPhoto(user).then(function (user) {
       return dispatch(receiveUser(user));
     });
   };
@@ -2948,7 +2960,7 @@ var SetImg = function SetImg(_ref) {
       alt = _ref.alt,
       className = _ref.className,
       currentUser = _ref.currentUser,
-      updateUser = _ref.updateUser;
+      updateUserPhoto = _ref.updateUserPhoto;
 
   var addDefaultSrc = function addDefaultSrc(e) {
     return e.target.src = dft;
@@ -2966,7 +2978,7 @@ var SetImg = function SetImg(_ref) {
     var formData = new FormData();
     formData.append('user[id]', currentUser.id);
     formData.append('user[photo]', fileInput.files[0]);
-    updateUser(formData).then(function () {
+    updateUserPhoto(formData).then(function () {
       return fileInput.value = null;
     });
   };
@@ -2999,8 +3011,8 @@ var mSTP = function mSTP(_ref2) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    updateUser: function updateUser(user) {
-      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.updateUser)(user));
+    updateUserPhoto: function updateUserPhoto(user) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.updateUserPhoto)(user));
     }
   };
 };
@@ -3611,8 +3623,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _beer_create_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../beer/create/util */ "./frontend/components/beer/create/util.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -3636,6 +3649,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -3685,7 +3699,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "redirect",
     value: function redirect() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Redirect, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
         to: "/"
       });
     }
@@ -3728,7 +3742,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         id: "brew_collective-logo",
         src: window.brew_collective_text,
         alt: ""
-      })), this.props.errors.length > 0 ? this.renderErrors() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      })), this.props.errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)(this.props.errors, "errors-container-sign-in") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "input-container-sign-in"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "fas fa-user icon sign-up-icons"
@@ -3758,7 +3772,7 @@ var SignIn = /*#__PURE__*/function (_React$Component) {
         }
       }, "Demo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "sign-up-p"
-      }, "New around here? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      }, "New around here? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/signup"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Sign up!")))));
     }
@@ -3842,42 +3856,35 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var SignUp = function SignUp(props) {
+  var errors = props.errors,
+      signup = props.signup,
+      clearErrors = props.clearErrors;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    username: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    pronouns: '',
-    location: '',
-    country: 'United States',
-    first_name: '',
-    last_name: '',
-    birthday: ''
+    id: null,
+    username: null,
+    email: null,
+    location: null,
+    country: null,
+    gender: null,
+    first_name: null,
+    last_name: null,
+    birthday: null
   }),
       _useState2 = _slicedToArray(_useState, 2),
       user = _useState2[0],
       setUser = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    year: '',
-    month: '',
-    day: ''
-  }),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
-      birthday = _useState4[0],
-      setBirthday = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState6 = _slicedToArray(_useState5, 2),
-      update = _useState6[0],
-      setUpdate = _useState6[1];
+      update = _useState4[0],
+      setUpdate = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (props.errors.length > 0) props.clearErrors();
+    if (errors.length > 0) clearErrors();
   }, [update]);
 
   var handleSubmit = function handleSubmit(e) {
-    var signup = props.signup;
     e.preventDefault();
     signup(user);
   };
@@ -3885,25 +3892,21 @@ var SignUp = function SignUp(props) {
   var handleInput = function handleInput(type) {
     var newUser = Object.assign({}, user);
     return function (e) {
-      user[type] = e.currentTarget.value;
+      newUser[type] = e.currentTarget.value;
       setUser(newUser);
     };
   };
 
-  var handleBirthday = function handleBirthday(type) {
-    var newBirthday = Object.assign({}, birthday);
-    var year = newBirthday.year,
-        month = newBirthday.month,
-        day = newBirthday.day;
-    return function (e) {
-      newBirthday[type] = e.currentTarget.value;
+  var handleBirthday = function handleBirthday() {
+    return function () {
+      var newUser = Object.assign({}, user);
+      var year = document.getElementById("year").value;
+      var month = document.getElementById("month").value;
+      var day = document.getElementById("day").value;
       var date = "".concat(year, "-").concat(month, "-").concat(day);
-      setBirthday(date);
+      newUser["birthday"] = date;
+      setUser(newUser);
     };
-  };
-
-  var redirect = function redirect(e) {
-    return e.stopPropagation();
   };
 
   var years = [];
@@ -3941,9 +3944,15 @@ var SignUp = function SignUp(props) {
       value: country
     }, country);
   });
+
+  var redirect = function redirect(e) {
+    return e.stopPropagation();
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     onClick: function onClick() {
       props.history.push('/');
+      if (errors.length > 0) clearErrors();
     },
     className: "splash-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -3955,7 +3964,7 @@ var SignUp = function SignUp(props) {
     id: "brew_collective-logo",
     src: window.brew_collective_text,
     alt: ""
-  })), props.errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  })), props.errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)(errors, "errors-container-sign-up") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-rows"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "All fields below are required unless specified."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-col-1"
@@ -3984,6 +3993,7 @@ var SignUp = function SignUp(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     className: "fas sign-up-icons fa-lock icon"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    autoComplete: "new-password",
     className: "form-input",
     type: "password",
     placeholder: "Password",
@@ -4063,23 +4073,26 @@ var SignUp = function SignUp(props) {
   }, "Birthday:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "form-birthday-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-    onChange: handleBirthday('month'),
+    id: "month",
+    onChange: handleBirthday(),
     className: "form-birthday",
     type: "select"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-    value: null
+    value: ""
   }, "MM"), months), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-    onChange: handleBirthday('day'),
+    id: "day",
+    onChange: handleBirthday(),
     className: "form-birthday",
     type: "select"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-    value: null
+    value: ""
   }, "DD"), days), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
-    onChange: handleBirthday('year'),
+    id: "year",
+    onChange: handleBirthday(),
     className: "form-birthday",
     type: "select"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-    value: null
+    value: ""
   }, "YYYY"), years)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleSubmit,
     className: "form-submit"
@@ -4518,9 +4531,9 @@ var UserUpdate = function UserUpdate(props) {
       currentUser = props.currentUser,
       updateUser = props.updateUser,
       clearErrors = props.clearErrors;
-  var username = currentUser.username,
+  var id = currentUser.id,
+      username = currentUser.username,
       email = currentUser.email,
-      pronouns = currentUser.pronouns,
       location = currentUser.location,
       country = currentUser.country,
       gender = currentUser.gender,
@@ -4529,9 +4542,9 @@ var UserUpdate = function UserUpdate(props) {
       birthday = currentUser.birthday;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    id: id,
     username: username,
     email: email,
-    pronouns: pronouns,
     location: location,
     country: country,
     gender: gender,
@@ -4543,25 +4556,10 @@ var UserUpdate = function UserUpdate(props) {
       user = _useState2[0],
       setUser = _useState2[1];
 
-  var splitBirthday = birthday.split("-");
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    year: splitBirthday[0],
-    month: splitBirthday[1],
-    day: splitBirthday[2].slice(0, 2)
-  }),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
-      updatebirthday = _useState4[0],
-      setUpdateBirthday = _useState4[1];
-
-  var year = updatebirthday.year,
-      month = updatebirthday.month,
-      day = updatebirthday.day;
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState6 = _slicedToArray(_useState5, 2),
-      update = _useState6[0],
-      setUpdate = _useState6[1];
+      update = _useState4[0],
+      setUpdate = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (errors.length > 0) clearErrors();
@@ -4575,20 +4573,28 @@ var UserUpdate = function UserUpdate(props) {
   var handleInput = function handleInput(type) {
     var newUser = Object.assign({}, user);
     return function (e) {
-      user[type] = e.currentTarget.value;
+      newUser[type] = e.currentTarget.value;
       setUser(newUser);
     };
   };
 
+  var splitBirthday = birthday.split("-");
+  var newBirthday = {
+    year: splitBirthday[0],
+    month: splitBirthday[1],
+    day: splitBirthday[2].slice(0, 2)
+  };
+  var year = newBirthday.year,
+      month = newBirthday.month,
+      day = newBirthday.day;
+
   var handleBirthday = function handleBirthday(type) {
-    var newBirthday = Object.assign({}, birthday);
-    var year = newBirthday.year,
-        month = newBirthday.month,
-        day = newBirthday.day;
+    var newUser = Object.assign({}, user);
     return function (e) {
       newBirthday[type] = e.currentTarget.value;
-      var date = "".concat(year, "-").concat(month, "-").concat(day);
-      setBirthday(date);
+      var date = "".concat(newBirthday.year, "-").concat(newBirthday.month, "-").concat(newBirthday.day);
+      newUser["birthday"] = date;
+      setUser(newUser);
     };
   };
 
@@ -4633,7 +4639,7 @@ var UserUpdate = function UserUpdate(props) {
     className: "home-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
     className: errors.length ? 'uu sign-up-form' : 'uu sign-up-form sign-up-form-errors'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profile Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)() : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profile Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)(errors, "errors-container-sign-up") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-rows"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-col-1"
@@ -4762,7 +4768,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_beer_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/beer_actions */ "./frontend/actions/beer_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/user_actions */ "./frontend/actions/user_actions.js");
 /* harmony import */ var _user_update__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_update */ "./frontend/components/user/update/user_update.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
 
@@ -4784,6 +4790,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     clearErrors: function clearErrors() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__.clearErrors)());
+    },
+    updateUser: function updateUser(user) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.updateUser)(user));
     }
   };
 };
@@ -5645,6 +5654,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchAllUsers": () => /* binding */ fetchAllUsers,
 /* harmony export */   "fetchUser": () => /* binding */ fetchUser,
+/* harmony export */   "updateUserPhoto": () => /* binding */ updateUserPhoto,
 /* harmony export */   "updateUser": () => /* binding */ updateUser
 /* harmony export */ });
 var fetchAllUsers = function fetchAllUsers() {
@@ -5657,13 +5667,22 @@ var fetchUser = function fetchUser(userId) {
     url: "/api/users/".concat(userId)
   });
 };
-var updateUser = function updateUser(user) {
+var updateUserPhoto = function updateUserPhoto(user) {
   return $.ajax({
     method: "PATCH",
-    url: "/api/users/".concat(user.get("user[id]")),
+    url: "/api/users/photo/".concat(user.id),
     data: user,
     contentType: false,
     processData: false
+  });
+};
+var updateUser = function updateUser(user) {
+  return $.ajax({
+    method: "PATCH",
+    url: "/api/users/".concat(user.id),
+    data: {
+      user: user
+    }
   });
 };
 

@@ -5,9 +5,9 @@ import { countryList } from "../../brewery/create/util";
 const UserUpdate = (props) => {
     const { errors, currentUser, updateUser, clearErrors } = props
     const {
+        id,
         username,
         email,
-        pronouns,
         location,
         country,
         gender,
@@ -17,9 +17,9 @@ const UserUpdate = (props) => {
     } = currentUser
 
     const [user, setUser] = useState({
+        id,
         username,
         email,
-        pronouns,
         location,
         country,
         gender,
@@ -27,16 +27,6 @@ const UserUpdate = (props) => {
         last_name: lastName,
         birthday
     })
-
-    const splitBirthday = birthday.split("-")
-
-    const [updatebirthday, setUpdateBirthday] = useState({
-        year: splitBirthday[0],
-        month: splitBirthday[1],
-        day: splitBirthday[2].slice(0,2)
-    })
-
-    const {year, month, day} = updatebirthday
 
     const [update, setUpdate] = useState(0)
     useEffect(
@@ -52,18 +42,29 @@ const UserUpdate = (props) => {
     const handleInput = (type) => {
         const newUser = Object.assign({}, user)
         return (e) => {
-            user[type] = e.currentTarget.value
+            newUser[type] = e.currentTarget.value
             setUser(newUser)
         }
     }
 
+    const splitBirthday = birthday.split("-")
+
+    const newBirthday = {
+        year: splitBirthday[0],
+        month: splitBirthday[1],
+        day: splitBirthday[2].slice(0,2)
+    }
+
+    const {year, month, day} = newBirthday
+
     const handleBirthday = (type) => {
-        const newBirthday = Object.assign({}, birthday)
-        const { year, month, day } = newBirthday
+        const newUser = Object.assign({}, user)
+
         return (e) => {
             newBirthday[type] = e.currentTarget.value
-            const date = `${year}-${month}-${day}`;
-            setBirthday(date)
+            const date = `${newBirthday.year}-${newBirthday.month}-${newBirthday.day}`
+            newUser["birthday"] = date
+            setUser(newUser)
         }
     }
 
@@ -101,7 +102,7 @@ const UserUpdate = (props) => {
             <form className={errors.length ? 'uu sign-up-form' : 'uu sign-up-form sign-up-form-errors'}>
                 <h1>Profile Settings</h1>
                 <br/>
-                {errors.length > 0 ? renderErrors() : null}
+                {errors.length > 0 ? renderErrors(errors, "errors-container-sign-up") : null}
 
 
                 <div className='input-rows'>
