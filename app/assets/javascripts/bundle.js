@@ -2694,7 +2694,6 @@ var FriendshipButton = function FriendshipButton(props) {
       id: received.id,
       status: "accepted"
     };
-    console.log(friendship);
     updateFriendship(friendship);
   };
 
