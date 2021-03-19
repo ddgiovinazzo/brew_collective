@@ -9,17 +9,17 @@ import UserSidebar from "../user/user_sidebar"
 
 const Home = ({ currentUser, fetchCheckIns, checkIns, beers, breweries }) => {
 
+    if (!currentUser || isEmpty(breweries) || isEmpty(beers) ) return <Fallback />
     const [update, setUpdate] = useState(0)
     useEffect(() => {
-        fetchCheckIns(currentUser && currentUser.friendIds.length ? currentUser.friendIds : "x")
+        if(currentUser && currentUser.friendIds.length)fetchCheckIns(currentUser.friendIds)
     }, [update])
 
-    if (!currentUser || isEmpty(breweries) || isEmpty(beers)) return <Fallback />
 
     const noCheckIns = <p>You don't seem to have any recent activity!</p>
     const checkInList = []
 
-    for (let i = checkIns.length - 1; i >= 0; i--) {
+    for (let i = checkIns.length - 1; i >= 0 && checkIns[0] != "x"; i--) {
         const checkIn = checkIns[i];
 
         const beer = beers[checkIn.beerId]
