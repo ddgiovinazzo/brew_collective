@@ -7,8 +7,9 @@ const SignUp = (props) => {
     const { errors, signup, clearErrors } = props
 
     const [user, setUser] = useState({
-        id: null,
         username: null,
+        password: null,
+        password_confirmation: null,
         email: null,
         location: null,
         country: null,

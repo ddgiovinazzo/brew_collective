@@ -3861,8 +3861,9 @@ var SignUp = function SignUp(props) {
       clearErrors = props.clearErrors;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    id: null,
     username: null,
+    password: null,
+    password_confirmation: null,
     email: null,
     location: null,
     country: null,
@@ -4579,6 +4580,31 @@ var UserUpdate = function UserUpdate(props) {
     };
   };
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    id: id,
+    current_password: "",
+    password: "",
+    password_confirmation: ""
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      password = _useState6[0],
+      setPassword = _useState6[1];
+
+  var handlePassword = function handlePassword(type) {
+    var newPassword = Object.assign({}, password);
+    return function (e) {
+      newPassword[type] = e.currentTarget.value;
+      setPassword(newPassword);
+    };
+  };
+
+  var passwordSubmit = function passwordSubmit(e) {
+    e.preventDefault();
+    updateUser(password).then(function () {
+      if (errors.length > 0) clearErrors();
+    });
+  };
+
   var splitBirthday = birthday.split("-");
   var currentBirthday = {
     year: parseInt(splitBirthday[0]),
@@ -4641,32 +4667,32 @@ var UserUpdate = function UserUpdate(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-    className: errors.length ? 'uu sign-up-form' : 'uu sign-up-form sign-up-form-errors'
+    className: !errors.length ? 'uu sign-up-form' : 'uu sign-up-form sign-up-form-errors'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profile Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), errors.length > 0 ? (0,_beer_create_util__WEBPACK_IMPORTED_MODULE_1__.renderErrors)(errors, "errors-container-sign-up") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "input-rows"
+    className: "input-col-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "input-col-1"
+    className: "input-col-1 input-col-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "input-container-sign-up"
+    className: "input-container-secondary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     className: "uu-label"
   }, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     defaultValue: username,
-    className: "form-input",
+    className: "form-input-secondary",
+    autoComplete: "username",
     type: "text",
     onChange: handleInput('username')
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "input-container-sign-up"
+    className: "input-container-secondary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     className: "uu-label"
   }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     defaultValue: email,
-    className: "form-input",
+    className: "form-input-secondary",
+    autoComplete: "email",
     type: "text",
     onChange: handleInput('email')
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "input-col-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-col-1 input-col-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "input-container-secondary"
@@ -4723,7 +4749,8 @@ var UserUpdate = function UserUpdate(props) {
   }, "Country:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     defaultValue: country,
     list: "user-country",
-    className: "uu-input form-input-secondary",
+    autoComplete: "off",
+    className: "uu-input-form-data form-input-secondary",
     onChange: handleInput('country')
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("datalist", {
     id: "user-country",
@@ -4755,7 +4782,41 @@ var UserUpdate = function UserUpdate(props) {
   }, years)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleSubmit,
     className: "uu-submit form-submit"
-  }, "Update Profile")))));
+  }, "Update Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "uu-input-container-outer input-col-1 input-col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Password Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-secondary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "uu-input-container input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    placeholder: "Current Password",
+    className: "uu-input",
+    onChange: handlePassword("current_password"),
+    type: "password"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-secondary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "uu-input-container input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    placeholder: "New Password",
+    className: "uu-input",
+    onChange: handlePassword("password"),
+    type: "password",
+    autoComplete: "new-password"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "input-container-secondary"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "uu-input-container input-cont"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    placeholder: "Confirm New Password",
+    className: "uu-input",
+    onChange: handlePassword("password_confirmation"),
+    type: "password",
+    autoComplete: "new-password"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: passwordSubmit,
+    className: "uu-submit form-submit"
+  }, "Update Password")))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserUpdate);

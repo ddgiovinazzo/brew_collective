@@ -20,7 +20,11 @@ class Api::UsersController < ApplicationController
     end
     def update
         @user = User.find(params[:id])
-        if @user.update(user_params)
+
+        current_password = params[:user][:current_password]
+        if current_password && !@user.is_password?(current_password)
+            render json: ['Please enter correct current password'], status: 401
+        elsif @user.update(user_params)
             render :show
         else
             render json: @user.errors.full_messages, status: 422
