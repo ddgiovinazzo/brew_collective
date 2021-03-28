@@ -4,7 +4,7 @@
     <title>Brew Collective</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta property="og:image" content='<%= image_url "brew_collective.png" %>'/>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag asset_path('favicon.ico') %>
@@ -25,12 +25,15 @@
       window.fiveCaps = "<%= image_url "five_caps.png" %>"
       window.defaultBeer = "<%= image_url "default_beer.jpg" %>"
     </script>
-    
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Alatsi&family=Roboto&display=swap" rel="stylesheet">
-<%= yield %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alatsi&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+  <body>
+    <%= yield %>
   </body>
 </html>
