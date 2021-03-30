@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+  <!-- HTML Meta Tags -->
     <title>Brew Collective</title>
+    <meta name="description" content="A social media app that connects people through their drinking experiences">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Brew Collective">
+    <meta itemprop="description" content="A social media app that connects people through their drinking experiences">
+    <meta itemprop="image" content="http://brewcollective.herokuapp.com/assets/meta_image-539e02d2a73d6b7dc561e4a0a3dd02b270e555e3f83d47c6294b37cdcf383419.png">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="http://brewcollective.herokuapp.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Brew Collective">
+    <meta property="og:description" content="A social media app that connects people through their drinking experiences">
+    <meta property="og:image" content="http://brewcollective.herokuapp.com/assets/meta_image-539e02d2a73d6b7dc561e4a0a3dd02b270e555e3f83d47c6294b37cdcf383419.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brew Collective">
+    <meta name="twitter:description" content="A social media app that connects people through their drinking experiences">
+    <meta name="twitter:image" content="http://brewcollective.herokuapp.com/assets/meta_image-539e02d2a73d6b7dc561e4a0a3dd02b270e555e3f83d47c6294b37cdcf383419.png">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta property="og:image" content='<%= image_url "meta_image.png" %>'/>
-    <meta property="og:description" content="A social media app that connects people through their drinking experiences"/>
+
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag asset_path('favicon.ico') %>
